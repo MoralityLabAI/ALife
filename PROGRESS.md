@@ -15,6 +15,7 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 | 7. Consumer transfer | Complete for v1 | `confinement_transfer_v1`; 24 paired search seeds; compute/action/information matched; passing verifier | Test non-monotone fiber dynamics to distinguish pressure generation from simple front-loading. |
 | 8. Alternative-physics atlas | Complete for descriptive v1 | `alt_physics_atlas_v1`; 360 deterministic episodes across three families and dimensions 2-4; short paper; passing portable verifier | Separate Gray-Scott reaction mechanism from equal-diffusion pattern candidates before making a stronger emergence claim. |
 | Pixie interaction sanctuary | Complete prototype v1 | `pixie_sanctuary_v1`; 162 paired episodes covering three critters by six actions; passing portable verifier | Move legible interactions into bounded terrain with a moving Pixie before judging playability. |
+| Pixie folded cavern | Complete higher-dimensional prototype v1 | `pixie_folded_cavern_v1`; 288 paired episodes through dimension 11; passing portable verifier | Add axis-selective notes and tomography, then dosage-match surface and fiber actions. |
 
 ## Geometry v1 evidence receipt
 
@@ -69,6 +70,12 @@ factorial: Bitlichen touch for colony scars, Prism Wyrm song for recoverable
 waves, and Mitosis Moss feed for local concentration scars. Vary Pixie motion,
 action timing, and walls before adding a single mixed-critter resource coupling.
 
+For higher-dimensional encounters, use fixed-degree folded routes as the
+default. Deep probes reliably resurfaced Bitlichen and Mitosis Moss, while
+Prism Wyrm often remained hidden at dimensions 8 and 11. The next implementation
+should let notes select a hidden axis and provide a second projection, not
+increase global action strength.
+
 ## Alternative-physics atlas v1 evidence receipt
 
 - Contract: `experiments/alt_physics_atlas_v1/manifest.json` validates with zero errors and zero warnings; discovery calibration and invalidated technical runs are recorded explicitly.
@@ -92,3 +99,17 @@ action timing, and walls before adding a single mixed-critter resource coupling.
 - The four frozen model-only hypotheses were supported within sample. This is control/design illumination, not evidence of emotion, bonding, learning, life, or player enjoyment.
 - Resources: `49.47` seconds wall time and about `5.6` MB retained artifacts on the D-drive results junction.
 - Verification: schemas, taxonomy coverage, raw summaries, trajectory/event hashes, cause references, and three substrate-spanning portable replays passed with no errors or warnings.
+
+## Pixie folded cavern v1 evidence receipt
+
+- Contract: `experiments/pixie_folded_cavern_v1/manifest.json`; world-mechanics taxonomy: `world_mechanics_taxonomy.json`.
+- Experimental units: 288 independently seeded paired treated/untreated worlds; 72 discovery, 144 confirmatory, and 72 holdout episodes.
+- Geometry: an 8x8 visible torus times zero to nine binary hidden axes, producing dimensions 2, 4, 6, 8, and 11 and up to 32,768 sites.
+- Neighborhoods: fixed-degree-16 across all dimensions plus product-Moore controls at dimensions 2, 4, and 6. The latter is capped at degree 143.
+- Exposure: all 288 episodes executed every scheduled action and changed exact substrate state.
+- Deep-probe resurfacing on fresh fixed-degree worlds was 100% for Bitlichen and Mitosis Moss. Prism Wyrm resurfaced in 3/8 confirmatory and 2/4 holdout dimension cells.
+- Fiber-column actions had lower mean visible response than surface-local actions for every critter on both fresh splits, falsifying the registered “more depth gives more surface control” prediction.
+- All eight fresh fixed-degree globalizations occurred in the 2-D control; none occurred at dimensions 4-11. The broader preregistered no-globalization hypothesis therefore remains not supported.
+- Depth/response-class mutual information was `0.67350` bits in confirmation and `0.62924` bits in holdout.
+- Resources: `36.97` seconds wall time, `52.71` MB peak RSS, and about `6.8` MB retained artifacts on the D-drive results junction.
+- Verification: all schemas, mechanics cells, geometry degrees, summaries, event causes, hashes, and exact dimension-2/6/11 replays passed with no errors or warnings.

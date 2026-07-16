@@ -1,0 +1,144 @@
+{
+  "schema": "alife.pixie.world_mechanics_taxonomy.v1",
+  "purpose": "Index genuine higher-dimensional Pixie habitats by geometry, player projection, intervention depth, readable response, and computational hazard.",
+  "axes": {
+    "intrinsic_dimension": [2, 4, 6, 8, 11],
+    "habitat_geometry": [
+      "surface_torus_x_binary_hidden_fiber",
+      "bounded_folded_cavern_backlog",
+      "gate_coupled_fibers_backlog"
+    ],
+    "neighborhood": [
+      "fixed_degree_16",
+      "product_moore",
+      "sparse_learned_routes_backlog"
+    ],
+    "pixie_intervention_depth": [
+      "surface_local",
+      "fiber_column",
+      "axis_probe"
+    ],
+    "player_projection": [
+      "visible_slice",
+      "hidden_activity_shadow",
+      "slice_tomography_backlog",
+      "portal_window_backlog"
+    ],
+    "dimensional_role": [
+      "hidden_burrow",
+      "memory_reservoir",
+      "shortcut_route",
+      "escape_route",
+      "parallel_niche_backlog"
+    ],
+    "readable_response": [
+      "no_response",
+      "surface_confined",
+      "hidden_only",
+      "burrow_and_resurface",
+      "fiber_wide",
+      "globalized"
+    ],
+    "hazard": [
+      "action_dilution",
+      "projection_aliasing",
+      "instant_globalization",
+      "hidden_unreadability",
+      "neighborhood_explosion"
+    ]
+  },
+  "geometry": {
+    "visible_axes": 2,
+    "visible_shape": [8, 8],
+    "hidden_axis_extent": 2,
+    "world_shape_rule": "(8, 8) followed by dimension-2 binary axes",
+    "hidden_chambers_per_visible_position": {
+      "2": 1,
+      "4": 4,
+      "6": 16,
+      "8": 64,
+      "11": 512
+    },
+    "player_model": "The player sees hidden-coordinate zero as the room and a factual activity-shadow diagnostic summarizing all other chambers."
+  },
+  "neighborhoods": [
+    {
+      "id": "fixed_degree_16",
+      "dimensions": [2, 4, 6, 8, 11],
+      "meaning": "Sixteen unique product-graph routes, with every hidden axis represented before extra surface or diagonal routes are added.",
+      "gameplay_reading": "Comparable local bandwidth across dimensions; suitable for controllable burrows and route puzzles."
+    },
+    {
+      "id": "product_moore",
+      "dimensions": [2, 4, 6],
+      "degree_by_dimension": {
+        "2": 8,
+        "4": 35,
+        "6": 143
+      },
+      "meaning": "All one-step surface offsets crossed with every binary hidden-axis flip, excluding the zero move.",
+      "gameplay_reading": "Dense diagnostic arm for detecting dilution or instant globalization; intentionally capped before 8-D."
+    }
+  ],
+  "interventions": [
+    {
+      "id": "surface_local",
+      "target": "A radius-two disc on the visible hidden-coordinate-zero slice.",
+      "fantasy": "The Pixie touches, sings to, or feeds what is directly visible."
+    },
+    {
+      "id": "fiber_column",
+      "target": "A radius-one surface disc through every hidden coordinate.",
+      "fantasy": "The Pixie sends an action down the entire folded column."
+    },
+    {
+      "id": "axis_probe",
+      "target": "A radius-two disc one chamber deep on the first hidden axis, excluding the visible slice.",
+      "fantasy": "The Pixie reaches through a dimensional seam and waits to see whether the critter resurfaces."
+    }
+  ],
+  "critters": [
+    {
+      "id": "bitlichen",
+      "action": "touch",
+      "higher_dimensional_hook": "Colony wounds can burrow out of sight and later reappear through another route."
+    },
+    {
+      "id": "prism_wyrm",
+      "action": "sing",
+      "higher_dimensional_hook": "Phase waves can interfere across hidden routes, making notes function as axis-selective shepherding signals."
+    },
+    {
+      "id": "mitosis_moss",
+      "action": "feed",
+      "higher_dimensional_hook": "Concentration can accumulate in hidden reservoirs and leak back into the visible moss edge."
+    }
+  ],
+  "implemented_matrix": {
+    "critters": ["bitlichen", "prism_wyrm", "mitosis_moss"],
+    "intervention_depths": ["surface_local", "fiber_column", "axis_probe"],
+    "fixed_degree_dimensions": [2, 4, 6, 8, 11],
+    "product_moore_dimensions": [2, 4, 6],
+    "geometry_cells_per_seed": 72,
+    "meaning": "Three critters times three depth mechanics times eight dimension/neighborhood geometries; no cell is selected away by an interest score."
+  },
+  "backlog_matrix": [
+    {
+      "id": "axis_instrument",
+      "question": "Can distinct player notes select hidden axes rather than merely scaling action strength?"
+    },
+    {
+      "id": "tomographic_pet_reading",
+      "question": "Can two or three projections make hidden state readable without revealing the entire substrate?"
+    },
+    {
+      "id": "folded_gate_transfer",
+      "question": "Can a critter retain a hidden scar while being serialized through a gate to another environment?"
+    },
+    {
+      "id": "mixed_hidden_ecology",
+      "question": "Can one critter occupy the visible slice while another uses the same coordinates in hidden chambers?"
+    }
+  ],
+  "claim_boundary": "Dimensions and responses describe the implemented product graph and deterministic fields only; they are not evidence of physical extra dimensions, cognition, emotion, or life."
+}

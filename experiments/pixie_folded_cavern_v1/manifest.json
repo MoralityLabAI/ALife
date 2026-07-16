@@ -1,0 +1,207 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "How do hidden product-space dimensions and Pixie intervention depth change the visibility, sequestration, and resurfacing of deterministic critter responses?",
+  "benefit": "control",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded paired treated-versus-untreated folded-cavern episode",
+  "hypotheses": [
+    {
+      "id": "H1_axis_probe_resurfacing",
+      "prediction": "For fixed-degree worlds at dimensions 4-11, axis probes produce a visible resurfacing event in at least 75% of fresh episodes for at least two critters.",
+      "falsifier": "Fewer than two critters reach 75% resurfacing occupancy on confirmation or holdout."
+    },
+    {
+      "id": "H2_column_surface_control",
+      "prediction": "Fiber-column actions have at least as high mean peak visible-slice divergence as surface-local actions for every critter on each fresh split.",
+      "falsifier": "Any critter has lower fiber-column mean peak visible divergence on confirmation or holdout."
+    },
+    {
+      "id": "H3_fixed_degree_avoids_globalization",
+      "prediction": "No preferred-action fixed-degree episode reaches 75% full-world categorical divergence.",
+      "falsifier": "Any fresh fixed-degree episode globalizes."
+    },
+    {
+      "id": "H4_depth_specific_signatures",
+      "prediction": "Response class depends on intervention depth with mutual information above 0.10 bits on both fresh splits.",
+      "falsifier": "Depth/response-class mutual information is at most 0.10 bits on confirmation or holdout."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/pixie_folded_cavern.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": ["world_mechanics_taxonomy.json"],
+    "update_order": "At declared ticks the preferred species action is applied at the declared depth mask, then treated and exact untreated worlds receive the same synchronous substrate update.",
+    "rng": "numpy.default_rng(seed) initializes paired worlds identically; no randomness is consumed after initialization."
+  },
+  "interventions": [
+    {
+      "name": "pixie_intervention_depth",
+      "changes": {
+        "depth": ["surface_local", "fiber_column", "axis_probe"]
+      }
+    },
+    {
+      "name": "intrinsic_dimension",
+      "changes": {
+        "dimension": [2, 4, 6, 8, 11]
+      }
+    },
+    {
+      "name": "neighborhood",
+      "changes": {
+        "kind": ["fixed_degree_16", "product_moore"]
+      }
+    }
+  ],
+  "controls": [
+    {"name": "paired_untreated_world", "type": "baseline"},
+    {"name": "surface_local", "type": "simple_limit"},
+    {"name": "dimension_2", "type": "simple_limit"},
+    {"name": "fixed_degree_16", "type": "simple_limit"},
+    {"name": "exact_replay", "type": "no_op"}
+  ],
+  "seed_plan": {
+    "discovery": [3101],
+    "confirmatory": [4101, 4102],
+    "holdout": [9901],
+    "pairing": "Treated and comparator are exact initialization copies; only the declared Pixie intervention differs."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "peak_visible_divergent_fraction",
+      "peak_full_divergent_fraction",
+      "tail_full_divergent_fraction",
+      "hidden_response_share_at_full_peak",
+      "axis_probe_resurfacing_occupancy",
+      "depth_response_class_mutual_information_bits"
+    ],
+    "hazard": [
+      "globalized_response",
+      "hidden_only_response",
+      "projection_aliasing",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "action_mask_sites",
+      "successful_action_ticks",
+      "first_visible_response_tick",
+      "peak_hidden_divergent_fraction",
+      "neighborhood_degree",
+      "trajectory_digest"
+    ],
+    "denominators": {
+      "full_divergent_fraction": "categorically divergent treated/comparator sites divided by all product-space sites",
+      "visible_divergent_fraction": "divergent sites on hidden-coordinate-zero divided by 64 visible sites",
+      "hidden_divergent_fraction": "divergent off-surface sites divided by all off-surface sites",
+      "hidden_response_share": "off-surface divergent sites divided by all divergent sites"
+    },
+    "exposure": {
+      "eligibility": "Every condition constructs a nonempty, deterministic intervention mask.",
+      "activation": "Every episode attempts the species-preferred action at ticks 6, 12, and 18.",
+      "state_change": "Exact pre-display substrate differences record immediate changes; later categorical response is separate.",
+      "minimum_per_condition": 3,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "axis_probe_resurfacing_occupancy",
+      "fiber_column_minus_surface_peak_visible_divergence",
+      "depth_response_class_mutual_information_bits"
+    ],
+    "uncertainty": "Episode-level occupancy intervals and deterministic episode bootstrap intervals; sites and ticks are not replicates.",
+    "multiple_comparisons": "All declared geometry/depth cells are retained; hypotheses aggregate frozen contrasts rather than selecting a champion.",
+    "ood_conditions": ["dimension_11", "larger_hidden_capacity", "longer_40_tick_holdout"],
+    "stopping_rule": "Stop after 288 episodes, 300 wall seconds, 1024 MB RSS, 100 MB artifacts, failed exposure, or failed exact replay.",
+    "thresholds": {
+      "visible_response_min": 0.01,
+      "full_response_min": 0.001,
+      "tail_response_min": 0.001,
+      "globalized_full_min": 0.75,
+      "fiber_wide_hidden_share_min": 0.75
+    }
+  },
+  "budget": {
+    "max_wall_seconds": 300,
+    "max_steps_per_episode": 48,
+    "max_episodes": 300,
+    "max_cells_per_world": 32768,
+    "max_neighborhood_degree": 160,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 100,
+    "execution": "Sequential local CPU execution with no external model calls."
+  },
+  "design": {
+    "taxonomy_path": "world_mechanics_taxonomy.json",
+    "surface_side": 8,
+    "hidden_axis_extent": 2,
+    "dimensions": [2, 4, 6, 8, 11],
+    "neighborhoods": {
+      "fixed_degree_16": [2, 4, 6, 8, 11],
+      "product_moore": [2, 4, 6]
+    },
+    "fixed_degree": 16,
+    "intervention_depths": ["surface_local", "fiber_column", "axis_probe"],
+    "action_ticks": [6, 12, 18],
+    "steps_by_split": {
+      "discovery": 24,
+      "confirmatory": 32,
+      "holdout": 40
+    },
+    "tail_ticks": 6,
+    "pixie": {
+      "id": "pixie-prototype-001",
+      "display_name": "Luma",
+      "visible_position": [4, 4]
+    },
+    "critters": ["bitlichen", "prism_wyrm", "mitosis_moss"],
+    "preferred_actions": {
+      "bitlichen": "touch",
+      "prism_wyrm": "sing",
+      "mitosis_moss": "feed"
+    },
+    "solver_steps_per_record": {
+      "bitlichen": 1,
+      "prism_wyrm": 1,
+      "mitosis_moss": 1
+    },
+    "species_profiles": {
+      "bitlichen": {
+        "family": "binary_ca",
+        "name": "fraction_band",
+        "kind": "pixie_folded_critter",
+        "birth_fraction": [0.32, 0.42],
+        "survival_fraction": [0.24, 0.42],
+        "initial_alive_probability": 0.35
+      },
+      "prism_wyrm": {
+        "family": "cyclic_ca",
+        "name": "cca_six_threshold_two",
+        "kind": "pixie_folded_critter",
+        "states": 6,
+        "successor_threshold": 2
+      },
+      "mitosis_moss": {
+        "family": "gray_scott",
+        "name": "pearson_spots",
+        "kind": "pixie_folded_critter",
+        "feed": 0.035,
+        "kill": 0.06,
+        "diffusion_u": 0.16,
+        "diffusion_v": 0.08,
+        "reaction_enabled": true
+      }
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/pixie_folded_cavern_v1",
+    "raw_rows": "results/pixie_folded_cavern_v1/raw_episodes.jsonl",
+    "summary": "results/pixie_folded_cavern_v1/summary.json",
+    "seed_manifest": "results/pixie_folded_cavern_v1/seed_manifest.json",
+    "mechanics_matrix": "results/pixie_folded_cavern_v1/mechanics_matrix.csv",
+    "knowledge_card": "results/pixie_folded_cavern_v1/knowledge_card.md",
+    "replay_command": "python src/pixie_folded_cavern.py --manifest experiments/pixie_folded_cavern_v1/manifest.json --output results/pixie_folded_cavern_v1 --splits all"
+  }
+}

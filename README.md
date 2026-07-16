@@ -207,6 +207,21 @@ portable-lineage backlog cells; weak interactions are retained rather than
 filtered by a fun score. See
 [`experiments/pixie_sanctuary_v1/README.md`](experiments/pixie_sanctuary_v1/README.md).
 
+Explore the higher-dimensional folded-cavern extension:
+
+```powershell
+python src\pixie_folded_cavern.py --manifest experiments\pixie_folded_cavern_v1\manifest.json --demo --dimension 6 --critter prism_wyrm --intervention-depth axis_probe
+python src\pixie_folded_cavern.py --manifest experiments\pixie_folded_cavern_v1\manifest.json --output results\pixie_folded_cavern_v1 --splits all
+python src\verify_pixie_folded_cavern_artifacts.py results\pixie_folded_cavern_v1 --portable --replay-samples 3
+```
+
+The player-facing room remains 8x8 while binary hidden axes expand each visible
+position into as many as 512 chambers in 11-D. Surface-local, fiber-column, and
+deep axis-probe actions distinguish direct contact from dimensional burrowing.
+Fixed-degree-16 spans dimensions 2, 4, 6, 8, and 11; the exponentially denser
+product-Moore diagnostic is capped at 6-D. See
+[`experiments/pixie_folded_cavern_v1/README.md`](experiments/pixie_folded_cavern_v1/README.md).
+
 Run and verify the hidden-oracle discovery curriculum:
 
 ```powershell
