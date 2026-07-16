@@ -1,6 +1,11 @@
 """Replay-grounded verifier library for ALife adventure traces."""
 
-from .adapters import adapt_chronicle_events, adapt_pixie_episode, build_pixie_adventure
+from .adapters import (
+    adapt_chronicle_events,
+    adapt_pixie_episode,
+    build_chronicle_gate_adventure,
+    build_pixie_adventure,
+)
 from .core import (
     ENVIRONMENT_SCHEMA,
     EVENT_SCHEMA,
@@ -25,6 +30,7 @@ __all__ = [
     "VERIFIER_SPECS",
     "adapt_chronicle_events",
     "adapt_pixie_episode",
+    "build_chronicle_gate_adventure",
     "build_pixie_adventure",
     "canonical_sha256",
     "make_result",

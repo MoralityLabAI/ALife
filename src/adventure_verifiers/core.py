@@ -122,6 +122,7 @@ def validate_task_shape(task: Mapping[str, Any]) -> list[str]:
     initial = rules.get("initial_resources")
     movement = rules.get("movement")
     receipt_types = rules.get("action_receipt_event_types")
+    gate_travel = rules.get("gate_travel")
     if not isinstance(action_costs, Mapping) or not action_costs:
         errors.append("task.rules.action_costs must be a non-empty object")
     else:
@@ -158,6 +159,27 @@ def validate_task_shape(task: Mapping[str, Any]) -> list[str]:
         max_step = movement.get("max_torus_manhattan_step")
         if not isinstance(max_step, int) or isinstance(max_step, bool) or max_step < 0:
             errors.append("movement.max_torus_manhattan_step must be non-negative")
+        start_plane = movement.get("start_plane")
+        if start_plane is not None and (
+            not isinstance(start_plane, str) or not start_plane
+        ):
+            errors.append("movement.start_plane must be a non-empty string when present")
+    if gate_travel is not None:
+        if not isinstance(gate_travel, Mapping):
+            errors.append("task.rules.gate_travel must be an object")
+        else:
+            for key in ("start_plane", "action_type"):
+                if not isinstance(gate_travel.get(key), str) or not gate_travel.get(key):
+                    errors.append(f"task.rules.gate_travel.{key} must be a non-empty string")
+            for key in ("require_return", "require_positive_cooldown"):
+                if not isinstance(gate_travel.get(key), bool):
+                    errors.append(f"task.rules.gate_travel.{key} must be a boolean")
+            for key in ("minimum_transfers", "minimum_cooldown_rejections"):
+                value = gate_travel.get(key)
+                if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                    errors.append(
+                        f"task.rules.gate_travel.{key} must be a non-negative integer"
+                    )
     for index, goal in enumerate(task.get("goals", [])):
         if not isinstance(goal, Mapping) or goal.get("kind") not in {
             "event_count",
@@ -219,6 +241,10 @@ def validate_trace_shape(trace: Mapping[str, Any]) -> list[str]:
                 isinstance(value, int) and not isinstance(value, bool) for value in location
             ):
                 errors.append(f"trace.steps[{index}].location must contain integers")
+            if "plane" in step and (
+                not isinstance(step.get("plane"), str) or not step.get("plane")
+            ):
+                errors.append(f"trace.steps[{index}].plane must be a non-empty string")
             action = step.get("action")
             if not isinstance(action, Mapping):
                 errors.append(f"trace.steps[{index}].action must be an object")
@@ -235,6 +261,8 @@ def validate_trace_shape(trace: Mapping[str, Any]) -> list[str]:
                     errors.append(f"trace.steps[{index}].action.{key} is invalid")
             if not isinstance(action.get("cost"), Mapping):
                 errors.append(f"trace.steps[{index}].action.cost must be an object")
+            if "parameters" in action and not isinstance(action.get("parameters"), Mapping):
+                errors.append(f"trace.steps[{index}].action.parameters must be an object")
             for key in ("observation_event_ids", "outcome_event_ids"):
                 if not isinstance(step.get(key), list) or not all(
                     isinstance(value, str) and value for value in step.get(key, [])

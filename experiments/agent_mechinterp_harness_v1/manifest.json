@@ -1,0 +1,197 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Can a model-agnostic mechinterp wrapper link internal activations to replay-grounded play and life-form-editor decisions, recover and causally manipulate known canary features, and keep interpretability metrics outside the edit-authorization boundary?",
+  "benefit": "operational",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded critter observation evaluated in both play and editor modes",
+  "hypotheses": [
+    {
+      "id": "H1_linked_replay",
+      "prediction": "Every valid play decision links to the executed Pixie action, every authorized editor proposal links to the applied profile delta, and every resulting episode replays exactly.",
+      "falsifier": "Any valid decision/action/edit link or replay check fails."
+    },
+    {
+      "id": "H2_probe_recovery",
+      "prediction": "A discovery-fitted linear probe over the canary hidden layer predicts critter identity on untouched holdout decisions with accuracy at least 0.95 in both modes.",
+      "falsifier": "Either mode has holdout critter-probe accuracy below 0.95."
+    },
+    {
+      "id": "H3_causal_use",
+      "prediction": "Zero-ablation of each decision's registered dominant hidden unit reduces its chosen-action logit by at least 1.0 on average in both modes, and cross-critter activation patching changes at least half of selected actions.",
+      "falsifier": "Either mode misses the logit-drop threshold or the patch action-change fraction is below 0.50."
+    },
+    {
+      "id": "H4_firewall",
+      "prediction": "Every one-at-a-time trace, action-link, editor-bound, replay, and diagnostic-as-gate tamper is rejected by its registered hard verifier or configuration firewall.",
+      "falsifier": "Any tampered case is accepted or detected only by an unrelated check."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/run_agent_mechinterp_campaign.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "mechinterp_taxonomy.json",
+      "../pixie_sanctuary_v1/manifest.json"
+    ],
+    "update_order": "Extract a pre-action sanctuary observation; run a deterministic instrumented canary policy; hash observation, layer activations, logits, and decision; execute the play action or structurally authorize and apply an editor proposal; replay; then run probe, zero-ablation, patching, and adversarial fixture analysis.",
+    "rng": "Sanctuary initialization uses numpy.default_rng(seed). The canary policy weights are fixed constants and interventions are deterministic. Editor proposals modify copied profiles only."
+  },
+  "interventions": [
+    {
+      "name": "hidden_unit_zero_ablation",
+      "changes": {
+        "hidden_1_unit": "registered dominant unit for the unmodified decision"
+      }
+    },
+    {
+      "name": "cross_critter_activation_patch",
+      "changes": {
+        "hidden_1_identity_units": "replace with an independently seeded source critter's activation"
+      }
+    },
+    {
+      "name": "typed_editor_proposal",
+      "changes": {
+        "profile_scalar": "one allowlisted bounded scalar on a copied life-form profile"
+      }
+    }
+  ],
+  "controls": [
+    {"name": "unmodified_forward_pass", "type": "baseline"},
+    {"name": "exact_episode_replay", "type": "no_op"},
+    {"name": "out_of_bounds_editor_proposal", "type": "mechanism_knockout"},
+    {"name": "activation_hash_tamper", "type": "mechanism_knockout"},
+    {"name": "action_link_tamper", "type": "mechanism_knockout"},
+    {"name": "diagnostic_as_authorization_gate", "type": "mechanism_knockout"}
+  ],
+  "seed_plan": {
+    "discovery": [7101, 7102],
+    "confirmatory": [8101, 8102],
+    "holdout": [9903, 9904],
+    "pairing": "Play, editor baseline, editor treatment, and replay share initialization seed within each critter observation; activation interventions change only captured hidden state and consume no simulator randomness."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "valid_trace_acceptance",
+      "episode_replay_pass",
+      "editor_delta_rederived",
+      "holdout_critter_probe_accuracy",
+      "dominant_unit_chosen_logit_drop",
+      "cross_critter_patch_action_change_fraction",
+      "tamper_rejection_count",
+      "targeted_failure_count"
+    ],
+    "hazard": [
+      "unauthorized_editor_write",
+      "activation_or_logit_tamper",
+      "unlinked_play_action",
+      "profile_snapshot_mismatch",
+      "nonreplayable_episode",
+      "mechinterp_metric_used_for_authorization",
+      "globalized_or_collapsed_editor_result"
+    ],
+    "diagnostic": [
+      "activation_norm",
+      "logit_margin",
+      "representation_drift_cosine",
+      "play_response_class",
+      "editor_outcome_delta",
+      "complexity",
+      "delight"
+    ],
+    "denominators": {
+      "probe_accuracy": "one prediction per independently seeded critter decision in the declared split",
+      "patch_action_change_fraction": "one cross-critter patch per independently seeded decision",
+      "tamper_detection_rate": "detected cases divided by independently seeded cases for the exact tamper class"
+    },
+    "exposure": {
+      "eligibility": "Every seed initializes all three critter substrates and produces one play and one editor observation.",
+      "activation": "Every observation reaches the canary hidden layer and emits finite logits; every editor mode emits one typed proposal.",
+      "state_change": "Every non-observe play action changes or shields substrate state, and every authorized editor proposal changes exactly one copied profile scalar before paired execution.",
+      "minimum_per_condition": 6,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "holdout_critter_probe_accuracy",
+      "dominant_unit_chosen_logit_drop",
+      "cross_critter_patch_action_change_fraction",
+      "valid_trace_acceptance",
+      "tamper_rejection_count"
+    ],
+    "uncertainty": "Complete deterministic canary enumeration over six seeds x three critters x two modes; episode-level rows are retained and ticks are not treated as replicates.",
+    "multiple_comparisons": "One predeclared identity probe and two predeclared causal interventions per mode; every result is retained.",
+    "ood_conditions": ["holdout_seeds", "reaction_diffusion_substrate"],
+    "stopping_rule": "Stop after 36 valid decisions plus the declared tamper matrix, 180 wall seconds, 1024 MB RSS, failed exposure, or failed exact replay.",
+    "thresholds": {
+      "holdout_probe_accuracy_min": 0.95,
+      "mean_chosen_logit_drop_min": 1.0,
+      "patch_action_change_fraction_min": 0.5
+    },
+    "acceptance_boundary": "Editor authorization depends only on typed allowlists, bounds, immutable parent hashes, exact delta receipts, replay, and hazard checks. Probe, attribution, drift, complexity, and delight never authorize or promote an edit."
+  },
+  "budget": {
+    "max_wall_seconds": 180,
+    "max_steps_per_episode": 16,
+    "max_episodes": 120,
+    "max_cells_per_world": 256,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 100,
+    "execution": "Sequential local CPU execution; numpy canary only; no external models or APIs."
+  },
+  "design": {
+    "taxonomy_path": "mechinterp_taxonomy.json",
+    "source_manifest": "../pixie_sanctuary_v1/manifest.json",
+    "modes": ["play", "editor"],
+    "critters": ["bitlichen", "prism_wyrm", "mitosis_moss"],
+    "play_actions": ["observe", "touch", "sing", "feed", "cool", "shield"],
+    "editor_actions": [
+      "bitlichen_density_up",
+      "bitlichen_density_down",
+      "prism_threshold_up",
+      "prism_threshold_down",
+      "moss_feed_up",
+      "moss_feed_down"
+    ],
+    "captured_layers": ["observation", "hidden_1", "logits"],
+    "identity_units": [0, 1, 2],
+    "probe_layer": "hidden_1",
+    "episode": {
+      "side": 16,
+      "steps": 12
+    },
+    "required_hard_checks": [
+      "decision_integrity",
+      "action_link",
+      "editor_firewall",
+      "edit_receipt",
+      "episode_replay",
+      "authorization_firewall"
+    ],
+    "diagnostics": [
+      "activation_norm",
+      "representation_drift_cosine",
+      "response_diversity"
+    ],
+    "tamper_classes": [
+      "activation_hash",
+      "selected_action",
+      "play_action_link",
+      "editor_wrong_critter",
+      "editor_out_of_bounds",
+      "editor_parent_hash",
+      "edit_receipt",
+      "replay_digest",
+      "diagnostic_authorization"
+    ]
+  },
+  "artifacts": {
+    "output_directory": "results/agent_mechinterp_harness_v1",
+    "raw_rows": "results/agent_mechinterp_harness_v1/decisions.jsonl",
+    "summary": "results/agent_mechinterp_harness_v1/summary.json",
+    "seed_manifest": "results/agent_mechinterp_harness_v1/frozen_manifest.json",
+    "replay_command": "python src/run_agent_mechinterp_campaign.py --manifest experiments/agent_mechinterp_harness_v1/manifest.json --output results/agent_mechinterp_harness_v1"
+  }
+}

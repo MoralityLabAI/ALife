@@ -32,6 +32,8 @@ score and diagnostics cannot be promoted into acceptance gates.
 | `resource_ledger` | altered costs, overspending, and incorrect final balances |
 | `goal_completion` | event, visit, or claim-count goals that cannot be re-derived |
 | `claim_grounding` | atomic facts, counts, or visits not derivable from cited evidence |
+| `witness_scope` | true world events the adventurer did not witness, or facts claimed before observation |
+| `gate_travel` | forged plane transitions, anchors, targets, cooldown state, or required returns |
 
 `exploration_coverage` and `response_diversity` are diagnostic-only. Their
 outputs may help curriculum construction but never establish success.
@@ -48,7 +50,9 @@ if suite["accepted"]:
 
 Adapters normalize Pixie Sanctuary and Folded Cavern episode rows, while
 `adapt_chronicle_events` handles Chronicle streams. `build_pixie_adventure`
-constructs a valid reference task and trace from a Pixie episode.
+constructs a valid reference task and trace from a Pixie episode;
+`build_chronicle_gate_adventure` constructs a witnessed, resource-matched
+cross-plane round trip from a compatible Chronicle stream.
 
 Downstream games can inject a new `VerifierSpec` through `extra_verifiers`.
 Custom IDs cannot override built-ins:
@@ -80,6 +84,8 @@ python src\adventure_verifiers_cli.py --list
 python src\adventure_verifiers_cli.py task.json trace.json environment.json
 python src\run_adventure_verifier_campaign.py --manifest experiments\adventure_verifiers_v1\manifest.json --output results\adventure_verifiers_v1
 python src\verify_adventure_verifier_artifacts.py results\adventure_verifiers_v1 --portable
+python src\run_chronicle_gate_adventure_campaign.py --manifest experiments\chronicle_gate_adventure_v1\manifest.json --output results\chronicle_gate_adventure_v1
+python src\verify_chronicle_gate_adventure_artifacts.py results\chronicle_gate_adventure_v1 --portable
 ```
 
 The frozen campaign crosses four replayed source seeds with one valid control

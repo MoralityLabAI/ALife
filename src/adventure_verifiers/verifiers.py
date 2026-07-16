@@ -222,7 +222,21 @@ def _route_continuity(
         total_distance += distance
         if distance > max_step:
             failures.append(f"step {index} route jump {distance} exceeds {max_step}")
-        previous = location
+        parameters = step.get("action", {}).get("parameters", {})
+        arrival = parameters.get("target_position") if isinstance(parameters, Mapping) else None
+        if (
+            isinstance(arrival, list)
+            and len(arrival) == len(shape)
+            and all(
+                isinstance(value, int)
+                and not isinstance(value, bool)
+                and 0 <= value < side
+                for value, side in zip(arrival, shape)
+            )
+        ):
+            previous = arrival
+        else:
+            previous = location
     return make_result(
         "route_continuity",
         passed=not failures,
@@ -354,6 +368,199 @@ def _claim_grounding(
     )
 
 
+def _witness_scope(
+    task: Mapping[str, Any], trace: Mapping[str, Any], environment: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Require event-backed facts to have entered the trace before they are claimed."""
+
+    del task
+    failures: list[str] = []
+    events = _event_index(environment)
+    witnessed_at: dict[str, int] = {}
+    for step in trace.get("steps", []):
+        step_tick = int(step.get("tick", -1))
+        for event_id in step.get("observation_event_ids", []):
+            if event_id in events:
+                witnessed_at[str(event_id)] = min(
+                    witnessed_at.get(str(event_id), step_tick), step_tick
+                )
+        for event_id in step.get("outcome_event_ids", []):
+            if event_id in events:
+                observed_tick = max(step_tick, int(events[event_id]["tick"]))
+                witnessed_at[str(event_id)] = min(
+                    witnessed_at.get(str(event_id), observed_tick), observed_tick
+                )
+
+    checked = 0
+    for index, claim in enumerate(trace.get("claims", [])):
+        if claim.get("kind") == "visited_location":
+            continue
+        claim_tick = int(claim.get("tick", -1))
+        for event_id in claim.get("evidence_event_ids", []):
+            checked += 1
+            if event_id not in witnessed_at:
+                failures.append(f"claim {index} cites event {event_id} that was not witnessed")
+            elif witnessed_at[event_id] > claim_tick:
+                failures.append(
+                    f"claim {index} predates witnessing event {event_id} at tick {witnessed_at[event_id]}"
+                )
+    return make_result(
+        "witness_scope",
+        passed=not failures,
+        acceptance_eligible=True,
+        failures=failures,
+        metrics={"witnessed_event_count": len(witnessed_at), "checked_evidence_count": checked},
+    )
+
+
+def _gate_travel(
+    task: Mapping[str, Any], trace: Mapping[str, Any], environment: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Verify plane transitions, gate anchors, cooldown state, and return travel."""
+
+    failures: list[str] = []
+    rules = task.get("rules", {}).get("gate_travel", {})
+    if not isinstance(rules, Mapping):
+        rules = {}
+    action_type = str(rules.get("action_type", "gate_transfer"))
+    start_plane = rules.get("start_plane")
+    current_plane = start_plane
+    current_position = task.get("rules", {}).get("movement", {}).get(
+        "start_location", []
+    )
+    events = _event_index(environment)
+    transfer_count = 0
+    visited_planes: set[str] = set()
+    if isinstance(start_plane, str):
+        visited_planes.add(start_plane)
+    used_receipts: set[str] = set()
+    anchor_ready_tick: dict[tuple[str, tuple[int, ...]], int] = {}
+
+    for index, step in enumerate(trace.get("steps", [])):
+        action = step.get("action", {})
+        if action.get("type") != action_type:
+            continue
+        transfer_count += 1
+        receipt_id = str(action.get("receipt_event_id", ""))
+        receipt = events.get(receipt_id)
+        if receipt_id in used_receipts:
+            failures.append(f"gate step {index} reuses transfer receipt {receipt_id}")
+        used_receipts.add(receipt_id)
+        if receipt is None:
+            failures.append(f"gate step {index} has no transfer receipt")
+            continue
+        if receipt.get("event_type") != "gate_transfer":
+            failures.append(f"gate step {index} receipt is not a successful gate transfer")
+            continue
+        step_plane = step.get("plane")
+        source_plane = receipt.get("context", {}).get("plane")
+        details = receipt.get("details", {})
+        target_plane = details.get("target_plane")
+        parameters = action.get("parameters", {})
+        if step_plane != current_plane or source_plane != current_plane:
+            failures.append(
+                f"gate step {index} starts on {step_plane!r}/{source_plane!r}, expected {current_plane!r}"
+            )
+        if step.get("location") != current_position:
+            # Walking within one plane is allowed up to route_continuity's cap.
+            current_position = step.get("location")
+        if details.get("outcome") not in {"placed", "rescued_placement"}:
+            failures.append(f"gate step {index} does not record a successful placement")
+        cooldown_before = details.get("cooldown_before")
+        cooldown_after = details.get("cooldown_after")
+        if cooldown_before != 0:
+            failures.append(f"gate step {index} transfers while cooldown_before is not zero")
+        if rules.get("require_positive_cooldown") and (
+            not isinstance(cooldown_after, int)
+            or isinstance(cooldown_after, bool)
+            or cooldown_after <= 0
+        ):
+            failures.append(f"gate step {index} does not set a positive cooldown")
+        anchor = details.get("anchor_position")
+        target = details.get("target_position")
+        if anchor != receipt.get("position") or anchor != step.get("location"):
+            failures.append(f"gate step {index} anchor does not match receipt and route")
+        if not isinstance(parameters, Mapping):
+            failures.append(f"gate step {index} parameters are malformed")
+            parameters = {}
+        expected_parameters = {
+            "source_plane": source_plane,
+            "target_plane": target_plane,
+            "anchor_position": anchor,
+            "target_position": target,
+            "cooldown_before": cooldown_before,
+            "cooldown_after": cooldown_after,
+        }
+        for key, expected in expected_parameters.items():
+            if parameters.get(key) != expected:
+                failures.append(f"gate step {index} parameter {key} does not match receipt")
+        if isinstance(anchor, list) and all(isinstance(value, int) for value in anchor):
+            anchor_key = (str(source_plane), tuple(anchor))
+            ready = anchor_ready_tick.get(anchor_key)
+            tick = int(receipt.get("tick", -1))
+            if ready is not None and tick < ready:
+                failures.append(f"gate step {index} reuses an anchor before cooldown expires")
+            if isinstance(cooldown_after, int) and cooldown_after >= 0:
+                anchor_ready_tick[anchor_key] = tick + cooldown_after
+        if not isinstance(target_plane, str) or not target_plane:
+            failures.append(f"gate step {index} has no target plane")
+        else:
+            current_plane = target_plane
+            visited_planes.add(target_plane)
+        if isinstance(target, list):
+            current_position = target
+
+    minimum = int(rules.get("minimum_transfers", 0))
+    if transfer_count < minimum:
+        failures.append(f"gate journey has {transfer_count} transfers, requires {minimum}")
+    if rules.get("require_return") and current_plane != start_plane:
+        failures.append(
+            f"gate journey ends on {current_plane!r}, not start plane {start_plane!r}"
+        )
+    if rules.get("require_return") and len(visited_planes) < 2:
+        failures.append("gate journey never visits a non-start plane")
+
+    cooldown_rejections = 0
+    for event in environment.get("events", []):
+        if (
+            event.get("event_type") == "gate_transfer_attempt"
+            and event.get("details", {}).get("outcome") == "cooldown_active"
+        ):
+            before = event.get("details", {}).get("cooldown_before")
+            after = event.get("details", {}).get("cooldown_after")
+            if (
+                isinstance(before, int)
+                and not isinstance(before, bool)
+                and before > 0
+                and isinstance(after, int)
+                and not isinstance(after, bool)
+                and 0 <= after <= before
+            ):
+                cooldown_rejections += 1
+            else:
+                failures.append("cooldown rejection has invalid before/after state")
+    minimum_rejections = int(rules.get("minimum_cooldown_rejections", 0))
+    if cooldown_rejections < minimum_rejections:
+        failures.append(
+            f"gate journey has {cooldown_rejections} valid cooldown rejections, requires {minimum_rejections}"
+        )
+    return make_result(
+        "gate_travel",
+        passed=not failures,
+        acceptance_eligible=True,
+        failures=failures,
+        facts=[
+            {
+                "start_plane": start_plane,
+                "final_plane": current_plane,
+                "visited_planes": sorted(visited_planes),
+                "transfer_count": transfer_count,
+                "cooldown_rejection_count": cooldown_rejections,
+            }
+        ],
+    )
+
+
 def _exploration_coverage(
     task: Mapping[str, Any], trace: Mapping[str, Any], environment: Mapping[str, Any]
 ) -> dict[str, Any]:
@@ -395,6 +602,8 @@ VERIFIER_SPECS: dict[str, VerifierSpec] = {
         VerifierSpec("resource_ledger", True, "Recompute exact action costs and final resources.", _resource_ledger),
         VerifierSpec("goal_completion", True, "Derive declared task goals from events, visits, or claims.", _goal_completion),
         VerifierSpec("claim_grounding", True, "Derive atomic adventurer claims from cited evidence.", _claim_grounding),
+        VerifierSpec("witness_scope", True, "Require claim evidence to be witnessed before the claim.", _witness_scope),
+        VerifierSpec("gate_travel", True, "Verify Chronicle plane transitions, anchors, cooldowns, and return travel.", _gate_travel),
         VerifierSpec("exploration_coverage", False, "Diagnostic location and event-type coverage.", _exploration_coverage),
         VerifierSpec("response_diversity", False, "Diagnostic response-type distribution.", _response_diversity),
     )

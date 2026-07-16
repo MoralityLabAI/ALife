@@ -56,7 +56,7 @@ python src\verify_adventure_verifier_artifacts.py results\adventure_verifiers_v1
 python -m pytest tests\test_adventure_verifiers.py -q
 ```
 
-The next high-information extension is a gate-travel quest using Chronicle
-events: require a legal cross-plane route, cooldown-respecting transfer,
-resource-matched return, and a fact list describing what the adventurer
-actually witnessed.
+The Chronicle gate-travel extension is implemented in
+`experiments/chronicle_gate_adventure_v1`. It requires a legal cross-plane
+route, cooldown-respecting transfer, resource-matched return, and claims
+limited to what the adventurer actually witnessed.

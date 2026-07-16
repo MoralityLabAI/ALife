@@ -238,6 +238,37 @@ Chronicle adapters share one canonical event envelope. See the
 [`library API`](src/adventure_verifiers/README.md) and
 [`fixture campaign`](experiments/adventure_verifiers_v1/README.md).
 
+Instrument agent play and bounded life-form editor proposals:
+
+```powershell
+python src\run_agent_mechinterp_campaign.py --manifest experiments\agent_mechinterp_harness_v1\manifest.json --output results\agent_mechinterp_harness_v1
+python src\verify_agent_mechinterp_artifacts.py results\agent_mechinterp_harness_v1 --portable --replay-samples 6
+```
+
+The model-agnostic capture format binds observations, named activations, logits,
+selected actions, Pixie adventure receipts, typed editor proposals, one-path edit
+receipts, and exact simulator replay. The included NumPy policy is a wiring canary
+with identity channels known by construction; its probe and causal-intervention
+scores make no cognition claim and cannot authorize an edit. Editor authority comes
+only from critter/path allowlists, bounds, immutable parent hashes, exact deltas,
+replay, and response-hazard checks. See the
+[`harness API`](src/agent_mechinterp/README.md) and
+[`frozen experiment`](experiments/agent_mechinterp_harness_v1/README.md).
+
+Run the Chronicle gate-travel quest campaign:
+
+```powershell
+python src\run_chronicle_gate_adventure_campaign.py --manifest experiments\chronicle_gate_adventure_v1\manifest.json --output results\chronicle_gate_adventure_v1
+python src\verify_chronicle_gate_adventure_artifacts.py results\chronicle_gate_adventure_v1 --portable
+```
+
+This extension adds hard plane/anchor/cooldown/return verification and a
+`witness_scope` boundary: a fact can be true in the Chronicle and still be
+rejected if the adventurer never observed it. Its valid fixtures make a
+GENESIS round trip, witness `meme_attachment` and `insight_drift` on the other
+plane, and return with an exact resource balance. See the
+[`Chronicle quest knowledge card`](experiments/chronicle_gate_adventure_v1/README.md).
+
 Run and verify the hidden-oracle discovery curriculum:
 
 ```powershell

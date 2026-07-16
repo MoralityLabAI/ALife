@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Mapping, Sequence
 
+from chronicle.events import validate_stream
+
 from .core import (
     ENVIRONMENT_SCHEMA,
     EVENT_SCHEMA,
@@ -68,6 +70,9 @@ def adapt_chronicle_events(
 ) -> dict[str, Any]:
     if not source_events:
         raise ValueError("chronicle adapter requires at least one event")
+    source_errors = validate_stream(source_events)
+    if source_errors:
+        raise ValueError("invalid chronicle stream: " + "; ".join(source_errors[:5]))
     episode_id = str(source_events[0]["episode_id"])
     id_by_sequence = {
         int(event["sequence"]): f"{episode_id}:chronicle:{int(event['sequence']):08d}"
@@ -110,6 +115,227 @@ def adapt_chronicle_events(
         "replay_receipt": replay_receipt,
         "metadata": {"world_id": source_events[0].get("world_id")},
     }
+
+
+def build_chronicle_gate_adventure(
+    source_events: Sequence[Mapping[str, Any]], *, replay_receipt: str
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Build a witnessed, resource-matched Chronicle gate round trip.
+
+    The builder does not invent world facts.  It selects successful transfers and
+    cultural events already present in the Chronicle stream, then exposes only
+    events assigned to a trace observation/outcome as claim evidence.
+    """
+
+    environment = adapt_chronicle_events(source_events, replay_receipt=replay_receipt)
+    events = environment["events"]
+    event_by_id = {event["event_id"]: event for event in events}
+    transfers = [event for event in events if event["event_type"] == "gate_transfer"]
+    if len(transfers) < 2:
+        raise ValueError("gate adventure requires at least two successful transfers")
+
+    outbound = transfers[0]
+    start_plane = str(outbound["context"].get("plane"))
+    current_plane = str(outbound["details"].get("target_plane"))
+    selected = [outbound]
+    for event in transfers[1:]:
+        if str(event["context"].get("plane")) != current_plane:
+            continue
+        selected.append(event)
+        current_plane = str(event["details"].get("target_plane"))
+        if current_plane == start_plane:
+            break
+    if current_plane != start_plane or len(selected) < 2:
+        raise ValueError("gate adventure requires a connected return to the start plane")
+
+    interesting = [
+        event
+        for event in events
+        if event["event_type"] in {"meme_attachment", "insight_drift"}
+        and int(outbound["tick"]) <= int(event["tick"]) <= int(selected[-1]["tick"])
+    ]
+    if not {event["event_type"] for event in interesting}.issuperset(
+        {"meme_attachment", "insight_drift"}
+    ):
+        raise ValueError("gate adventure requires witnessed meme attachment and insight drift")
+
+    steps: list[dict[str, Any]] = []
+    for index, receipt in enumerate(selected):
+        details = receipt["details"]
+        descendants = [
+            event["event_id"]
+            for event in events
+            if int(event["tick"]) >= int(receipt["tick"])
+            and _descends_from(event["event_id"], receipt["event_id"], event_by_id)
+        ]
+        observations = [receipt["event_id"]]
+        if index == len(selected) - 1:
+            observations = [event["event_id"] for event in interesting] + observations
+        steps.append(
+            {
+                "index": index,
+                "tick": int(receipt["tick"]),
+                "plane": str(receipt["context"].get("plane")),
+                "location": list(receipt["position"]),
+                "action": {
+                    "action_id": f"gate-action-{index:04d}",
+                    "type": "gate_transfer",
+                    "parameters": {
+                        "source_plane": str(receipt["context"].get("plane")),
+                        "target_plane": str(details["target_plane"]),
+                        "anchor_position": list(details["anchor_position"]),
+                        "target_position": list(details["target_position"]),
+                        "cooldown_before": int(details["cooldown_before"]),
+                        "cooldown_after": int(details["cooldown_after"]),
+                    },
+                    "cost": {"focus": 2, "waystone": 1},
+                    "receipt_event_id": receipt["event_id"],
+                },
+                "observation_event_ids": observations,
+                "outcome_event_ids": descendants,
+            }
+        )
+
+    final_tick = int(selected[-1]["tick"])
+    meme = next(event for event in interesting if event["event_type"] == "meme_attachment")
+    insight = next(event for event in interesting if event["event_type"] == "insight_drift")
+    claims = [
+        {
+            "claim_id": "claim-outbound-plane",
+            "kind": "event_fact",
+            "tick": int(outbound["tick"]),
+            "fact_path": "details.target_plane",
+            "value": outbound["details"]["target_plane"],
+            "evidence_event_ids": [outbound["event_id"]],
+        },
+        {
+            "claim_id": "claim-outbound-cooldown",
+            "kind": "event_fact",
+            "tick": int(outbound["tick"]),
+            "fact_path": "details.cooldown_after",
+            "value": outbound["details"]["cooldown_after"],
+            "evidence_event_ids": [outbound["event_id"]],
+        },
+        {
+            "claim_id": "claim-meme-attachment",
+            "kind": "event_fact",
+            "tick": final_tick,
+            "fact_path": "details.meme_after",
+            "value": meme["details"]["meme_after"],
+            "evidence_event_ids": [meme["event_id"]],
+        },
+        {
+            "claim_id": "claim-insight-drift",
+            "kind": "event_fact",
+            "tick": final_tick,
+            "fact_path": "details.to_kind",
+            "value": insight["details"]["to_kind"],
+            "evidence_event_ids": [insight["event_id"]],
+        },
+        {
+            "claim_id": "claim-return-plane",
+            "kind": "event_fact",
+            "tick": final_tick,
+            "fact_path": "details.target_plane",
+            "value": selected[-1]["details"]["target_plane"],
+            "evidence_event_ids": [selected[-1]["event_id"]],
+        },
+    ]
+
+    initialized = next(
+        (event for event in source_events if event["event_type"] == "world_initialized"),
+        None,
+    )
+    width = int(initialized.get("details", {}).get("width", 8)) if initialized else 8
+    height = int(initialized.get("details", {}).get("height", 8)) if initialized else 8
+    task = {
+        "schema": TASK_SCHEMA,
+        "task_id": f"chronicle-gate-roundtrip-{environment['episode_id']}",
+        "environment_kind": environment["environment_kind"],
+        "required_verifiers": [
+            "trace_schema",
+            "event_stream_integrity",
+            "action_receipts",
+            "causal_grounding",
+            "route_continuity",
+            "resource_ledger",
+            "goal_completion",
+            "claim_grounding",
+            "witness_scope",
+            "gate_travel",
+        ],
+        "diagnostic_verifiers": ["exploration_coverage", "response_diversity"],
+        "goals": [
+            {
+                "goal_id": "round-trip-transfers",
+                "kind": "event_count",
+                "match": {"event_type": "gate_transfer"},
+                "minimum": len(selected),
+            },
+            {
+                "goal_id": "cooldown-rejection",
+                "kind": "event_count",
+                "match": {
+                    "event_type": "gate_transfer_attempt",
+                    "details.outcome": "cooldown_active",
+                },
+                "minimum": 1,
+            },
+            {
+                "goal_id": "witness-meme",
+                "kind": "event_count",
+                "match": {"event_type": "meme_attachment"},
+                "minimum": 1,
+            },
+            {
+                "goal_id": "witness-insight",
+                "kind": "event_count",
+                "match": {"event_type": "insight_drift"},
+                "minimum": 1,
+            },
+            {
+                "goal_id": "grounded-claims",
+                "kind": "claim_count",
+                "match": {"kind": "event_fact"},
+                "minimum": len(claims),
+            },
+        ],
+        "rules": {
+            "action_costs": {"gate_transfer": {"focus": 2, "waystone": 1}},
+            "initial_resources": {
+                "focus": 2 * len(selected),
+                "waystone": len(selected),
+            },
+            "action_receipt_event_types": ["gate_transfer"],
+            "movement": {
+                "shape": [width, height],
+                "start_location": list(outbound["position"]),
+                "start_plane": start_plane,
+                "max_torus_manhattan_step": 1,
+            },
+            "gate_travel": {
+                "start_plane": start_plane,
+                "action_type": "gate_transfer",
+                "minimum_transfers": len(selected),
+                "minimum_cooldown_rejections": 1,
+                "require_return": True,
+                "require_positive_cooldown": True,
+            },
+        },
+    }
+    trace = {
+        "schema": TRACE_SCHEMA,
+        "adventure_id": f"chronicle-gate-adventure-{environment['episode_id']}",
+        "task_id": task["task_id"],
+        "episode_id": environment["episode_id"],
+        "environment_kind": environment["environment_kind"],
+        "event_stream_sha256": environment["events_sha256"],
+        "replay_receipt": environment["replay_receipt"],
+        "steps": steps,
+        "claims": claims,
+        "final_resources": {"focus": 0, "waystone": 0},
+    }
+    return task, trace, environment
 
 
 def _descends_from(

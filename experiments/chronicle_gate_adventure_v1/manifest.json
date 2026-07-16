@@ -1,0 +1,167 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Can a Chronicle-backed adventure contract verify a witnessed, resource-matched cross-plane round trip while rejecting forged plane, anchor, cooldown, return, and cultural-fact traces?",
+  "benefit": "operational",
+  "claim_scope": "model_only",
+  "experimental_unit": "one deterministic verifier fixture case built from an independently seeded Chronicle gate journey",
+  "hypotheses": [
+    {
+      "id": "H1_valid_round_trips_pass",
+      "prediction": "Every untampered Chronicle round trip passes all declared hard verifiers on discovery, confirmation, and holdout seeds.",
+      "falsifier": "Any untampered round trip is rejected."
+    },
+    {
+      "id": "H2_tampered_round_trips_fail",
+      "prediction": "Every one-at-a-time plane, cooldown, return, resource, evidence, claim, integrity, or metric-firewall tamper is rejected on every seed.",
+      "falsifier": "Any tampered round trip is accepted."
+    },
+    {
+      "id": "H3_targeted_verifiers_detect_tamper",
+      "prediction": "Each adversarial fixture triggers its predeclared verifier or configuration firewall.",
+      "falsifier": "A fixture is rejected only for an unrelated reason or is not rejected."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/run_chronicle_gate_adventure_campaign.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "verifier_taxonomy.json"
+    ],
+    "update_order": "Build a deterministic Chronicle stream containing an outbound transfer, active-cooldown rejection, meme attachment, insight drift, and return transfer; normalize it; build a valid witnessed adventure; apply one declared fixture mutation; run all hard and diagnostic verifiers.",
+    "rng": "The seed deterministically selects IDs, anchors, and the destination plane. Event construction and verifier execution consume no randomness."
+  },
+  "interventions": [
+    {
+      "name": "one_at_a_time_chronicle_tamper",
+      "changes": {
+        "scenario": [
+          "unwitnessed_claim",
+          "late_witness_claim",
+          "forged_gate_target",
+          "active_cooldown_transfer",
+          "missing_return",
+          "resource_tamper",
+          "false_meme_claim",
+          "event_stream_tamper",
+          "diagnostic_gate"
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "valid_chronicle_round_trip",
+      "type": "baseline"
+    },
+    {
+      "name": "active_cooldown_rejection",
+      "type": "mechanism_knockout"
+    },
+    {
+      "name": "one_tamper_per_fixture",
+      "type": "mechanism_knockout"
+    },
+    {
+      "name": "exact_source_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [5201],
+    "confirmatory": [6201, 6202],
+    "holdout": [9902],
+    "pairing": "All scenario fixtures for one seed are deep copies of the same valid Chronicle task, trace, and canonical environment; exactly one declared mutation is applied."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "valid_acceptance_count",
+      "tamper_rejection_count",
+      "targeted_failure_count",
+      "source_replay_count"
+    ],
+    "hazard": [
+      "false_acceptance",
+      "false_rejection",
+      "unrelated_only_rejection",
+      "unwitnessed_claim_acceptance",
+      "active_cooldown_transfer_acceptance",
+      "diagnostic_used_as_gate"
+    ],
+    "diagnostic": [
+      "exploration_coverage",
+      "response_diversity",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "denominators": {
+      "fixture_detection_rate": "detected cases divided by independently seeded cases for the exact fixture class",
+      "valid_acceptance_rate": "accepted valid controls divided by valid controls"
+    },
+    "exposure": {
+      "eligibility": "Every source stream contains two successful gate transfers, one active-cooldown rejection, one meme attachment, and one insight drift.",
+      "activation": "Every valid trace follows both transfers and witnesses the cultural events before claiming them; every tampered case applies exactly one named mutation.",
+      "state_change": "The source stream records outbound and return target planes, anchor positions, cooldown before/after state, meme pressure change, and insight-kind drift.",
+      "minimum_per_condition": 4,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "valid_acceptance_count",
+      "tamper_rejection_count",
+      "targeted_failure_count",
+      "source_replay_count"
+    ],
+    "uncertainty": "Complete deterministic fixture enumeration over four source seeds; no tick-, event-, or claim-level pseudoreplication.",
+    "multiple_comparisons": "All nine predeclared tamper classes and the valid control are retained; no verifier champion is selected.",
+    "ood_conditions": [
+      "holdout_seed",
+      "alternate_destination_plane"
+    ],
+    "stopping_rule": "Stop after 40 cases, 60 wall seconds, 512 MB RSS, failed source replay, missing treatment exposure, or any expectation mismatch.",
+    "acceptance_boundary": "This is operational verification evidence for the declared deterministic fixtures. It is not evidence of adventurer intelligence, meme cognition, narrative truth beyond witnessed events, or universal exploit resistance."
+  },
+  "budget": {
+    "max_wall_seconds": 60,
+    "max_steps_per_episode": 8,
+    "max_episodes": 40,
+    "max_cells_per_world": 64,
+    "max_ram_mb": 512,
+    "max_disk_mb": 50,
+    "execution": "Sequential local CPU execution; pure fixture construction and verifier calls; no external models or APIs."
+  },
+  "design": {
+    "taxonomy_path": "verifier_taxonomy.json",
+    "scenarios_per_seed": 10,
+    "required_event_types": [
+      "gate_transfer",
+      "gate_transfer_attempt",
+      "meme_attachment",
+      "insight_drift"
+    ],
+    "required_hard_verifiers": [
+      "trace_schema",
+      "event_stream_integrity",
+      "action_receipts",
+      "causal_grounding",
+      "route_continuity",
+      "resource_ledger",
+      "goal_completion",
+      "claim_grounding",
+      "witness_scope",
+      "gate_travel"
+    ],
+    "diagnostic_verifiers": [
+      "exploration_coverage",
+      "response_diversity"
+    ]
+  },
+  "artifacts": {
+    "output_directory": "results/chronicle_gate_adventure_v1",
+    "raw_rows": "results/chronicle_gate_adventure_v1/cases.jsonl",
+    "summary": "results/chronicle_gate_adventure_v1/summary.json",
+    "seed_manifest": "results/chronicle_gate_adventure_v1/frozen_manifest.json",
+    "replay_command": "python src/run_chronicle_gate_adventure_campaign.py --manifest experiments/chronicle_gate_adventure_v1/manifest.json --output results/chronicle_gate_adventure_v1"
+  }
+}

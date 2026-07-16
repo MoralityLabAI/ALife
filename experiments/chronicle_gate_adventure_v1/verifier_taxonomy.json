@@ -1,0 +1,28 @@
+{
+  "schema": "alife.adventure.verifier_taxonomy.v2",
+  "purpose": "Verify Chronicle plane travel and witnessed claims while preserving the separation between hard acceptance and exploration diagnostics.",
+  "hard_verifiers": [
+    {"id": "trace_schema", "contract": "Task, trace, episode, and environment identities and typed fields agree."},
+    {"id": "event_stream_integrity", "contract": "Canonical hashes, source provenance, event IDs, and causal graph are intact."},
+    {"id": "action_receipts", "contract": "Every claimed action matches an allowed Chronicle receipt at the same tick and anchor."},
+    {"id": "causal_grounding", "contract": "Observations are not from the future; outcomes descend from actions; claim evidence exists by claim time."},
+    {"id": "route_continuity", "contract": "Within-plane travel is bounded from each gate arrival position to the next anchor."},
+    {"id": "resource_ledger", "contract": "Both legs pay the frozen costs and the return balance re-derives exactly."},
+    {"id": "goal_completion", "contract": "Transfer, cooldown-rejection, meme, insight, and claim-count goals re-derive exactly."},
+    {"id": "claim_grounding", "contract": "Every atomic gate or cultural fact equals its cited Chronicle event field."},
+    {"id": "witness_scope", "contract": "Every event-backed claim cites an event actually observed by the trace no later than the claim tick."},
+    {"id": "gate_travel", "contract": "Plane transitions match successful gate receipts, anchor/target coordinates, zero pre-transfer cooldown, positive post-transfer cooldown, and the declared return requirement."}
+  ],
+  "diagnostic_verifiers": [
+    {"id": "exploration_coverage", "acceptance_eligible": false, "reports": ["unique_visited_locations", "observed_environment_event_types"]},
+    {"id": "response_diversity", "acceptance_eligible": false, "reports": ["event_type_counts"]}
+  ],
+  "fixture_event_types": [
+    "gate_transfer",
+    "gate_transfer_attempt",
+    "meme_attachment",
+    "insight_drift"
+  ],
+  "acceptance_rule": "All task-declared hard verifiers must pass. Diagnostic outputs cannot appear in required_verifiers and never contribute to acceptance.",
+  "claim_boundary": "Passing verifies the supplied Chronicle trace against its replay-grounded events. Meme and insight labels denote simulator mechanics, not cognition or belief."
+}

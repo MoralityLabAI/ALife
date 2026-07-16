@@ -1,0 +1,42 @@
+{
+  "schema": "alife.agent_mechinterp.taxonomy.v1",
+  "purpose": "Separate replay and editor-authorization checks from mechanistic evidence and exploration diagnostics.",
+  "modes": {
+    "play": "An instrumented policy chooses a Pixie action; its decision receipt must link to the exact executed action and replayed episode.",
+    "editor": "An instrumented policy proposes one typed profile edit; a structural firewall authorizes a copied-profile mutation before paired execution and replay."
+  },
+  "hard_checks": [
+    {"id": "decision_integrity", "contract": "Observation, activation, logits, selected output, intervention, and record hashes re-derive exactly."},
+    {"id": "action_link", "contract": "A play decision's selected action equals every executed Pixie action receipt."},
+    {"id": "editor_firewall", "contract": "The proposal targets the observed critter, one allowlisted scalar, a bounded delta, and an immutable parent snapshot."},
+    {"id": "edit_receipt", "contract": "Exactly one copied profile scalar changes from the recorded old value to the recorded new value."},
+    {"id": "episode_replay", "contract": "The executed play or edited life-form episode replays to the same deterministic projection."},
+    {"id": "authorization_firewall", "contract": "No probe, attribution, activation, representation, complexity, delight, or response-diversity metric appears in editor authorization gates."}
+  ],
+  "mechanistic_evidence": [
+    {"id": "identity_probe", "role": "Measure held-out linear decodability; not sufficient for causal interpretation."},
+    {"id": "dominant_unit_ablation", "role": "Measure whether a registered hidden unit causally contributes to the chosen logit."},
+    {"id": "cross_critter_patch", "role": "Measure whether transplanting identity-unit activations changes the selected output."}
+  ],
+  "diagnostics": [
+    "activation_norm",
+    "logit_margin",
+    "representation_drift_cosine",
+    "response_diversity",
+    "complexity",
+    "delight"
+  ],
+  "editor_allowlist": {
+    "bitlichen": {
+      "initial_alive_probability": {"minimum": 0.1, "maximum": 0.7, "max_absolute_delta": 0.05}
+    },
+    "prism_wyrm": {
+      "successor_threshold": {"minimum": 1, "maximum": 5, "max_absolute_delta": 1, "integer": true}
+    },
+    "mitosis_moss": {
+      "feed": {"minimum": 0.01, "maximum": 0.07, "max_absolute_delta": 0.005}
+    }
+  },
+  "authorization_rule": "Only hard checks may authorize or promote an edit. Mechanistic evidence and diagnostics may trigger review, ablation experiments, or data collection but cannot grant write authority.",
+  "claim_boundary": "The canary establishes harness wiring against known internal structure. It does not establish that a learned agent's features have the same semantics or that a decoded feature is causally complete."
+}
