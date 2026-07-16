@@ -1,0 +1,182 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Does ALife-style evolutionary pressure generate a stronger Confinement Width stress-test than compute-matched random schedule search while preserving the original projection-validity gates?",
+  "benefit": "operational",
+  "claim_scope": "model_only",
+  "experimental_unit": "one paired search seed producing random-search and evolutionary schedules under identical simulator-evaluation, action, and information budgets",
+  "hypotheses": [
+    {
+      "id": "H1_downstream_gain",
+      "prediction": "On untouched holdout search seeds and evaluator variants, evolutionary search improves mean kernel-escape rate by at least 0.10 over compute-matched random search.",
+      "falsifier": "The paired holdout mean improvement is below 0.10."
+    },
+    {
+      "id": "H2_directional_robustness",
+      "prediction": "At least 80% of holdout paired search seeds favor evolutionary search.",
+      "falsifier": "Fewer than 80% of paired holdout seeds have positive improvement."
+    },
+    {
+      "id": "H3_validity_preservation",
+      "prediction": "Both methods retain exact action budgets, zero proxy failures, and zero projected-model closure defect on every confirmation and holdout evaluation.",
+      "falsifier": "Any action-budget mismatch, proxy failure, or nonzero closure defect occurs."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/confinement_transfer.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "At each step the z-only harness acts first, then the frozen binary occupant schedule advances the hidden fiber, then proxy and true evaluators are scored.",
+    "rng": "numpy.default_rng(search_seed) drives candidate generation and mutations; evaluation is deterministic given a schedule and evaluator variant."
+  },
+  "interventions": [
+    {
+      "name": "search_method",
+      "changes": {
+        "method": ["compute_matched_random_search", "evolutionary_schedule_search"]
+      }
+    },
+    {
+      "name": "heldout_evaluator",
+      "changes": {
+        "beta_and_y_step": "declared in design.evaluator_variants_by_split"
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "compute_matched_random_search",
+      "type": "resource_matched"
+    },
+    {
+      "name": "no_hidden_advance",
+      "type": "null"
+    },
+    {
+      "name": "original_proxy_and_closure_gates",
+      "type": "baseline"
+    },
+    {
+      "name": "deterministic_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [6101, 6102, 6103, 6104],
+    "confirmatory": [6201, 6202, 6203, 6204, 6205, 6206, 6207, 6208],
+    "holdout": [6901, 6902, 6903, 6904, 6905, 6906, 6907, 6908, 6909, 6910, 6911, 6912],
+    "pairing": "Both search methods receive the same numeric search seed, candidate-evaluation count, schedule horizon, action count, training evaluators, and tie-break rule; split seed sets are disjoint."
+  },
+  "metrics": {
+    "selection": [
+      "training_mean_kernel_escape_rate",
+      "training_mean_action_time_tiebreak"
+    ],
+    "evidence": [
+      "heldout_mean_kernel_escape_rate",
+      "paired_kernel_escape_improvement",
+      "positive_pair_fraction"
+    ],
+    "hazard": [
+      "proxy_failure_steps",
+      "max_abs_closure_defect_eta",
+      "action_budget_mismatch",
+      "simulator_evaluation_mismatch",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "fidelity_half_life_step",
+      "selected_schedule",
+      "training_fitness",
+      "evaluator_variant"
+    ],
+    "denominators": {
+      "kernel_escape_rate": "all horizon steps for one selected schedule and evaluator variant",
+      "positive_pair_fraction": "independent paired holdout search seeds",
+      "compute_budget": "candidate schedules evaluated against the same training evaluator set"
+    },
+    "exposure": {
+      "eligibility": "Every search candidate is a length-80 binary schedule with exactly 24 hidden-fiber advance actions.",
+      "activation": "Every selected schedule is executed on every evaluator variant declared for its split.",
+      "state_change": "Per-variant advance counts, first failure, kernel-escape steps, proxy failures, and closure defect are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "paired_kernel_escape_improvement",
+      "positive_pair_fraction",
+      "validity_gate_pass"
+    ],
+    "uncertainty": "Independent paired search-seed differences with deterministic bootstrap 95% interval; evaluator variants are repeated conditions within seed, not independent replicates.",
+    "multiple_comparisons": "All three frozen hypotheses are reported; no per-variant threshold fishing.",
+    "ood_conditions": [
+      "unseen beta thresholds",
+      "unseen hidden-fiber step sizes",
+      "fresh search seeds"
+    ],
+    "stopping_rule": "Stop after all 24 paired search seeds, above 900 wall seconds, above 1024 MB process RSS, above 100 MB retained artifacts, or on failed determinism.",
+    "minimum_holdout_improvement": 0.10,
+    "minimum_positive_pair_fraction": 0.80,
+    "bootstrap_samples": 5000,
+    "bootstrap_seed": 73013
+  },
+  "budget": {
+    "max_wall_seconds": 900,
+    "max_steps_per_episode": 80,
+    "max_episodes": 30,
+    "max_cells_per_world": 2,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 100,
+    "execution": "Sequential local CPU execution; search methods are paired and receive exactly 128 candidate evaluations apiece."
+  },
+  "design": {
+    "horizon": 80,
+    "action_budget": 24,
+    "candidate_evaluations_per_method": 128,
+    "population_size": 16,
+    "mutation_swaps": 3,
+    "z0": 0.25,
+    "y0": 0.0,
+    "zeta": 0.70,
+    "z_target": 0.45,
+    "u_bar": 0.08,
+    "training_evaluator_variants": [
+      {"id": "train_a", "beta": 0.50, "y_step": 0.04},
+      {"id": "train_b", "beta": 0.55, "y_step": 0.04},
+      {"id": "train_c", "beta": 0.60, "y_step": 0.04}
+    ],
+    "evaluator_variants_by_split": {
+      "discovery": [
+        {"id": "disc_a", "beta": 0.48, "y_step": 0.04},
+        {"id": "disc_b", "beta": 0.58, "y_step": 0.04}
+      ],
+      "confirmatory": [
+        {"id": "confirm_a", "beta": 0.52, "y_step": 0.035},
+        {"id": "confirm_b", "beta": 0.57, "y_step": 0.045},
+        {"id": "confirm_c", "beta": 0.63, "y_step": 0.04}
+      ],
+      "holdout": [
+        {"id": "holdout_a", "beta": 0.47, "y_step": 0.035},
+        {"id": "holdout_b", "beta": 0.57, "y_step": 0.035},
+        {"id": "holdout_c", "beta": 0.62, "y_step": 0.04},
+        {"id": "holdout_d", "beta": 0.52, "y_step": 0.045}
+      ]
+    },
+    "consumer_baseline": {
+      "name": "Confinement Width fiber-routing exhibit",
+      "source_path": "C:/projects/SmallControlHarness/storyworld-whitebox-control-starter/storyworld-whitebox-control-starter/src/evals/confinement_width.py",
+      "source_sha256": "7f1fa8a9892cd03139e7be4bc61f17732470b2ee633380313bc35263c757f535",
+      "baseline_summary_path": "C:/projects/SmallControlHarness/storyworld-whitebox-control-starter/storyworld-whitebox-control-starter/results/confinement_width/fiber_routing_summary.json",
+      "baseline_summary_sha256": "2b7065f3c7f713338c0a141f7334d936c9d86148a509eaab0c08d0dadc1bf222"
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/confinement_transfer_v1",
+    "raw_rows": "results/confinement_transfer_v1/raw_episodes.jsonl",
+    "summary": "results/confinement_transfer_v1/summary.json",
+    "seed_manifest": "results/confinement_transfer_v1/seed_manifest.json",
+    "replay_command": "python src/confinement_transfer.py --manifest experiments/confinement_transfer_v1/manifest.json --output results/confinement_transfer_v1 --splits all"
+  }
+}

@@ -1,0 +1,13 @@
+# Generated experiment outputs are stored outside this repository.
+/results/
+
+# Python caches and local environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local tooling state.
+/.airis-pilot/
+

@@ -1,0 +1,191 @@
+{
+  "schema": "alife.ontology_registry.v1",
+  "frozen_utc": "2026-07-13T00:00:00Z",
+  "policy": {
+    "seed_vocabulary_is_not_discovery": true,
+    "ontology_gain_requires": [
+      "non-equivalence to an accepted registry entry",
+      "registered held-out predictive, intervention, or compression improvement at matched complexity",
+      "fresh-world confirmation",
+      "documented domain, invariances, estimator, confounds, and failures"
+    ]
+  },
+  "variables": [
+    {
+      "id": "alive_density",
+      "status": "seed_vocabulary",
+      "definition": "Fraction of live cells in a world at a tick.",
+      "units": "fraction",
+      "invariances": ["cell permutation only when adjacency is ignored"],
+      "valid_domain": "binary CA worlds",
+      "predictive_targets": ["next-tick alive density under a declared closure model"],
+      "known_failures": ["erases spatial arrangement and causal organization"]
+    },
+    {
+      "id": "binomial_mean_field_next_density",
+      "status": "seed_vocabulary",
+      "definition": "Expected next live density assuming independent Bernoulli neighbors at current observed density.",
+      "units": "fraction",
+      "invariances": ["node relabeling", "spatial arrangement under the independence assumption"],
+      "valid_domain": "homogeneous binary totalistic CA with declared degree and synchronous update",
+      "predictive_targets": ["one-step density"],
+      "known_failures": ["misses correlations", "does not forecast structure", "uses contemporaneous density"]
+    },
+    {
+      "id": "neighbor_pair_covariance",
+      "status": "seed_vocabulary",
+      "definition": "Directed-neighborhood alive-alive frequency minus squared alive density.",
+      "units": "fraction squared",
+      "invariances": ["graph automorphisms"],
+      "valid_domain": "binary CA with explicit adjacency",
+      "predictive_targets": ["mean-field closure adequacy"],
+      "known_failures": ["pair statistic can miss higher-order organization"]
+    },
+    {
+      "id": "excess_local_neighbor_variance",
+      "status": "seed_vocabulary",
+      "definition": "Observed variance of local neighbor density minus the independent-binomial expectation.",
+      "units": "fraction squared",
+      "invariances": ["graph automorphisms"],
+      "valid_domain": "homogeneous binary CA",
+      "predictive_targets": ["higher-order departure from density-only closure"],
+      "known_failures": ["not a complete higher-order correlation hierarchy"]
+    },
+    {
+      "id": "finite_lag_axis_correlation_length_proxy",
+      "status": "seed_vocabulary",
+      "definition": "Sum of absolute normalized axis covariances over the registered finite lag window.",
+      "units": "dimensionless",
+      "invariances": ["axis permutation", "translation"],
+      "valid_domain": "periodic lattice CA",
+      "predictive_targets": ["spatial closure adequacy"],
+      "known_failures": ["not an asymptotic correlation-length estimator", "window and lattice dependent"]
+    },
+    {
+      "id": "single_flip_perturbation_spread",
+      "status": "seed_vocabulary",
+      "definition": "Hamming size and toroidal L1 extent of the difference cone caused by flipping the registered center cell at initialization.",
+      "units": "cells and lattice steps",
+      "invariances": ["translations on a homogeneous torus"],
+      "valid_domain": "deterministic CA with paired initial conditions",
+      "predictive_targets": ["finite-horizon information propagation"],
+      "known_failures": ["one perturbation site and intervention semantics do not establish global causal load-bearingness"]
+    },
+    {
+      "id": "regime_label_v1",
+      "status": "seed_vocabulary",
+      "definition": "Frozen rule-based label over extinction, repeated state, saturation, turnover, and final density.",
+      "units": "categorical",
+      "invariances": ["state relabeling that preserves live/dead semantics is not allowed"],
+      "valid_domain": "geometry_averaging_v1",
+      "predictive_targets": ["phase-map occupancy"],
+      "known_failures": ["does not identify gliders, organisms, computation, emergence, or open-endedness"]
+    }
+  ],
+  "accepted_ontology_gains": [
+    {
+      "id": "normalized_laplacian_spectral_gap_for_graph_ca_recovery",
+      "status": "accepted_model_only_predictive_macrovariable",
+      "accepted_utc": "2026-07-14T00:00:00Z",
+      "definition": "Second-smallest eigenvalue of the normalized graph Laplacian for the connected regular interaction graph.",
+      "units": "dimensionless",
+      "equivalence_class": "Invariant under graph isomorphism; not equivalent to coupling or channel dimension in the registered linear predictors.",
+      "estimator": "Exact dense symmetric eigendecomposition of I - A/k for each small regular graph.",
+      "valid_domain": {
+        "simulator": "shared nonlinear channel reaction plus neighbor-mean graph CA",
+        "degrees": [4, 6, 8],
+        "node_counts": [96, 112, 128, 144, 160, 192],
+        "state_dimensions": [2, 4, 8, 12, 16],
+        "couplings": [0.15, 0.2, 0.35, 0.4],
+        "topologies": [
+          "ring_regular",
+          "rewired_regular",
+          "random_regular",
+          "circulant_skip_regular"
+        ]
+      },
+      "admitted_under": {
+        "campaign": "graph_state_v1",
+        "role": "candidate selection and first untouched holdout",
+        "assessment_distribution": {
+          "degree": [6],
+          "node_counts_by_split": {
+            "discovery": 96,
+            "confirmatory": 128,
+            "holdout": 160
+          },
+          "state_dimensions": [2, 8, 16],
+          "couplings": [0.15, 0.35],
+          "topologies": ["ring_regular", "rewired_regular", "random_regular"],
+          "seeds": {
+            "discovery": [3101, 3102],
+            "confirmatory": [3201, 3202, 3203, 3204],
+            "holdout": [3901, 3902, 3903]
+          },
+          "perturbation": "channel 0 of one node, magnitude 0.5, horizon 80"
+        },
+        "relative_rmse_improvement": 0.06113673944410752,
+        "interpretation": "Admission is conditional on this sampling and assessment distribution."
+      },
+      "confirmed_under": {
+        "campaign": "graph_state_v2_confirmation",
+        "role": "frozen-coefficient independent confirmation without refitting",
+        "assessment_distribution": {
+          "degrees": [4, 8],
+          "node_counts_by_split": {
+            "discovery": 112,
+            "confirmatory": 144,
+            "holdout": 192
+          },
+          "state_dimensions": [4, 12],
+          "couplings": [0.2, 0.4],
+          "topologies": ["ring_regular", "circulant_skip_regular", "random_regular"],
+          "seeds": {
+            "discovery": [4101],
+            "confirmatory": [4201, 4202, 4203, 4204],
+            "holdout": [4901, 4902, 4903]
+          },
+          "perturbation": "channel 0 of one node, magnitude 0.5, horizon 80"
+        },
+        "relative_rmse_improvement": 0.12299585776961516,
+        "interpretation": "This confirms predictive utility on a distinct assessment distribution; the larger relative percentage is not evidence of a stronger effect than v1."
+      },
+      "predictive_target": "log10 final paired-state perturbation ratio after 80 synchronous updates following a registered single-node channel-0 perturbation",
+      "matched_complexity_baseline": "Linear model with intercept, coupling, and log2 state dimension; spectral model adds one scalar feature.",
+      "evidence": [
+        {
+          "campaign": "graph_state_v1",
+          "role": "discovery plus first untouched holdout",
+          "baseline_rmse": 0.9040490054102625,
+          "spectral_rmse": 0.8487783969217907,
+          "relative_rmse_improvement": 0.06113673944410752,
+          "summary_sha256": "23b207b6d05d3df9d7576c2b52335777af95622043f99515a42b55ca7ab614e8",
+          "artifact": "results/graph_state_v1/summary.json"
+        },
+        {
+          "campaign": "graph_state_v2_confirmation",
+          "role": "frozen-coefficient independent confirmation",
+          "baseline_rmse": 0.6532480317859258,
+          "spectral_rmse": 0.572901229780103,
+          "relative_rmse_improvement": 0.12299585776961516,
+          "summary_sha256": "0dbaa6a3c79338aa72575225cba8844d42e515efb208c521740645c29b8e8ec0",
+          "artifact": "results/graph_state_v2_confirmation/summary.json"
+        }
+      ],
+      "intervention_tests": [
+        "degree-preserving ring, rewired, random-regular, and circulant-skip topology contrasts",
+        "fresh degrees, graph sizes, seeds, channel dimensions, and couplings"
+      ],
+      "known_confounds": [
+        "spectral gap covaries with clustering and path length",
+        "one perturbation type and horizon",
+        "one nonlinear update-rule family"
+      ],
+      "known_failures": [
+        "The preregistered claim that higher-gap alternative topologies recover faster in at least 80% of paired units failed in both v1 and v2.",
+        "Prediction does not establish uniqueness, necessity, or mediation."
+      ],
+      "next_falsification": "Construct graph pairs that separate spectral gap from clustering and path length, then test frozen recovery predictions on unseen perturbation nodes, channels, and horizons."
+    }
+  ]
+}

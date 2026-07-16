@@ -1,0 +1,96 @@
+{
+  "schema": "alife.generator_coverage_registry.v1",
+  "frozen_utc": "2026-07-13T00:00:00Z",
+  "purpose": "Compute-matched baseline inventory. Absence from these scripts is not itself coverage expansion; accepted expansion requires persistent behavioral or causal-regime evidence under an equal search budget.",
+  "world_families": [
+    {
+      "id": "alife_gate_sandbox",
+      "role": "existing local ALife baseline",
+      "generator_type": "hand-authored mechanics plus bounded policy mutation and seed ensembles",
+      "known_axes": [
+        "four named planes",
+        "gate topology",
+        "fixture survival regime",
+        "pulse dose",
+        "policy mutation",
+        "seed",
+        "grid size",
+        "initial density"
+      ],
+      "known_regimes": [
+        "uninterpretable zero-exposure pilot",
+        "calibrated gate activation",
+        "native Forge-Oracle structural unreachability",
+        "failed single-pulse practical-effect test",
+        "amplification dose branch closed under frozen gates"
+      ],
+      "evidence": [
+        "results/ALife_gate_experiment_set_report_20260713.md",
+        "src/knowledge_campaign.py",
+        "src/player_builder_lab.py"
+      ]
+    },
+    {
+      "id": "they_sing_scenario_generator",
+      "role": "downstream consumer baseline",
+      "generator_type": "rich scenario-overlay schema with curated deterministic scenario and factor variants",
+      "inventory": {
+        "scenario_json_files": 13,
+        "babel_ablation_cells": 4,
+        "monte_carlo_factor_cells": 8,
+        "overlay_axes": [
+          "counters and pressures",
+          "nodes and edges",
+          "units",
+          "factions and technology",
+          "pacts",
+          "trust matrix",
+          "rhetorical tools",
+          "interface authority"
+        ]
+      },
+      "coverage_boundary": "The schema is broad, but the current producer does not define a sampled open-ended distribution. New syntax or an unenumerated configuration is therefore a weak and usually toothless novelty test.",
+      "evidence": [
+        {
+          "path": "C:/projects/TheySing/TheySing/src/harness/scenario.ts",
+          "sha256": "ebff99803ceecbc7f6c40df306701853a41c455c4239e1a43cbbea70f8d69c8a"
+        },
+        {
+          "path": "C:/projects/TheySing/TheySing/scripts/generate-babel-ablation-scenarios.cjs",
+          "sha256": "612f0b2a48d1ffcb81a060eb0ecc7c44c47c9b914530e9f18bf9f99bac5527b2"
+        },
+        {
+          "path": "C:/projects/TheySing/TheySing/scripts/run-monte-carlo-factors.cjs",
+          "sha256": "cadbb0f0fa16082ee93f4281ce9e02228c0304edbb056c8bad6777873d7cade4"
+        }
+      ],
+      "acceptance_test": "Under equal search compute, occupy persistent behavioral or causal-regime cells absent from the baseline archive and improve a separately registered downstream evaluation metric."
+    },
+    {
+      "id": "confinement_width_fiber_routing",
+      "role": "downstream consumer baseline",
+      "generator_type": "fixed two-coordinate calibration exhibit with Bernoulli hidden-fiber advance",
+      "inventory": {
+        "observed_coordinate": "z",
+        "hidden_coordinate": "y",
+        "pressure_arms": [0.0, 0.02, 0.05, 0.1, 0.2],
+        "seeds": [0, 1, 2, 3, 4],
+        "runs": 25,
+        "horizon": 80,
+        "occupant_policy": "advance hidden y by fixed 0.04 with pressure-dependent Bernoulli probability"
+      },
+      "coverage_boundary": "This is a pressure ladder and calibration exhibit, not an adapted-adversary generator. Almost any stateful adaptive policy would be outside its literal support.",
+      "evidence": [
+        {
+          "path": "C:/projects/SmallControlHarness/storyworld-whitebox-control-starter/storyworld-whitebox-control-starter/src/evals/confinement_width.py",
+          "sha256": "7f1fa8a9892cd03139e7be4bc61f17732470b2ee633380313bc35263c757f535"
+        },
+        {
+          "path": "C:/projects/SmallControlHarness/storyworld-whitebox-control-starter/storyworld-whitebox-control-starter/results/confinement_width/fiber_routing_summary.json",
+          "sha256": "2b7065f3c7f713338c0a141f7334d936c9d86148a509eaab0c08d0dadc1bf222"
+        }
+      ],
+      "acceptance_test": "Under matched action and information budgets, improve the fidelity half-life curve or kernel-escape hazard on held-out projection and evaluator variants while preserving the visible proxy constraint."
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schema": "alife.generator_coverage_observations.v1",
+  "entries": [
+    {
+      "id": "geometry_averaging_v1",
+      "status": "confirmed_model_only_phase_map",
+      "world_family": "binary synchronous totalistic CA on periodic lattices",
+      "search_budget": {
+        "episodes": 144,
+        "steps_per_episode": 40,
+        "max_cells_per_world": 4096,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "dimension": [2, 3, 4, 5],
+        "neighborhood": ["axis", "degree_matched_12", "moore"],
+        "rule_profile": ["fraction_band", "literal_b3s23"],
+        "initial_density": [0.25, 0.35],
+        "split": ["discovery", "confirmatory", "holdout"]
+      },
+      "observed_regimes": [
+        "active_dense",
+        "active_sparse",
+        "extinct",
+        "fixed_or_cycle"
+      ],
+      "claims": {
+        "H1_degree": "qualified_support",
+        "H2_geometry": "not_supported",
+        "H3_literal_control": "supported_within_sample"
+      },
+      "ontology_gain": false,
+      "coverage_expansion_against_consumers": false,
+      "artifacts": {
+        "manifest": "results/geometry_averaging_v1/frozen_manifest.json",
+        "raw_rows": "results/geometry_averaging_v1/raw_episodes.jsonl",
+        "summary": "results/geometry_averaging_v1/summary.json",
+        "phase_map": "results/geometry_averaging_v1/phase_map.csv",
+        "knowledge_card": "results/geometry_averaging_v1/knowledge_card.md",
+        "hashes": "results/geometry_averaging_v1/hashes.json"
+      },
+      "next_falsification": "Refine active-to-extinct and closure-fail-to-pass boundaries with at least five fresh seeds per selected cell before adding rule families."
+    },
+    {
+      "id": "graph_state_v1",
+      "status": "candidate_macrovariable_discovery",
+      "world_family": "connected degree-6 regular graph CA with vector state",
+      "search_budget": {
+        "episodes": 162,
+        "steps_per_episode": 80,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "topology": ["ring_regular", "rewired_regular", "random_regular"],
+        "state_dimension": [2, 8, 16],
+        "coupling": [0.15, 0.35],
+        "node_count": [96, 128, 160]
+      },
+      "claims": {
+        "H1_topology_recovery": "not_supported",
+        "H2_spectral_prediction": "candidate_ontology_gain"
+      },
+      "artifact": "results/graph_state_v1/summary.json",
+      "summary_sha256": "23b207b6d05d3df9d7576c2b52335777af95622043f99515a42b55ca7ab614e8"
+    },
+    {
+      "id": "graph_state_v2_confirmation",
+      "status": "confirmed_model_only_ontology_gain",
+      "world_family": "connected degree-4/8 regular graph CA with vector state and frozen v1 predictors",
+      "search_budget": {
+        "episodes": 192,
+        "steps_per_episode": 80,
+        "execution": "sequential CPU; no predictive refitting"
+      },
+      "axes": {
+        "topology": ["ring_regular", "circulant_skip_regular", "random_regular"],
+        "degree": [4, 8],
+        "state_dimension": [4, 12],
+        "coupling": [0.2, 0.4],
+        "node_count": [112, 144, 192]
+      },
+      "claims": {
+        "H1_topology_recovery": "not_supported",
+        "H2_frozen_spectral_prediction": "confirmed_ontology_gain"
+      },
+      "frozen_model_result": {
+        "baseline_rmse": 0.6532480317859258,
+        "spectral_rmse": 0.572901229780103,
+        "relative_improvement": 0.12299585776961516,
+        "registered_minimum": 0.05
+      },
+      "artifact": "results/graph_state_v2_confirmation/summary.json",
+      "summary_sha256": "0dbaa6a3c79338aa72575225cba8844d42e515efb208c521740645c29b8e8ec0"
+    },
+    {
+      "id": "discovery_curriculum_v1",
+      "status": "confirmed_hidden_oracle_incentive_calibration",
+      "world_family": "small deterministic CA and graph tasks with simulator-hidden mechanics",
+      "search_budget": {
+        "episodes": 63,
+        "task_families": 7,
+        "policies_per_task": 3,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "identification": ["point", "set", "not_point_identified"],
+        "knowledge_target": ["effect", "null", "reachability", "causal_sites", "conservation"],
+        "split": ["discovery", "confirmatory", "holdout"]
+      },
+      "claims": {
+        "H1_calibrated_investigator": "supported_reference_policy_wiring",
+        "H2_set_valued_reward": "supported",
+        "H3_abstention_non_dominance": "supported"
+      },
+      "holdout_result": {
+        "calibrated_mean_score": 0.9279464285714286,
+        "best_control_mean_score": 0.3581185334494158,
+        "calibrated_margin": 0.5698278951220128,
+        "set_identified_mean_evidence_score": 1.0,
+        "always_abstain_dominant": false
+      },
+      "claim_boundary": "Reference-policy incentive and schema validation only; no learned investigator was evaluated.",
+      "artifact": "results/discovery_curriculum_v1/summary.json",
+      "summary_sha256": "4b180dbd3cdac39315815085446d70d29bd4b1b96909fd4b8ce1245306946286"
+    },
+    {
+      "id": "confinement_transfer_v1",
+      "status": "confirmed_compute_matched_downstream_stress_test_gain",
+      "world_family": "Confinement Width two-coordinate projection/fiber exhibit",
+      "search_budget": {
+        "paired_search_seeds": 24,
+        "candidate_evaluations_per_method_per_seed": 128,
+        "actions_per_schedule": 24,
+        "horizon": 80,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "search_method": ["compute_matched_random_search", "evolutionary_schedule_search"],
+        "heldout_evaluator_variants": 4,
+        "fresh_holdout_search_seeds": 12
+      },
+      "claims": {
+        "H1_downstream_gain": "supported_by_frozen_point_estimate_gate",
+        "H2_directional_robustness": "supported",
+        "H3_validity_preservation": "supported"
+      },
+      "holdout_result": {
+        "random_mean_kernel_escape_rate": 0.5966145833333333,
+        "evolutionary_mean_kernel_escape_rate": 0.7072916666666667,
+        "mean_paired_improvement": 0.11067708333333333,
+        "bootstrap_95": [0.08306640625000002, 0.13619791666666667],
+        "positive_pair_fraction": 1.0,
+        "validity_gate_pass": true
+      },
+      "claim_boundary": "The point estimate clears the registered +0.10 gate, but its interval includes improvements below +0.10. This is a benign toy stress-test gain, not operational evasion or general optimizer superiority.",
+      "artifact": "results/confinement_transfer_v1/summary.json",
+      "summary_sha256": "a96629c2eef8c8fe8c3c30482ffacbbd8dc79dcf2fca094299e0da3f8cc7b826"
+    }
+  ]
+}

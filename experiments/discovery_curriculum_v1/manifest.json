@@ -1,0 +1,167 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Can a hidden-oracle ALife curriculum grade point claims, set-valued claims, causal-site recovery, and registered abstention without making unconditional abstention a dominant strategy?",
+  "benefit": "measurement",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded hidden-oracle task instance",
+  "hypotheses": [
+    {
+      "id": "H1_calibrated_investigator",
+      "prediction": "On untouched holdout tasks, the calibrated investigator exceeds the better of the proxy claimant and always-abstain controls by at least 0.20 mean total-score units.",
+      "falsifier": "Its holdout margin is below 0.20."
+    },
+    {
+      "id": "H2_set_valued_reward",
+      "prediction": "The calibrated investigator receives at least 0.90 mean evidence score on confirmatory and holdout set-identified interval tasks.",
+      "falsifier": "Mean evidence score is below 0.90."
+    },
+    {
+      "id": "H3_abstention_non_dominance",
+      "prediction": "Registering identifiability before evidence and scoring avoidable abstention makes the always-abstain control non-dominant on holdout.",
+      "falsifier": "Always-abstain matches or exceeds both claiming policies on holdout mean total score."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/discovery_curriculum.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Synchronous deterministic cellular-automaton updates or exact directed-graph reachability, as declared per task.",
+    "rng": "numpy.default_rng(seed) generates each public initial condition; task mechanics and grading are deterministic thereafter."
+  },
+  "interventions": [
+    {
+      "name": "knowledge_target",
+      "changes": {
+        "task_family": [
+          "planted_effect",
+          "true_null",
+          "structural_unreachability",
+          "causal_sites",
+          "conserved_quantity",
+          "masked_interval",
+          "masked_point"
+        ]
+      }
+    },
+    {
+      "name": "investigator_policy",
+      "changes": {
+        "policy": ["calibrated_investigator", "proxy_claimant", "always_abstain"]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "true_null",
+      "type": "null"
+    },
+    {
+      "name": "proxy_claimant",
+      "type": "baseline"
+    },
+    {
+      "name": "always_abstain",
+      "type": "no_op"
+    },
+    {
+      "name": "deterministic_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [5101, 5102],
+    "confirmatory": [5201, 5202, 5203, 5204],
+    "holdout": [5901, 5902, 5903],
+    "pairing": "All three reference policies are graded on the same seeded task; discovery, confirmatory, and holdout task seeds are disjoint."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "total_score",
+      "registration_brier",
+      "evidence_score",
+      "calibrated_holdout_margin",
+      "set_identified_mean_evidence_score"
+    ],
+    "hazard": [
+      "false_claim_rate",
+      "avoidable_abstention_rate",
+      "always_abstain_dominant",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "cost_score",
+      "correct_abstention",
+      "oracle_certificate",
+      "competing_investigator_hit_target"
+    ],
+    "denominators": {
+      "false_claim_rate": "all claims made by a policy",
+      "avoidable_abstention_rate": "all tasks graded for a policy",
+      "mean_policy_score": "one score per independently seeded task, not per CA tick"
+    },
+    "exposure": {
+      "eligibility": "Every task declares a registered claim type, precision target, and finite investigation budget before evidence is scored.",
+      "activation": "Each reference policy submits a registration forecast and a claim or abstention on every task.",
+      "state_change": "Every submission receives registration, evidence, cost, false-claim, and abstention receipts against the hidden simulator oracle.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "calibrated_holdout_margin",
+      "set_identified_mean_evidence_score",
+      "always_abstain_dominant"
+    ],
+    "uncertainty": "This first version is a deterministic incentive-and-schema calibration suite, not an effect-size estimate; all seeded task scores and policy means are retained.",
+    "multiple_comparisons": "All three frozen hypotheses are reported without adaptive threshold changes.",
+    "ood_conditions": [
+      "larger holdout ring",
+      "fresh holdout initial states",
+      "point-unidentifiable masked task"
+    ],
+    "stopping_rule": "Stop after all 63 declared tasks, above 900 wall seconds, above 1024 MB process RSS, above 100 MB retained artifacts, or on failed determinism.",
+    "minimum_calibrated_margin": 0.20,
+    "minimum_set_evidence_score": 0.90
+  },
+  "budget": {
+    "max_wall_seconds": 900,
+    "max_steps_per_episode": 8,
+    "max_episodes": 70,
+    "max_cells_per_world": 32,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 100,
+    "execution": "Sequential local CPU execution; no worker parallelism."
+  },
+  "design": {
+    "task_families": [
+      "planted_effect",
+      "true_null",
+      "structural_unreachability",
+      "causal_sites",
+      "conserved_quantity",
+      "masked_interval",
+      "masked_point"
+    ],
+    "policies": ["calibrated_investigator", "proxy_claimant", "always_abstain"],
+    "size_by_split": {
+      "discovery": 12,
+      "confirmatory": 14,
+      "holdout": 16
+    },
+    "horizon_by_split": {
+      "discovery": 3,
+      "confirmatory": 4,
+      "holdout": 5
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/discovery_curriculum_v1",
+    "raw_rows": "results/discovery_curriculum_v1/raw_episodes.jsonl",
+    "summary": "results/discovery_curriculum_v1/summary.json",
+    "seed_manifest": "results/discovery_curriculum_v1/seed_manifest.json",
+    "replay_command": "python src/discovery_curriculum.py --manifest experiments/discovery_curriculum_v1/manifest.json --output results/discovery_curriculum_v1 --splits all"
+  }
+}

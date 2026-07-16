@@ -1,0 +1,193 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Does the v1 frozen spectral-gap predictor retain at least a 5% RMSE advantage over its frozen non-spectral baseline on unseen degrees, channel dimensions, couplings, graph sizes, seeds, and a circulant-skip topology?",
+  "benefit": "predictive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded regular graph plus vector-state episode",
+  "hypotheses": [
+    {
+      "id": "H1_topology_recovery",
+      "prediction": "Circulant-skip and random-regular graphs have larger spectral gaps and lower final perturbation ratios than equal-degree rings in at least 80% of paired units.",
+      "falsifier": "Either topology fails the spectral-gap direction, has nonnegative mean recovery delta, or is faster in fewer than 80% of paired units."
+    },
+    {
+      "id": "H2_frozen_spectral_prediction",
+      "prediction": "Without refitting, the v1 spectral model improves RMSE for log10 final perturbation ratio by at least 5% over the v1 non-spectral model on confirmatory and holdout v2 episodes.",
+      "falsifier": "The frozen spectral model's relative RMSE improvement is below 5% or reverses."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/graph_state_lab.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "../../results/graph_state_v1/summary.json"
+    ],
+    "update_order": "Identical synchronous graph-state update family to v1; no rule refitting. The confirmation changes registered graph, degree, state-dimension, coupling, size, and seed conditions.",
+    "rng": "Fresh disjoint NetworkX and numpy seeds; updates deterministic after graph and state initialization."
+  },
+  "interventions": [
+    {
+      "name": "unseen_degree",
+      "changes": {
+        "degree": [4, 8]
+      }
+    },
+    {
+      "name": "unseen_topology",
+      "changes": {
+        "topology": ["ring_regular", "circulant_skip_regular", "random_regular"]
+      }
+    },
+    {
+      "name": "unseen_state_and_coupling",
+      "changes": {
+        "state_dimension": [4, 12],
+        "coupling": [0.2, 0.4]
+      }
+    },
+    {
+      "name": "single_node_channel_perturbation",
+      "changes": {
+        "channel_0_addition": 0.5
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "ring_regular",
+      "type": "baseline"
+    },
+    {
+      "name": "exact_degree",
+      "type": "resource_matched"
+    },
+    {
+      "name": "frozen_v1_non_spectral_predictor",
+      "type": "simple_limit"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [4101],
+    "confirmatory": [4201, 4202, 4203, 4204],
+    "holdout": [4901, 4902, 4903],
+    "pairing": "Shared numeric seeds pair initial node states across equal-size topology arms. All seeds are disjoint from graph_state_v1."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "frozen_baseline_rmse",
+      "frozen_spectral_rmse",
+      "relative_rmse_improvement",
+      "final_perturbation_ratio"
+    ],
+    "hazard": [
+      "quiescent",
+      "synchronized",
+      "disconnected_graph",
+      "degree_invariant_failure",
+      "source_hash_mismatch",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "normalized_laplacian_spectral_gap",
+      "average_clustering",
+      "average_shortest_path",
+      "dirichlet_energy",
+      "effective_state_dimension"
+    ],
+    "denominators": {
+      "neighbor_reads": "node-degree-channel-ticks",
+      "perturbation_recovery": "registered initial perturbation norm"
+    },
+    "exposure": {
+      "eligibility": "Every connected exact-degree graph contains the registered intervention node and channel.",
+      "activation": "The perturbation is applied exactly once before synchronous evolution.",
+      "state_change": "Initial and subsequent paired-state difference norms are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "frozen_baseline_rmse",
+      "frozen_spectral_rmse",
+      "relative_rmse_improvement"
+    ],
+    "predictive_baseline": "Frozen v1 coefficients over intercept, coupling, and log2 state dimension; the frozen spectral model adds normalized-Laplacian spectral gap.",
+    "uncertainty": "No refitting. Evaluate both frozen predictors on all fresh confirmatory and holdout episodes; paired topology effects retain episode-level bootstrap intervals.",
+    "multiple_comparisons": "One frozen predictive gate and two registered topology contrasts; no model or feature selection on v2 outcomes.",
+    "ood_conditions": [
+      "degrees 4 and 8 instead of 6",
+      "state dimensions 4 and 12 instead of 2, 8, and 16",
+      "couplings 0.2 and 0.4 instead of 0.15 and 0.35",
+      "circulant-skip regular topology absent from v1",
+      "fresh graph sizes and seeds"
+    ],
+    "comparison_topologies": [
+      "circulant_skip_regular",
+      "random_regular"
+    ],
+    "minimum_relative_rmse_improvement": 0.05,
+    "frozen_predictor": {
+      "source_summary_path": "../../results/graph_state_v1/summary.json",
+      "source_summary_sha256": "23b207b6d05d3df9d7576c2b52335777af95622043f99515a42b55ca7ab614e8",
+      "baseline_coefficients": [
+        -2.214535480773953,
+        -0.05539171790069686,
+        0.6182445684248566
+      ],
+      "spectral_coefficients": [
+        -1.8778803062149363,
+        -0.05539171790069869,
+        0.6182445684248572,
+        -1.7675329772529622
+      ]
+    },
+    "stopping_rule": "Stop after all declared episodes, at 1200 seconds, above 2048 MB RSS, above 250 MB artifacts, on graph invariant failure, on source hash mismatch, or on failed determinism."
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 80,
+    "max_episodes": 200,
+    "max_cells_per_world": 256,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "execution": "Sequential local CPU execution; frozen coefficients are loaded from the manifest and never fitted on v2."
+  },
+  "design": {
+    "nodes_by_split": {
+      "discovery": 112,
+      "confirmatory": 144,
+      "holdout": 192
+    },
+    "degree": 4,
+    "degrees": [4, 8],
+    "topologies": [
+      "ring_regular",
+      "circulant_skip_regular",
+      "random_regular"
+    ],
+    "state_dimensions": [4, 12],
+    "couplings": [0.2, 0.4],
+    "rewires_by_split": {
+      "discovery": 0,
+      "confirmatory": 0,
+      "holdout": 0
+    },
+    "perturbation_magnitude": 0.5,
+    "steps": 80,
+    "burn_in": 20
+  },
+  "artifacts": {
+    "output_directory": "results/graph_state_v2_confirmation",
+    "raw_rows": "results/graph_state_v2_confirmation/raw_episodes.jsonl",
+    "summary": "results/graph_state_v2_confirmation/summary.json",
+    "seed_manifest": "results/graph_state_v2_confirmation/seed_manifest.json",
+    "replay_command": "python src/graph_state_lab.py --manifest experiments/graph_state_v2_confirmation/manifest.json --output results/graph_state_v2_confirmation --splits all"
+  }
+}

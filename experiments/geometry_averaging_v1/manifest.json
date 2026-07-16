@@ -1,0 +1,182 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Within this binary totalistic CA family, when does a density-only binomial mean-field model become adequate, and is improvement explained by lattice dimension after neighborhood degree is held fixed?",
+  "benefit": "robustness",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded toroidal cellular-automaton world",
+  "hypotheses": [
+    {
+      "id": "H1_degree",
+      "prediction": "Mean-field one-step density error and local pair covariance decline with dimension in full Moore neighborhoods as effective degree rises.",
+      "falsifier": "Neither metric declines, or either reverses consistently, on confirmatory and holdout seeds."
+    },
+    {
+      "id": "H2_geometry",
+      "prediction": "Holding degree at 12 materially weakens any apparent dimension trend, showing that increased averaging degree rather than dimension alone explains most closure improvement.",
+      "falsifier": "The degree-matched arm retains a similarly negative error slope and passes the same adequacy boundary as the Moore arm on fresh holdout conditions."
+    },
+    {
+      "id": "H3_literal_control",
+      "prediction": "Literal B3/S23 on growing Moore neighborhoods collapses toward extinction and therefore demonstrates that low prediction error can be trivial rather than structurally rich.",
+      "falsifier": "Literal B3/S23 sustains nontrivial active regimes at higher dimensions across confirmatory and holdout seeds."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/geometry_averaging_experiment.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Synchronous totalistic update on a periodic torus; neighbor counts are computed from the entire pre-update state.",
+    "rng": "numpy.default_rng(seed) initializes each world; all later updates are deterministic; shared seeds pair initial random streams only when shapes match."
+  },
+  "interventions": [
+    {
+      "name": "dimension_sweep",
+      "changes": {
+        "dimension": [2, 3, 4, 5]
+      }
+    },
+    {
+      "name": "degree_factor",
+      "changes": {
+        "neighborhood": ["axis", "degree_matched_12", "moore"]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "degree_matched_12",
+      "type": "resource_matched"
+    },
+    {
+      "name": "literal_b3s23_moore",
+      "type": "simple_limit"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    },
+    {
+      "name": "axis_locality",
+      "type": "baseline"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [101, 102],
+    "confirmatory": [201, 202, 203],
+    "holdout": [901, 902],
+    "pairing": "Shared initialization stream within equal-shape and equal-density conditions; differing shapes are independent worlds with the same numeric seed, not identical counterfactual states."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "mean_field_mae_post_burn",
+      "neighbor_pair_cov_abs_post_burn",
+      "correlation_length_proxy_post_burn"
+    ],
+    "hazard": [
+      "extinction",
+      "saturation",
+      "fixed_or_cycle",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "excess_local_neighbor_variance_post_burn",
+      "turnover_post_burn",
+      "localized_structure_candidate_lifetime",
+      "perturbation_hamming_peak",
+      "perturbation_extent_peak"
+    ],
+    "denominators": {
+      "birth_rate": "dead cell-ticks whose neighbor count satisfies the birth rule",
+      "change_rate": "all cell-ticks",
+      "pair_covariance": "directed neighborhood edges"
+    },
+    "exposure": {
+      "eligibility": "Every condition constructs its declared toroidal neighborhood and evaluates the declared totalistic rule for every cell-tick.",
+      "activation": "Birth and survival masks are evaluated synchronously from pre-update neighbor counts.",
+      "state_change": "Per-episode birth, death, survival, and changed-cell receipts are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 1.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "mean_field_mae_post_burn",
+      "neighbor_pair_cov_abs_post_burn",
+      "correlation_length_proxy_post_burn"
+    ],
+    "uncertainty": "Episode-level mean, median, and deterministic bootstrap 95% interval over independent seeds; no tick-level pseudoreplication.",
+    "multiple_comparisons": "The three hypotheses and all phase-map cells are reported; adequacy uses a frozen conjunction rather than per-cell significance tests.",
+    "ood_conditions": [
+      "larger holdout torus",
+      "holdout initial density 0.25",
+      "literal B3/S23 simple-limit control"
+    ],
+    "stopping_rule": "Stop after all declared episodes, at 1200 wall seconds, above 2048 MB process RSS, above 250 MB retained artifacts, or on failed determinism; do not adapt thresholds after inspecting results.",
+    "adequacy_thresholds": {
+      "mean_field_mae_max": 0.025,
+      "pair_covariance_abs_max": 0.01,
+      "correlation_length_proxy_max": 0.20,
+      "minimum_episode_fraction": 0.8
+    }
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 40,
+    "max_episodes": 160,
+    "max_cells_per_world": 4096,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "execution": "Sequential local CPU execution; no worker parallelism until RNG and memory isolation are separately established."
+  },
+  "design": {
+    "dimensions": [2, 3, 4, 5],
+    "matched_degree": 12,
+    "steps": 40,
+    "burn_in": 10,
+    "correlation_max_lag": 4,
+    "sides_by_split": {
+      "discovery": {
+        "2": 32,
+        "3": 10,
+        "4": 6,
+        "5": 4
+      },
+      "confirmatory": {
+        "2": 48,
+        "3": 13,
+        "4": 7,
+        "5": 5
+      },
+      "holdout": {
+        "2": 64,
+        "3": 16,
+        "4": 8,
+        "5": 5
+      }
+    },
+    "densities_by_split": {
+      "discovery": [0.35],
+      "confirmatory": [0.35],
+      "holdout": [0.25, 0.35]
+    },
+    "rule_neighborhood_matrix": [
+      {
+        "rule_profile": "fraction_band",
+        "neighborhoods": ["axis", "degree_matched", "moore"]
+      },
+      {
+        "rule_profile": "literal_b3s23",
+        "neighborhoods": ["moore"]
+      }
+    ]
+  },
+  "artifacts": {
+    "output_directory": "results/geometry_averaging_v1",
+    "raw_rows": "results/geometry_averaging_v1/raw_episodes.jsonl",
+    "summary": "results/geometry_averaging_v1/summary.json",
+    "seed_manifest": "results/geometry_averaging_v1/seed_manifest.json",
+    "replay_command": "python src/geometry_averaging_experiment.py --manifest experiments/geometry_averaging_v1/manifest.json --output results/geometry_averaging_v1 --splits all"
+  }
+}

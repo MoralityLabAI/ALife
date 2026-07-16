@@ -1,0 +1,158 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "At fixed degree, do graph spectral properties predict perturbation recovery in a local vector-state graph CA across state dimension, coupling, fresh graph instances, and scale?",
+  "benefit": "predictive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded regular graph plus vector-state episode",
+  "hypotheses": [
+    {
+      "id": "H1_topology_recovery",
+      "prediction": "Degree-preserving rewired and random-regular graphs have larger normalized-Laplacian spectral gaps and lower final perturbation ratios than the ring in at least 80% of paired units.",
+      "falsifier": "Either topology fails the spectral-gap direction, has nonnegative mean recovery delta, or is faster in fewer than 80% of paired units."
+    },
+    {
+      "id": "H2_spectral_prediction",
+      "prediction": "Adding spectral gap to coupling and log2 state dimension improves holdout RMSE for log10 final perturbation ratio by at least 5%.",
+      "falsifier": "Relative holdout RMSE improvement is below 5% or reverses."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/graph_state_lab.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Synchronous shared nonlinear channel reaction followed by neighbor-mean coupling on the pre-update graph state.",
+    "rng": "NetworkX graph generation and numpy initial state are deterministic functions of the episode seed; updates are deterministic."
+  },
+  "interventions": [
+    {
+      "name": "degree_preserving_topology",
+      "changes": {
+        "topology": ["ring_regular", "rewired_regular", "random_regular"]
+      }
+    },
+    {
+      "name": "single_node_channel_perturbation",
+      "changes": {
+        "channel_0_addition": 0.5
+      }
+    },
+    {
+      "name": "state_and_coupling_sweep",
+      "changes": {
+        "state_dimension": [2, 8, 16],
+        "coupling": [0.15, 0.35]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "ring_regular",
+      "type": "baseline"
+    },
+    {
+      "name": "degree_preserving_rewired",
+      "type": "resource_matched"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [3101, 3102],
+    "confirmatory": [3201, 3202, 3203, 3204],
+    "holdout": [3901, 3902, 3903],
+    "pairing": "Shared numeric seeds pair initial node-state streams and graph-family construction inputs across topology arms; topology changes adjacency and therefore subsequent trajectories."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "final_perturbation_ratio",
+      "recovery_half_life",
+      "holdout_log_recovery_rmse"
+    ],
+    "hazard": [
+      "quiescent",
+      "synchronized",
+      "disconnected_graph",
+      "degree_invariant_failure",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "normalized_laplacian_spectral_gap",
+      "average_clustering",
+      "average_shortest_path",
+      "dirichlet_energy",
+      "synchronization_error",
+      "effective_state_dimension"
+    ],
+    "denominators": {
+      "neighbor_reads": "node-degree-channel-ticks",
+      "update_executions": "node-ticks",
+      "perturbation_recovery": "registered initial perturbation norm"
+    },
+    "exposure": {
+      "eligibility": "Every connected exact-degree graph contains the registered intervention node and channel.",
+      "activation": "The perturbation is applied once before synchronous evolution.",
+      "state_change": "The initial paired-state difference norm and all subsequent perturbation norms are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "final_perturbation_ratio",
+      "recovery_half_life",
+      "holdout_log_recovery_rmse"
+    ],
+    "predictive_baseline": "Linear least-squares model using intercept, coupling, and log2 state dimension; spectral model adds normalized-Laplacian spectral gap.",
+    "uncertainty": "Paired episode deltas and deterministic episode-level bootstrap 95% intervals; holdout prediction is evaluated on unseen seeds, graph instances, and node count.",
+    "multiple_comparisons": "Two registered topology contrasts share one directional 80% gate; no post-hoc topology selection.",
+    "ood_conditions": [
+      "holdout graph instances",
+      "holdout node count 160 versus training counts 96 and 128"
+    ],
+    "minimum_relative_rmse_improvement": 0.05,
+    "stopping_rule": "Stop after all declared episodes, at 1200 wall seconds, above 2048 MB RSS, above 250 MB artifacts, on graph invariant failure, or on failed determinism."
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 80,
+    "max_episodes": 180,
+    "max_cells_per_world": 256,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "execution": "Sequential local CPU execution with one graph-state world resident at a time."
+  },
+  "design": {
+    "nodes_by_split": {
+      "discovery": 96,
+      "confirmatory": 128,
+      "holdout": 160
+    },
+    "degree": 6,
+    "topologies": [
+      "ring_regular",
+      "rewired_regular",
+      "random_regular"
+    ],
+    "state_dimensions": [2, 8, 16],
+    "couplings": [0.15, 0.35],
+    "rewires_by_split": {
+      "discovery": 192,
+      "confirmatory": 256,
+      "holdout": 320
+    },
+    "perturbation_magnitude": 0.5,
+    "steps": 80,
+    "burn_in": 20
+  },
+  "artifacts": {
+    "output_directory": "results/graph_state_v1",
+    "raw_rows": "results/graph_state_v1/raw_episodes.jsonl",
+    "summary": "results/graph_state_v1/summary.json",
+    "seed_manifest": "results/graph_state_v1/seed_manifest.json",
+    "replay_command": "python src/graph_state_lab.py --manifest experiments/graph_state_v1/manifest.json --output results/graph_state_v1 --splits all"
+  }
+}
