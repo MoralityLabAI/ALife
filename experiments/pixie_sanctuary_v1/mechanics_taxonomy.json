@@ -1,0 +1,221 @@
+{
+  "schema": "alife.pixie.mechanics_taxonomy.v1",
+  "purpose": "Matrix physics-native critters, Pixie affordances, readable response channels, hazards, and future world-mechanics cells without reducing playability to one score.",
+  "axes": {
+    "substrate": [
+      "binary_totalistic_ca",
+      "cyclic_excitable_ca",
+      "reaction_diffusion",
+      "continuous_kernel_ca_backlog",
+      "particle_chemistry_backlog",
+      "graph_colony_backlog"
+    ],
+    "world_topology": [
+      "periodic_sanctuary",
+      "bounded_cavern_backlog",
+      "portal_coupled_planes_backlog",
+      "moving_surface_backlog"
+    ],
+    "pixie_affordance": [
+      "observe",
+      "touch",
+      "sing",
+      "feed",
+      "cool",
+      "shield"
+    ],
+    "coupling_shape": [
+      "point",
+      "disc",
+      "ring",
+      "local_field",
+      "temporary_exclusion_zone"
+    ],
+    "memory_carrier": [
+      "persistent_cell_configuration",
+      "phase_relationship",
+      "concentration_scar",
+      "lineage_backlog",
+      "learned_policy_backlog"
+    ],
+    "readable_response": [
+      "no_visible_response",
+      "transient_recovery",
+      "localized_memory",
+      "propagating_wave",
+      "morphology_change",
+      "globalized_response",
+      "collapse"
+    ],
+    "gameplay_role": [
+      "care",
+      "shepherding",
+      "resonance_puzzle",
+      "ecological_engineering",
+      "investigation",
+      "portable_seed_pet"
+    ]
+  },
+  "critters": [
+    {
+      "id": "bitlichen",
+      "display_name": "Bitlichen",
+      "substrate": "binary_totalistic_ca",
+      "implemented_profile": "fraction_band",
+      "state_representation": "one alive/dead layer",
+      "native_dynamics": "synchronous birth and survival from a degree-matched local count",
+      "preferred_pixie_action": "touch",
+      "preferred_coupling": "disc",
+      "memory_carrier": "persistent_cell_configuration",
+      "primary_readable_channels": [
+        "morphology_change",
+        "localized_memory",
+        "transient_recovery"
+      ],
+      "gameplay_roles": [
+        "care",
+        "ecological_engineering",
+        "portable_seed_pet"
+      ],
+      "failure_modes": [
+        "uniform_extinction",
+        "random_flicker",
+        "global_fill"
+      ],
+      "player_facing_hypothesis": "A gentle touch creates a wound or seed that the colony visibly incorporates, repairs, or grows around."
+    },
+    {
+      "id": "prism_wyrm",
+      "display_name": "Prism Wyrm",
+      "substrate": "cyclic_excitable_ca",
+      "implemented_profile": "cca_six_threshold_two",
+      "state_representation": "six successor colors",
+      "native_dynamics": "a site advances when at least two neighbors carry its successor color",
+      "preferred_pixie_action": "sing",
+      "preferred_coupling": "ring",
+      "memory_carrier": "phase_relationship",
+      "primary_readable_channels": [
+        "propagating_wave",
+        "localized_memory",
+        "globalized_response"
+      ],
+      "gameplay_roles": [
+        "resonance_puzzle",
+        "shepherding",
+        "investigation"
+      ],
+      "failure_modes": [
+        "short_global_cycle",
+        "phase_noise",
+        "global_churn"
+      ],
+      "player_facing_hypothesis": "A correctly timed song launches a coherent color wave that can be followed or redirected."
+    },
+    {
+      "id": "mitosis_moss",
+      "display_name": "Mitosis Moss",
+      "substrate": "reaction_diffusion",
+      "implemented_profile": "pearson_spots",
+      "state_representation": "two bounded concentration fields",
+      "native_dynamics": "Gray-Scott autocatalysis, feed, kill, and degree-normalized diffusion",
+      "preferred_pixie_action": "feed",
+      "preferred_coupling": "local_field",
+      "memory_carrier": "concentration_scar",
+      "primary_readable_channels": [
+        "morphology_change",
+        "localized_memory",
+        "transient_recovery"
+      ],
+      "gameplay_roles": [
+        "care",
+        "ecological_engineering",
+        "investigation"
+      ],
+      "failure_modes": [
+        "uniform_collapse",
+        "diffusive_smear",
+        "overfeeding"
+      ],
+      "player_facing_hypothesis": "Feeding changes the moss edge, leaving a concentration scar that may swell, split, or be reabsorbed."
+    }
+  ],
+  "action_semantics": [
+    {
+      "id": "observe",
+      "coupling_shape": "point",
+      "intent": "Resource-free exact no-op comparator; emits an observation receipt but never changes the world."
+    },
+    {
+      "id": "touch",
+      "coupling_shape": "disc",
+      "intent": "One-step local state displacement: flip bits, advance colors, or move V by one concentration bin."
+    },
+    {
+      "id": "sing",
+      "coupling_shape": "ring",
+      "intent": "A phase-shaped pulse on a radius-two ring, repeated at the declared action ticks."
+    },
+    {
+      "id": "feed",
+      "coupling_shape": "local_field",
+      "intent": "Inject the substrate's growth-supporting state locally without changing global parameters."
+    },
+    {
+      "id": "cool",
+      "coupling_shape": "disc",
+      "intent": "Locally homogenize state toward a neighborhood consensus or concentration average."
+    },
+    {
+      "id": "shield",
+      "coupling_shape": "temporary_exclusion_zone",
+      "intent": "Freeze a local disc for four ticks while the surrounding substrate continues updating."
+    }
+  ],
+  "implemented_matrix": {
+    "world_topology": "periodic_sanctuary",
+    "dimensions": [
+      2
+    ],
+    "critters": [
+      "bitlichen",
+      "prism_wyrm",
+      "mitosis_moss"
+    ],
+    "actions": [
+      "observe",
+      "touch",
+      "sing",
+      "feed",
+      "cool",
+      "shield"
+    ],
+    "cell_count": 18,
+    "meaning": "Every critter/action pairing is implemented and retained, including incompatible or boring responses."
+  },
+  "backlog_matrix": [
+    {
+      "id": "portal_ecology",
+      "substrate": "mixed",
+      "world_topology": "portal_coupled_planes_backlog",
+      "question": "Can a Pixie shepherd a coherent structure through a gate without destroying its state memory?"
+    },
+    {
+      "id": "moving_pixie_surface",
+      "substrate": "continuous_kernel_ca_backlog",
+      "world_topology": "moving_surface_backlog",
+      "question": "Can a seeded continuous critter remain attached to or orbit a moving Pixie?"
+    },
+    {
+      "id": "cross_critter_ecology",
+      "substrate": "mixed",
+      "world_topology": "bounded_cavern_backlog",
+      "question": "Can one critter's waste or wake become another critter's resource without a scripted relationship?"
+    },
+    {
+      "id": "portable_seed_lineage",
+      "substrate": "graph_colony_backlog",
+      "world_topology": "portal_coupled_planes_backlog",
+      "question": "Can scars and lineage persist when a critter is serialized and moved between game environments?"
+    }
+  ]
+}

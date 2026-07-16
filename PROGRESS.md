@@ -14,6 +14,7 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 | 6. Mathematical discovery | Complete for first model-only ontology gain | `normalized_laplacian_spectral_gap_for_graph_ca_recovery` in `registries/ontology_registry.json`; v1 holdout + frozen v2 confirmation | Causal necessity/mediation remains a separate future claim. |
 | 7. Consumer transfer | Complete for v1 | `confinement_transfer_v1`; 24 paired search seeds; compute/action/information matched; passing verifier | Test non-monotone fiber dynamics to distinguish pressure generation from simple front-loading. |
 | 8. Alternative-physics atlas | Complete for descriptive v1 | `alt_physics_atlas_v1`; 360 deterministic episodes across three families and dimensions 2-4; short paper; passing portable verifier | Separate Gray-Scott reaction mechanism from equal-diffusion pattern candidates before making a stronger emergence claim. |
+| Pixie interaction sanctuary | Complete prototype v1 | `pixie_sanctuary_v1`; 162 paired episodes covering three critters by six actions; passing portable verifier | Move legible interactions into bounded terrain with a moving Pixie before judging playability. |
 
 ## Geometry v1 evidence receipt
 
@@ -63,6 +64,11 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 
 Run the registered falsification tests: graph pairs that separate spectral gap from clustering/path length, a real local investigator in place of the calibrated reference policy, non-monotone Confinement Width fiber dynamics where naive action front-loading can fail, and a Gray-Scott diffusion-ratio/autocatalysis factorial that can distinguish the equal-diffusion control from reaction-supported organization.
 
+For Pixie encounters, take one response per substrate into a bounded-cavern
+factorial: Bitlichen touch for colony scars, Prism Wyrm song for recoverable
+waves, and Mitosis Moss feed for local concentration scars. Vary Pixie motion,
+action timing, and walls before adding a single mixed-critter resource coupling.
+
 ## Alternative-physics atlas v1 evidence receipt
 
 - Contract: `experiments/alt_physics_atlas_v1/manifest.json` validates with zero errors and zero warnings; discovery calibration and invalidated technical runs are recorded explicitly.
@@ -75,3 +81,14 @@ Run the registered falsification tests: graph pairs that separate spectral gap f
 - Resources: `66.39` seconds wall time, `55.20` MB maximum process RSS, and about `12.1` MB retained artifacts on the D-drive junction.
 - Verification: every summary and trajectory hash re-derived; three family-spanning portable exact replays passed with no errors or warnings.
 - Paper: `papers/alt_physics_alife_distribution.md`.
+
+## Pixie sanctuary v1 evidence receipt
+
+- Contract: `experiments/pixie_sanctuary_v1/manifest.json`; taxonomy: `mechanics_taxonomy.json`.
+- Experimental units: 162 independently seeded paired treated/untreated worlds; 36 discovery, 72 confirmatory, and 54 larger/longer holdout episodes.
+- Matrix: three substrate-native critters by six universal Pixie affordances, with all 54 split-aware cells retained.
+- Exposure: all 162 episodes executed every scheduled action receipt; all 135 non-observe episodes changed exact substrate state; all 27 observe controls remained identical to their comparators.
+- Fresh preferred interactions were visible and bounded in every episode. Bitlichen touch produced morphology changes or waves; Mitosis Moss feed produced localized scars; Prism Wyrm song produced transient recovery or propagation.
+- The four frozen model-only hypotheses were supported within sample. This is control/design illumination, not evidence of emotion, bonding, learning, life, or player enjoyment.
+- Resources: `49.47` seconds wall time and about `5.6` MB retained artifacts on the D-drive results junction.
+- Verification: schemas, taxonomy coverage, raw summaries, trajectory/event hashes, cause references, and three substrate-spanning portable replays passed with no errors or warnings.

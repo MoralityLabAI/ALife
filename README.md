@@ -191,6 +191,22 @@ activity candidates, not evidence of organisms or complex life. The equations,
 phase slice, uncertainty, literature basis, and claim boundary are in
 [the short paper](papers/alt_physics_alife_distribution.md).
 
+Prototype the Pixie/critter interaction matrix:
+
+```powershell
+python src\pixie_sanctuary.py --manifest experiments\pixie_sanctuary_v1\manifest.json --demo --critter prism_wyrm --action sing --seed 42
+python src\pixie_sanctuary.py --manifest experiments\pixie_sanctuary_v1\manifest.json --output results\pixie_sanctuary_v1 --splits all
+python src\verify_pixie_sanctuary_artifacts.py results\pixie_sanctuary_v1 --portable --replay-samples 3
+```
+
+The prototype crosses Bitlichen, Prism Wyrm, and Mitosis Moss with observe,
+touch, sing, feed, cool, and shield. Each episode runs a treated world beside
+an exact untreated copy and emits factual action/response events. The taxonomy
+keeps every implemented cell plus portal, moving-surface, mixed-ecology, and
+portable-lineage backlog cells; weak interactions are retained rather than
+filtered by a fun score. See
+[`experiments/pixie_sanctuary_v1/README.md`](experiments/pixie_sanctuary_v1/README.md).
+
 Run and verify the hidden-oracle discovery curriculum:
 
 ```powershell

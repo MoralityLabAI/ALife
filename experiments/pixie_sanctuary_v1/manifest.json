@@ -1,0 +1,276 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Which local Pixie affordances produce visible, bounded, persistent, and substrate-specific responses in three deterministic physics-native critters?",
+  "benefit": "control",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded paired treated-versus-observe sanctuary episode",
+  "hypotheses": [
+    {
+      "id": "H1_preferred_action_control",
+      "prediction": "Each critter's taxonomy-preferred action produces a visible bounded response in at least 75% of confirmatory and holdout episodes, while observe produces exactly zero divergence.",
+      "falsifier": "Any preferred action falls below 75% visible bounded response on either fresh split, or any observe episode diverges from its paired baseline."
+    },
+    {
+      "id": "H2_persistent_memory",
+      "prediction": "At least two of the three preferred critter/action pairings retain a tail divergence of at least 0.003 in at least 75% of confirmatory and holdout episodes.",
+      "falsifier": "Fewer than two preferred pairings meet the frozen tail-divergence occupancy on either fresh split."
+    },
+    {
+      "id": "H3_substrate_specific_signatures",
+      "prediction": "The preferred-action response-class distribution depends on critter substrate, with mutual information above 0.10 bits on confirmatory and holdout splits.",
+      "falsifier": "Family/response-class mutual information is at most 0.10 bits on either fresh split."
+    },
+    {
+      "id": "H4_no_globalized_preferred_response",
+      "prediction": "No preferred-action episode crosses the frozen globalized-response hazard threshold of 0.75 divergent sites.",
+      "falsifier": "Any confirmatory or holdout preferred-action episode globalizes."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/pixie_sanctuary.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "mechanics_taxonomy.json"
+    ],
+    "update_order": "At declared ticks the Pixie action is applied to the treated state, then treated and paired observe worlds receive the same synchronous substrate update; shield restores its local pre-update state for four ticks.",
+    "rng": "numpy.default_rng(seed) initializes paired worlds identically. No randomness is consumed after initialization; action schedules and updates are deterministic."
+  },
+  "interventions": [
+    {
+      "name": "pixie_affordance",
+      "changes": {
+        "action": [
+          "observe",
+          "touch",
+          "sing",
+          "feed",
+          "cool",
+          "shield"
+        ]
+      }
+    },
+    {
+      "name": "critter_substrate",
+      "changes": {
+        "critter": [
+          "bitlichen",
+          "prism_wyrm",
+          "mitosis_moss"
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "observe",
+      "type": "no_op"
+    },
+    {
+      "name": "paired_untreated_world",
+      "type": "baseline"
+    },
+    {
+      "name": "cool_local_homogenization",
+      "type": "simple_limit"
+    },
+    {
+      "name": "shield_local_freeze",
+      "type": "mechanism_knockout"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [
+      1201,
+      1202
+    ],
+    "confirmatory": [
+      2201,
+      2202,
+      2203,
+      2204
+    ],
+    "holdout": [
+      9201,
+      9202,
+      9203
+    ],
+    "pairing": "Treated and observe comparator are exact copies at initialization; no post-initialization RNG exists, so their only difference is the declared action coupling."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "peak_divergent_fraction",
+      "tail_divergent_fraction",
+      "response_persistence_ratio",
+      "response_localization_at_peak",
+      "preferred_action_visible_bounded_occupancy",
+      "critter_response_class_mutual_information_bits"
+    ],
+    "hazard": [
+      "observe_divergence",
+      "globalized_response",
+      "treated_uniform_collapse",
+      "short_cycle",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "component_count_delta",
+      "neighbor_agreement_delta",
+      "action_changed_sites",
+      "response_reach_radius",
+      "trajectory_digest"
+    ],
+    "denominators": {
+      "action_execution_rate": "executed scheduled actions divided by three scheduled action opportunities",
+      "divergent_fraction": "treated-versus-paired-observe differing categorical sites divided by all world sites",
+      "response_localization": "divergent sites within Manhattan radius six of the Pixie divided by all divergent sites",
+      "preferred_action_occupancy": "independently seeded episodes for the declared critter/action/split cell"
+    },
+    "exposure": {
+      "eligibility": "Every scheduled action targets a nonempty periodic mask centered on the Pixie.",
+      "activation": "Every action condition emits exactly three attempts at ticks 8, 16, and 24; observe emits receipts but requests no state change.",
+      "state_change": "Non-observe actions retain exact changed-site counts; shield execution counts update differences prevented inside its active mask.",
+      "minimum_per_condition": 3,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "preferred_action_visible_bounded_occupancy",
+      "preferred_action_persistent_occupancy",
+      "critter_response_class_mutual_information_bits"
+    ],
+    "uncertainty": "Episode-level Jeffreys intervals for cell occupancy and deterministic episode bootstrap intervals for continuous response metrics; ticks and sites are repeated measurements.",
+    "multiple_comparisons": "All 18 critter/action cells are retained. Preferred actions and thresholds are frozen in the taxonomy before discovery; no champion is selected from the matrix.",
+    "ood_conditions": [
+      "larger 40x40 holdout sanctuary",
+      "longer 64-tick holdout horizon",
+      "disjoint holdout seed block"
+    ],
+    "stopping_rule": "Stop after all 162 declared episodes, at 300 wall seconds, above 1024 MB process RSS, above 100 MB retained artifacts, or on failed exact replay.",
+    "response_thresholds": {
+      "visible_peak_min": 0.01,
+      "persistent_tail_min": 0.003,
+      "globalized_peak_min": 0.75,
+      "localized_fraction_min": 0.50,
+      "recovered_tail_over_peak_max": 0.20,
+      "short_cycle_unique_fraction_max": 0.25
+    },
+    "response_class_precedence": [
+      "no_visible_response",
+      "globalized_response",
+      "collapse",
+      "transient_recovery",
+      "localized_memory",
+      "propagating_wave",
+      "morphology_change"
+    ]
+  },
+  "budget": {
+    "max_wall_seconds": 300,
+    "max_steps_per_episode": 128,
+    "max_episodes": 180,
+    "max_cells_per_world": 4096,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 100,
+    "execution": "Sequential local CPU execution; paired worlds run in one process with no worker parallelism or external model calls."
+  },
+  "design": {
+    "taxonomy_path": "mechanics_taxonomy.json",
+    "critters": [
+      "bitlichen",
+      "prism_wyrm",
+      "mitosis_moss"
+    ],
+    "actions": [
+      "observe",
+      "touch",
+      "sing",
+      "feed",
+      "cool",
+      "shield"
+    ],
+    "preferred_actions": {
+      "bitlichen": "touch",
+      "prism_wyrm": "sing",
+      "mitosis_moss": "feed"
+    },
+    "action_ticks": [
+      8,
+      16,
+      24
+    ],
+    "shield_duration_ticks": 4,
+    "matched_degree": 12,
+    "solver_steps_per_record": {
+      "bitlichen": 1,
+      "prism_wyrm": 1,
+      "mitosis_moss": 2
+    },
+    "side_by_split": {
+      "discovery": 24,
+      "confirmatory": 32,
+      "holdout": 40
+    },
+    "steps_by_split": {
+      "discovery": 40,
+      "confirmatory": 48,
+      "holdout": 64
+    },
+    "burn_in_ticks": 6,
+    "response_tail_ticks": 8,
+    "pixie": {
+      "id": "pixie-prototype-001",
+      "display_name": "Luma",
+      "temperament": "curious",
+      "position": "world_center"
+    },
+    "species_profiles": {
+      "bitlichen": {
+        "family": "binary_ca",
+        "name": "fraction_band",
+        "kind": "pixie_critter",
+        "birth_fraction": [
+          0.32,
+          0.42
+        ],
+        "survival_fraction": [
+          0.24,
+          0.42
+        ],
+        "initial_alive_probability": 0.35
+      },
+      "prism_wyrm": {
+        "family": "cyclic_ca",
+        "name": "cca_six_threshold_two",
+        "kind": "pixie_critter",
+        "states": 6,
+        "successor_threshold": 2
+      },
+      "mitosis_moss": {
+        "family": "gray_scott",
+        "name": "pearson_spots",
+        "kind": "pixie_critter",
+        "feed": 0.035,
+        "kill": 0.06,
+        "diffusion_u": 0.16,
+        "diffusion_v": 0.08,
+        "reaction_enabled": true
+      }
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/pixie_sanctuary_v1",
+    "raw_rows": "results/pixie_sanctuary_v1/raw_episodes.jsonl",
+    "summary": "results/pixie_sanctuary_v1/summary.json",
+    "seed_manifest": "results/pixie_sanctuary_v1/seed_manifest.json",
+    "taxonomy_matrix": "results/pixie_sanctuary_v1/taxonomy_matrix.csv",
+    "knowledge_card": "results/pixie_sanctuary_v1/knowledge_card.md",
+    "replay_command": "python src/pixie_sanctuary.py --manifest experiments/pixie_sanctuary_v1/manifest.json --output results/pixie_sanctuary_v1 --splits all"
+  }
+}

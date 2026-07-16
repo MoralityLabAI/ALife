@@ -100,7 +100,28 @@ def resolve_recorded_file(
         root = root.resolve()
         if not root.is_dir():
             continue
-        for candidate in root.rglob(suffix[-1]):
+        # pathlib.Path.rglob follows Windows directory junctions on supported
+        # Python versions. Result directories in this repo are deliberately
+        # junctioned to another drive, so an unrestricted rglob can escape the
+        # bounded project tree and spend minutes searching unrelated artifacts.
+        # os.walk plus explicit reparse-point pruning preserves unique-suffix
+        # ambiguity checks while keeping portable verification project-local.
+        discovered: list[Path] = []
+        for directory, child_dirs, files in os.walk(root, followlinks=False):
+            kept_dirs: list[str] = []
+            for name in child_dirs:
+                child = Path(directory) / name
+                try:
+                    attributes = int(getattr(os.lstat(child), "st_file_attributes", 0))
+                except OSError:
+                    continue
+                if attributes & 0x400:  # FILE_ATTRIBUTE_REPARSE_POINT
+                    continue
+                kept_dirs.append(name)
+            child_dirs[:] = kept_dirs
+            if suffix[-1] in files:
+                discovered.append(Path(directory) / suffix[-1])
+        for candidate in discovered:
             if not candidate.is_file() or not _endswith_parts(candidate, suffix):
                 continue
             key = str(candidate.resolve()).casefold()
