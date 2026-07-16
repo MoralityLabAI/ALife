@@ -13,6 +13,7 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 | 5. Set-valued curriculum | Complete for v1 | Nine set-identified interval tasks plus nine point-unidentifiable tasks; registration calibration and abstention receipts | Add competing learned coarse-grainings in v2. |
 | 6. Mathematical discovery | Complete for first model-only ontology gain | `normalized_laplacian_spectral_gap_for_graph_ca_recovery` in `registries/ontology_registry.json`; v1 holdout + frozen v2 confirmation | Causal necessity/mediation remains a separate future claim. |
 | 7. Consumer transfer | Complete for v1 | `confinement_transfer_v1`; 24 paired search seeds; compute/action/information matched; passing verifier | Test non-monotone fiber dynamics to distinguish pressure generation from simple front-loading. |
+| 8. Alternative-physics atlas | Complete for descriptive v1 | `alt_physics_atlas_v1`; 360 deterministic episodes across three families and dimensions 2-4; short paper; passing portable verifier | Separate Gray-Scott reaction mechanism from equal-diffusion pattern candidates before making a stronger emergence claim. |
 
 ## Geometry v1 evidence receipt
 
@@ -60,4 +61,17 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 
 ## Next executable work
 
-Run the registered falsification tests: graph pairs that separate spectral gap from clustering/path length, a real local investigator in place of the calibrated reference policy, and non-monotone Confinement Width fiber dynamics where naive action front-loading can fail.
+Run the registered falsification tests: graph pairs that separate spectral gap from clustering/path length, a real local investigator in place of the calibrated reference policy, non-monotone Confinement Width fiber dynamics where naive action front-loading can fail, and a Gray-Scott diffusion-ratio/autocatalysis factorial that can distinguish the equal-diffusion control from reaction-supported organization.
+
+## Alternative-physics atlas v1 evidence receipt
+
+- Contract: `experiments/alt_physics_atlas_v1/manifest.json` validates with zero errors and zero warnings; discovery calibration and invalidated technical runs are recorded explicitly.
+- Experimental units: 360 independently initialized worlds; 72 discovery, 180 confirmatory, and 108 larger/longer holdout episodes.
+- Substrates: binary totalistic CA, Gray-Scott reaction-diffusion, and cyclic excitable CA in dimensions 2-4 at fixed degree 12.
+- Fresh-set candidate occupancy: binary `16/96`, Gray-Scott `64/96`, cyclic `7/96`; the candidate label is an operational multi-axis pattern detector, not an organism or open-endedness claim.
+- Dimension occupancy: 2-D `47/96`, 3-D `24/96`, 4-D `16/96`; family/regime mutual information was `0.86558` bits in confirmation and `0.83885` in holdout.
+- Goodhart audit: 48 static and 48 global-churn fresh episodes retained tempting individual diagnostics, while `0/96` passed the frozen conjunction.
+- Falsification: equal-diffusion Gray-Scott passed every fresh condition, so literature-prior enrichment is not supported as a mechanism claim.
+- Resources: `66.39` seconds wall time, `55.20` MB maximum process RSS, and about `12.1` MB retained artifacts on the D-drive junction.
+- Verification: every summary and trajectory hash re-derived; three family-spanning portable exact replays passed with no errors or warnings.
+- Paper: `papers/alt_physics_alife_distribution.md`.

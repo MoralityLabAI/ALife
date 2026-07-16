@@ -1,0 +1,379 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Across three deterministic lattice physics families, which family, parameter profile, and spatial dimension combinations occupy persistent active-and-spatially-structured regimes under a fixed degree and approximately fixed cell budget?",
+  "benefit": "descriptive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded periodic lattice world",
+  "hypotheses": [
+    {
+      "id": "H1_literature_prior_enrichment",
+      "prediction": "Literature-informed binary, Gray-Scott, and cyclic profiles have higher active_structured_candidate occupancy than their static, global-churn, and mechanism-limit controls on confirmatory and holdout seeds.",
+      "falsifier": "Candidate occupancy is not enriched over controls, or a static/global-churn control passes the same frozen conjunction at a comparable rate."
+    },
+    {
+      "id": "H2_substrate_specific_distribution",
+      "prediction": "The empirical regime distribution depends detectably on the physics family; no single entropy or turnover threshold identifies the candidate regime across all families.",
+      "falsifier": "Family-conditioned regime occupancies are effectively indistinguishable and either entropy or turnover alone separates every candidate from every control."
+    },
+    {
+      "id": "H3_dimension_below_physics",
+      "prediction": "With neighborhood degree fixed at 12 and cell count approximately matched, profile/family differences in candidate occupancy exceed within-profile differences across dimensions 2-4.",
+      "falsifier": "The dimension-associated occupancy range is at least as large as the profile/family-associated range on both confirmatory and holdout splits."
+    },
+    {
+      "id": "H4_metric_goodhart_controls",
+      "prediction": "Static controls retain state diversity while global-churn controls retain high entropy and turnover, but both fail the multi-axis candidate conjunction.",
+      "falsifier": "A static or global-churn control passes the candidate conjunction, or the audit cannot exhibit a high individual diagnostic on either negative-control class."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/alt_physics_atlas.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Synchronous periodic-lattice updates. Binary and cyclic rules consume the complete pre-update state. Gray-Scott uses explicit Euler substeps with a degree-normalized discrete Laplacian.",
+    "rng": "numpy.default_rng(seed) initializes each world. The baseline and single-site perturbation share the same initialized state; all later updates are deterministic and draw no random numbers.",
+    "literature_priors": [
+      {
+        "system": "gray_scott",
+        "source": "Pearson 1993, doi:10.1126/science.261.5118.189",
+        "design_use": "finite-amplitude central perturbation, periodic domain, Du/Dv=2 profile, and equal-diffusion/reaction-off mechanism limits"
+      },
+      {
+        "system": "cyclic_ca",
+        "source": "Fisch, Gravner, and Griffeath 1991/1993, arXiv:patt-sol/9304001",
+        "design_use": "successor-color contact thresholds and synchronous cyclic updates"
+      },
+      {
+        "system": "binary_ca",
+        "source": "ALife geometry_averaging_v1 local evidence",
+        "design_use": "degree-matched-12 offsets and fraction-scaled versus literal B3/S23 profiles"
+      }
+    ]
+  },
+  "interventions": [
+    {
+      "name": "physics_family",
+      "changes": {
+        "family": [
+          "binary_ca",
+          "gray_scott",
+          "cyclic_ca"
+        ]
+      }
+    },
+    {
+      "name": "dimension",
+      "changes": {
+        "dimension": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "name": "profile",
+      "changes": {
+        "profiles_per_family": 4
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "binary_static_identity",
+      "type": "null"
+    },
+    {
+      "name": "binary_global_toggle",
+      "type": "null"
+    },
+    {
+      "name": "gray_equal_diffusion",
+      "type": "mechanism_knockout"
+    },
+    {
+      "name": "gray_diffusion_only",
+      "type": "simple_limit"
+    },
+    {
+      "name": "cyclic_frozen",
+      "type": "null"
+    },
+    {
+      "name": "cyclic_global_advance",
+      "type": "null"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [
+      1101,
+      1102
+    ],
+    "confirmatory": [
+      2101,
+      2102,
+      2103,
+      2104,
+      2105
+    ],
+    "holdout": [
+      9101,
+      9102,
+      9103
+    ],
+    "pairing": "The same numeric seed and family-specific initializer pair dimensions and profiles where shapes permit; profiles within a family receive exactly the same initialized baseline and perturbation location for a given split, dimension, and seed."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "normalized_state_entropy_post_burn",
+      "categorical_turnover_post_burn",
+      "excess_neighbor_mutual_information_post_burn",
+      "activity_persistence_ratio",
+      "perturbation_response_gain",
+      "candidate_regime_occupancy"
+    ],
+    "hazard": [
+      "uniform_collapse",
+      "short_cycle",
+      "global_churn",
+      "transient_decay",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "compressibility_ratio_post_burn",
+      "unique_state_fraction",
+      "permuted_baseline_mutual_information_post_burn",
+      "perturbation_final_fraction",
+      "trajectory_digest"
+    ],
+    "denominators": {
+      "turnover": "all lattice sites between consecutive recorded states",
+      "mutual_information": "all directed degree-matched neighbor pairs or equally many pairs from a frozen family of deterministic affine permutations",
+      "perturbation_response": "differing sites divided by all lattice sites; gain is relative to the one-site initial perturbation",
+      "regime_occupancy": "independently seeded episodes in the declared condition and split"
+    },
+    "exposure": {
+      "eligibility": "Every site is eligible for exactly one synchronous rule evaluation per solver step under the declared family/profile.",
+      "activation": "Every non-control update evaluates its reaction, birth/survival, or successor-contact rule from the complete pre-update state.",
+      "state_change": "Changed-site counts and categorical turnover are retained per recorded tick for both baseline and paired perturbation trajectories.",
+      "minimum_per_condition": 2,
+      "balance_tolerance": 1.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "candidate_regime_occupancy",
+      "family_regime_mutual_information_bits",
+      "profile_vs_dimension_occupancy_range_ratio"
+    ],
+    "uncertainty": "Condition occupancy uses episode-level Jeffreys Beta(1/2,1/2) posterior intervals. Metric summaries use deterministic episode-level bootstrap intervals; ticks and cells are repeated measurements, never replicates.",
+    "multiple_comparisons": "All 36 declared family/profile/dimension cells and every negative control are reported. No champion is selected and no cell-specific threshold is fitted.",
+    "ood_conditions": [
+      "larger approximately matched holdout lattices",
+      "longer holdout horizon",
+      "disjoint holdout seed block"
+    ],
+    "stopping_rule": "Run every declared episode unless wall time exceeds 1200 seconds, process RSS exceeds 2048 MB, retained artifacts exceed 250 MB, or deterministic replay fails. Profiles were frozen before discovery; the one logged classifier correction is frozen before all confirmatory and holdout execution.",
+    "discovery_calibration": {
+      "policy": "Discovery rows may expose a classifier defect, but any correction must be logged here and frozen before confirmatory or holdout execution; no confirmatory or holdout row may be inspected first.",
+      "pre_calibration_manifest_sha256": "681c8cda75ea5509377db3aa76ef0662f4edec346a7ad02dab7be0d59bb53c73",
+      "discovery_summary_sha256": "0c13494a68f845ec346a7cb613024f5d6b014a8219c99ec69c3e36a31d99f15f",
+      "discovery_receipt_sha256": "f21454acca54d7d92809ea75c65881ac49caf70217f9253415b996d0d93b5c17",
+      "change": "Raised entropy_max_inclusive from 0.98 to the normalization ceiling 1.0. The discovery cyclic q=6 threshold=2 arm had strong excess neighbor mutual information but was rejected solely by near-maximal marginal color entropy. A pre-confirmation unit test also showed that a half-torus far-shift null aliases periodic stripes, so the excess-MI baseline was replaced by an equal-sized frozen family of deterministic affine-permutation pairs. The local-neighbor statistic, profiles, seeds, lower thresholds, turnover bound, and simulator dynamics did not change.",
+      "freeze_point": "after discovery and before valid confirmatory/holdout execution",
+      "invalid_execution_note": "Two production attempts were invalidated without inspecting confirmatory outcomes because a Gray-Scott center perturbation for one seed did not cross a categorical bin. The paired Gray perturbation was therefore standardized to move center V to the center of its adjacent 1/8 bin, guaranteeing exactly one initially differing site. Both partial raw files were overwritten from episode zero; no partial row is accepted as evidence."
+    },
+    "regime_classifier": {
+      "status": "frozen_after_discovery_before_confirmation",
+      "active_structured_candidate": {
+        "entropy_min_inclusive": 0.08,
+        "entropy_max_inclusive": 1.0,
+        "turnover_min_inclusive": 0.002,
+        "turnover_max_inclusive": 0.80,
+        "excess_neighbor_mi_min_inclusive": 0.005,
+        "activity_persistence_ratio_min_inclusive": 0.35,
+        "perturbation_response_gain_min_inclusive": 2.0,
+        "perturbation_peak_fraction_max_inclusive": 0.75,
+        "unique_state_fraction_min_inclusive": 0.50
+      },
+      "precedence": [
+        "uniform_collapse",
+        "short_cycle",
+        "global_churn",
+        "static_structured",
+        "transient_decay",
+        "active_structured_candidate",
+        "active_unstructured"
+      ]
+    }
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 512,
+    "max_episodes": 400,
+    "max_cells_per_world": 8192,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "execution": "Sequential local CPU execution; no worker parallelism, shared RNG, GPU, or external model call."
+  },
+  "design": {
+    "dimensions": [
+      2,
+      3,
+      4
+    ],
+    "matched_degree": 12,
+    "paired_perturbations": {
+      "binary_ca": "flip the center bit",
+      "cyclic_ca": "advance the center by one color",
+      "gray_scott": "move center V to the center of the adjacent 1/8 concentration bin"
+    },
+    "solver_steps_per_record_by_family": {
+      "binary_ca": 1,
+      "gray_scott": 4,
+      "cyclic_ca": 1
+    },
+    "spatial_metric_every_recorded_steps": 4,
+    "recorded_steps_by_split": {
+      "discovery": 64,
+      "confirmatory": 64,
+      "holdout": 96
+    },
+    "burn_in_recorded_steps": 16,
+    "sides_by_split": {
+      "discovery": {
+        "2": 64,
+        "3": 16,
+        "4": 8
+      },
+      "confirmatory": {
+        "2": 64,
+        "3": 16,
+        "4": 8
+      },
+      "holdout": {
+        "2": 81,
+        "3": 18,
+        "4": 9
+      }
+    },
+    "profiles": {
+      "binary_ca": [
+        {
+          "name": "fraction_band",
+          "kind": "literature_informed",
+          "birth_fraction": [
+            0.32,
+            0.42
+          ],
+          "survival_fraction": [
+            0.24,
+            0.42
+          ],
+          "initial_alive_probability": 0.35
+        },
+        {
+          "name": "literal_b3s23",
+          "kind": "reference_limit",
+          "birth_counts": [
+            3
+          ],
+          "survival_counts": [
+            2,
+            3
+          ],
+          "initial_alive_probability": 0.35
+        },
+        {
+          "name": "static_identity",
+          "kind": "null_static",
+          "initial_alive_probability": 0.35
+        },
+        {
+          "name": "global_toggle",
+          "kind": "null_churn",
+          "initial_alive_probability": 0.35
+        }
+      ],
+      "gray_scott": [
+        {
+          "name": "pearson_mitosis",
+          "kind": "literature_informed",
+          "feed": 0.022,
+          "kill": 0.051,
+          "diffusion_u": 0.16,
+          "diffusion_v": 0.08,
+          "reaction_enabled": true
+        },
+        {
+          "name": "pearson_spots",
+          "kind": "literature_informed",
+          "feed": 0.035,
+          "kill": 0.060,
+          "diffusion_u": 0.16,
+          "diffusion_v": 0.08,
+          "reaction_enabled": true
+        },
+        {
+          "name": "equal_diffusion",
+          "kind": "mechanism_limit",
+          "feed": 0.022,
+          "kill": 0.051,
+          "diffusion_u": 0.12,
+          "diffusion_v": 0.12,
+          "reaction_enabled": true
+        },
+        {
+          "name": "diffusion_only",
+          "kind": "simple_limit",
+          "feed": 0.0,
+          "kill": 0.0,
+          "diffusion_u": 0.16,
+          "diffusion_v": 0.08,
+          "reaction_enabled": false
+        }
+      ],
+      "cyclic_ca": [
+        {
+          "name": "cca_three_threshold_one",
+          "kind": "literature_informed",
+          "states": 3,
+          "successor_threshold": 1
+        },
+        {
+          "name": "cca_six_threshold_two",
+          "kind": "literature_informed",
+          "states": 6,
+          "successor_threshold": 2
+        },
+        {
+          "name": "frozen",
+          "kind": "null_static",
+          "states": 6,
+          "successor_threshold": 13
+        },
+        {
+          "name": "global_advance",
+          "kind": "null_churn",
+          "states": 6,
+          "successor_threshold": 0
+        }
+      ]
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/alt_physics_atlas_v1",
+    "raw_rows": "results/alt_physics_atlas_v1/raw_episodes.jsonl",
+    "summary": "results/alt_physics_atlas_v1/summary.json",
+    "seed_manifest": "results/alt_physics_atlas_v1/seed_manifest.json",
+    "phase_map": "results/alt_physics_atlas_v1/phase_map.csv",
+    "knowledge_card": "results/alt_physics_atlas_v1/knowledge_card.md",
+    "replay_command": "python src/alt_physics_atlas.py --manifest experiments/alt_physics_atlas_v1/manifest.json --output results/alt_physics_atlas_v1 --splits all"
+  }
+}

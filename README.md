@@ -174,6 +174,23 @@ gate, so the narrow model-only predictor is recorded in
 `registries/ontology_registry.json`. The stronger claim that every higher-gap
 topology recovers faster failed its 80% direction-consistency gate.
 
+Run and verify the deterministic alternative-physics atlas:
+
+```powershell
+python src\alt_physics_atlas.py --manifest experiments\alt_physics_atlas_v1\manifest.json --output results\alt_physics_atlas_v1 --splits all
+python src\verify_alt_physics_atlas_artifacts.py results\alt_physics_atlas_v1 --portable --replay-samples 3
+```
+
+The 360-episode CPU study crosses binary cellular automata, Gray-Scott
+reaction-diffusion, and cyclic excitable automata with dimensions 2-4 at fixed
+degree 12. Its fresh-seed regime distribution is substrate-specific, and
+profile differences exceed the mean within-profile dimension range. An equal-
+diffusion Gray-Scott control also passes the frozen pattern-candidate
+conjunction, so the result is explicitly a map of operational structured-
+activity candidates, not evidence of organisms or complex life. The equations,
+phase slice, uncertainty, literature basis, and claim boundary are in
+[the short paper](papers/alt_physics_alife_distribution.md).
+
 Run and verify the hidden-oracle discovery curriculum:
 
 ```powershell
