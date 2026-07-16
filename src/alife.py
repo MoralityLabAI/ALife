@@ -35,6 +35,10 @@ class Cell:
     imprint: float = 0.0
     prediction: float = 0.5
     surprise: float = 0.0
+    # Chronicle-only identity metadata.  These fields never participate in the
+    # transition rules or RNG, so assigning them cannot change simulation dynamics.
+    entity_id: int = 0
+    parent_ids: Tuple[int, ...] = field(default_factory=tuple)
 
     def copy(self) -> "Cell":
         return Cell(
@@ -55,6 +59,8 @@ class Cell:
             imprint=self.imprint,
             prediction=self.prediction,
             surprise=self.surprise,
+            entity_id=self.entity_id,
+            parent_ids=self.parent_ids,
         )
 
 
@@ -182,7 +188,10 @@ class LifeUniverse:
             plane_id: [[None for _ in range(width)] for _ in range(height)]
             for plane_id in self.planes
         }
+        self._next_entity_id = 1
+        self._chronicle_audit: List[Dict[str, object]] = []
         self._seed_initial(seed_density)
+        self._assign_entity_ids(self.grids)
         self.tick_count = 0
         self.last_events: Dict[str, int] = {}
         self.complexity_history: List[float] = []
@@ -698,6 +707,70 @@ class LifeUniverse:
         if 0 <= x < self.width and 0 <= y < self.height:
             grid[y][x] = value
 
+    def _assign_entity_ids(
+        self, grids: Dict[str, List[List[Optional[Cell]]]]
+    ) -> None:
+        """Assign inert, episode-stable IDs in deterministic traversal order."""
+
+        for grid in grids.values():
+            for row in grid:
+                for cell in row:
+                    if cell is not None and cell.entity_id <= 0:
+                        cell.entity_id = self._next_entity_id
+                        self._next_entity_id += 1
+
+    def _record_chronicle(
+        self,
+        event_type: str,
+        plane: str,
+        position: Coord,
+        entities: List[Tuple[str, Optional[Cell]]],
+        *,
+        cause: str,
+        details: Optional[Dict[str, object]] = None,
+    ) -> None:
+        """Retain exact cause hooks that cannot be recovered from state diffs alone."""
+
+        self._chronicle_audit.append(
+            {
+                "event_type": event_type,
+                "plane": plane,
+                "position": position,
+                "entity_refs": entities,
+                "cause": cause,
+                "details": dict(details or {}),
+            }
+        )
+
+    def _finalize_chronicle_audit(self) -> None:
+        for item in self._chronicle_audit:
+            normalized = []
+            for role, cell in item.pop("entity_refs", []):
+                if cell is None or cell.entity_id <= 0:
+                    continue
+                normalized.append(
+                    {
+                        "id": cell.entity_id,
+                        "role": role,
+                        "kind": cell.kind,
+                        "species": cell.species if cell.kind == "goblin" else None,
+                    }
+                )
+            item["entities"] = normalized
+
+    def chronicle_audit(self) -> List[Dict[str, object]]:
+        """Return the current tick's behavior-neutral chronicle cause receipts."""
+
+        return [
+            {
+                **item,
+                "position": list(item["position"]),
+                "entities": [dict(entity) for entity in item.get("entities", [])],
+                "details": dict(item.get("details", {})),
+            }
+            for item in self._chronicle_audit
+        ]
+
     def _get(self, grid: List[List[Optional[Cell]]], x: int, y: int) -> Optional[Cell]:
         return grid[y % self.height][x % self.width]
 
@@ -764,6 +837,7 @@ class LifeUniverse:
         energy: float = 1.0,
         flavor: str = "spawn",
         source_species: Optional[str] = None,
+        parent_ids: Tuple[int, ...] = (),
     ) -> Cell:
         return Cell(
             kind="goblin",
@@ -772,12 +846,18 @@ class LifeUniverse:
             flavor=flavor,
             species=self._choose_goblin_species(plane_id, neighbor_cells, source_species=source_species),
             mania=0.03 if source_species is not None else 0.0,
+            parent_ids=parent_ids,
         )
 
     def _maybe_mutate_species(self, species: str) -> str:
         if random.random() > (0.04 * self.goblin_species_mutation_scale):
             return species
-        alternatives = [option for option in {"wild", "lover", "rager", "sage", "weaver"} if option != species]
+        # A set here made seeded episodes diverge across interpreter hash salts.
+        alternatives = [
+            option
+            for option in ("wild", "lover", "rager", "sage", "weaver")
+            if option != species
+        ]
         if not alternatives:
             return species
         return random.choice(alternatives)
@@ -1029,6 +1109,7 @@ class LifeUniverse:
 
     def step(self) -> Dict[str, Dict[str, int]]:
         self.tick_count += 1
+        self._chronicle_audit = []
         event_counts = {
             "births": 0,
             "deaths": 0,
@@ -1138,7 +1219,9 @@ class LifeUniverse:
                         cd_plane[gy][gx] -= 1
 
         # Gather cross-plane warp events, then apply at end of tick.
-        gates: List[Tuple[str, int, int, str, Optional[Cell], bool, int]] = []
+        gates: List[
+            Tuple[str, int, int, str, Cell, bool, int, Cell, str, Coord, int, int]
+        ] = []
         # Gather same-plane special spawns and updates.
         pending_spawns: List[Tuple[str, int, int, Cell]] = []
         pending_kills: List[Tuple[str, int, int]] = []
@@ -1420,6 +1503,7 @@ class LifeUniverse:
                                                         energy=0.65 + random.random() * 0.25,
                                                         flavor="obsessive_offspring",
                                                         source_species=cell.species,
+                                                        parent_ids=(cell.entity_id,),
                                                     ),
                                                 )
                                             )
@@ -1435,6 +1519,14 @@ class LifeUniverse:
                                 if mutated != old_species:
                                     cell.species = mutated
                                     event_counts["goblin_species_shifts"] += 1
+                                    self._record_chronicle(
+                                        "goblin_sublineage_shift",
+                                        plane_id,
+                                        (x, y),
+                                        [("subject", cell)],
+                                        cause="species_mutation",
+                                        details={"from_species": old_species, "to_species": mutated},
+                                    )
 
                             species = cell.species
                             event_counts["goblin_cells_seen"] += 1
@@ -1502,8 +1594,26 @@ class LifeUniverse:
                                 cell.mania = max(cell.mania, 0.6)
                                 cell.fervor = min(1.0, cell.fervor + 0.38 * self.goblin_fervor_scale)
                                 event_counts["goblin_loves"] += 1
+                                self._record_chronicle(
+                                    "goblin_love",
+                                    plane_id,
+                                    (x, y),
+                                    [("subject", cell)]
+                                    + [("nearby_goblin", nearby) for _, _, nearby in nearby_goblins],
+                                    cause="nearby_goblins",
+                                    details={"love_after": cell.love, "species": cell.species},
+                                )
                                 if species == "lover":
                                     event_counts["goblin_romances"] += 1
+                                    self._record_chronicle(
+                                        "goblin_romance",
+                                        plane_id,
+                                        (x, y),
+                                        [("subject", cell)]
+                                        + [("nearby_goblin", nearby) for _, _, nearby in nearby_goblins],
+                                        cause="lover_sublineage_love",
+                                        details={"species": species},
+                                    )
                                 if cell.love > 0.0 and random.random() < 0.05 * self.goblin_obsession_scale:
                                     event_counts["love_spikes"] += 1
                                     if random.random() < 0.5 and has_insight:
@@ -1542,6 +1652,14 @@ class LifeUniverse:
                                     cell.mania = min(1.0, cell.mania + 0.08 * self.goblin_obsession_scale)
                                     cell.focus = min(1.0, cell.focus + 0.06 * self.goblin_focus_scale)
                                 event_counts["goblin_rages"] += 1
+                                self._record_chronicle(
+                                    "goblin_rage",
+                                    plane_id,
+                                    (x, y),
+                                    [("subject", cell)],
+                                    cause="active_love_state",
+                                    details={"mania_after": cell.mania, "love_after": cell.love},
+                                )
                             else:
                                 cell.mania = max(0.0, cell.mania - (0.03 * self.goblin_mania_decay_scale))
                                 cell.fervor = max(0.0, cell.fervor - 0.06 * self.goblin_fervor_scale)
@@ -1852,6 +1970,7 @@ class LifeUniverse:
                                                 energy=0.5 + random.random() * 0.35,
                                                 flavor="conversion",
                                                 source_species=cell.species,
+                                                parent_ids=(cell.entity_id,),
                                             ),
                                         )
                                     )
@@ -1927,6 +2046,25 @@ class LifeUniverse:
                                         event_counts["goblin_romances"] += 1
                                         event_counts["goblin_pairing_frenzies"] += 1
                                         event_counts["goblin_pair_affiliations"] += 1
+                                        self._record_chronicle(
+                                            "goblin_pair",
+                                            plane_id,
+                                            (x, y),
+                                            [("subject", cell), ("partner", partner)],
+                                            cause="pair_pressure",
+                                            details={
+                                                "subject_species": cell.species,
+                                                "partner_species": partner_species,
+                                            },
+                                        )
+                                        self._record_chronicle(
+                                            "goblin_romance",
+                                            plane_id,
+                                            (x, y),
+                                            [("subject", cell), ("partner", partner)],
+                                            cause="pair_formed",
+                                            details={"paired": True},
+                                        )
                                         cell.fervor = min(1.0, cell.fervor + 0.26 * self.goblin_fervor_scale)
                                         partner_boost = 0.20 * self.goblin_fervor_scale
                                         pending_fervor[partner_key] = min(1.0, pending_fervor.get(partner_key, 0.0) + partner_boost)
@@ -2098,6 +2236,7 @@ class LifeUniverse:
                                                     energy=0.9 + random.random() * 0.4,
                                                     flavor="spawn",
                                                     source_species=cell.species,
+                                                    parent_ids=(cell.entity_id,),
                                                 ),
                                             )
                                         )
@@ -2406,6 +2545,7 @@ class LifeUniverse:
                                             energy=0.74 + random.random() * 0.28,
                                             flavor="memory_recruit",
                                             source_species=cell.species,
+                                            parent_ids=(cell.entity_id,),
                                         )
                                         recruit.attention = min(1.0, cell.attention + 0.18)
                                         recruit.imprint = min(1.0, cell.imprint * 0.55)
@@ -2516,7 +2656,20 @@ class LifeUniverse:
                                 random.shuffle(neighbor_cells)
                                 for nx, ny, neighbor in neighbor_cells:
                                     if neighbor is None and next_grid[ny][nx] is None:
-                                        pending_spawns.append((plane_id, nx, ny, Cell("norn", age=0, energy=0.8 + random.random(), flavor="nurtured")))
+                                        pending_spawns.append(
+                                            (
+                                                plane_id,
+                                                nx,
+                                                ny,
+                                                Cell(
+                                                    "norn",
+                                                    age=0,
+                                                    energy=0.8 + random.random(),
+                                                    flavor="nurtured",
+                                                    parent_ids=(cell.entity_id,),
+                                                ),
+                                            )
+                                        )
                                         cell.energy -= 1.0
                                         event_counts["norn_makers"] += 1
                                         break
@@ -2540,6 +2693,8 @@ class LifeUniverse:
                                         energy=max(0.6, cell.energy * 0.92),
                                         flavor="insight_aware",
                                         meme=cell.meme + (0.1 * self.insight_learn_scale),
+                                        entity_id=cell.entity_id,
+                                        parent_ids=cell.parent_ids,
                                     )
                                     event_counts["insight_cascades"] += 1
 
@@ -2560,6 +2715,8 @@ class LifeUniverse:
                                         energy=max(0.65, cell.energy * 0.9),
                                         flavor="meme_drift",
                                         meme=min(1.0, cell.meme + 0.2 * self.meme_conversion_scale),
+                                        entity_id=cell.entity_id,
+                                        parent_ids=cell.parent_ids,
                                     )
                                     event_counts["meme_attunements"] += 1
 
@@ -2754,7 +2911,20 @@ class LifeUniverse:
                                 for nx, ny, neighbor in neighbor_cells:
                                     if neighbor is None and next_grid[ny][nx] is None:
                                         spawn_kind = "egg" if random.random() < 0.7 else "drone"
-                                        pending_spawns.append((plane_id, nx, ny, Cell(spawn_kind, age=0, energy=1.0 + random.random() * 0.5, flavor="hive")))
+                                        pending_spawns.append(
+                                            (
+                                                plane_id,
+                                                nx,
+                                                ny,
+                                                Cell(
+                                                    spawn_kind,
+                                                    age=0,
+                                                    energy=1.0 + random.random() * 0.5,
+                                                    flavor="hive",
+                                                    parent_ids=(cell.entity_id,),
+                                                ),
+                                            )
+                                        )
                                         cell.energy -= 1.1
                                         event_counts["drone_mothers"] += 1
                                         break
@@ -2790,6 +2960,9 @@ class LifeUniverse:
                                                             energy=0.35 + random.random() * 0.15,
                                                             flavor="cult_brood",
                                                             source_species=neighbor_species,
+                                                            parent_ids=(cultist.entity_id,)
+                                                            if isinstance(cultist, Cell)
+                                                            else (),
                                                         ),
                                                     )
                                                 )
@@ -2937,6 +3110,14 @@ class LifeUniverse:
                                         if random.random() < 0.20:
                                             pending_kills.append(key)
                                             event_counts["shard_culls"] += 1
+                                            self._record_chronicle(
+                                                "shard_culling",
+                                                plane_id,
+                                                (nx, ny),
+                                                [("shard", cell), ("target", neighbor)],
+                                                cause="shard_hazard",
+                                                details={"status": "marked_for_cull"},
+                                            )
                                         else:
                                             pending_damage[key] = pending_damage.get(key, 0.0) - (cfg.shard_decay_penalty * 1.4)
                                             event_counts["energy_hits"] += 1
@@ -2950,7 +3131,20 @@ class LifeUniverse:
                                 random.shuffle(neighbor_cells)
                                 for nx, ny, neighbor in neighbor_cells:
                                     if neighbor is None and next_grid[ny][nx] is None:
-                                        pending_spawns.append((plane_id, nx, ny, Cell("echo", age=0, energy=1.0, flavor="echo_bloom")))
+                                        pending_spawns.append(
+                                            (
+                                                plane_id,
+                                                nx,
+                                                ny,
+                                                Cell(
+                                                    "echo",
+                                                    age=0,
+                                                    energy=1.0,
+                                                    flavor="echo_bloom",
+                                                    parent_ids=(cell.entity_id,),
+                                                ),
+                                            )
+                                        )
                                         event_counts["echo_blooms"] += 1
                                         break
 
@@ -2974,6 +3168,7 @@ class LifeUniverse:
                                             age=0,
                                             energy=cfg.manufacturer_birth_bonus + random.random(),
                                             flavor="manufactured",
+                                            parent_ids=(cell.entity_id,),
                                         )
                                         pending_spawns.append((plane_id, nx, ny, manufacture))
                                         cell.energy -= cfg.manufacturer_spawn_cost
@@ -2989,6 +3184,8 @@ class LifeUniverse:
                                     kind=new_kind,
                                     age=0,
                                     energy=max(1.0, cell.energy * 0.7),
+                                    entity_id=cell.entity_id,
+                                    parent_ids=cell.parent_ids,
                                 )
                                 event_counts["hatches"] += 1
                             if random.random() < cfg.mutation_rate * 0.15 and plane_id == "MIRAGE":
@@ -2997,7 +3194,13 @@ class LifeUniverse:
                         if cell.kind in cfg.evolution_map and random.random() < cfg.mutation_rate:
                             evolved = self._choose_weighted(cfg.evolution_map[cell.kind])
                             if evolved != cell.kind:
-                                cell = Cell(kind=evolved, age=max(0, cell.age // 2), energy=max(0.9, cell.energy * 0.9))
+                                cell = Cell(
+                                    kind=evolved,
+                                    age=max(0, cell.age // 2),
+                                    energy=max(0.9, cell.energy * 0.9),
+                                    entity_id=cell.entity_id,
+                                    parent_ids=cell.parent_ids,
+                                )
                                 event_counts["mutations"] += 1
 
                         # Gateway checks by shape
@@ -3016,7 +3219,30 @@ class LifeUniverse:
                                     gate_roll < rule.chance * (1.0 - cfg.gate_risk_penalty)
                                     and shape_matches
                                 ):
-                                    gates.append((plane_id, x, y, rule.to_plane, Cell(rule.to_kind, age=0, energy=max(1.5, cell.energy), flavor=rule.name), rule.effects_enabled, rule.placement_search_radius))
+                                    source_cell = cell
+                                    target_cell = Cell(
+                                        rule.to_kind,
+                                        age=0,
+                                        energy=max(1.5, cell.energy),
+                                        flavor=rule.name,
+                                        parent_ids=(cell.entity_id,),
+                                    )
+                                    gates.append(
+                                        (
+                                            plane_id,
+                                            x,
+                                            y,
+                                            rule.to_plane,
+                                            target_cell,
+                                            rule.effects_enabled,
+                                            rule.placement_search_radius,
+                                            source_cell,
+                                            rule.name,
+                                            rule.anchor,
+                                            cooldown_grid[y][x],
+                                            cfg.gate_cooldown,
+                                        )
+                                    )
                                     event_counts["gate_transfers"] += 1
                                     key = f"gate_rule_transfer::{rule.name}"
                                     event_counts[key] = event_counts.get(key, 0) + 1
@@ -3042,10 +3268,20 @@ class LifeUniverse:
                         event_counts["deaths"] += 1
                         # Sometimes dying living matter leaves a residual egg / shard.
                         if random.random() < 0.12 and current.kind in {"norn", "manufacturer", "drone"}:
-                            next_grid[y][x] = Cell("egg", age=0, energy=0.7)
+                            next_grid[y][x] = Cell(
+                                "egg",
+                                age=0,
+                                energy=0.7,
+                                parent_ids=(current.entity_id,),
+                            )
                         # else remains empty.
                         if random.random() < 0.02:
-                            next_grid[y][x] = Cell("shard", age=0, energy=0.6)
+                            next_grid[y][x] = Cell(
+                                "shard",
+                                age=0,
+                                energy=0.6,
+                                parent_ids=(current.entity_id,),
+                            )
 
         # Apply environmental effects from shard noise before special spawns.
         for plane_id, x, y in pending_kills:
@@ -3090,8 +3326,41 @@ class LifeUniverse:
                 grid[ny][nx] = cell
 
         # Apply gateway teleports. Gate anchors already removed from source at creation.
-        for source_plane, x, y, target_plane, cell, effects_enabled, placement_search_radius in gates:
+        for (
+            source_plane,
+            x,
+            y,
+            target_plane,
+            cell,
+            effects_enabled,
+            placement_search_radius,
+            source_cell,
+            gate_name,
+            anchor_offset,
+            cooldown_before,
+            cooldown_after,
+        ) in gates:
             if target_plane not in next_grids:
+                self._record_chronicle(
+                    "gate_transfer_attempt",
+                    source_plane,
+                    (x, y),
+                    [("source", source_cell)],
+                    cause="gate_rule",
+                    details={
+                        "gate": gate_name,
+                        "outcome": "invalid_target_plane",
+                        "target_plane": target_plane,
+                        "target_position": None,
+                        "anchor_offset": list(anchor_offset),
+                        "anchor_position": [
+                            (x + anchor_offset[0]) % self.width,
+                            (y + anchor_offset[1]) % self.height,
+                        ],
+                        "cooldown_before": cooldown_before,
+                        "cooldown_after": cooldown_after,
+                    },
+                )
                 continue
             # Teleport with slight drift to nearby coordinate.
             tx = (x + random.choice((-1, 0, 1))) % self.width
@@ -3100,9 +3369,28 @@ class LifeUniverse:
                 event_counts["gate_effects_suppressed"] += 1
                 key = f"gate_rule_suppressed::{cell.flavor}"
                 event_counts[key] = event_counts.get(key, 0) + 1
+                self._record_chronicle(
+                    "gate_transfer_attempt",
+                    source_plane,
+                    (x, y),
+                    [("source", source_cell)],
+                    cause="gate_rule",
+                    details={
+                        "gate": gate_name,
+                        "outcome": "effects_suppressed",
+                        "target_plane": target_plane,
+                        "target_position": [tx, ty],
+                        "anchor_offset": list(anchor_offset),
+                        "anchor_position": [
+                            (x + anchor_offset[0]) % self.width,
+                            (y + anchor_offset[1]) % self.height,
+                        ],
+                        "cooldown_before": cooldown_before,
+                        "cooldown_after": cooldown_after,
+                    },
+                )
                 continue
             target_grid = next_grids[target_plane]
-            gate_name = cell.flavor
             if target_grid[ty][tx] is None:
                 cell.flavor = f"{cell.flavor}_from_{source_plane}"
                 target_grid[ty][tx] = cell
@@ -3111,6 +3399,26 @@ class LifeUniverse:
                 event_counts[key] = event_counts.get(key, 0) + 1
                 key = f"gate_rule_placement_target::{gate_name}::{target_plane}"
                 event_counts[key] = event_counts.get(key, 0) + 1
+                self._record_chronicle(
+                    "gate_transfer",
+                    source_plane,
+                    (x, y),
+                    [("source", source_cell), ("created", cell)],
+                    cause="gate_rule",
+                    details={
+                        "gate": gate_name,
+                        "outcome": "placed",
+                        "target_plane": target_plane,
+                        "target_position": [tx, ty],
+                        "anchor_offset": list(anchor_offset),
+                        "anchor_position": [
+                            (x + anchor_offset[0]) % self.width,
+                            (y + anchor_offset[1]) % self.height,
+                        ],
+                        "cooldown_before": cooldown_before,
+                        "cooldown_after": cooldown_after,
+                    },
+                )
             else:
                 rescued = None
                 radius = max(0, int(placement_search_radius))
@@ -3138,6 +3446,26 @@ class LifeUniverse:
                     event_counts["gate_target_occupied"] += 1
                     key = f"gate_rule_target_occupied::{gate_name}"
                     event_counts[key] = event_counts.get(key, 0) + 1
+                    self._record_chronicle(
+                        "gate_transfer_attempt",
+                        source_plane,
+                        (x, y),
+                        [("source", source_cell)],
+                        cause="gate_rule",
+                        details={
+                            "gate": gate_name,
+                            "outcome": "target_occupied",
+                            "target_plane": target_plane,
+                            "target_position": [tx, ty],
+                            "anchor_offset": list(anchor_offset),
+                            "anchor_position": [
+                                (x + anchor_offset[0]) % self.width,
+                                (y + anchor_offset[1]) % self.height,
+                            ],
+                            "cooldown_before": cooldown_before,
+                            "cooldown_after": cooldown_after,
+                        },
+                    )
                 else:
                     rx, ry = rescued
                     cell.flavor = f"{cell.flavor}_from_{source_plane}"
@@ -3150,8 +3478,30 @@ class LifeUniverse:
                     event_counts[key] = event_counts.get(key, 0) + 1
                     key = f"gate_rule_rescue::{gate_name}"
                     event_counts[key] = event_counts.get(key, 0) + 1
+                    self._record_chronicle(
+                        "gate_transfer",
+                        source_plane,
+                        (x, y),
+                        [("source", source_cell), ("created", cell)],
+                        cause="gate_rule",
+                        details={
+                            "gate": gate_name,
+                            "outcome": "rescued_placement",
+                            "target_plane": target_plane,
+                            "target_position": [rx, ry],
+                            "anchor_offset": list(anchor_offset),
+                            "anchor_position": [
+                                (x + anchor_offset[0]) % self.width,
+                                (y + anchor_offset[1]) % self.height,
+                            ],
+                            "cooldown_before": cooldown_before,
+                            "cooldown_after": cooldown_after,
+                        },
+                    )
 
         # Commit this tick.
+        self._assign_entity_ids(next_grids)
+        self._finalize_chronicle_audit()
         self.grids = next_grids
         stats = self.stats()
         # Complexity must observe current-tick gate placements, not the prior tick.

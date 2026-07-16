@@ -47,6 +47,32 @@ Run compact batches with aggregate summaries:
 python src/run_batch.py --batch 10 --steps 120 --seed-base 2026 --summary --output results/run_batch.jsonl
 ```
 
+## Chronicle corpus
+
+The chronicle subsystem emits deterministic gameplay facts, legends-mode
+compilations, and narration-ready SFT records with `narration: null`. It makes
+no model/API calls. Every SFT fact cites event sequences and is re-derived by
+the verifier; complexity, delight, gate flux, and coverage remain diagnostics,
+never acceptance gates. Chronicle data does not modify the ontology registry.
+
+Run a bounded campaign and verify sampled episodes:
+
+```bash
+python src/chronicle/campaign.py --episodes 20 --steps 8 --max-cells-per-world 4096 --output results/chronicle_smoke
+python src/chronicle/verify_chronicle.py results/chronicle_smoke --sample 20
+```
+
+Use `--portable` after relocating a corpus. The production PowerShell runner
+requires `results` to target `D:` and creates 500 episodes plus a dated ZIP:
+
+```powershell
+powershell -File scripts/run_chronicle_overnight.ps1
+```
+
+The frozen generator contract is
+`experiments/chronicle_v1/manifest.json`. Event, legends, SFT, replay, and
+verification records use versioned `alife.chronicle.*.v1` schemas.
+
 ## Mechanics added
 
 - `norn_maker` creates nearby `norn` when energy and timing align.

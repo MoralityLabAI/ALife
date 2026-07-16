@@ -1,0 +1,158 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Can the existing ALife generators produce a schema-clean, deterministic, byte-replayable gameplay-event corpus across native planes and bounded high-dimensional lattice worlds?",
+  "benefit": "operational",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded chronicle episode",
+  "hypotheses": [
+    {
+      "id": "H1_replay",
+      "prediction": "Every sampled episode reproduces its canonical event JSONL byte for byte from its frozen config, seed, and code hash.",
+      "falsifier": "Any sampled episode differs at any event byte, fails schema validation, or lacks an exact replay receipt."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/chronicle/campaign.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Native episodes use the existing synchronous four-plane LifeUniverse update. Lattice episodes use synchronous totalistic updates on periodic dimensions 4-11.",
+    "rng": "Native episodes use the existing random.seed(seed) stream without added draws. Lattice episodes use numpy.default_rng(seed) for initialization and deterministic updates thereafter. Episodes execute sequentially."
+  },
+  "interventions": [
+    {
+      "name": "chronicle_observation_enabled",
+      "changes": {
+        "event_recorder": true,
+        "transition_rules": "unchanged"
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    },
+    {
+      "name": "aggregate_dynamics_regression",
+      "type": "baseline"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [
+      10000
+    ],
+    "confirmatory": [
+      10001
+    ],
+    "holdout": [
+      10002
+    ],
+    "production": "Seeds 10000 through 10499, one independently initialized episode per seed.",
+    "pairing": "No causal pairing claim; numeric seeds identify complete episode RNG streams."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "sampled_event_byte_replay",
+      "schema_validation"
+    ],
+    "hazard": [
+      "wall_seconds",
+      "max_rss_mb",
+      "artifact_bytes",
+      "stopped_episode_count"
+    ],
+    "diagnostic": [
+      "complexity",
+      "delight",
+      "event_count",
+      "event_type_coverage",
+      "gate_flux"
+    ],
+    "denominators": {
+      "event_rate": "episode steps",
+      "replay_pass_rate": "sampled independently seeded episodes"
+    },
+    "exposure": {
+      "eligibility": "Every planned condition initializes its declared native or lattice world.",
+      "activation": "Every initialized world executes at least one synchronous update.",
+      "state_change": "Per-tick births, deaths, and applicable mechanic events are retained as canonical JSONL.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 1.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "sampled_event_byte_replay",
+      "schema_validation"
+    ],
+    "uncertainty": "None claimed: this is a bounded generator corpus and deterministic replay audit, not inferential evidence.",
+    "multiple_comparisons": "Not applicable. Coverage and complexity are diagnostics and never acceptance gates.",
+    "ood_conditions": [],
+    "stopping_rule": "Stop at 500 completed episodes, 7200 wall seconds, 4096 MB process RSS, 3072 MB retained artifacts, failed schema validation, or failed deterministic replay.",
+    "acceptance_boundary": "Chronicle output is data, not ontology or coverage evidence. No registry changes are authorized."
+  },
+  "budget": {
+    "max_wall_seconds": 7200,
+    "max_episode_wall_seconds": 120,
+    "max_steps_per_episode": 8,
+    "max_episodes": 500,
+    "max_cells_per_world": 4096,
+    "max_ram_mb": 4096,
+    "max_disk_mb": 3072,
+    "execution": "Sequential local CPU execution; no worker parallelism."
+  },
+  "design": {
+    "episode_count": 500,
+    "seed_start": 10000,
+    "steps": 8,
+    "native": {
+      "planes": [
+        "GENESIS",
+        "FORGE",
+        "ECHOSPHERE",
+        "MIRAGE"
+      ],
+      "width": 12,
+      "height": 8,
+      "density": 0.22
+    },
+    "lattice": {
+      "planes": [
+        "GENESIS",
+        "FORGE",
+        "ECHOSPHERE",
+        "MIRAGE"
+      ],
+      "dimensions": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "neighborhoods": [
+        "moore",
+        "degree_matched"
+      ],
+      "fixed_degree": 22,
+      "side": 2,
+      "density": 0.22,
+      "rule_profile": "fraction_band"
+    },
+    "sft": {
+      "max_window_events": 64,
+      "max_biographies_per_episode": 8
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/chronicle_corpus_20260716",
+    "raw_rows": "results/chronicle_corpus_20260716/episodes.jsonl",
+    "summary": "results/chronicle_corpus_20260716/summary.json",
+    "seed_manifest": "results/chronicle_corpus_20260716/seed_manifest.json",
+    "replay_command": "python src/chronicle/verify_chronicle.py results/chronicle_corpus_20260716 --sample 24"
+  }
+}

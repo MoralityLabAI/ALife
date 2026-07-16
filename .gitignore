@@ -10,4 +10,4 @@ venv/
 
 # Local tooling state.
 /.airis-pilot/
-
+/codex-chat-sessions/
