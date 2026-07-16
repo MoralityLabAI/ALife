@@ -16,6 +16,7 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 | 8. Alternative-physics atlas | Complete for descriptive v1 | `alt_physics_atlas_v1`; 360 deterministic episodes across three families and dimensions 2-4; short paper; passing portable verifier | Separate Gray-Scott reaction mechanism from equal-diffusion pattern candidates before making a stronger emergence claim. |
 | Pixie interaction sanctuary | Complete prototype v1 | `pixie_sanctuary_v1`; 162 paired episodes covering three critters by six actions; passing portable verifier | Move legible interactions into bounded terrain with a moving Pixie before judging playability. |
 | Pixie folded cavern | Complete higher-dimensional prototype v1 | `pixie_folded_cavern_v1`; 288 paired episodes through dimension 11; passing portable verifier | Add axis-selective notes and tomography, then dosage-match surface and fiber actions. |
+| Adventure verifier library | Complete operational v1 | Eight hard verifiers, two diagnostic-only verifiers, three environment adapters, 40-case adversarial campaign, passing meta-verifier | Add a Chronicle gate-travel quest and policy-generated traces. |
 
 ## Geometry v1 evidence receipt
 
@@ -113,3 +114,16 @@ increase global action strength.
 - Depth/response-class mutual information was `0.67350` bits in confirmation and `0.62924` bits in holdout.
 - Resources: `36.97` seconds wall time, `52.71` MB peak RSS, and about `6.8` MB retained artifacts on the D-drive results junction.
 - Verification: all schemas, mechanics cells, geometry degrees, summaries, event causes, hashes, and exact dimension-2/6/11 replays passed with no errors or warnings.
+
+## Adventure verifier library v1 evidence receipt
+
+- Contract: `experiments/adventure_verifiers_v1/manifest.json`; verifier taxonomy: `verifier_taxonomy.json`.
+- Library: typed task, trace, environment-event, verifier-result, and suite schemas with a Python API and CLI.
+- Hard gates: trace schema, event integrity, action receipts, causal grounding, route continuity, resource ledger, goal completion, and atomic claim grounding.
+- Diagnostics: exploration coverage and response diversity are explicitly ineligible for acceptance; custom verifiers may extend but not override built-ins.
+- Adapters: Pixie Sanctuary, Folded Cavern, and Chronicle event streams.
+- Fixtures: four valid controls and 36 one-at-a-time tampered adventures across discovery, confirmation, and holdout source seeds.
+- Results: 4/4 valid controls accepted, 36/36 tampered cases rejected, 36/36 targeted failures observed, and 4/4 source replays exact.
+- Robustness: malformed and non-finite canonical events return verifier failures rather than throwing.
+- Resources: under one second for the 40-case campaign, approximately `36` MB process RSS, and under `1` MB retained artifacts.
+- Independent verification: all stored suites were re-run and every source episode/case was rebuilt with zero mismatches.

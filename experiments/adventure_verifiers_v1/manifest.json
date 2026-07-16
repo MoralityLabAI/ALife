@@ -1,0 +1,144 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Does the adventure verifier library accept replay-grounded reference adventures while rejecting one-at-a-time evidence, causality, route, resource, goal, and metric-firewall tampering?",
+  "benefit": "operational",
+  "claim_scope": "model_only",
+  "experimental_unit": "one deterministic verifier fixture case built from an independently seeded folded-cavern episode",
+  "hypotheses": [
+    {
+      "id": "H1_valid_adventures_pass",
+      "prediction": "Every untampered reference adventure passes every declared hard verifier on discovery, confirmation, and holdout seeds.",
+      "falsifier": "Any untampered adventure is rejected."
+    },
+    {
+      "id": "H2_tampered_adventures_fail",
+      "prediction": "Every one-at-a-time adversarial fixture is rejected on every seed.",
+      "falsifier": "Any tampered adventure is accepted."
+    },
+    {
+      "id": "H3_targeted_verifiers_detect_tamper",
+      "prediction": "Each adversarial fixture triggers its predeclared verifier or configuration firewall.",
+      "falsifier": "A fixture is rejected only for an unrelated reason or not rejected."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/run_adventure_verifier_campaign.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "verifier_taxonomy.json",
+      "../pixie_folded_cavern_v1/manifest.json"
+    ],
+    "update_order": "Generate a deterministic folded-cavern reference episode, normalize its events, build one valid adventure, apply one declared fixture mutation, then run all hard and diagnostic verifiers.",
+    "rng": "The folded-cavern source consumes numpy.default_rng(seed) at initialization only; verifier execution is pure and consumes no randomness."
+  },
+  "interventions": [
+    {
+      "name": "one_at_a_time_trace_tamper",
+      "changes": {
+        "scenario": [
+          "forged_reference",
+          "future_evidence",
+          "missing_receipt",
+          "illegal_route",
+          "resource_tamper",
+          "false_claim",
+          "event_stream_tamper",
+          "impossible_goal",
+          "diagnostic_gate"
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {"name": "valid_reference_adventure", "type": "baseline"},
+    {"name": "one_tamper_per_fixture", "type": "mechanism_knockout"},
+    {"name": "exact_source_replay", "type": "no_op"}
+  ],
+  "seed_plan": {
+    "discovery": [3101],
+    "confirmatory": [4101, 4102],
+    "holdout": [9901],
+    "pairing": "All scenario fixtures for one seed are deep copies of the same valid task, trace, and canonical environment; exactly one declared mutation is applied."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "valid_acceptance_count",
+      "tamper_rejection_count",
+      "targeted_failure_count",
+      "expectation_match_count"
+    ],
+    "hazard": [
+      "false_acceptance",
+      "false_rejection",
+      "unrelated_only_rejection",
+      "diagnostic_used_as_gate"
+    ],
+    "diagnostic": [
+      "exploration_coverage",
+      "response_diversity",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "denominators": {
+      "fixture_detection_rate": "detected cases divided by independently seeded cases for the exact fixture class",
+      "valid_acceptance_rate": "accepted valid controls divided by valid controls"
+    },
+    "exposure": {
+      "eligibility": "Every source episode contains three action receipts, a response classification, and a Mitosis Moss deep-probe resurfacing event.",
+      "activation": "Every tampered case applies exactly one named mutation to a deep copy of its valid control.",
+      "state_change": "The campaign records the mutated task, trace, or environment and the targeted verifier result.",
+      "minimum_per_condition": 4,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "valid_acceptance_count",
+      "tamper_rejection_count",
+      "targeted_failure_count"
+    ],
+    "uncertainty": "Complete deterministic fixture enumeration over four source seeds; no tick- or event-level pseudoreplication.",
+    "multiple_comparisons": "All nine predeclared tamper classes and the valid control are retained; no verifier champion is selected.",
+    "ood_conditions": ["holdout_source_seed", "folded_cavern_dimension_6"],
+    "stopping_rule": "Stop after 40 cases, 120 wall seconds, 512 MB RSS, failed source replay, or any expectation mismatch."
+  },
+  "budget": {
+    "max_wall_seconds": 120,
+    "max_steps_per_episode": 40,
+    "max_episodes": 40,
+    "max_cells_per_world": 1024,
+    "max_ram_mb": 512,
+    "max_disk_mb": 50,
+    "execution": "Sequential local CPU execution; pure verifier calls; no external models or APIs."
+  },
+  "design": {
+    "taxonomy_path": "verifier_taxonomy.json",
+    "source_manifest": "../pixie_folded_cavern_v1/manifest.json",
+    "source_condition": {
+      "critter": "mitosis_moss",
+      "dimension": 6,
+      "neighborhood": "fixed_degree_16",
+      "intervention_depth": "axis_probe"
+    },
+    "scenarios_per_seed": 10,
+    "required_hard_verifiers": [
+      "trace_schema",
+      "event_stream_integrity",
+      "action_receipts",
+      "causal_grounding",
+      "route_continuity",
+      "resource_ledger",
+      "goal_completion",
+      "claim_grounding"
+    ],
+    "diagnostic_verifiers": ["exploration_coverage", "response_diversity"]
+  },
+  "artifacts": {
+    "output_directory": "results/adventure_verifiers_v1",
+    "raw_rows": "results/adventure_verifiers_v1/cases.jsonl",
+    "summary": "results/adventure_verifiers_v1/summary.json",
+    "seed_manifest": "results/adventure_verifiers_v1/frozen_manifest.json",
+    "replay_command": "python src/run_adventure_verifier_campaign.py --manifest experiments/adventure_verifiers_v1/manifest.json --output results/adventure_verifiers_v1"
+  }
+}

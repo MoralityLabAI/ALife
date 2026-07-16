@@ -222,6 +222,22 @@ Fixed-degree-16 spans dimensions 2, 4, 6, 8, and 11; the exponentially denser
 product-Moore diagnostic is capped at 6-D. See
 [`experiments/pixie_folded_cavern_v1/README.md`](experiments/pixie_folded_cavern_v1/README.md).
 
+Verify replay-grounded adventurer traces:
+
+```powershell
+python src\adventure_verifiers_cli.py --list
+python src\run_adventure_verifier_campaign.py --manifest experiments\adventure_verifiers_v1\manifest.json --output results\adventure_verifiers_v1
+python src\verify_adventure_verifier_artifacts.py results\adventure_verifiers_v1 --portable
+```
+
+The library checks typed traces, canonical event hashes, action receipts,
+causal timing, toroidal route continuity, resource ledgers, task goals, and
+atomic fact claims. Exploration coverage and response diversity are reported
+but cannot be used as acceptance gates. Pixie Sanctuary, Folded Cavern, and
+Chronicle adapters share one canonical event envelope. See the
+[`library API`](src/adventure_verifiers/README.md) and
+[`fixture campaign`](experiments/adventure_verifiers_v1/README.md).
+
 Run and verify the hidden-oracle discovery curriculum:
 
 ```powershell

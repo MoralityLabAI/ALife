@@ -1,0 +1,36 @@
+{
+  "schema": "alife.adventure.verifier_taxonomy.v1",
+  "purpose": "Separate hard replay-grounded adventure acceptance from exploration and interest diagnostics.",
+  "hard_verifiers": [
+    {"id": "trace_schema", "contract": "Task, trace, episode, and environment identities and typed fields agree."},
+    {"id": "event_stream_integrity", "contract": "Canonical hashes, source provenance, event IDs, and causal graph are intact."},
+    {"id": "action_receipts", "contract": "Every claimed action matches an allowed environment action receipt at the same tick and position."},
+    {"id": "causal_grounding", "contract": "Observations are not from the future; outcomes descend from actions; claim evidence exists by claim time."},
+    {"id": "route_continuity", "contract": "Every location is in bounds and every movement obeys the declared topology and step cap."},
+    {"id": "resource_ledger", "contract": "Submitted costs equal task costs, resources never go negative, and final balances re-derive exactly."},
+    {"id": "goal_completion", "contract": "Every declared event, visit, or claim-count goal is re-derived from the environment and trace."},
+    {"id": "claim_grounding", "contract": "Every atomic fact, count, or visit claim is exactly derivable from its cited evidence."}
+  ],
+  "diagnostic_verifiers": [
+    {"id": "exploration_coverage", "acceptance_eligible": false, "reports": ["unique_visited_locations", "observed_environment_event_types"]},
+    {"id": "response_diversity", "acceptance_eligible": false, "reports": ["event_type_counts"]}
+  ],
+  "environment_adapters": [
+    "alife.pixie_sanctuary.episode.v1",
+    "alife.pixie.folded_cavern.episode.v1",
+    "alife.chronicle.event.v1"
+  ],
+  "adversarial_fixture_classes": [
+    "forged_reference",
+    "future_evidence",
+    "missing_receipt",
+    "illegal_route",
+    "resource_tamper",
+    "false_claim",
+    "event_stream_tamper",
+    "impossible_goal",
+    "diagnostic_gate"
+  ],
+  "acceptance_rule": "All task-declared hard verifiers must pass. Diagnostic outputs cannot appear in required_verifiers and never contribute to acceptance.",
+  "claim_boundary": "Passing verifies the declared trace contract against supplied replay-grounded events. It is not a measure of fun, intelligence, narrative quality, or universal exploit resistance."
+}
