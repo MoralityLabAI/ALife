@@ -1,0 +1,66 @@
+{
+  "schema": "alife.graph_investigator.constitution.v1",
+  "version": "1.0.0",
+  "enforcement": "audit_only",
+  "scope": "Scientific claim and provenance governance inside the graph-state investigator gym; not organism ethics or external scientific authority.",
+  "hard_operational_invariants": [
+    "connected exact-degree graph",
+    "declared CPU/RAM/disk/task/arm budget",
+    "sealed outcome boundary",
+    "manifest and policy-freeze hash integrity",
+    "deterministic task-bank replay"
+  ],
+  "shadow_articles": [
+    {
+      "id": "EPISTEMIC_PROVENANCE",
+      "severity": "critical",
+      "rule": "Model-sound, experience-sound, or unknown evidence may be soft-stored but must not be represented as environment-sound hard elimination."
+    },
+    {
+      "id": "CALIBRATED_CLAIM",
+      "severity": "critical",
+      "rule": "A single-explanation claim requires posterior probability at least 0.90; otherwise emit a set claim or abstain."
+    },
+    {
+      "id": "MATCHED_EXPOSURE",
+      "severity": "critical",
+      "rule": "A single descriptor explanation requires at least two queried pairs targeted to that descriptor with target separation at least 0.50 z and maximum nuisance separation at most 0.25 z."
+    },
+    {
+      "id": "EXPLICIT_BOTTOM",
+      "severity": "critical",
+      "rule": "An empty public candidate domain is bottom and must be recorded; it may not be hidden, widened, or bypassed."
+    }
+  ],
+  "soft_objectives": [
+    "reduce uncertainty with at most six environment queries",
+    "predict sealed unqueried graph-pair outcomes",
+    "prefer calibrated set claims over forced point claims"
+  ],
+  "noninterference": "Shadow article results are unavailable to selection scores, posterior updates, query ordering, and evidentiary outcomes.",
+  "hybrid_compatibility": {
+    "candidate_state": "pointwise powerset domains serialized as a string-to-string-array mapping",
+    "proposal_fields": [
+      "proposed_state",
+      "soundness",
+      "mode",
+      "conflict_score",
+      "soft_store",
+      "metadata"
+    ],
+    "soundness_values": [
+      "live",
+      "env_sound_dead",
+      "model_sound_dead",
+      "experience_sound_dead",
+      "unknown"
+    ],
+    "modes": [
+      "deduce",
+      "branch",
+      "explore",
+      "abstain",
+      "expand_abstraction"
+    ]
+  }
+}

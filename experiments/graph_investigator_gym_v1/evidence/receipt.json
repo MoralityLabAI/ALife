@@ -1,0 +1,30 @@
+{
+  "code_path": "C:\\projects\\ALife\\src\\graph_investigator_gym.py",
+  "code_sha256": "1024efbe6f598c7313942bfb3523beec9c0aba8a5ba45ff0bf98cf1e5f96aa6c",
+  "cpu_logical": 12,
+  "ended_utc": "2026-07-26T00:37:17.719680+00:00",
+  "graph_arm_count": 2688,
+  "manifest_path": "C:\\projects\\ALife\\experiments\\graph_investigator_gym_v1\\manifest.json",
+  "manifest_sha256": "261d8c317ca3e372c196b10bb60234c64cb1d7a984ad5fb40b30eb0de80a1450",
+  "max_rss_mb": 113.875,
+  "networkx": "3.5",
+  "numpy": "2.4.4",
+  "output_path": "D:\\ALife\\project_results\\graph_investigator_gym_v1",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "policy_freeze_sha256": "710b434f773ae5967501d7058ecd858f9f04b558241d7fd3cfcafdc40976a780",
+  "psutil": "7.0.0",
+  "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+  "ram_total_mb": 24355.3046875,
+  "replay_command": "python src/graph_investigator_gym.py --manifest C:\\projects\\ALife\\experiments\\graph_investigator_gym_v1\\manifest.json --output D:\\ALife\\project_results\\graph_investigator_gym_v1",
+  "schema": "alife.graph_investigator.receipt.v1",
+  "started_utc": "2026-07-26T00:33:11.147373+00:00",
+  "status": "ok",
+  "stop_reason": "completed_discovery_freeze_confirmation_holdout",
+  "task_count": 112,
+  "version_control": {
+    "branch": "main",
+    "commit": "c08312194dd73f5bf17bf72e757d52f51f9c5c01",
+    "dirty": true
+  },
+  "wall_seconds": 246.57800000000134
+}

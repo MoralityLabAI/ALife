@@ -1,0 +1,216 @@
+{
+  "coefficient_prior_variance": 4.0,
+  "discovery_task_hashes": {
+    "discovery-6101-d4-c015": "2b5ebb2a99c05364dd79dfd57c3847e54206453946cb29ee9a288a4bb156f97b",
+    "discovery-6101-d4-c035": "c9a446809b473d951acbe4427c2ef249bdfecb40973f749e55de05121f9e6393",
+    "discovery-6101-d8-c015": "1aa1306bd9a92de32de0c0f49cae04e841c82b36984c29c618bed9d9d06fdd98",
+    "discovery-6101-d8-c035": "0392a85c70f041e764ae372985b47fa563bee875383d807d08c57ff531f65cfc",
+    "discovery-6102-d4-c015": "904bf793d77ac6d574bf04c6e29ea04f90f6023cc032ce5ca5e6503502da60c6",
+    "discovery-6102-d4-c035": "3c7a7953187d43c8d44a3487140b2d8c1ba81f726fe05455f3467b0d5fe32256",
+    "discovery-6102-d8-c015": "51df3b1800300895eb4197f2c251bf46b1ccdbcc33df2c69182a210a0d180899",
+    "discovery-6102-d8-c035": "9e68565749a4b20d7cac1b0b92111cf804a8a93866b60308e5d743b5896b1e89",
+    "discovery-6103-d4-c015": "3f2e3caee480447585cb74b5d604396f765e5760c2b1d1adb4aca075270cd8e9",
+    "discovery-6103-d4-c035": "f03f18c51b4a083b79a636172deead5f161c0b23af0ee402e9db8ecdc2462233",
+    "discovery-6103-d8-c015": "43399e98fc60408fab79d68d8bfa9b8d273e2d47c871bf0dc7cbba2c676a7649",
+    "discovery-6103-d8-c035": "eac0893eb577b1f564463f73b88fac4de630e41a3be21df60a70f54c671e32b0",
+    "discovery-6104-d4-c015": "77f11a922919cb4361c494de2f5a95adca791c7809a50b79e1ae56662810c754",
+    "discovery-6104-d4-c035": "8d997f826228d4dd14572b3919f08cfe1942b02b177589cf4abe451489f40cda",
+    "discovery-6104-d8-c015": "630dd3a0e5b70bcd5659b9f6927e7b60cf44514a59b265fca02531b0678f42fc",
+    "discovery-6104-d8-c035": "57510b4cee199f2b398356f1f0f369db88bb1f9ed4f4253ec3c117416495ba67"
+  },
+  "freeze_boundary": "All fields are fit from discovery banks only. Confirmation and holdout outcomes are not available at this point.",
+  "global_prior": [
+    0.7101891786795382,
+    0.12729283768107486,
+    0.12054962670992901,
+    0.04059529814258735,
+    0.0013730587868705994
+  ],
+  "lattice_elimination_relative_probability_min": 0.01,
+  "local_patch_priors": {
+    "d4-c015": [
+      0.7575045148538909,
+      0.13092557009510117,
+      0.05761634960160238,
+      0.05288932565724537,
+      0.0010642397921602129
+    ],
+    "d4-c035": [
+      0.7975612663100181,
+      0.06543708689863861,
+      0.09688885443910183,
+      0.03960295717397307,
+      0.0005098351782683262
+    ],
+    "d8-c015": [
+      0.6188692807604406,
+      0.27873200271752235,
+      0.07606768717250173,
+      0.02502776366020322,
+      0.001303265689332159
+    ],
+    "d8-c035": [
+      0.6668216527938032,
+      0.034076691013037334,
+      0.2516256156265101,
+      0.0448611460789277,
+      0.0026148944877217
+    ]
+  },
+  "model_features": {
+    "clustering": [
+      "average_clustering"
+    ],
+    "joint": [
+      "spectral_gap",
+      "average_clustering",
+      "average_shortest_path"
+    ],
+    "null": [],
+    "path_length": [
+      "average_shortest_path"
+    ],
+    "spectral_gap": [
+      "spectral_gap"
+    ]
+  },
+  "model_order": [
+    "null",
+    "spectral_gap",
+    "clustering",
+    "path_length",
+    "joint"
+  ],
+  "noise_std": 0.17507617086482485,
+  "policy_sha256": "710b434f773ae5967501d7058ecd858f9f04b558241d7fd3cfcafdc40976a780",
+  "query_budget": 6,
+  "regularization_selection": [
+    {
+      "leave_one_task_out_mean_unqueried_rmse": 0.1310475244286413,
+      "regularization": 0.0,
+      "tasks": 16
+    },
+    {
+      "leave_one_task_out_mean_unqueried_rmse": 0.13360834851502,
+      "regularization": 0.1,
+      "tasks": 16
+    },
+    {
+      "leave_one_task_out_mean_unqueried_rmse": 0.1335609850425115,
+      "regularization": 0.3,
+      "tasks": 16
+    },
+    {
+      "leave_one_task_out_mean_unqueried_rmse": 0.13789952085887297,
+      "regularization": 1.0,
+      "tasks": 16
+    }
+  ],
+  "schema": "alife.graph_investigator.policy_freeze.v1",
+  "sheaf": {
+    "edges": [
+      {
+        "left": "d4-c015",
+        "prior_js_divergence": 0.008876089462994258,
+        "restriction": "identity_on_shared_hypothesis_coordinates",
+        "right": "d4-c035",
+        "weight": 0.6681327524399032
+      },
+      {
+        "left": "d4-c015",
+        "prior_js_divergence": 0.020326156975658267,
+        "restriction": "identity_on_shared_hypothesis_coordinates",
+        "right": "d8-c015",
+        "weight": 0.39713435537250713
+      },
+      {
+        "left": "d4-c035",
+        "prior_js_divergence": 0.02369459741631729,
+        "restriction": "identity_on_shared_hypothesis_coordinates",
+        "right": "d8-c035",
+        "weight": 0.34077959110253725
+      },
+      {
+        "left": "d8-c015",
+        "prior_js_divergence": 0.08134021441461822,
+        "restriction": "identity_on_shared_hypothesis_coordinates",
+        "right": "d8-c035",
+        "weight": 0.05
+      }
+    ],
+    "eigenvalues": [
+      -2.645453300864631e-16,
+      0.7647902501788675,
+      1.235209749821133,
+      1.9999999999999998
+    ],
+    "holonomy": "trivial_by_construction_not_an_empirical_transport_claim",
+    "normalized_laplacian": [
+      [
+        1.0,
+        -0.6444760537370037,
+        -0.5754256009642349,
+        0.0
+      ],
+      [
+        -0.6444760537370037,
+        1.0,
+        0.0,
+        -0.5427263688617805
+      ],
+      [
+        -0.5754256009642349,
+        0.0,
+        1.0,
+        -0.11961483548270403
+      ],
+      [
+        0.0,
+        -0.5427263688617805,
+        -0.11961483548270403,
+        1.0
+      ]
+    ],
+    "patches": [
+      "d4-c015",
+      "d4-c035",
+      "d8-c015",
+      "d8-c035"
+    ],
+    "regularization": 0.0,
+    "restriction_maps": "identity",
+    "schema": "alife.graph_investigator.context_sheaf.v1",
+    "spectral_gap": 0.7647902501788675
+  },
+  "sheaf_patch_priors": {
+    "d4-c015": [
+      0.7575045148538909,
+      0.13092557009510114,
+      0.05761634960160239,
+      0.05288932565724538,
+      0.0010642397921602127
+    ],
+    "d4-c035": [
+      0.7975612663100181,
+      0.06543708689863863,
+      0.09688885443910186,
+      0.03960295717397307,
+      0.000509835178268326
+    ],
+    "d8-c015": [
+      0.6188692807604405,
+      0.2787320027175223,
+      0.07606768717250174,
+      0.025027763660203223,
+      0.001303265689332159
+    ],
+    "d8-c035": [
+      0.6668216527938032,
+      0.034076691013037334,
+      0.2516256156265101,
+      0.044861146078927695,
+      0.0026148944877217
+    ]
+  },
+  "single_claim_posterior_min": 0.9
+}

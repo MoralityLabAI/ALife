@@ -1,0 +1,38 @@
+{
+  "audit_fixtures.json": {
+    "bytes": 1034,
+    "sha256": "26e3ff44a7c84d5bf767ab962a6a90049b02efb8b45d46a2daeb2eabdb8b5577"
+  },
+  "frozen_manifest.json": {
+    "bytes": 10791,
+    "sha256": "261d8c317ca3e372c196b10bb60234c64cb1d7a984ad5fb40b30eb0de80a1450"
+  },
+  "knowledge_card.md": {
+    "bytes": 2555,
+    "sha256": "15866911ea867fbd665c095fb4afa13689754e47797dc56e8e9e57e648c69263"
+  },
+  "policy_freeze.json": {
+    "bytes": 6564,
+    "sha256": "6e79b198397e9e0540cc72ee07f2930dc618250426d64be19ceaf4b3934ad9f3"
+  },
+  "raw_graph_episodes.jsonl": {
+    "bytes": 3377814,
+    "sha256": "532cebec654ffbbc15b3aabacbd0ac0e561dc49e238d25dc93398cc8bcc3b363"
+  },
+  "raw_tasks.jsonl": {
+    "bytes": 11832021,
+    "sha256": "790d476b89f7a0b6bd98de663d458243e0467db8f2be802e42a849d63bc05ffd"
+  },
+  "receipt.json": {
+    "bytes": 1484,
+    "sha256": "eb6ec610aed125d7c387a4dfeea749c2cd6c99b4c6753186d53f423a48e847f4"
+  },
+  "seed_manifest.json": {
+    "bytes": 996,
+    "sha256": "db8aad8f50114884f00e04b0e1ea8621948b9cbe56423e8a8285a93718cb98be"
+  },
+  "summary.json": {
+    "bytes": 24501,
+    "sha256": "f30366d2332c6699fc74b01cb9b7223d34b9eb5212a1b6ff085cabdc4f8d88dc"
+  }
+}

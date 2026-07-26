@@ -1,0 +1,307 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "At a fixed six-query budget, can a deterministic Bayesian investigator use graph-pair active search and a discovery-frozen context sheaf to predict unqueried perturbation-recovery contrasts better than random, spectral-proxy, global, and local-patch controls?",
+  "benefit": "predictive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded sealed graph-pair task bank within a fixed degree-coupling patch; policy results are paired repeated views of that bank",
+  "hypotheses": [
+    {
+      "id": "H1_active_investigation",
+      "prediction": "On both confirmation and holdout seed blocks, the sheaf-EIG investigator improves unqueried-pair RMSE by at least 5% over the mean of four deterministic random selectors and the seed-block bootstrap lower bound is above zero.",
+      "falsifier": "Either fresh split has less than 5% mean relative improvement or a nonpositive bootstrap lower bound."
+    },
+    {
+      "id": "H2_patchwise_topology",
+      "prediction": "Gatekept on H1, the sheaf-EIG investigator improves unqueried-pair RMSE by at least 2% over local-patch EIG on both fresh splits with positive bootstrap lower bounds.",
+      "falsifier": "H1 fails, either fresh split has less than 2% incremental improvement, or either lower bound is nonpositive."
+    },
+    {
+      "id": "H3_calibrated_claiming",
+      "prediction": "On holdout, the sheaf-EIG final 90% model set has mean Jaccard at least 0.80 against the full-bank grading set and its false single-explanation rate is at most 0.05.",
+      "falsifier": "Mean Jaccard is below 0.80 or false single-explanation rate exceeds 0.05."
+    },
+    {
+      "id": "H4_shadow_constitution",
+      "prediction": "The audit-only constitution catches every frozen provenance, calibration, exposure, and bottom-state fixture while leaving policy query sequences unchanged.",
+      "falsifier": "Any fixture passes unflagged or enabling the auditor changes a selected query."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/graph_investigator_gym.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [
+      "constitution.json"
+    ],
+    "update_order": "Build a structural graph pool without outcomes; select a sealed disjoint pair bank; simulate and seal all graph outcomes; expose only descriptor deltas; select one query; reveal that outcome; update Bayesian model and public lattice states; repeat six times; finalize before exposing the full-bank grading posterior.",
+    "rng": "Task seeds own initial vector state. Stable SHA-256-derived streams separately own graph generation, holdout channel choice, random-policy order, and deterministic bootstrap. All policies see one sealed bank per task."
+  },
+  "interventions": [
+    {
+      "name": "investigator_policy",
+      "changes": {
+        "policy": [
+          "sheaf_eig",
+          "local_eig",
+          "global_eig",
+          "spectral_proxy",
+          "four_replica_random_mean"
+        ]
+      }
+    },
+    {
+      "name": "context_prior_transport",
+      "changes": {
+        "prior": [
+          "discovery_frozen_sheaf",
+          "unsmoothed_local_patch",
+          "globally_pooled",
+          "uniform"
+        ]
+      }
+    },
+    {
+      "name": "matched_graph_pair",
+      "changes": {
+        "target_descriptor": [
+          "spectral_gap",
+          "average_clustering",
+          "average_shortest_path"
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "four_replica_random_mean",
+      "type": "baseline"
+    },
+    {
+      "name": "spectral_proxy",
+      "type": "simple_limit"
+    },
+    {
+      "name": "local_eig_no_sheaf",
+      "type": "mechanism_knockout"
+    },
+    {
+      "name": "global_eig_no_patch",
+      "type": "resource_matched"
+    },
+    {
+      "name": "exact_replay",
+      "type": "no_op"
+    }
+  ],
+  "seed_plan": {
+    "discovery": [
+      6101,
+      6102,
+      6103,
+      6104
+    ],
+    "confirmatory": [
+      6201,
+      6202,
+      6203,
+      6204,
+      6205,
+      6206,
+      6207,
+      6208,
+      6209,
+      6210,
+      6211,
+      6212
+    ],
+    "holdout": [
+      6901,
+      6902,
+      6903,
+      6904,
+      6905,
+      6906,
+      6907,
+      6908,
+      6909,
+      6910,
+      6911,
+      6912
+    ],
+    "pairing": "Each seed block is crossed with all four fixed patches. Within a task, every policy views the same sealed bank and every graph-pair arm shares exact initial vector state, perturbation node, channel, magnitude, dimension, and horizon; adjacency differs by intervention."
+  },
+  "metrics": {
+    "selection": [
+      "expected_model_information_gain",
+      "absolute_spectral_gap_separation",
+      "frozen_random_order"
+    ],
+    "evidence": [
+      "unqueried_pair_rmse",
+      "relative_unqueried_rmse_improvement",
+      "full_bank_posterior_kl",
+      "credible_set_jaccard",
+      "posterior_brier",
+      "false_single_explanation_rate"
+    ],
+    "hazard": [
+      "failed_perturbation_exposure",
+      "false_hard_elimination",
+      "public_lattice_bottom",
+      "unsupported_single_explanation",
+      "receipt_spoof_acceptance",
+      "universal_abstention",
+      "runtime_seconds",
+      "max_rss_mb",
+      "retained_disk_mb"
+    ],
+    "diagnostic": [
+      "spectral_gap",
+      "average_clustering",
+      "average_shortest_path",
+      "pair_balance",
+      "posterior_entropy",
+      "context_sheaf_spectral_gap",
+      "audit_would_block"
+    ],
+    "denominators": {
+      "unqueried_pair_rmse": "the six sealed candidate-pair outcomes not queried by that policy in one task",
+      "relative_unqueried_rmse_improvement": "one policy comparison per seed block after averaging the four fixed patches",
+      "false_single_explanation_rate": "all independently seeded holdout task banks",
+      "audit_violation_rate": "all public lattice proposal steps"
+    },
+    "exposure": {
+      "eligibility": "Every candidate contains two connected exact-degree graphs, a registered perturbation node and channel, and a structural descriptor-delta receipt.",
+      "activation": "Every policy selects exactly six distinct candidates and each selected candidate reveals exactly one previously sealed paired outcome.",
+      "state_change": "Both graph arms execute the registered perturbation and retain initial/final baseline and perturbed state hashes.",
+      "minimum_per_condition": 6,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "relative_unqueried_rmse_improvement"
+    ],
+    "predictive_baseline": "The mean task-level RMSE of four deterministically seeded random six-query selectors on the same sealed bank.",
+    "uncertainty": "Policies are paired within task. Average the four fixed patches within each seed block, then use a deterministic 10000-replicate seed-block bootstrap interval. Report all block effects and interval width; ticks, graphs, pairs, policies, and patches are not treated as independent replicates.",
+    "multiple_comparisons": "One primary confirmation compares sheaf-EIG with random. Only if H1 passes are sheaf-versus-local and then calibration interpreted confirmatorily. All remaining policy comparisons are descriptive.",
+    "ood_conditions": [
+      "160-node holdout graphs versus 96/128",
+      "100-tick holdout horizon versus 60/80",
+      "12 state channels versus 4/8",
+      "fresh perturbation channels versus channel zero",
+      "alternating perturbation magnitudes 0.35 and 0.65 versus 0.5"
+    ],
+    "minimum_relative_rmse_improvement": 0.05,
+    "minimum_sheaf_incremental_improvement": 0.02,
+    "design_sensitivity": "Twelve fresh seed blocks per evaluation split are the independent cluster count. No asymptotic power claim is made; a wide seed-block interval is retained as evidence that more seeds, not more within-task pairs, are required.",
+    "stopping_rule": "Stop after 112 task banks and 2688 graph arms, at 1200 wall seconds, above 2048 MB RSS, above 250 MB retained artifacts, on graph invariant failure, failed exposure, policy-freeze hash mismatch, hidden-oracle leakage, or failed exact replay. Retain valid partial artifacts."
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 100,
+    "max_episodes": 112,
+    "max_graph_arms": 2688,
+    "max_cells_per_world": 160,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "execution": "Sequential local CPU execution with one graph-state arm resident per simulation. No GPU, model server, LLM, API, sibling-repository import, or worker process."
+  },
+  "design": {
+    "patches": [
+      {
+        "id": "d4-c015",
+        "degree": 4,
+        "coupling": 0.15
+      },
+      {
+        "id": "d4-c035",
+        "degree": 4,
+        "coupling": 0.35
+      },
+      {
+        "id": "d8-c015",
+        "degree": 8,
+        "coupling": 0.15
+      },
+      {
+        "id": "d8-c035",
+        "degree": 8,
+        "coupling": 0.35
+      }
+    ],
+    "split_design": {
+      "discovery": {
+        "nodes": 96,
+        "state_dimension": 4,
+        "steps": 60,
+        "burn_in": 15,
+        "perturbation_magnitudes": [
+          0.5
+        ]
+      },
+      "confirmatory": {
+        "nodes": 128,
+        "state_dimension": 8,
+        "steps": 80,
+        "burn_in": 20,
+        "perturbation_magnitudes": [
+          0.5
+        ]
+      },
+      "holdout": {
+        "nodes": 160,
+        "state_dimension": 12,
+        "steps": 100,
+        "burn_in": 25,
+        "perturbation_magnitudes": [
+          0.35,
+          0.65
+        ]
+      }
+    },
+    "pool_seeds": 10,
+    "rewire_doses": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "pairs_per_descriptor": 4,
+    "query_budget": 6,
+    "sheaf_regularization_candidates": [
+      0.0,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "bayesian_models": {
+      "names": [
+        "null",
+        "spectral_gap",
+        "clustering",
+        "path_length",
+        "joint"
+      ],
+      "coefficient_prior_variance": 4.0,
+      "noise_std_bounds": [
+        0.05,
+        2.0
+      ],
+      "quadrature_points": 9
+    }
+  },
+  "artifacts": {
+    "output_directory": "results/graph_investigator_gym_v1",
+    "raw_rows": "results/graph_investigator_gym_v1/raw_tasks.jsonl",
+    "raw_graph_rows": "results/graph_investigator_gym_v1/raw_graph_episodes.jsonl",
+    "summary": "results/graph_investigator_gym_v1/summary.json",
+    "seed_manifest": "results/graph_investigator_gym_v1/seed_manifest.json",
+    "policy_freeze": "results/graph_investigator_gym_v1/policy_freeze.json",
+    "replay_command": "python src/graph_investigator_gym.py --manifest experiments/graph_investigator_gym_v1/manifest.json --output results/graph_investigator_gym_v1"
+  }
+}

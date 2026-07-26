@@ -1,0 +1,51 @@
+{
+  "experimental_units": {
+    "confirmatory": 48,
+    "discovery": 16,
+    "holdout": 48
+  },
+  "pairing": "Each seed block is crossed with all four fixed patches. Within a task, every policy views the same sealed bank and every graph-pair arm shares exact initial vector state, perturbation node, channel, magnitude, dimension, and horizon; adjacency differs by intervention.",
+  "patches": [
+    "d4-c015",
+    "d4-c035",
+    "d8-c015",
+    "d8-c035"
+  ],
+  "schema": "alife.graph_investigator.seeds.v1",
+  "seed_blocks": {
+    "confirmatory": [
+      6201,
+      6202,
+      6203,
+      6204,
+      6205,
+      6206,
+      6207,
+      6208,
+      6209,
+      6210,
+      6211,
+      6212
+    ],
+    "discovery": [
+      6101,
+      6102,
+      6103,
+      6104
+    ],
+    "holdout": [
+      6901,
+      6902,
+      6903,
+      6904,
+      6905,
+      6906,
+      6907,
+      6908,
+      6909,
+      6910,
+      6911,
+      6912
+    ]
+  }
+}

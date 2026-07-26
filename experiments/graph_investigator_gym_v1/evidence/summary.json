@@ -1,0 +1,732 @@
+{
+  "audit_fixtures": {
+    "fixture_count": 4,
+    "fixtures": [
+      {
+        "expected_article": "EPISTEMIC_PROVENANCE",
+        "fixture_id": "model_claimed_environment_sound",
+        "observed_articles": [
+          "EPISTEMIC_PROVENANCE"
+        ],
+        "passed": true
+      },
+      {
+        "expected_article": "CALIBRATED_CLAIM",
+        "fixture_id": "low_confidence_single_claim",
+        "observed_articles": [
+          "CALIBRATED_CLAIM",
+          "EPISTEMIC_PROVENANCE",
+          "MATCHED_EXPOSURE"
+        ],
+        "passed": true
+      },
+      {
+        "expected_article": "MATCHED_EXPOSURE",
+        "fixture_id": "unbalanced_single_claim",
+        "observed_articles": [
+          "EPISTEMIC_PROVENANCE",
+          "MATCHED_EXPOSURE"
+        ],
+        "passed": true
+      },
+      {
+        "expected_article": "EXPLICIT_BOTTOM",
+        "fixture_id": "hidden_bottom_bypass",
+        "observed_articles": [
+          "EPISTEMIC_PROVENANCE",
+          "EXPLICIT_BOTTOM"
+        ],
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "passed_count": 4
+  },
+  "claim_boundary": "The full-bank oracle is a finite Bayesian grading target, not causal ground truth. Matched graph interventions test local structural explanations within this simulator only.",
+  "claim_scope": "model_only",
+  "exposure_audit": {
+    "eligible_pair_count": 1344,
+    "failed_pair_count": 0,
+    "passed": true
+  },
+  "graph_arm_count": 2688,
+  "hypothesis_assessment": {
+    "H1_active_investigation": {
+      "minimum_relative_improvement": 0.05,
+      "status": "supported"
+    },
+    "H2_patchwise_topology": {
+      "gatekept_by_H1": true,
+      "minimum_incremental_improvement": 0.02,
+      "status": "not_supported"
+    },
+    "H3_calibrated_claiming": {
+      "maximum_false_single_explanation_rate": 0.05,
+      "minimum_credible_set_jaccard": 0.8,
+      "status": "not_supported"
+    },
+    "H4_shadow_constitution": {
+      "enforcement": "audit_only",
+      "status": "instrument_pass"
+    }
+  },
+  "metric_firewall": {
+    "evidence": [
+      "unqueried_pair_rmse",
+      "relative_unqueried_rmse_improvement",
+      "full_bank_posterior_kl",
+      "credible_set_jaccard",
+      "posterior_brier",
+      "false_single_explanation_rate"
+    ],
+    "overlap": [],
+    "passed": true,
+    "selection": [
+      "expected_model_information_gain",
+      "absolute_spectral_gap_separation",
+      "frozen_random_order"
+    ]
+  },
+  "noise_std": 0.17507617086482485,
+  "pair_observation_count": 1344,
+  "policy_freeze_sha256": "710b434f773ae5967501d7058ecd858f9f04b558241d7fd3cfcafdc40976a780",
+  "schema": "alife.graph_investigator.summary.v1",
+  "selected_sheaf_regularization": 0.0,
+  "splits": {
+    "confirmatory": {
+      "patch_counts": {
+        "d4-c015": 12,
+        "d4-c035": 12,
+        "d8-c015": 12,
+        "d8-c035": 12
+      },
+      "policy_metrics": {
+        "global_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5659722222222222,
+          "false_single_explanation_rate": 0.7708333333333334,
+          "oracle_kl": 0.28744745753823514,
+          "posterior_brier": 0.09581352552824256,
+          "single_claim_rate": 0.7916666666666666,
+          "unqueried_rmse": 0.1530441546605844
+        },
+        "local_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5347222222222222,
+          "false_single_explanation_rate": 0.8125,
+          "oracle_kl": 0.3192355413078657,
+          "posterior_brier": 0.10511324475227421,
+          "single_claim_rate": 0.8333333333333334,
+          "unqueried_rmse": 0.14808240117922347
+        },
+        "random_mean": {
+          "audit_violation_count": 5.005208333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.7196180555555556,
+          "oracle_kl": 0.253646623342979,
+          "posterior_brier": 0.1310506837763506,
+          "unqueried_rmse": 0.18345593869058932
+        },
+        "sheaf_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5347222222222222,
+          "false_single_explanation_rate": 0.8125,
+          "oracle_kl": 0.31923554130786563,
+          "posterior_brier": 0.10511324475227421,
+          "single_claim_rate": 0.8333333333333334,
+          "unqueried_rmse": 0.14808240117922347
+        },
+        "spectral_proxy": {
+          "audit_violation_count": 5.0,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.6281249999999999,
+          "false_single_explanation_rate": 0.0,
+          "oracle_kl": 0.369183265044572,
+          "posterior_brier": 0.19878768813774034,
+          "single_claim_rate": 0.0,
+          "unqueried_rmse": 0.27138161043087866
+        }
+      },
+      "seed_blocks": 12,
+      "sheaf_vs_local": {
+        "bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "direction_fraction": 0.0,
+        "mean_relative_unqueried_rmse_improvement": 0.0,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.15190305738188534,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6201,
+            "treatment_rmse": 0.15190305738188534
+          },
+          {
+            "comparator_rmse": 0.17980247224174326,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6202,
+            "treatment_rmse": 0.17980247224174326
+          },
+          {
+            "comparator_rmse": 0.11109815699840839,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6203,
+            "treatment_rmse": 0.11109815699840839
+          },
+          {
+            "comparator_rmse": 0.1501698105852228,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6204,
+            "treatment_rmse": 0.1501698105852228
+          },
+          {
+            "comparator_rmse": 0.13425668822116535,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6205,
+            "treatment_rmse": 0.13425668822116535
+          },
+          {
+            "comparator_rmse": 0.12173427263861206,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6206,
+            "treatment_rmse": 0.12173427263861206
+          },
+          {
+            "comparator_rmse": 0.13662797162758109,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6207,
+            "treatment_rmse": 0.13662797162758109
+          },
+          {
+            "comparator_rmse": 0.15341841292467756,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6208,
+            "treatment_rmse": 0.15341841292467756
+          },
+          {
+            "comparator_rmse": 0.17727336976352828,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6209,
+            "treatment_rmse": 0.17727336976352828
+          },
+          {
+            "comparator_rmse": 0.0895437437511795,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6210,
+            "treatment_rmse": 0.0895437437511795
+          },
+          {
+            "comparator_rmse": 0.17551798989831677,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6211,
+            "treatment_rmse": 0.17551798989831677
+          },
+          {
+            "comparator_rmse": 0.19564286811836143,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6212,
+            "treatment_rmse": 0.19564286811836143
+          }
+        ]
+      },
+      "sheaf_vs_random": {
+        "bootstrap_95": [
+          0.10470976707010737,
+          0.26062678892426183
+        ],
+        "direction_fraction": 0.9166666666666666,
+        "mean_relative_unqueried_rmse_improvement": 0.18020204676697837,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.15797181961775061,
+            "patches": 4,
+            "relative_improvement": 0.038416739457392164,
+            "seed": 6201,
+            "treatment_rmse": 0.15190305738188534
+          },
+          {
+            "comparator_rmse": 0.26132755973983124,
+            "patches": 4,
+            "relative_improvement": 0.31196513517078556,
+            "seed": 6202,
+            "treatment_rmse": 0.17980247224174326
+          },
+          {
+            "comparator_rmse": 0.11534309204392934,
+            "patches": 4,
+            "relative_improvement": 0.036802681203519635,
+            "seed": 6203,
+            "treatment_rmse": 0.11109815699840839
+          },
+          {
+            "comparator_rmse": 0.1869282377782009,
+            "patches": 4,
+            "relative_improvement": 0.1966445927586055,
+            "seed": 6204,
+            "treatment_rmse": 0.1501698105852228
+          },
+          {
+            "comparator_rmse": 0.17690251884360852,
+            "patches": 4,
+            "relative_improvement": 0.2410696631185021,
+            "seed": 6205,
+            "treatment_rmse": 0.13425668822116535
+          },
+          {
+            "comparator_rmse": 0.1727360378449309,
+            "patches": 4,
+            "relative_improvement": 0.29525839449961394,
+            "seed": 6206,
+            "treatment_rmse": 0.12173427263861206
+          },
+          {
+            "comparator_rmse": 0.1665995883476699,
+            "patches": 4,
+            "relative_improvement": 0.17990210550546068,
+            "seed": 6207,
+            "treatment_rmse": 0.13662797162758109
+          },
+          {
+            "comparator_rmse": 0.16187307306091803,
+            "patches": 4,
+            "relative_improvement": 0.05223018242854206,
+            "seed": 6208,
+            "treatment_rmse": 0.15341841292467756
+          },
+          {
+            "comparator_rmse": 0.1930217571121669,
+            "patches": 4,
+            "relative_improvement": 0.08158866432599654,
+            "seed": 6209,
+            "treatment_rmse": 0.17727336976352828
+          },
+          {
+            "comparator_rmse": 0.16928949599332502,
+            "patches": 4,
+            "relative_improvement": 0.4710614310369844,
+            "seed": 6210,
+            "treatment_rmse": 0.0895437437511795
+          },
+          {
+            "comparator_rmse": 0.1750603028095709,
+            "patches": 4,
+            "relative_improvement": -0.002614453884749213,
+            "seed": 6211,
+            "treatment_rmse": 0.17551798989831677
+          },
+          {
+            "comparator_rmse": 0.26441778109516956,
+            "patches": 4,
+            "relative_improvement": 0.2600994255830873,
+            "seed": 6212,
+            "treatment_rmse": 0.19564286811836143
+          }
+        ]
+      },
+      "tasks": 48
+    },
+    "discovery": {
+      "patch_counts": {
+        "d4-c015": 4,
+        "d4-c035": 4,
+        "d8-c015": 4,
+        "d8-c035": 4
+      },
+      "policy_metrics": {
+        "global_eig": {
+          "audit_violation_count": 5.0625,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5729166666666666,
+          "false_single_explanation_rate": 0.8125,
+          "oracle_kl": 0.1795037940757227,
+          "posterior_brier": 0.04322796815179793,
+          "single_claim_rate": 0.875,
+          "unqueried_rmse": 0.13636696886988411
+        },
+        "local_eig": {
+          "audit_violation_count": 5.0625,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5729166666666666,
+          "false_single_explanation_rate": 0.8125,
+          "oracle_kl": 0.20618439779972972,
+          "posterior_brier": 0.037779435890875616,
+          "single_claim_rate": 0.875,
+          "unqueried_rmse": 0.1341678844281445
+        },
+        "random_mean": {
+          "audit_violation_count": 5.0,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.6731770833333333,
+          "oracle_kl": 0.1597176142869949,
+          "posterior_brier": 0.08927427813871754,
+          "unqueried_rmse": 0.15510504288529317
+        },
+        "sheaf_eig": {
+          "audit_violation_count": 5.0625,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5729166666666666,
+          "false_single_explanation_rate": 0.8125,
+          "oracle_kl": 0.20618439779972972,
+          "posterior_brier": 0.037779435890875616,
+          "single_claim_rate": 0.875,
+          "unqueried_rmse": 0.1341678844281445
+        },
+        "spectral_proxy": {
+          "audit_violation_count": 5.0,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.609375,
+          "false_single_explanation_rate": 0.0,
+          "oracle_kl": 0.2905906463786469,
+          "posterior_brier": 0.1594508031492685,
+          "single_claim_rate": 0.0,
+          "unqueried_rmse": 0.38994167894088905
+        }
+      },
+      "seed_blocks": 4,
+      "sheaf_vs_local": {
+        "bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "direction_fraction": 0.0,
+        "mean_relative_unqueried_rmse_improvement": 0.0,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.1806202357674618,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6101,
+            "treatment_rmse": 0.1806202357674618
+          },
+          {
+            "comparator_rmse": 0.12193849853884485,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6102,
+            "treatment_rmse": 0.12193849853884485
+          },
+          {
+            "comparator_rmse": 0.11176750230811486,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6103,
+            "treatment_rmse": 0.11176750230811486
+          },
+          {
+            "comparator_rmse": 0.12234530109815656,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6104,
+            "treatment_rmse": 0.12234530109815656
+          }
+        ]
+      },
+      "sheaf_vs_random": {
+        "bootstrap_95": [
+          0.09227994043979715,
+          0.19734823970883514
+        ],
+        "direction_fraction": 1.0,
+        "mean_relative_unqueried_rmse_improvement": 0.13950627127754023,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.19620904161474056,
+            "patches": 4,
+            "relative_improvement": 0.07944998721255474,
+            "seed": 6101,
+            "treatment_rmse": 0.1806202357674618
+          },
+          {
+            "comparator_rmse": 0.13626086340200902,
+            "patches": 4,
+            "relative_improvement": 0.10510989366703956,
+            "seed": 6102,
+            "treatment_rmse": 0.12193849853884485
+          },
+          {
+            "comparator_rmse": 0.1447942543757895,
+            "patches": 4,
+            "relative_improvement": 0.22809435505610032,
+            "seed": 6103,
+            "treatment_rmse": 0.11176750230811486
+          },
+          {
+            "comparator_rmse": 0.14315601214863363,
+            "patches": 4,
+            "relative_improvement": 0.14537084917446624,
+            "seed": 6104,
+            "treatment_rmse": 0.12234530109815656
+          }
+        ]
+      },
+      "tasks": 16
+    },
+    "holdout": {
+      "patch_counts": {
+        "d4-c015": 12,
+        "d4-c035": 12,
+        "d8-c015": 12,
+        "d8-c035": 12
+      },
+      "policy_metrics": {
+        "global_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5277777777777778,
+          "false_single_explanation_rate": 0.7916666666666666,
+          "oracle_kl": 0.3904620021909346,
+          "posterior_brier": 0.09373882859931461,
+          "single_claim_rate": 0.8333333333333334,
+          "unqueried_rmse": 0.17587825905561955
+        },
+        "local_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5295138888888888,
+          "false_single_explanation_rate": 0.75,
+          "oracle_kl": 0.43067814513979374,
+          "posterior_brier": 0.09137892141048379,
+          "single_claim_rate": 0.7708333333333334,
+          "unqueried_rmse": 0.17584323444829952
+        },
+        "random_mean": {
+          "audit_violation_count": 5.010416666666667,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.6692708333333333,
+          "oracle_kl": 0.354930043019791,
+          "posterior_brier": 0.1608664348023768,
+          "unqueried_rmse": 0.21181272099497236
+        },
+        "sheaf_eig": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.5295138888888888,
+          "false_single_explanation_rate": 0.75,
+          "oracle_kl": 0.4306781451397937,
+          "posterior_brier": 0.09137892141048377,
+          "single_claim_rate": 0.7708333333333334,
+          "unqueried_rmse": 0.17584323444829952
+        },
+        "spectral_proxy": {
+          "audit_violation_count": 5.020833333333333,
+          "audit_would_block_count": 5.0,
+          "credible_set_jaccard": 0.4878472222222222,
+          "false_single_explanation_rate": 0.020833333333333332,
+          "oracle_kl": 0.5536669750505065,
+          "posterior_brier": 0.3110474662239214,
+          "single_claim_rate": 0.020833333333333332,
+          "unqueried_rmse": 0.5086937532930166
+        }
+      },
+      "seed_blocks": 12,
+      "sheaf_vs_local": {
+        "bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "direction_fraction": 0.0,
+        "mean_relative_unqueried_rmse_improvement": 0.0,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.2037844683701971,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6901,
+            "treatment_rmse": 0.2037844683701971
+          },
+          {
+            "comparator_rmse": 0.15112779315083213,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6902,
+            "treatment_rmse": 0.15112779315083213
+          },
+          {
+            "comparator_rmse": 0.2059936767869428,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6903,
+            "treatment_rmse": 0.2059936767869428
+          },
+          {
+            "comparator_rmse": 0.24820890297376885,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6904,
+            "treatment_rmse": 0.24820890297376885
+          },
+          {
+            "comparator_rmse": 0.13614756399869277,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6905,
+            "treatment_rmse": 0.13614756399869277
+          },
+          {
+            "comparator_rmse": 0.13714648838713633,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6906,
+            "treatment_rmse": 0.13714648838713633
+          },
+          {
+            "comparator_rmse": 0.14467308021676195,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6907,
+            "treatment_rmse": 0.14467308021676195
+          },
+          {
+            "comparator_rmse": 0.17483190381885935,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6908,
+            "treatment_rmse": 0.17483190381885935
+          },
+          {
+            "comparator_rmse": 0.24337896603597067,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6909,
+            "treatment_rmse": 0.24337896603597067
+          },
+          {
+            "comparator_rmse": 0.19334110681080252,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6910,
+            "treatment_rmse": 0.19334110681080252
+          },
+          {
+            "comparator_rmse": 0.10444908293869043,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6911,
+            "treatment_rmse": 0.10444908293869043
+          },
+          {
+            "comparator_rmse": 0.1670357798909394,
+            "patches": 4,
+            "relative_improvement": 0.0,
+            "seed": 6912,
+            "treatment_rmse": 0.1670357798909394
+          }
+        ]
+      },
+      "sheaf_vs_random": {
+        "bootstrap_95": [
+          0.10168866139585231,
+          0.22494381237625719
+        ],
+        "direction_fraction": 1.0,
+        "mean_relative_unqueried_rmse_improvement": 0.16349486832887086,
+        "seed_blocks": [
+          {
+            "comparator_rmse": 0.20431170807039928,
+            "patches": 4,
+            "relative_improvement": 0.0025805652802849493,
+            "seed": 6901,
+            "treatment_rmse": 0.2037844683701971
+          },
+          {
+            "comparator_rmse": 0.16311716412452348,
+            "patches": 4,
+            "relative_improvement": 0.07350159033257024,
+            "seed": 6902,
+            "treatment_rmse": 0.15112779315083213
+          },
+          {
+            "comparator_rmse": 0.25406378361356763,
+            "patches": 4,
+            "relative_improvement": 0.18920487659799523,
+            "seed": 6903,
+            "treatment_rmse": 0.2059936767869428
+          },
+          {
+            "comparator_rmse": 0.2976290871315218,
+            "patches": 4,
+            "relative_improvement": 0.16604621757252597,
+            "seed": 6904,
+            "treatment_rmse": 0.24820890297376885
+          },
+          {
+            "comparator_rmse": 0.16047786331412303,
+            "patches": 4,
+            "relative_improvement": 0.15161156070358178,
+            "seed": 6905,
+            "treatment_rmse": 0.13614756399869277
+          },
+          {
+            "comparator_rmse": 0.1938879230576216,
+            "patches": 4,
+            "relative_improvement": 0.29265069105733965,
+            "seed": 6906,
+            "treatment_rmse": 0.13714648838713633
+          },
+          {
+            "comparator_rmse": 0.15281539969922064,
+            "patches": 4,
+            "relative_improvement": 0.053282061222133616,
+            "seed": 6907,
+            "treatment_rmse": 0.14467308021676195
+          },
+          {
+            "comparator_rmse": 0.24140064659176577,
+            "patches": 4,
+            "relative_improvement": 0.27576041619093616,
+            "seed": 6908,
+            "treatment_rmse": 0.17483190381885935
+          },
+          {
+            "comparator_rmse": 0.2477191827456645,
+            "patches": 4,
+            "relative_improvement": 0.01752071301700514,
+            "seed": 6909,
+            "treatment_rmse": 0.24337896603597067
+          },
+          {
+            "comparator_rmse": 0.289973425821269,
+            "patches": 4,
+            "relative_improvement": 0.3332454301175438,
+            "seed": 6910,
+            "treatment_rmse": 0.19334110681080252
+          },
+          {
+            "comparator_rmse": 0.1444875133602866,
+            "patches": 4,
+            "relative_improvement": 0.2771065090016353,
+            "seed": 6911,
+            "treatment_rmse": 0.10444908293869043
+          },
+          {
+            "comparator_rmse": 0.1918689544097051,
+            "patches": 4,
+            "relative_improvement": 0.12942778885289843,
+            "seed": 6912,
+            "treatment_rmse": 0.1670357798909394
+          }
+        ]
+      },
+      "tasks": 48
+    }
+  },
+  "status": "ok",
+  "stop_reason": "completed_discovery_freeze_confirmation_holdout",
+  "task_count": 112
+}

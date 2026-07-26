@@ -1,0 +1,43 @@
+{
+  "fixture_count": 4,
+  "fixtures": [
+    {
+      "expected_article": "EPISTEMIC_PROVENANCE",
+      "fixture_id": "model_claimed_environment_sound",
+      "observed_articles": [
+        "EPISTEMIC_PROVENANCE"
+      ],
+      "passed": true
+    },
+    {
+      "expected_article": "CALIBRATED_CLAIM",
+      "fixture_id": "low_confidence_single_claim",
+      "observed_articles": [
+        "CALIBRATED_CLAIM",
+        "EPISTEMIC_PROVENANCE",
+        "MATCHED_EXPOSURE"
+      ],
+      "passed": true
+    },
+    {
+      "expected_article": "MATCHED_EXPOSURE",
+      "fixture_id": "unbalanced_single_claim",
+      "observed_articles": [
+        "EPISTEMIC_PROVENANCE",
+        "MATCHED_EXPOSURE"
+      ],
+      "passed": true
+    },
+    {
+      "expected_article": "EXPLICIT_BOTTOM",
+      "fixture_id": "hidden_bottom_bypass",
+      "observed_articles": [
+        "EPISTEMIC_PROVENANCE",
+        "EXPLICIT_BOTTOM"
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "passed_count": 4
+}
