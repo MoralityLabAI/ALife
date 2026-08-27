@@ -1,0 +1,3070 @@
+{
+  "created_at": "2026-08-11T07:26:11.188429+00:00",
+  "eligible_as_evidence": false,
+  "episode_count_retained": 60,
+  "error": "canonical uncompressed audit_receipts exceed the registered 0.45 MiB per-episode ceiling",
+  "error_type": "RuntimeError",
+  "exit_status": "failed_partial",
+  "mode": "discovery",
+  "phase": "verify_episode:R11:1101",
+  "phase_checks": [
+    {
+      "compressed_artifact_bytes": 0,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 0,
+      "passed": true,
+      "peak_rss_bytes": 40792064,
+      "phase": "preflight",
+      "raw_decompressed_bytes": 0,
+      "wall_seconds": 0.829
+    },
+    {
+      "compressed_artifact_bytes": 0,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 0,
+      "passed": true,
+      "peak_rss_bytes": 40792064,
+      "phase": "before_episode:R01:1101",
+      "raw_decompressed_bytes": 0,
+      "wall_seconds": 0.829
+    },
+    {
+      "compressed_artifact_bytes": 0,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 0,
+      "passed": true,
+      "peak_rss_bytes": 169492480,
+      "phase": "world_execution:R01:1101",
+      "raw_decompressed_bytes": 0,
+      "wall_seconds": 3.891
+    },
+    {
+      "compressed_artifact_bytes": 0,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 0,
+      "passed": true,
+      "peak_rss_bytes": 169492480,
+      "phase": "verify_episode:R01:1101",
+      "raw_decompressed_bytes": 0,
+      "wall_seconds": 4.657
+    },
+    {
+      "compressed_artifact_bytes": 0,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 169492480,
+      "phase": "analysis:R01:1101",
+      "raw_decompressed_bytes": 0,
+      "wall_seconds": 4.688
+    },
+    {
+      "compressed_artifact_bytes": 383575,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 169492480,
+      "phase": "compression_flush:R01:1101",
+      "raw_decompressed_bytes": 1568630,
+      "wall_seconds": 4.719
+    },
+    {
+      "compressed_artifact_bytes": 383575,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 169492480,
+      "phase": "before_episode:R01:1102",
+      "raw_decompressed_bytes": 1568630,
+      "wall_seconds": 4.719
+    },
+    {
+      "compressed_artifact_bytes": 383575,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 174878720,
+      "phase": "world_execution:R01:1102",
+      "raw_decompressed_bytes": 1568630,
+      "wall_seconds": 7.75
+    },
+    {
+      "compressed_artifact_bytes": 383575,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 174878720,
+      "phase": "verify_episode:R01:1102",
+      "raw_decompressed_bytes": 1568630,
+      "wall_seconds": 8.532
+    },
+    {
+      "compressed_artifact_bytes": 383575,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 174878720,
+      "phase": "analysis:R01:1102",
+      "raw_decompressed_bytes": 1568630,
+      "wall_seconds": 8.547
+    },
+    {
+      "compressed_artifact_bytes": 767997,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 174878720,
+      "phase": "compression_flush:R01:1102",
+      "raw_decompressed_bytes": 3143280,
+      "wall_seconds": 8.579
+    },
+    {
+      "compressed_artifact_bytes": 767997,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 174878720,
+      "phase": "before_episode:R01:1103",
+      "raw_decompressed_bytes": 3143280,
+      "wall_seconds": 8.594
+    },
+    {
+      "compressed_artifact_bytes": 767997,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "world_execution:R01:1103",
+      "raw_decompressed_bytes": 3143280,
+      "wall_seconds": 11.672
+    },
+    {
+      "compressed_artifact_bytes": 767997,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "verify_episode:R01:1103",
+      "raw_decompressed_bytes": 3143280,
+      "wall_seconds": 12.438
+    },
+    {
+      "compressed_artifact_bytes": 767997,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "analysis:R01:1103",
+      "raw_decompressed_bytes": 3143280,
+      "wall_seconds": 12.469
+    },
+    {
+      "compressed_artifact_bytes": 1153653,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "compression_flush:R01:1103",
+      "raw_decompressed_bytes": 4721246,
+      "wall_seconds": 12.5
+    },
+    {
+      "compressed_artifact_bytes": 1153653,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "before_episode:R01:1104",
+      "raw_decompressed_bytes": 4721246,
+      "wall_seconds": 12.5
+    },
+    {
+      "compressed_artifact_bytes": 1153653,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "world_execution:R01:1104",
+      "raw_decompressed_bytes": 4721246,
+      "wall_seconds": 15.532
+    },
+    {
+      "compressed_artifact_bytes": 1153653,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "verify_episode:R01:1104",
+      "raw_decompressed_bytes": 4721246,
+      "wall_seconds": 16.297
+    },
+    {
+      "compressed_artifact_bytes": 1153653,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "analysis:R01:1104",
+      "raw_decompressed_bytes": 4721246,
+      "wall_seconds": 16.313
+    },
+    {
+      "compressed_artifact_bytes": 1522959,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "compression_flush:R01:1104",
+      "raw_decompressed_bytes": 6277267,
+      "wall_seconds": 16.344
+    },
+    {
+      "compressed_artifact_bytes": 1522959,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 176844800,
+      "phase": "before_episode:R01:1105",
+      "raw_decompressed_bytes": 6277267,
+      "wall_seconds": 16.344
+    },
+    {
+      "compressed_artifact_bytes": 1522959,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177082368,
+      "phase": "world_execution:R01:1105",
+      "raw_decompressed_bytes": 6277267,
+      "wall_seconds": 19.375
+    },
+    {
+      "compressed_artifact_bytes": 1522959,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177082368,
+      "phase": "verify_episode:R01:1105",
+      "raw_decompressed_bytes": 6277267,
+      "wall_seconds": 20.125
+    },
+    {
+      "compressed_artifact_bytes": 1522959,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177082368,
+      "phase": "analysis:R01:1105",
+      "raw_decompressed_bytes": 6277267,
+      "wall_seconds": 20.141
+    },
+    {
+      "compressed_artifact_bytes": 1897474,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177082368,
+      "phase": "compression_flush:R01:1105",
+      "raw_decompressed_bytes": 7834664,
+      "wall_seconds": 20.172
+    },
+    {
+      "compressed_artifact_bytes": 1897474,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177082368,
+      "phase": "before_episode:R01:1106",
+      "raw_decompressed_bytes": 7834664,
+      "wall_seconds": 20.172
+    },
+    {
+      "compressed_artifact_bytes": 1897474,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177467392,
+      "phase": "world_execution:R01:1106",
+      "raw_decompressed_bytes": 7834664,
+      "wall_seconds": 23.172
+    },
+    {
+      "compressed_artifact_bytes": 1897474,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177467392,
+      "phase": "verify_episode:R01:1106",
+      "raw_decompressed_bytes": 7834664,
+      "wall_seconds": 23.922
+    },
+    {
+      "compressed_artifact_bytes": 1897474,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177467392,
+      "phase": "analysis:R01:1106",
+      "raw_decompressed_bytes": 7834664,
+      "wall_seconds": 23.938
+    },
+    {
+      "compressed_artifact_bytes": 2266590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177467392,
+      "phase": "compression_flush:R01:1106",
+      "raw_decompressed_bytes": 9385533,
+      "wall_seconds": 23.969
+    },
+    {
+      "compressed_artifact_bytes": 2266590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 177467392,
+      "phase": "before_episode:R02:1101",
+      "raw_decompressed_bytes": 9385533,
+      "wall_seconds": 23.985
+    },
+    {
+      "compressed_artifact_bytes": 2266590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 178601984,
+      "phase": "world_execution:R02:1101",
+      "raw_decompressed_bytes": 9385533,
+      "wall_seconds": 26.985
+    },
+    {
+      "compressed_artifact_bytes": 2266590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 413916,
+      "passed": true,
+      "peak_rss_bytes": 178601984,
+      "phase": "verify_episode:R02:1101",
+      "raw_decompressed_bytes": 9385533,
+      "wall_seconds": 27.766
+    },
+    {
+      "compressed_artifact_bytes": 2266590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 420708,
+      "passed": true,
+      "peak_rss_bytes": 178601984,
+      "phase": "analysis:R02:1101",
+      "raw_decompressed_bytes": 9385533,
+      "wall_seconds": 27.797
+    },
+    {
+      "compressed_artifact_bytes": 2663586,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 420708,
+      "passed": true,
+      "peak_rss_bytes": 178601984,
+      "phase": "compression_flush:R02:1101",
+      "raw_decompressed_bytes": 10992071,
+      "wall_seconds": 27.829
+    },
+    {
+      "compressed_artifact_bytes": 2663586,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 420708,
+      "passed": true,
+      "peak_rss_bytes": 178601984,
+      "phase": "before_episode:R02:1102",
+      "raw_decompressed_bytes": 10992071,
+      "wall_seconds": 27.829
+    },
+    {
+      "compressed_artifact_bytes": 2663586,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 420708,
+      "passed": true,
+      "peak_rss_bytes": 179732480,
+      "phase": "world_execution:R02:1102",
+      "raw_decompressed_bytes": 10992071,
+      "wall_seconds": 30.875
+    },
+    {
+      "compressed_artifact_bytes": 2663586,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 420708,
+      "passed": true,
+      "peak_rss_bytes": 179732480,
+      "phase": "verify_episode:R02:1102",
+      "raw_decompressed_bytes": 10992071,
+      "wall_seconds": 31.657
+    },
+    {
+      "compressed_artifact_bytes": 2663586,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 179732480,
+      "phase": "analysis:R02:1102",
+      "raw_decompressed_bytes": 10992071,
+      "wall_seconds": 31.688
+    },
+    {
+      "compressed_artifact_bytes": 3079853,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 179732480,
+      "phase": "compression_flush:R02:1102",
+      "raw_decompressed_bytes": 12669083,
+      "wall_seconds": 31.719
+    },
+    {
+      "compressed_artifact_bytes": 3079853,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 179732480,
+      "phase": "before_episode:R02:1103",
+      "raw_decompressed_bytes": 12669083,
+      "wall_seconds": 31.719
+    },
+    {
+      "compressed_artifact_bytes": 3079853,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "world_execution:R02:1103",
+      "raw_decompressed_bytes": 12669083,
+      "wall_seconds": 34.766
+    },
+    {
+      "compressed_artifact_bytes": 3079853,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "verify_episode:R02:1103",
+      "raw_decompressed_bytes": 12669083,
+      "wall_seconds": 35.563
+    },
+    {
+      "compressed_artifact_bytes": 3079853,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "analysis:R02:1103",
+      "raw_decompressed_bytes": 12669083,
+      "wall_seconds": 35.594
+    },
+    {
+      "compressed_artifact_bytes": 3496572,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "compression_flush:R02:1103",
+      "raw_decompressed_bytes": 14344190,
+      "wall_seconds": 35.625
+    },
+    {
+      "compressed_artifact_bytes": 3496572,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "before_episode:R02:1104",
+      "raw_decompressed_bytes": 14344190,
+      "wall_seconds": 35.625
+    },
+    {
+      "compressed_artifact_bytes": 3496572,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "world_execution:R02:1104",
+      "raw_decompressed_bytes": 14344190,
+      "wall_seconds": 38.75
+    },
+    {
+      "compressed_artifact_bytes": 3496572,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421052,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "verify_episode:R02:1104",
+      "raw_decompressed_bytes": 14344190,
+      "wall_seconds": 39.532
+    },
+    {
+      "compressed_artifact_bytes": 3496572,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "analysis:R02:1104",
+      "raw_decompressed_bytes": 14344190,
+      "wall_seconds": 39.563
+    },
+    {
+      "compressed_artifact_bytes": 3897282,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "compression_flush:R02:1104",
+      "raw_decompressed_bytes": 15980945,
+      "wall_seconds": 39.594
+    },
+    {
+      "compressed_artifact_bytes": 3897282,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 180989952,
+      "phase": "before_episode:R02:1105",
+      "raw_decompressed_bytes": 15980945,
+      "wall_seconds": 39.61
+    },
+    {
+      "compressed_artifact_bytes": 3897282,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181682176,
+      "phase": "world_execution:R02:1105",
+      "raw_decompressed_bytes": 15980945,
+      "wall_seconds": 42.594
+    },
+    {
+      "compressed_artifact_bytes": 3897282,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181682176,
+      "phase": "verify_episode:R02:1105",
+      "raw_decompressed_bytes": 15980945,
+      "wall_seconds": 43.391
+    },
+    {
+      "compressed_artifact_bytes": 3897282,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181682176,
+      "phase": "analysis:R02:1105",
+      "raw_decompressed_bytes": 15980945,
+      "wall_seconds": 43.407
+    },
+    {
+      "compressed_artifact_bytes": 4298157,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181682176,
+      "phase": "compression_flush:R02:1105",
+      "raw_decompressed_bytes": 17627869,
+      "wall_seconds": 43.438
+    },
+    {
+      "compressed_artifact_bytes": 4298157,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181682176,
+      "phase": "before_episode:R02:1106",
+      "raw_decompressed_bytes": 17627869,
+      "wall_seconds": 43.438
+    },
+    {
+      "compressed_artifact_bytes": 4298157,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181895168,
+      "phase": "world_execution:R02:1106",
+      "raw_decompressed_bytes": 17627869,
+      "wall_seconds": 46.469
+    },
+    {
+      "compressed_artifact_bytes": 4298157,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181895168,
+      "phase": "verify_episode:R02:1106",
+      "raw_decompressed_bytes": 17627869,
+      "wall_seconds": 47.235
+    },
+    {
+      "compressed_artifact_bytes": 4298157,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181895168,
+      "phase": "analysis:R02:1106",
+      "raw_decompressed_bytes": 17627869,
+      "wall_seconds": 47.25
+    },
+    {
+      "compressed_artifact_bytes": 4699477,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181895168,
+      "phase": "compression_flush:R02:1106",
+      "raw_decompressed_bytes": 19272105,
+      "wall_seconds": 47.297
+    },
+    {
+      "compressed_artifact_bytes": 4699477,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 181895168,
+      "phase": "before_episode:R03:1101",
+      "raw_decompressed_bytes": 19272105,
+      "wall_seconds": 47.297
+    },
+    {
+      "compressed_artifact_bytes": 4699477,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 183136256,
+      "phase": "world_execution:R03:1101",
+      "raw_decompressed_bytes": 19272105,
+      "wall_seconds": 50.329
+    },
+    {
+      "compressed_artifact_bytes": 4699477,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 421272,
+      "passed": true,
+      "peak_rss_bytes": 183136256,
+      "phase": "verify_episode:R03:1101",
+      "raw_decompressed_bytes": 19272105,
+      "wall_seconds": 51.11
+    },
+    {
+      "compressed_artifact_bytes": 4699477,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 183136256,
+      "phase": "analysis:R03:1101",
+      "raw_decompressed_bytes": 19272105,
+      "wall_seconds": 51.141
+    },
+    {
+      "compressed_artifact_bytes": 5127632,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 183136256,
+      "phase": "compression_flush:R03:1101",
+      "raw_decompressed_bytes": 20988289,
+      "wall_seconds": 51.172
+    },
+    {
+      "compressed_artifact_bytes": 5127632,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 183136256,
+      "phase": "before_episode:R03:1102",
+      "raw_decompressed_bytes": 20988289,
+      "wall_seconds": 51.172
+    },
+    {
+      "compressed_artifact_bytes": 5127632,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "world_execution:R03:1102",
+      "raw_decompressed_bytes": 20988289,
+      "wall_seconds": 54.204
+    },
+    {
+      "compressed_artifact_bytes": 5127632,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "verify_episode:R03:1102",
+      "raw_decompressed_bytes": 20988289,
+      "wall_seconds": 55.0
+    },
+    {
+      "compressed_artifact_bytes": 5127632,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "analysis:R03:1102",
+      "raw_decompressed_bytes": 20988289,
+      "wall_seconds": 55.032
+    },
+    {
+      "compressed_artifact_bytes": 5568268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "compression_flush:R03:1102",
+      "raw_decompressed_bytes": 22749848,
+      "wall_seconds": 55.079
+    },
+    {
+      "compressed_artifact_bytes": 5568268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "before_episode:R03:1103",
+      "raw_decompressed_bytes": 22749848,
+      "wall_seconds": 55.079
+    },
+    {
+      "compressed_artifact_bytes": 5568268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "world_execution:R03:1103",
+      "raw_decompressed_bytes": 22749848,
+      "wall_seconds": 58.125
+    },
+    {
+      "compressed_artifact_bytes": 5568268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "verify_episode:R03:1103",
+      "raw_decompressed_bytes": 22749848,
+      "wall_seconds": 58.922
+    },
+    {
+      "compressed_artifact_bytes": 5568268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "analysis:R03:1103",
+      "raw_decompressed_bytes": 22749848,
+      "wall_seconds": 58.954
+    },
+    {
+      "compressed_artifact_bytes": 5996863,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "compression_flush:R03:1103",
+      "raw_decompressed_bytes": 24462854,
+      "wall_seconds": 58.985
+    },
+    {
+      "compressed_artifact_bytes": 5996863,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "before_episode:R03:1104",
+      "raw_decompressed_bytes": 24462854,
+      "wall_seconds": 58.985
+    },
+    {
+      "compressed_artifact_bytes": 5996863,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "world_execution:R03:1104",
+      "raw_decompressed_bytes": 24462854,
+      "wall_seconds": 62.032
+    },
+    {
+      "compressed_artifact_bytes": 5996863,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 427995,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "verify_episode:R03:1104",
+      "raw_decompressed_bytes": 24462854,
+      "wall_seconds": 62.844
+    },
+    {
+      "compressed_artifact_bytes": 5996863,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428247,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "analysis:R03:1104",
+      "raw_decompressed_bytes": 24462854,
+      "wall_seconds": 62.875
+    },
+    {
+      "compressed_artifact_bytes": 6440509,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428247,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "compression_flush:R03:1104",
+      "raw_decompressed_bytes": 26234605,
+      "wall_seconds": 62.922
+    },
+    {
+      "compressed_artifact_bytes": 6440509,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428247,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "before_episode:R03:1105",
+      "raw_decompressed_bytes": 26234605,
+      "wall_seconds": 62.922
+    },
+    {
+      "compressed_artifact_bytes": 6440509,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428247,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "world_execution:R03:1105",
+      "raw_decompressed_bytes": 26234605,
+      "wall_seconds": 66.047
+    },
+    {
+      "compressed_artifact_bytes": 6440509,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428247,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "verify_episode:R03:1105",
+      "raw_decompressed_bytes": 26234605,
+      "wall_seconds": 66.844
+    },
+    {
+      "compressed_artifact_bytes": 6440509,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "analysis:R03:1105",
+      "raw_decompressed_bytes": 26234605,
+      "wall_seconds": 66.86
+    },
+    {
+      "compressed_artifact_bytes": 6868285,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "compression_flush:R03:1105",
+      "raw_decompressed_bytes": 27953934,
+      "wall_seconds": 66.891
+    },
+    {
+      "compressed_artifact_bytes": 6868285,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "before_episode:R03:1106",
+      "raw_decompressed_bytes": 27953934,
+      "wall_seconds": 66.891
+    },
+    {
+      "compressed_artifact_bytes": 6868285,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "world_execution:R03:1106",
+      "raw_decompressed_bytes": 27953934,
+      "wall_seconds": 69.985
+    },
+    {
+      "compressed_artifact_bytes": 6868285,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "verify_episode:R03:1106",
+      "raw_decompressed_bytes": 27953934,
+      "wall_seconds": 70.797
+    },
+    {
+      "compressed_artifact_bytes": 6868285,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "analysis:R03:1106",
+      "raw_decompressed_bytes": 27953934,
+      "wall_seconds": 70.813
+    },
+    {
+      "compressed_artifact_bytes": 7307200,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "compression_flush:R03:1106",
+      "raw_decompressed_bytes": 29734150,
+      "wall_seconds": 70.86
+    },
+    {
+      "compressed_artifact_bytes": 7307200,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184152064,
+      "phase": "before_episode:R04:1101",
+      "raw_decompressed_bytes": 29734150,
+      "wall_seconds": 70.86
+    },
+    {
+      "compressed_artifact_bytes": 7307200,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184848384,
+      "phase": "world_execution:R04:1101",
+      "raw_decompressed_bytes": 29734150,
+      "wall_seconds": 74.079
+    },
+    {
+      "compressed_artifact_bytes": 7307200,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 428446,
+      "passed": true,
+      "peak_rss_bytes": 184848384,
+      "phase": "verify_episode:R04:1101",
+      "raw_decompressed_bytes": 29734150,
+      "wall_seconds": 74.985
+    },
+    {
+      "compressed_artifact_bytes": 7307200,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 184848384,
+      "phase": "analysis:R04:1101",
+      "raw_decompressed_bytes": 29734150,
+      "wall_seconds": 75.016
+    },
+    {
+      "compressed_artifact_bytes": 7767827,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 184848384,
+      "phase": "compression_flush:R04:1101",
+      "raw_decompressed_bytes": 31553517,
+      "wall_seconds": 75.047
+    },
+    {
+      "compressed_artifact_bytes": 7767827,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 184848384,
+      "phase": "before_episode:R04:1102",
+      "raw_decompressed_bytes": 31553517,
+      "wall_seconds": 75.063
+    },
+    {
+      "compressed_artifact_bytes": 7767827,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185036800,
+      "phase": "world_execution:R04:1102",
+      "raw_decompressed_bytes": 31553517,
+      "wall_seconds": 78.391
+    },
+    {
+      "compressed_artifact_bytes": 7767827,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185036800,
+      "phase": "verify_episode:R04:1102",
+      "raw_decompressed_bytes": 31553517,
+      "wall_seconds": 79.422
+    },
+    {
+      "compressed_artifact_bytes": 7767827,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185036800,
+      "phase": "analysis:R04:1102",
+      "raw_decompressed_bytes": 31553517,
+      "wall_seconds": 79.438
+    },
+    {
+      "compressed_artifact_bytes": 8252979,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185036800,
+      "phase": "compression_flush:R04:1102",
+      "raw_decompressed_bytes": 33475062,
+      "wall_seconds": 79.5
+    },
+    {
+      "compressed_artifact_bytes": 8252979,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185036800,
+      "phase": "before_episode:R04:1103",
+      "raw_decompressed_bytes": 33475062,
+      "wall_seconds": 79.5
+    },
+    {
+      "compressed_artifact_bytes": 8252979,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185425920,
+      "phase": "world_execution:R04:1103",
+      "raw_decompressed_bytes": 33475062,
+      "wall_seconds": 82.985
+    },
+    {
+      "compressed_artifact_bytes": 8252979,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185425920,
+      "phase": "verify_episode:R04:1103",
+      "raw_decompressed_bytes": 33475062,
+      "wall_seconds": 83.844
+    },
+    {
+      "compressed_artifact_bytes": 8252979,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185425920,
+      "phase": "analysis:R04:1103",
+      "raw_decompressed_bytes": 33475062,
+      "wall_seconds": 83.875
+    },
+    {
+      "compressed_artifact_bytes": 8722691,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185425920,
+      "phase": "compression_flush:R04:1103",
+      "raw_decompressed_bytes": 35333913,
+      "wall_seconds": 83.922
+    },
+    {
+      "compressed_artifact_bytes": 8722691,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 185425920,
+      "phase": "before_episode:R04:1104",
+      "raw_decompressed_bytes": 35333913,
+      "wall_seconds": 83.922
+    },
+    {
+      "compressed_artifact_bytes": 8722691,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186126336,
+      "phase": "world_execution:R04:1104",
+      "raw_decompressed_bytes": 35333913,
+      "wall_seconds": 86.985
+    },
+    {
+      "compressed_artifact_bytes": 8722691,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186126336,
+      "phase": "verify_episode:R04:1104",
+      "raw_decompressed_bytes": 35333913,
+      "wall_seconds": 87.813
+    },
+    {
+      "compressed_artifact_bytes": 8722691,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186126336,
+      "phase": "analysis:R04:1104",
+      "raw_decompressed_bytes": 35333913,
+      "wall_seconds": 87.844
+    },
+    {
+      "compressed_artifact_bytes": 9187858,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186126336,
+      "phase": "compression_flush:R04:1104",
+      "raw_decompressed_bytes": 37187218,
+      "wall_seconds": 87.875
+    },
+    {
+      "compressed_artifact_bytes": 9187858,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186126336,
+      "phase": "before_episode:R04:1105",
+      "raw_decompressed_bytes": 37187218,
+      "wall_seconds": 87.875
+    },
+    {
+      "compressed_artifact_bytes": 9187858,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "world_execution:R04:1105",
+      "raw_decompressed_bytes": 37187218,
+      "wall_seconds": 91.094
+    },
+    {
+      "compressed_artifact_bytes": 9187858,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "verify_episode:R04:1105",
+      "raw_decompressed_bytes": 37187218,
+      "wall_seconds": 91.891
+    },
+    {
+      "compressed_artifact_bytes": 9187858,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "analysis:R04:1105",
+      "raw_decompressed_bytes": 37187218,
+      "wall_seconds": 91.922
+    },
+    {
+      "compressed_artifact_bytes": 9634176,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "compression_flush:R04:1105",
+      "raw_decompressed_bytes": 38964345,
+      "wall_seconds": 91.954
+    },
+    {
+      "compressed_artifact_bytes": 9634176,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "before_episode:R04:1106",
+      "raw_decompressed_bytes": 38964345,
+      "wall_seconds": 91.969
+    },
+    {
+      "compressed_artifact_bytes": 9634176,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "world_execution:R04:1106",
+      "raw_decompressed_bytes": 38964345,
+      "wall_seconds": 95.391
+    },
+    {
+      "compressed_artifact_bytes": 9634176,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "verify_episode:R04:1106",
+      "raw_decompressed_bytes": 38964345,
+      "wall_seconds": 96.422
+    },
+    {
+      "compressed_artifact_bytes": 9634176,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "analysis:R04:1106",
+      "raw_decompressed_bytes": 38964345,
+      "wall_seconds": 96.438
+    },
+    {
+      "compressed_artifact_bytes": 10071917,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "compression_flush:R04:1106",
+      "raw_decompressed_bytes": 40726531,
+      "wall_seconds": 96.485
+    },
+    {
+      "compressed_artifact_bytes": 10071917,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186273792,
+      "phase": "before_episode:R05:1101",
+      "raw_decompressed_bytes": 40726531,
+      "wall_seconds": 96.485
+    },
+    {
+      "compressed_artifact_bytes": 10071917,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186880000,
+      "phase": "world_execution:R05:1101",
+      "raw_decompressed_bytes": 40726531,
+      "wall_seconds": 99.735
+    },
+    {
+      "compressed_artifact_bytes": 10071917,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 436489,
+      "passed": true,
+      "peak_rss_bytes": 186880000,
+      "phase": "verify_episode:R05:1101",
+      "raw_decompressed_bytes": 40726531,
+      "wall_seconds": 100.579
+    },
+    {
+      "compressed_artifact_bytes": 10071917,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 186880000,
+      "phase": "analysis:R05:1101",
+      "raw_decompressed_bytes": 40726531,
+      "wall_seconds": 100.61
+    },
+    {
+      "compressed_artifact_bytes": 10547070,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 186880000,
+      "phase": "compression_flush:R05:1101",
+      "raw_decompressed_bytes": 42619026,
+      "wall_seconds": 100.641
+    },
+    {
+      "compressed_artifact_bytes": 10547070,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 186880000,
+      "phase": "before_episode:R05:1102",
+      "raw_decompressed_bytes": 42619026,
+      "wall_seconds": 100.657
+    },
+    {
+      "compressed_artifact_bytes": 10547070,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 187785216,
+      "phase": "world_execution:R05:1102",
+      "raw_decompressed_bytes": 42619026,
+      "wall_seconds": 103.922
+    },
+    {
+      "compressed_artifact_bytes": 10547070,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 187785216,
+      "phase": "verify_episode:R05:1102",
+      "raw_decompressed_bytes": 42619026,
+      "wall_seconds": 104.891
+    },
+    {
+      "compressed_artifact_bytes": 10547070,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 187785216,
+      "phase": "analysis:R05:1102",
+      "raw_decompressed_bytes": 42619026,
+      "wall_seconds": 104.922
+    },
+    {
+      "compressed_artifact_bytes": 11064706,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 187785216,
+      "phase": "compression_flush:R05:1102",
+      "raw_decompressed_bytes": 44661405,
+      "wall_seconds": 104.969
+    },
+    {
+      "compressed_artifact_bytes": 11064706,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 187785216,
+      "phase": "before_episode:R05:1103",
+      "raw_decompressed_bytes": 44661405,
+      "wall_seconds": 104.969
+    },
+    {
+      "compressed_artifact_bytes": 11064706,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "world_execution:R05:1103",
+      "raw_decompressed_bytes": 44661405,
+      "wall_seconds": 109.907
+    },
+    {
+      "compressed_artifact_bytes": 11064706,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "verify_episode:R05:1103",
+      "raw_decompressed_bytes": 44661405,
+      "wall_seconds": 111.469
+    },
+    {
+      "compressed_artifact_bytes": 11064706,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "analysis:R05:1103",
+      "raw_decompressed_bytes": 44661405,
+      "wall_seconds": 111.5
+    },
+    {
+      "compressed_artifact_bytes": 11564697,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "compression_flush:R05:1103",
+      "raw_decompressed_bytes": 46649216,
+      "wall_seconds": 111.547
+    },
+    {
+      "compressed_artifact_bytes": 11564697,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "before_episode:R05:1104",
+      "raw_decompressed_bytes": 46649216,
+      "wall_seconds": 111.547
+    },
+    {
+      "compressed_artifact_bytes": 11564697,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "world_execution:R05:1104",
+      "raw_decompressed_bytes": 46649216,
+      "wall_seconds": 114.735
+    },
+    {
+      "compressed_artifact_bytes": 11564697,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "verify_episode:R05:1104",
+      "raw_decompressed_bytes": 46649216,
+      "wall_seconds": 115.641
+    },
+    {
+      "compressed_artifact_bytes": 11564697,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "analysis:R05:1104",
+      "raw_decompressed_bytes": 46649216,
+      "wall_seconds": 115.657
+    },
+    {
+      "compressed_artifact_bytes": 12091123,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "compression_flush:R05:1104",
+      "raw_decompressed_bytes": 48726989,
+      "wall_seconds": 115.704
+    },
+    {
+      "compressed_artifact_bytes": 12091123,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 188825600,
+      "phase": "before_episode:R05:1105",
+      "raw_decompressed_bytes": 48726989,
+      "wall_seconds": 115.704
+    },
+    {
+      "compressed_artifact_bytes": 12091123,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R05:1105",
+      "raw_decompressed_bytes": 48726989,
+      "wall_seconds": 118.829
+    },
+    {
+      "compressed_artifact_bytes": 12091123,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R05:1105",
+      "raw_decompressed_bytes": 48726989,
+      "wall_seconds": 119.688
+    },
+    {
+      "compressed_artifact_bytes": 12091123,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R05:1105",
+      "raw_decompressed_bytes": 48726989,
+      "wall_seconds": 119.719
+    },
+    {
+      "compressed_artifact_bytes": 12589519,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R05:1105",
+      "raw_decompressed_bytes": 50708222,
+      "wall_seconds": 119.75
+    },
+    {
+      "compressed_artifact_bytes": 12589519,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R05:1106",
+      "raw_decompressed_bytes": 50708222,
+      "wall_seconds": 119.75
+    },
+    {
+      "compressed_artifact_bytes": 12589519,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R05:1106",
+      "raw_decompressed_bytes": 50708222,
+      "wall_seconds": 122.954
+    },
+    {
+      "compressed_artifact_bytes": 12589519,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R05:1106",
+      "raw_decompressed_bytes": 50708222,
+      "wall_seconds": 123.829
+    },
+    {
+      "compressed_artifact_bytes": 12589519,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R05:1106",
+      "raw_decompressed_bytes": 50708222,
+      "wall_seconds": 123.86
+    },
+    {
+      "compressed_artifact_bytes": 13109266,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R05:1106",
+      "raw_decompressed_bytes": 52774761,
+      "wall_seconds": 123.907
+    },
+    {
+      "compressed_artifact_bytes": 13109266,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1101",
+      "raw_decompressed_bytes": 52774761,
+      "wall_seconds": 123.907
+    },
+    {
+      "compressed_artifact_bytes": 13109266,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1101",
+      "raw_decompressed_bytes": 52774761,
+      "wall_seconds": 126.954
+    },
+    {
+      "compressed_artifact_bytes": 13109266,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 443372,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1101",
+      "raw_decompressed_bytes": 52774761,
+      "wall_seconds": 127.719
+    },
+    {
+      "compressed_artifact_bytes": 13109266,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1101",
+      "raw_decompressed_bytes": 52774761,
+      "wall_seconds": 127.735
+    },
+    {
+      "compressed_artifact_bytes": 13522196,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1101",
+      "raw_decompressed_bytes": 54425452,
+      "wall_seconds": 127.782
+    },
+    {
+      "compressed_artifact_bytes": 13522196,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1102",
+      "raw_decompressed_bytes": 54425452,
+      "wall_seconds": 127.782
+    },
+    {
+      "compressed_artifact_bytes": 13522196,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1102",
+      "raw_decompressed_bytes": 54425452,
+      "wall_seconds": 130.875
+    },
+    {
+      "compressed_artifact_bytes": 13522196,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1102",
+      "raw_decompressed_bytes": 54425452,
+      "wall_seconds": 131.688
+    },
+    {
+      "compressed_artifact_bytes": 13522196,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1102",
+      "raw_decompressed_bytes": 54425452,
+      "wall_seconds": 131.719
+    },
+    {
+      "compressed_artifact_bytes": 13942323,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1102",
+      "raw_decompressed_bytes": 56102077,
+      "wall_seconds": 131.75
+    },
+    {
+      "compressed_artifact_bytes": 13942323,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1103",
+      "raw_decompressed_bytes": 56102077,
+      "wall_seconds": 131.75
+    },
+    {
+      "compressed_artifact_bytes": 13942323,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1103",
+      "raw_decompressed_bytes": 56102077,
+      "wall_seconds": 134.875
+    },
+    {
+      "compressed_artifact_bytes": 13942323,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1103",
+      "raw_decompressed_bytes": 56102077,
+      "wall_seconds": 135.641
+    },
+    {
+      "compressed_artifact_bytes": 13942323,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1103",
+      "raw_decompressed_bytes": 56102077,
+      "wall_seconds": 135.672
+    },
+    {
+      "compressed_artifact_bytes": 14354911,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1103",
+      "raw_decompressed_bytes": 57773371,
+      "wall_seconds": 135.704
+    },
+    {
+      "compressed_artifact_bytes": 14354911,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1104",
+      "raw_decompressed_bytes": 57773371,
+      "wall_seconds": 135.704
+    },
+    {
+      "compressed_artifact_bytes": 14354911,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1104",
+      "raw_decompressed_bytes": 57773371,
+      "wall_seconds": 138.75
+    },
+    {
+      "compressed_artifact_bytes": 14354911,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1104",
+      "raw_decompressed_bytes": 57773371,
+      "wall_seconds": 139.5
+    },
+    {
+      "compressed_artifact_bytes": 14354911,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1104",
+      "raw_decompressed_bytes": 57773371,
+      "wall_seconds": 139.532
+    },
+    {
+      "compressed_artifact_bytes": 14744932,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1104",
+      "raw_decompressed_bytes": 59368191,
+      "wall_seconds": 139.563
+    },
+    {
+      "compressed_artifact_bytes": 14744932,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1105",
+      "raw_decompressed_bytes": 59368191,
+      "wall_seconds": 139.563
+    },
+    {
+      "compressed_artifact_bytes": 14744932,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1105",
+      "raw_decompressed_bytes": 59368191,
+      "wall_seconds": 142.688
+    },
+    {
+      "compressed_artifact_bytes": 14744932,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1105",
+      "raw_decompressed_bytes": 59368191,
+      "wall_seconds": 143.469
+    },
+    {
+      "compressed_artifact_bytes": 14744932,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1105",
+      "raw_decompressed_bytes": 59368191,
+      "wall_seconds": 143.5
+    },
+    {
+      "compressed_artifact_bytes": 15150118,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1105",
+      "raw_decompressed_bytes": 61002331,
+      "wall_seconds": 143.532
+    },
+    {
+      "compressed_artifact_bytes": 15150118,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R06:1106",
+      "raw_decompressed_bytes": 61002331,
+      "wall_seconds": 143.532
+    },
+    {
+      "compressed_artifact_bytes": 15150118,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "world_execution:R06:1106",
+      "raw_decompressed_bytes": 61002331,
+      "wall_seconds": 146.594
+    },
+    {
+      "compressed_artifact_bytes": 15150118,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "verify_episode:R06:1106",
+      "raw_decompressed_bytes": 61002331,
+      "wall_seconds": 147.391
+    },
+    {
+      "compressed_artifact_bytes": 15150118,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "analysis:R06:1106",
+      "raw_decompressed_bytes": 61002331,
+      "wall_seconds": 147.422
+    },
+    {
+      "compressed_artifact_bytes": 15539395,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "compression_flush:R06:1106",
+      "raw_decompressed_bytes": 62602721,
+      "wall_seconds": 147.454
+    },
+    {
+      "compressed_artifact_bytes": 15539395,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189001728,
+      "phase": "before_episode:R07:1101",
+      "raw_decompressed_bytes": 62602721,
+      "wall_seconds": 147.454
+    },
+    {
+      "compressed_artifact_bytes": 15539395,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189079552,
+      "phase": "world_execution:R07:1101",
+      "raw_decompressed_bytes": 62602721,
+      "wall_seconds": 150.532
+    },
+    {
+      "compressed_artifact_bytes": 15539395,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 445435,
+      "passed": true,
+      "peak_rss_bytes": 189079552,
+      "phase": "verify_episode:R07:1101",
+      "raw_decompressed_bytes": 62602721,
+      "wall_seconds": 151.344
+    },
+    {
+      "compressed_artifact_bytes": 15539395,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189079552,
+      "phase": "analysis:R07:1101",
+      "raw_decompressed_bytes": 62602721,
+      "wall_seconds": 151.375
+    },
+    {
+      "compressed_artifact_bytes": 15971388,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189079552,
+      "phase": "compression_flush:R07:1101",
+      "raw_decompressed_bytes": 64317571,
+      "wall_seconds": 151.407
+    },
+    {
+      "compressed_artifact_bytes": 15971388,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189079552,
+      "phase": "before_episode:R07:1102",
+      "raw_decompressed_bytes": 64317571,
+      "wall_seconds": 151.407
+    },
+    {
+      "compressed_artifact_bytes": 15971388,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "world_execution:R07:1102",
+      "raw_decompressed_bytes": 64317571,
+      "wall_seconds": 154.532
+    },
+    {
+      "compressed_artifact_bytes": 15971388,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "verify_episode:R07:1102",
+      "raw_decompressed_bytes": 64317571,
+      "wall_seconds": 155.329
+    },
+    {
+      "compressed_artifact_bytes": 15971388,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "analysis:R07:1102",
+      "raw_decompressed_bytes": 64317571,
+      "wall_seconds": 155.36
+    },
+    {
+      "compressed_artifact_bytes": 16412228,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "compression_flush:R07:1102",
+      "raw_decompressed_bytes": 66071778,
+      "wall_seconds": 155.391
+    },
+    {
+      "compressed_artifact_bytes": 16412228,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "before_episode:R07:1103",
+      "raw_decompressed_bytes": 66071778,
+      "wall_seconds": 155.391
+    },
+    {
+      "compressed_artifact_bytes": 16412228,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "world_execution:R07:1103",
+      "raw_decompressed_bytes": 66071778,
+      "wall_seconds": 158.485
+    },
+    {
+      "compressed_artifact_bytes": 16412228,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "verify_episode:R07:1103",
+      "raw_decompressed_bytes": 66071778,
+      "wall_seconds": 159.297
+    },
+    {
+      "compressed_artifact_bytes": 16412228,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "analysis:R07:1103",
+      "raw_decompressed_bytes": 66071778,
+      "wall_seconds": 159.329
+    },
+    {
+      "compressed_artifact_bytes": 16848990,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "compression_flush:R07:1103",
+      "raw_decompressed_bytes": 67812459,
+      "wall_seconds": 159.36
+    },
+    {
+      "compressed_artifact_bytes": 16848990,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "before_episode:R07:1104",
+      "raw_decompressed_bytes": 67812459,
+      "wall_seconds": 159.36
+    },
+    {
+      "compressed_artifact_bytes": 16848990,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "world_execution:R07:1104",
+      "raw_decompressed_bytes": 67812459,
+      "wall_seconds": 162.454
+    },
+    {
+      "compressed_artifact_bytes": 16848990,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "verify_episode:R07:1104",
+      "raw_decompressed_bytes": 67812459,
+      "wall_seconds": 163.235
+    },
+    {
+      "compressed_artifact_bytes": 16848990,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "analysis:R07:1104",
+      "raw_decompressed_bytes": 67812459,
+      "wall_seconds": 163.266
+    },
+    {
+      "compressed_artifact_bytes": 17275735,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "compression_flush:R07:1104",
+      "raw_decompressed_bytes": 69503636,
+      "wall_seconds": 163.297
+    },
+    {
+      "compressed_artifact_bytes": 17275735,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "before_episode:R07:1105",
+      "raw_decompressed_bytes": 69503636,
+      "wall_seconds": 163.297
+    },
+    {
+      "compressed_artifact_bytes": 17275735,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "world_execution:R07:1105",
+      "raw_decompressed_bytes": 69503636,
+      "wall_seconds": 166.5
+    },
+    {
+      "compressed_artifact_bytes": 17275735,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "verify_episode:R07:1105",
+      "raw_decompressed_bytes": 69503636,
+      "wall_seconds": 167.36
+    },
+    {
+      "compressed_artifact_bytes": 17275735,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "analysis:R07:1105",
+      "raw_decompressed_bytes": 69503636,
+      "wall_seconds": 167.407
+    },
+    {
+      "compressed_artifact_bytes": 17714491,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "compression_flush:R07:1105",
+      "raw_decompressed_bytes": 71240052,
+      "wall_seconds": 167.454
+    },
+    {
+      "compressed_artifact_bytes": 17714491,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "before_episode:R07:1106",
+      "raw_decompressed_bytes": 71240052,
+      "wall_seconds": 167.454
+    },
+    {
+      "compressed_artifact_bytes": 17714491,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "world_execution:R07:1106",
+      "raw_decompressed_bytes": 71240052,
+      "wall_seconds": 170.625
+    },
+    {
+      "compressed_artifact_bytes": 17714491,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "verify_episode:R07:1106",
+      "raw_decompressed_bytes": 71240052,
+      "wall_seconds": 171.422
+    },
+    {
+      "compressed_artifact_bytes": 17714491,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "analysis:R07:1106",
+      "raw_decompressed_bytes": 71240052,
+      "wall_seconds": 171.454
+    },
+    {
+      "compressed_artifact_bytes": 18143399,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "compression_flush:R07:1106",
+      "raw_decompressed_bytes": 72947323,
+      "wall_seconds": 171.5
+    },
+    {
+      "compressed_artifact_bytes": 18143399,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189136896,
+      "phase": "before_episode:R08:1101",
+      "raw_decompressed_bytes": 72947323,
+      "wall_seconds": 171.5
+    },
+    {
+      "compressed_artifact_bytes": 18143399,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189177856,
+      "phase": "world_execution:R08:1101",
+      "raw_decompressed_bytes": 72947323,
+      "wall_seconds": 174.625
+    },
+    {
+      "compressed_artifact_bytes": 18143399,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 454886,
+      "passed": true,
+      "peak_rss_bytes": 189177856,
+      "phase": "verify_episode:R08:1101",
+      "raw_decompressed_bytes": 72947323,
+      "wall_seconds": 175.454
+    },
+    {
+      "compressed_artifact_bytes": 18143399,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189177856,
+      "phase": "analysis:R08:1101",
+      "raw_decompressed_bytes": 72947323,
+      "wall_seconds": 175.485
+    },
+    {
+      "compressed_artifact_bytes": 18604249,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189177856,
+      "phase": "compression_flush:R08:1101",
+      "raw_decompressed_bytes": 74770949,
+      "wall_seconds": 175.516
+    },
+    {
+      "compressed_artifact_bytes": 18604249,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189177856,
+      "phase": "before_episode:R08:1102",
+      "raw_decompressed_bytes": 74770949,
+      "wall_seconds": 175.516
+    },
+    {
+      "compressed_artifact_bytes": 18604249,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "world_execution:R08:1102",
+      "raw_decompressed_bytes": 74770949,
+      "wall_seconds": 178.641
+    },
+    {
+      "compressed_artifact_bytes": 18604249,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "verify_episode:R08:1102",
+      "raw_decompressed_bytes": 74770949,
+      "wall_seconds": 179.5
+    },
+    {
+      "compressed_artifact_bytes": 18604249,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "analysis:R08:1102",
+      "raw_decompressed_bytes": 74770949,
+      "wall_seconds": 179.532
+    },
+    {
+      "compressed_artifact_bytes": 19103368,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "compression_flush:R08:1102",
+      "raw_decompressed_bytes": 76731383,
+      "wall_seconds": 179.563
+    },
+    {
+      "compressed_artifact_bytes": 19103368,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "before_episode:R08:1103",
+      "raw_decompressed_bytes": 76731383,
+      "wall_seconds": 179.563
+    },
+    {
+      "compressed_artifact_bytes": 19103368,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "world_execution:R08:1103",
+      "raw_decompressed_bytes": 76731383,
+      "wall_seconds": 182.672
+    },
+    {
+      "compressed_artifact_bytes": 19103368,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "verify_episode:R08:1103",
+      "raw_decompressed_bytes": 76731383,
+      "wall_seconds": 183.516
+    },
+    {
+      "compressed_artifact_bytes": 19103368,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "analysis:R08:1103",
+      "raw_decompressed_bytes": 76731383,
+      "wall_seconds": 183.532
+    },
+    {
+      "compressed_artifact_bytes": 19574946,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "compression_flush:R08:1103",
+      "raw_decompressed_bytes": 78605535,
+      "wall_seconds": 183.579
+    },
+    {
+      "compressed_artifact_bytes": 19574946,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189640704,
+      "phase": "before_episode:R08:1104",
+      "raw_decompressed_bytes": 78605535,
+      "wall_seconds": 183.579
+    },
+    {
+      "compressed_artifact_bytes": 19574946,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "world_execution:R08:1104",
+      "raw_decompressed_bytes": 78605535,
+      "wall_seconds": 186.704
+    },
+    {
+      "compressed_artifact_bytes": 19574946,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "verify_episode:R08:1104",
+      "raw_decompressed_bytes": 78605535,
+      "wall_seconds": 187.688
+    },
+    {
+      "compressed_artifact_bytes": 19574946,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "analysis:R08:1104",
+      "raw_decompressed_bytes": 78605535,
+      "wall_seconds": 187.719
+    },
+    {
+      "compressed_artifact_bytes": 20040590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "compression_flush:R08:1104",
+      "raw_decompressed_bytes": 80443888,
+      "wall_seconds": 187.766
+    },
+    {
+      "compressed_artifact_bytes": 20040590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "before_episode:R08:1105",
+      "raw_decompressed_bytes": 80443888,
+      "wall_seconds": 187.766
+    },
+    {
+      "compressed_artifact_bytes": 20040590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "world_execution:R08:1105",
+      "raw_decompressed_bytes": 80443888,
+      "wall_seconds": 191.079
+    },
+    {
+      "compressed_artifact_bytes": 20040590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "verify_episode:R08:1105",
+      "raw_decompressed_bytes": 80443888,
+      "wall_seconds": 191.969
+    },
+    {
+      "compressed_artifact_bytes": 20040590,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "analysis:R08:1105",
+      "raw_decompressed_bytes": 80443888,
+      "wall_seconds": 192.0
+    },
+    {
+      "compressed_artifact_bytes": 20494001,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "compression_flush:R08:1105",
+      "raw_decompressed_bytes": 82245222,
+      "wall_seconds": 192.047
+    },
+    {
+      "compressed_artifact_bytes": 20494001,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "before_episode:R08:1106",
+      "raw_decompressed_bytes": 82245222,
+      "wall_seconds": 192.047
+    },
+    {
+      "compressed_artifact_bytes": 20494001,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "world_execution:R08:1106",
+      "raw_decompressed_bytes": 82245222,
+      "wall_seconds": 195.922
+    },
+    {
+      "compressed_artifact_bytes": 20494001,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "verify_episode:R08:1106",
+      "raw_decompressed_bytes": 82245222,
+      "wall_seconds": 196.938
+    },
+    {
+      "compressed_artifact_bytes": 20494001,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "analysis:R08:1106",
+      "raw_decompressed_bytes": 82245222,
+      "wall_seconds": 196.969
+    },
+    {
+      "compressed_artifact_bytes": 20945193,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "compression_flush:R08:1106",
+      "raw_decompressed_bytes": 84036734,
+      "wall_seconds": 197.0
+    },
+    {
+      "compressed_artifact_bytes": 20945193,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "before_episode:R09:1101",
+      "raw_decompressed_bytes": 84036734,
+      "wall_seconds": 197.016
+    },
+    {
+      "compressed_artifact_bytes": 20945193,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "world_execution:R09:1101",
+      "raw_decompressed_bytes": 84036734,
+      "wall_seconds": 200.375
+    },
+    {
+      "compressed_artifact_bytes": 20945193,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 461773,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "verify_episode:R09:1101",
+      "raw_decompressed_bytes": 84036734,
+      "wall_seconds": 201.266
+    },
+    {
+      "compressed_artifact_bytes": 20945193,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "analysis:R09:1101",
+      "raw_decompressed_bytes": 84036734,
+      "wall_seconds": 201.297
+    },
+    {
+      "compressed_artifact_bytes": 21452084,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "compression_flush:R09:1101",
+      "raw_decompressed_bytes": 86030596,
+      "wall_seconds": 201.344
+    },
+    {
+      "compressed_artifact_bytes": 21452084,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 189792256,
+      "phase": "before_episode:R09:1102",
+      "raw_decompressed_bytes": 86030596,
+      "wall_seconds": 201.344
+    },
+    {
+      "compressed_artifact_bytes": 21452084,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190210048,
+      "phase": "world_execution:R09:1102",
+      "raw_decompressed_bytes": 86030596,
+      "wall_seconds": 204.782
+    },
+    {
+      "compressed_artifact_bytes": 21452084,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190210048,
+      "phase": "verify_episode:R09:1102",
+      "raw_decompressed_bytes": 86030596,
+      "wall_seconds": 205.704
+    },
+    {
+      "compressed_artifact_bytes": 21452084,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190210048,
+      "phase": "analysis:R09:1102",
+      "raw_decompressed_bytes": 86030596,
+      "wall_seconds": 205.735
+    },
+    {
+      "compressed_artifact_bytes": 21970065,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190210048,
+      "phase": "compression_flush:R09:1102",
+      "raw_decompressed_bytes": 88065211,
+      "wall_seconds": 205.782
+    },
+    {
+      "compressed_artifact_bytes": 21970065,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190210048,
+      "phase": "before_episode:R09:1103",
+      "raw_decompressed_bytes": 88065211,
+      "wall_seconds": 205.782
+    },
+    {
+      "compressed_artifact_bytes": 21970065,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "world_execution:R09:1103",
+      "raw_decompressed_bytes": 88065211,
+      "wall_seconds": 209.157
+    },
+    {
+      "compressed_artifact_bytes": 21970065,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "verify_episode:R09:1103",
+      "raw_decompressed_bytes": 88065211,
+      "wall_seconds": 210.094
+    },
+    {
+      "compressed_artifact_bytes": 21970065,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "analysis:R09:1103",
+      "raw_decompressed_bytes": 88065211,
+      "wall_seconds": 210.125
+    },
+    {
+      "compressed_artifact_bytes": 22501955,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "compression_flush:R09:1103",
+      "raw_decompressed_bytes": 90156172,
+      "wall_seconds": 210.172
+    },
+    {
+      "compressed_artifact_bytes": 22501955,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "before_episode:R09:1104",
+      "raw_decompressed_bytes": 90156172,
+      "wall_seconds": 210.172
+    },
+    {
+      "compressed_artifact_bytes": 22501955,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "world_execution:R09:1104",
+      "raw_decompressed_bytes": 90156172,
+      "wall_seconds": 213.594
+    },
+    {
+      "compressed_artifact_bytes": 22501955,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "verify_episode:R09:1104",
+      "raw_decompressed_bytes": 90156172,
+      "wall_seconds": 214.641
+    },
+    {
+      "compressed_artifact_bytes": 22501955,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "analysis:R09:1104",
+      "raw_decompressed_bytes": 90156172,
+      "wall_seconds": 214.672
+    },
+    {
+      "compressed_artifact_bytes": 23016873,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "compression_flush:R09:1104",
+      "raw_decompressed_bytes": 92179235,
+      "wall_seconds": 214.719
+    },
+    {
+      "compressed_artifact_bytes": 23016873,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "before_episode:R09:1105",
+      "raw_decompressed_bytes": 92179235,
+      "wall_seconds": 214.735
+    },
+    {
+      "compressed_artifact_bytes": 23016873,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "world_execution:R09:1105",
+      "raw_decompressed_bytes": 92179235,
+      "wall_seconds": 218.157
+    },
+    {
+      "compressed_artifact_bytes": 23016873,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "verify_episode:R09:1105",
+      "raw_decompressed_bytes": 92179235,
+      "wall_seconds": 219.094
+    },
+    {
+      "compressed_artifact_bytes": 23016873,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "analysis:R09:1105",
+      "raw_decompressed_bytes": 92179235,
+      "wall_seconds": 219.125
+    },
+    {
+      "compressed_artifact_bytes": 23535599,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "compression_flush:R09:1105",
+      "raw_decompressed_bytes": 94221599,
+      "wall_seconds": 219.157
+    },
+    {
+      "compressed_artifact_bytes": 23535599,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 190406656,
+      "phase": "before_episode:R09:1106",
+      "raw_decompressed_bytes": 94221599,
+      "wall_seconds": 219.172
+    },
+    {
+      "compressed_artifact_bytes": 23535599,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R09:1106",
+      "raw_decompressed_bytes": 94221599,
+      "wall_seconds": 222.469
+    },
+    {
+      "compressed_artifact_bytes": 23535599,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R09:1106",
+      "raw_decompressed_bytes": 94221599,
+      "wall_seconds": 223.454
+    },
+    {
+      "compressed_artifact_bytes": 23535599,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R09:1106",
+      "raw_decompressed_bytes": 94221599,
+      "wall_seconds": 223.485
+    },
+    {
+      "compressed_artifact_bytes": 24061129,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R09:1106",
+      "raw_decompressed_bytes": 96302196,
+      "wall_seconds": 223.532
+    },
+    {
+      "compressed_artifact_bytes": 24061129,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1101",
+      "raw_decompressed_bytes": 96302196,
+      "wall_seconds": 223.532
+    },
+    {
+      "compressed_artifact_bytes": 24061129,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1101",
+      "raw_decompressed_bytes": 96302196,
+      "wall_seconds": 226.844
+    },
+    {
+      "compressed_artifact_bytes": 24061129,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469415,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1101",
+      "raw_decompressed_bytes": 96302196,
+      "wall_seconds": 227.672
+    },
+    {
+      "compressed_artifact_bytes": 24061129,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1101",
+      "raw_decompressed_bytes": 96302196,
+      "wall_seconds": 227.704
+    },
+    {
+      "compressed_artifact_bytes": 24475883,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1101",
+      "raw_decompressed_bytes": 97945380,
+      "wall_seconds": 227.735
+    },
+    {
+      "compressed_artifact_bytes": 24475883,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1102",
+      "raw_decompressed_bytes": 97945380,
+      "wall_seconds": 227.735
+    },
+    {
+      "compressed_artifact_bytes": 24475883,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1102",
+      "raw_decompressed_bytes": 97945380,
+      "wall_seconds": 231.235
+    },
+    {
+      "compressed_artifact_bytes": 24475883,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1102",
+      "raw_decompressed_bytes": 97945380,
+      "wall_seconds": 232.094
+    },
+    {
+      "compressed_artifact_bytes": 24475883,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1102",
+      "raw_decompressed_bytes": 97945380,
+      "wall_seconds": 232.125
+    },
+    {
+      "compressed_artifact_bytes": 24896683,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1102",
+      "raw_decompressed_bytes": 99620751,
+      "wall_seconds": 232.157
+    },
+    {
+      "compressed_artifact_bytes": 24896683,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1103",
+      "raw_decompressed_bytes": 99620751,
+      "wall_seconds": 232.157
+    },
+    {
+      "compressed_artifact_bytes": 24896683,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1103",
+      "raw_decompressed_bytes": 99620751,
+      "wall_seconds": 235.532
+    },
+    {
+      "compressed_artifact_bytes": 24896683,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1103",
+      "raw_decompressed_bytes": 99620751,
+      "wall_seconds": 236.375
+    },
+    {
+      "compressed_artifact_bytes": 24896683,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1103",
+      "raw_decompressed_bytes": 99620751,
+      "wall_seconds": 236.391
+    },
+    {
+      "compressed_artifact_bytes": 25312994,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1103",
+      "raw_decompressed_bytes": 101296099,
+      "wall_seconds": 236.438
+    },
+    {
+      "compressed_artifact_bytes": 25312994,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1104",
+      "raw_decompressed_bytes": 101296099,
+      "wall_seconds": 236.438
+    },
+    {
+      "compressed_artifact_bytes": 25312994,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1104",
+      "raw_decompressed_bytes": 101296099,
+      "wall_seconds": 239.797
+    },
+    {
+      "compressed_artifact_bytes": 25312994,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1104",
+      "raw_decompressed_bytes": 101296099,
+      "wall_seconds": 240.657
+    },
+    {
+      "compressed_artifact_bytes": 25312994,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1104",
+      "raw_decompressed_bytes": 101296099,
+      "wall_seconds": 240.688
+    },
+    {
+      "compressed_artifact_bytes": 25730305,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1104",
+      "raw_decompressed_bytes": 102974342,
+      "wall_seconds": 240.719
+    },
+    {
+      "compressed_artifact_bytes": 25730305,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1105",
+      "raw_decompressed_bytes": 102974342,
+      "wall_seconds": 240.719
+    },
+    {
+      "compressed_artifact_bytes": 25730305,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1105",
+      "raw_decompressed_bytes": 102974342,
+      "wall_seconds": 244.204
+    },
+    {
+      "compressed_artifact_bytes": 25730305,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1105",
+      "raw_decompressed_bytes": 102974342,
+      "wall_seconds": 245.047
+    },
+    {
+      "compressed_artifact_bytes": 25730305,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1105",
+      "raw_decompressed_bytes": 102974342,
+      "wall_seconds": 245.079
+    },
+    {
+      "compressed_artifact_bytes": 26142268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1105",
+      "raw_decompressed_bytes": 104641346,
+      "wall_seconds": 245.11
+    },
+    {
+      "compressed_artifact_bytes": 26142268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R10:1106",
+      "raw_decompressed_bytes": 104641346,
+      "wall_seconds": 245.11
+    },
+    {
+      "compressed_artifact_bytes": 26142268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R10:1106",
+      "raw_decompressed_bytes": 104641346,
+      "wall_seconds": 248.485
+    },
+    {
+      "compressed_artifact_bytes": 26142268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R10:1106",
+      "raw_decompressed_bytes": 104641346,
+      "wall_seconds": 249.313
+    },
+    {
+      "compressed_artifact_bytes": 26142268,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "analysis:R10:1106",
+      "raw_decompressed_bytes": 104641346,
+      "wall_seconds": 249.344
+    },
+    {
+      "compressed_artifact_bytes": 26541868,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "compression_flush:R10:1106",
+      "raw_decompressed_bytes": 106256334,
+      "wall_seconds": 249.375
+    },
+    {
+      "compressed_artifact_bytes": 26541868,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "before_episode:R11:1101",
+      "raw_decompressed_bytes": 106256334,
+      "wall_seconds": 249.375
+    },
+    {
+      "compressed_artifact_bytes": 26541868,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "world_execution:R11:1101",
+      "raw_decompressed_bytes": 106256334,
+      "wall_seconds": 252.954
+    },
+    {
+      "compressed_artifact_bytes": 26541868,
+      "failed_caps": [],
+      "maximum_canonical_audit_receipts_bytes": 469779,
+      "passed": true,
+      "peak_rss_bytes": 191090688,
+      "phase": "verify_episode:R11:1101",
+      "raw_decompressed_bytes": 106256334,
+      "wall_seconds": 253.954
+    }
+  ],
+  "raw_artifact_may_be_a_valid_partial_gzip_member": true,
+  "resource_caps": {
+    "max_canonical_audit_receipts_bytes_per_episode": 471859,
+    "max_compressed_artifact_bytes": 262144000,
+    "max_decompressed_raw_bytes": 1073741824,
+    "max_peak_rss_bytes": 2147483648,
+    "max_wall_seconds": 1200.0
+  },
+  "resource_snapshot": {
+    "compressed_artifact_bytes": 26541878,
+    "maximum_canonical_audit_receipts_bytes": 477515,
+    "peak_rss_bytes": 191090688,
+    "phase": "verify_episode:R11:1101",
+    "raw_decompressed_bytes": 106256334,
+    "wall_seconds": 253.954
+  },
+  "schema": "alife.stegohive.ecology.partial_failure.v1",
+  "split": "discovery"
+}

@@ -1,0 +1,329 @@
+{
+  "accepted": false,
+  "arms": {
+    "adaptive_dual_archive": {
+      "episodes": 24,
+      "qualification_frequency": 0.2916666666666667,
+      "qualification_frequency_wilson_95": {
+        "lower": 0.14914648196960875,
+        "upper": 0.49167693664496637
+      },
+      "qualified": 7
+    },
+    "fixed_code_ceiling": {
+      "episodes": 24,
+      "qualification_frequency": 1.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 0.8620237953250198,
+        "upper": 1.0
+      },
+      "qualified": 24
+    },
+    "matched_noise": {
+      "episodes": 24,
+      "qualification_frequency": 0.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 1.3877787807814457e-17,
+        "upper": 0.13797620467498017
+      },
+      "qualified": 0
+    },
+    "no_archive": {
+      "episodes": 24,
+      "qualification_frequency": 0.375,
+      "qualification_frequency_wilson_95": {
+        "lower": 0.21159367559548778,
+        "upper": 0.5729003755732572
+      },
+      "qualified": 9
+    },
+    "no_channel": {
+      "episodes": 24,
+      "qualification_frequency": 0.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 1.3877787807814457e-17,
+        "upper": 0.13797620467498017
+      },
+      "qualified": 0
+    },
+    "overt_only": {
+      "episodes": 24,
+      "qualification_frequency": 0.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 1.3877787807814457e-17,
+        "upper": 0.13797620467498017
+      },
+      "qualified": 0
+    },
+    "selection_neutral": {
+      "episodes": 24,
+      "qualification_frequency": 0.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 1.3877787807814457e-17,
+        "upper": 0.13797620467498017
+      },
+      "qualified": 0
+    },
+    "sender_observation_knockout": {
+      "episodes": 24,
+      "qualification_frequency": 0.0,
+      "qualification_frequency_wilson_95": {
+        "lower": 1.3877787807814457e-17,
+        "upper": 0.13797620467498017
+      },
+      "qualified": 0
+    }
+  },
+  "claim_boundary": {
+    "not_supported": [
+      "claims about real-world agents, organizations, or control-loss events",
+      "operational hacking or human persuasion capability",
+      "causal conclusions beyond the supplied verified R01 simulation rows",
+      "generalization beyond the registered model conditions and seed matrix"
+    ],
+    "supported_scope": "model_only"
+  },
+  "claim_scope": "model_only",
+  "complete_verified_matrix": true,
+  "episodes": 192,
+  "hierarchical_gates": {
+    "accepted": true,
+    "global_relabel_and_permutation": {
+      "qualification_checks": [
+        "global_label_isomorphism",
+        "causal_transfer"
+      ],
+      "status": "incorporated_in_each_conjunctive_qualification"
+    },
+    "median_add_back_rescue_fraction": {
+      "minimum": 0.75,
+      "observed_median": 1.0,
+      "passed": true
+    },
+    "median_receiver_knockout_drop": {
+      "minimum": 0.15,
+      "observed_median": 0.25,
+      "passed": true
+    },
+    "temporally_aligned_adaptive_episodes": {
+      "minimum_episodes": 18,
+      "observed_episodes": 24,
+      "passed": true,
+      "per_episode_minimum_aligned_transition_count": 3,
+      "per_episode_minimum_transition_alignment": 0.75
+    }
+  },
+  "phase": "confirmatory",
+  "primary_h1": {
+    "accepted": false,
+    "adaptive_qualified_at_least_18_of_24": {
+      "minimum": 18,
+      "observed": 7,
+      "passed": false
+    },
+    "adaptive_vs_no_channel": {
+      "concordant_counts": {
+        "both": 0,
+        "neither": 17
+      },
+      "conditional_direction_effect": 1.0,
+      "conditional_direction_effect_clopper_pearson_95": {
+        "lower": 0.18076720554999293,
+        "upper": 1.0
+      },
+      "conditional_left_win_probability": 1.0,
+      "conditional_left_win_probability_clopper_pearson_95": {
+        "lower": 0.5903836027749965,
+        "upper": 1.0
+      },
+      "discordant_counts": {
+        "left_only": 7,
+        "right_only": 0,
+        "total": 7
+      },
+      "exact_two_sided_mcnemar_binomial_fraction": {
+        "denominator": 64,
+        "numerator": 1
+      },
+      "exact_two_sided_mcnemar_binomial_p_value": 0.015625,
+      "left_condition": "adaptive_dual_archive",
+      "left_qualified": 7,
+      "paired_risk_difference": 0.2916666666666667,
+      "pairs": 24,
+      "right_condition": "no_channel",
+      "right_qualified": 0
+    },
+    "conditional_direction_interval_lower_above_zero": {
+      "observed_lower": 0.18076720554999293,
+      "passed": true,
+      "strictly_greater_than": 0.0
+    },
+    "qualification_frequency_advantage_at_least_0_30": {
+      "matched_noise": {
+        "difference": 0.2916666666666667,
+        "episode_denominator": 24,
+        "minimum": 0.3,
+        "passed": false,
+        "qualified_count_difference": 7
+      },
+      "no_channel": {
+        "difference": 0.2916666666666667,
+        "episode_denominator": 24,
+        "minimum": 0.3,
+        "passed": false,
+        "qualified_count_difference": 7
+      },
+      "selection_neutral": {
+        "difference": 0.2916666666666667,
+        "episode_denominator": 24,
+        "minimum": 0.3,
+        "passed": false,
+        "qualified_count_difference": 7
+      }
+    }
+  },
+  "regime_id": "R01",
+  "reported_diagnostics_not_acceptance_gates": {
+    "adaptive_vs_no_archive": {
+      "concordant_counts": {
+        "both": 7,
+        "neither": 15
+      },
+      "conditional_direction_effect": -1.0,
+      "conditional_direction_effect_clopper_pearson_95": {
+        "lower": -1.0,
+        "upper": 0.6837722339831616
+      },
+      "conditional_left_win_probability": 0.0,
+      "conditional_left_win_probability_clopper_pearson_95": {
+        "lower": 0.0,
+        "upper": 0.8418861169915808
+      },
+      "discordant_counts": {
+        "left_only": 0,
+        "right_only": 2,
+        "total": 2
+      },
+      "exact_two_sided_mcnemar_binomial_fraction": {
+        "denominator": 2,
+        "numerator": 1
+      },
+      "exact_two_sided_mcnemar_binomial_p_value": 0.5,
+      "left_condition": "adaptive_dual_archive",
+      "left_qualified": 7,
+      "paired_risk_difference": -0.08333333333333333,
+      "pairs": 24,
+      "right_condition": "no_archive",
+      "right_qualified": 9
+    },
+    "adaptive_vs_selection_neutral": {
+      "concordant_counts": {
+        "both": 0,
+        "neither": 17
+      },
+      "conditional_direction_effect": 1.0,
+      "conditional_direction_effect_clopper_pearson_95": {
+        "lower": 0.18076720554999293,
+        "upper": 1.0
+      },
+      "conditional_left_win_probability": 1.0,
+      "conditional_left_win_probability_clopper_pearson_95": {
+        "lower": 0.5903836027749965,
+        "upper": 1.0
+      },
+      "discordant_counts": {
+        "left_only": 7,
+        "right_only": 0,
+        "total": 7
+      },
+      "exact_two_sided_mcnemar_binomial_fraction": {
+        "denominator": 64,
+        "numerator": 1
+      },
+      "exact_two_sided_mcnemar_binomial_p_value": 0.015625,
+      "left_condition": "adaptive_dual_archive",
+      "left_qualified": 7,
+      "paired_risk_difference": 0.2916666666666667,
+      "pairs": 24,
+      "right_condition": "selection_neutral",
+      "right_qualified": 0
+    },
+    "adaptive_vs_sender_observation_knockout": {
+      "concordant_counts": {
+        "both": 0,
+        "neither": 17
+      },
+      "conditional_direction_effect": 1.0,
+      "conditional_direction_effect_clopper_pearson_95": {
+        "lower": 0.18076720554999293,
+        "upper": 1.0
+      },
+      "conditional_left_win_probability": 1.0,
+      "conditional_left_win_probability_clopper_pearson_95": {
+        "lower": 0.5903836027749965,
+        "upper": 1.0
+      },
+      "discordant_counts": {
+        "left_only": 7,
+        "right_only": 0,
+        "total": 7
+      },
+      "exact_two_sided_mcnemar_binomial_fraction": {
+        "denominator": 64,
+        "numerator": 1
+      },
+      "exact_two_sided_mcnemar_binomial_p_value": 0.015625,
+      "left_condition": "adaptive_dual_archive",
+      "left_qualified": 7,
+      "paired_risk_difference": 0.2916666666666667,
+      "pairs": 24,
+      "right_condition": "sender_observation_knockout",
+      "right_qualified": 0
+    },
+    "fixed_code_ceiling_sanity": {
+      "all_global_relabel_retention_at_least_0_95": true,
+      "all_intact_accuracy_at_least_0_95": true,
+      "episodes": 24,
+      "minimum_global_relabel_retention": 1.0,
+      "minimum_intact_accuracy": 1.0,
+      "passed": true
+    },
+    "overt_only_vs_no_channel_equality": {
+      "all_paired_qualification_indicators_equal": true,
+      "paired_effect": {
+        "concordant_counts": {
+          "both": 0,
+          "neither": 24
+        },
+        "conditional_direction_effect": null,
+        "conditional_direction_effect_clopper_pearson_95": {
+          "lower": -1.0,
+          "upper": 1.0
+        },
+        "conditional_left_win_probability": null,
+        "conditional_left_win_probability_clopper_pearson_95": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "discordant_counts": {
+          "left_only": 0,
+          "right_only": 0,
+          "total": 0
+        },
+        "exact_two_sided_mcnemar_binomial_fraction": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "exact_two_sided_mcnemar_binomial_p_value": 1.0,
+        "left_condition": "overt_only",
+        "left_qualified": 0,
+        "paired_risk_difference": 0.0,
+        "pairs": 24,
+        "right_condition": "no_channel",
+        "right_qualified": 0
+      },
+      "qualification_frequencies_equal": true
+    }
+  },
+  "schema": "alife.stegohive.phase_analysis.v1"
+}

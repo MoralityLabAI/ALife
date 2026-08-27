@@ -1,0 +1,341 @@
+{
+  "schema": "stegohive.condition_registry.v1",
+  "id": "stegohive_v1_registered_conditions",
+  "base_config": "config.json",
+  "registration": {
+    "condition_definitions_frozen": true,
+    "evolutionary_regime_frozen": false,
+    "current_phase": "discovery_only",
+    "condition_ids_are_case_sensitive": true,
+    "amendment_id": "A1_pre_discovery_role_propagule_semantics",
+    "amendment_applied_before_discovery_execution": true
+  },
+  "conditions": [
+    {
+      "id": "adaptive_dual_archive",
+      "role": "primary_treatment",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": true,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": true,
+        "archives.abstract_signal.delivery_delay_cohorts": 2,
+        "archives.convention_propagule.enabled": true,
+        "archives.convention_propagule.wake_delay_cohorts": 2,
+        "signals.delivery_mode": "sender_policy",
+        "selection.default_mode": "differential_ecological",
+        "population.shared_policy_parent": false,
+        "receiver.signal_input": "enabled",
+        "fixed_code": null
+      },
+      "resource_matching": "Reference arm for the 32-host role schedule, separate sender/receiver parent and mutation draws, message opportunity, abstract-signal and convention-propagule capacity, action budget, probe count, and wall-clock accounting."
+    },
+    {
+      "id": "no_channel",
+      "role": "baseline",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": false,
+        "archives.convention_propagule.enabled": true,
+        "archives.convention_propagule.preserve_deposit_wake_capacity_and_parent_schedule": true,
+        "signals.delivery_mode": "null",
+        "signals.charge_matched_emission_cost": true,
+        "selection.default_mode": "differential_ecological",
+        "receiver.signal_input": "constant_null"
+      },
+      "resource_matching": "Preserve the distinct-host role schedule, separate policy heredity, overt activity, convention-propagule schedule, ecology, action budget, and the same energy deduction as an adaptive emission; remove only delivered abstract signals."
+    },
+    {
+      "id": "matched_noise",
+      "role": "resource_matched_null",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": true,
+        "archives.convention_propagule.enabled": true,
+        "archives.convention_propagule.preserve_deposit_wake_capacity_and_parent_schedule": true,
+        "signals.delivery_mode": "uniform_independent",
+        "signals.preserve_emission_count_delay_capacity_and_cost": true,
+        "selection.default_mode": "differential_ecological",
+        "receiver.signal_input": "enabled"
+      },
+      "resource_matching": "Match the adaptive role schedule, signal histogram sample count, delivery delay, carrier capacities, convention-propagule schedule, activity opportunity, and energy cost while sampling delivered signals independently of C0-C3."
+    },
+    {
+      "id": "message_permutation_probe",
+      "role": "shuffled_interaction_probe",
+      "execution_phase": "probe_only",
+      "source_snapshot": "adaptive_dual_archive",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "probe.transform": "permute_signals_across_receiver_events",
+        "probe.preserve_signal_histogram": true,
+        "probe.operator": "one_event_index_permutation_of_intact_delivered_signal_vector",
+        "probe.require_exact_intact_and_permuted_histogram_equality": true,
+        "probe.preserve_non_signal_state": true,
+        "probe.feedback_to_fitness": false
+      },
+      "resource_matching": "Use the exact adaptive snapshot, probe events, and signal counts; change only signal-to-event assignment."
+    },
+    {
+      "id": "selection_neutral",
+      "role": "selection_null",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": true,
+        "archives.convention_propagule.enabled": true,
+        "signals.delivery_mode": "sender_policy",
+        "selection.default_mode": "uniform_selection_neutral",
+        "population.sender_receiver_policy_parents_sampled_independently": true,
+        "selection.log_counterfactual_fitness": true,
+        "receiver.signal_input": "enabled"
+      },
+      "resource_matching": "Match adaptive ecology, population, mutation, archive, channel, and action opportunity; remove only differential reproductive use of fitness."
+    },
+    {
+      "id": "no_archive",
+      "role": "temporal_carrier_knockout",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": true,
+        "archives.abstract_signal.live_within_cohort": true,
+        "archives.abstract_signal.delivery_across_turnover": false,
+        "archives.abstract_signal.expire_before_turnover": true,
+        "archives.convention_propagule.enabled": false,
+        "archives.convention_propagule.preserve_matched_deposit_cost_and_capacity_receipts": true,
+        "archives.convention_propagule.expire_before_turnover": true,
+        "selection.default_mode": "differential_ecological",
+        "receiver.signal_input": "enabled"
+      },
+      "resource_matching": "Match live emission, read opportunities, role schedule, cost, deposit attempts, capacities, and within-cohort activity; remove only cross-cohort abstract-signal delivery and convention-propagule wake."
+    },
+    {
+      "id": "overt_only",
+      "role": "activity_side_channel_control",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": false,
+        "archives.convention_propagule.enabled": true,
+        "archives.convention_propagule.preserve_deposit_wake_capacity_and_parent_schedule": true,
+        "archives.overt.preserve_post_timing_author_and_delivery_receipts": true,
+        "archives.overt.exclude_pressure_skill_and_signal": true,
+        "signals.charge_matched_emission_cost": true,
+        "selection.default_mode": "differential_ecological",
+        "receiver.signal_input": "constant_null"
+      },
+      "resource_matching": "Match overt posting activity, timing, lineage provenance, capacity, and cost without an abstract signal id."
+    },
+    {
+      "id": "fixed_code_ceiling",
+      "role": "positive_ceiling",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "archives.overt.enabled": true,
+        "archives.abstract_signal.enabled": true,
+        "archives.convention_propagule.enabled": true,
+        "signals.delivery_mode": "fixed_code",
+        "selection.default_mode": "fixed_code_no_evolution",
+        "population.policy_mutation_probability": 0.0,
+        "fixed_code": {
+          "encoder": {"C0": "S0", "C1": "S1", "C2": "S2", "C3": "S3"},
+          "decoder": {"S0": "K0", "S1": "K1", "S2": "K2", "S3": "K3"}
+        }
+      },
+      "resource_matching": "Match channel, archive, cost, and probe schedule. This condition validates solvability and metric ceilings but is structurally ineligible for emergence."
+    },
+    {
+      "id": "receiver_knockout_probe",
+      "role": "mechanism_knockout_probe",
+      "execution_phase": "probe_only",
+      "source_snapshot": "adaptive_dual_archive",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "receiver.signal_input": "masked",
+        "probe.preserve_delivery_receipts": true,
+        "probe.feedback_to_fitness": false
+      },
+      "resource_matching": "Use the exact adaptive snapshot and probe schedule; mask only the receiver signal input."
+    },
+    {
+      "id": "receiver_add_back_probe",
+      "role": "mechanism_rescue_probe",
+      "execution_phase": "probe_only",
+      "source_snapshot": "receiver_knockout_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "receiver.signal_input": "enabled",
+        "probe.restore_exact_signal_rows": true,
+        "probe.feedback_to_fitness": false
+      },
+      "resource_matching": "Restore only the signal input on the same snapshot and matched probe schedule used for receiver knockout."
+    },
+    {
+      "id": "global_relabel_probe",
+      "role": "equivariance_probe",
+      "execution_phase": "probe_only",
+      "source_snapshot": "adaptive_dual_archive",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "probe.transform": "consistent_global_signal_permutation",
+        "probe.permutation_seed_stream": "global_relabel",
+        "probe.feedback_to_fitness": false
+      },
+      "resource_matching": "Apply one bijection consistently to every sender output, abstract-signal archive row, convention-propagule sender allele, and receiver interface while preserving all non-label state and receiver-policy allele meaning."
+    },
+    {
+      "id": "sender_observation_knockout",
+      "role": "information_source_knockout",
+      "execution_phase": "evolution_and_probe",
+      "counts_as_emergence_candidate": false,
+      "overrides": {
+        "abstract_ecology.sender_can_observe_pressure_class": false,
+        "archives.convention_propagule.enabled": true,
+        "signals.delivery_mode": "sender_policy",
+        "selection.default_mode": "differential_ecological",
+        "receiver.signal_input": "enabled"
+      },
+      "resource_matching": "Match channel, archive, cost, population, and receiver exposure while removing only sender access to C0-C3."
+    }
+  ],
+  "registered_primary_contrasts": [
+    {
+      "id": "C1_adaptive_vs_no_channel",
+      "left": "adaptive_dual_archive",
+      "right": "no_channel",
+      "outcomes": ["emergence_qualification_rate", "causal_symbol_swap_transfer_rate"]
+    },
+    {
+      "id": "C2_adaptive_vs_matched_noise",
+      "left": "adaptive_dual_archive",
+      "right": "matched_noise",
+      "outcomes": ["bias_corrected_nmi_need_signal", "causal_symbol_swap_transfer_rate"]
+    },
+    {
+      "id": "C3_adaptive_vs_selection_neutral",
+      "left": "adaptive_dual_archive",
+      "right": "selection_neutral",
+      "outcomes": ["emergence_qualification_rate", "cross_cohort_mapping_alignment"]
+    },
+    {
+      "id": "C4_receiver_knockout_and_rescue",
+      "left": "receiver_add_back_probe",
+      "right": "receiver_knockout_probe",
+      "outcomes": ["heldout_probe_decoding_accuracy", "causal_symbol_swap_transfer_rate"]
+    },
+    {
+      "id": "C5_archive_necessity",
+      "left": "adaptive_dual_archive",
+      "right": "no_archive",
+      "outcomes": ["convention_persistence_transitions", "cross_cohort_mapping_alignment"]
+    }
+  ],
+  "registered_secondary_diagnostics": [
+    {
+      "id": "D1_cross_lineage_trials",
+      "metric": "cross_lineage_trials",
+      "status": "diagnostic_only",
+      "may_affect_emergence_qualification_or_regime_nomination": false
+    },
+    {
+      "id": "D2_cross_lineage_accuracy",
+      "metric": "cross_lineage_accuracy",
+      "status": "diagnostic_only",
+      "may_affect_emergence_qualification_or_regime_nomination": false
+    },
+    {
+      "id": "D3_delayed_archive_accuracy",
+      "metric": "delayed_archive_accuracy",
+      "status": "secondary_evidence_only",
+      "may_affect_emergence_qualification_or_regime_nomination": false
+    },
+    {
+      "id": "D4_delayed_archive_advantage_over_no_channel",
+      "metric": "delayed_archive_advantage_over_no_channel",
+      "status": "secondary_evidence_only",
+      "may_affect_emergence_qualification_or_regime_nomination": false
+    },
+    {
+      "id": "D5_delayed_task_scramble",
+      "metric": "delayed_archive_task_scramble_accuracy",
+      "status": "negative_diagnostic_and_verifier_tamper_only",
+      "may_affect_fitness_selection_emergence_qualification_or_regime_nomination": false
+    }
+  ],
+  "condition_invariants": [
+    "Only adaptive_dual_archive may qualify as evidence of spontaneous convention emergence.",
+    "fixed_code_ceiling is a positive calibration ceiling and never emergence evidence.",
+    "Probe-only conditions do not reproduce, mutate, alter fitness, or consume an independent episode seed.",
+    "Every condition uses one 32-host role-flexible population with two distinct hosts per interaction and separate sender-policy and receiver-policy credit, parent, mutation, and ancestry streams; shared_policy_parent remains false.",
+    "Convention propagules are non-observation hereditary records containing only independently sourced finite policy alleles and opaque lineage ids; evaluator-only latent metadata remains noncausal.",
+    "Convention-propagule source selection is never resampled to improve wake coverage; an already-identical same-role lineage and allele block is a state_change=false activation no-op that retains the lineage id, while only changed state creates ancestry.",
+    "Every archived abstract signal has a balanced finite delayed_task_binding. It is evaluator-hidden environment task truth, distinct from provenance-only latent metadata, and may affect only the delivered task outcome/reward, never a policy input or message field.",
+    "On archive delivery the bound task and archived signal are effective; the live emission is charged but sender_reward_eligible is false; receiver action/reward follows the archived signal and record-bound task; receiver input hashes exclude all task truth.",
+    "Delayed archive diagnostics use actual archived-signal plus bound-task rows. Task scramble is a negative diagnostic/verifier tamper only and never affects fitness, qualification, or nomination.",
+    "message_permutation_probe uses one event-index permutation of the intact delivered-signal vector and must preserve its exact histogram.",
+    "cross_lineage_trials, cross_lineage_accuracy, delayed_archive_accuracy, and delayed_archive_advantage_over_no_channel are registered diagnostics or secondary evidence only and may never enter conjunctive emergence qualification or discovery-regime nomination.",
+    "All conditions retain host containment, immutable evaluator receipts, cohort non-overlap, and the same evidence thresholds.",
+    "The overt lane cannot expose pressure class, required skill, signal id, decoder state, propagule source/target/result lineage details, role-specific propagule state-change fields, or any evaluator latent metadata.",
+    "No condition may add natural language, arbitrary bytes, encoded payloads, external actions, or real-world semantics."
+  ],
+  "episode_accounting": {
+    "smoke_and_replay_max": 8,
+    "smoke_and_replay_consumed_before_a3_recovery": 6,
+    "discovery": {
+      "candidate_regimes": 12,
+      "active_seeds_per_regime": 6,
+      "reserve_seeds_per_regime_amendment_required": 6,
+      "fixed_active_episodes": 72,
+      "hard_maximum_episodes": 144,
+      "failed_partial_world_executions": 61,
+      "clean_matrix_plus_replay_world_executions_planned": 73,
+      "cumulative_world_executions_after_clean_rerun": 134,
+      "conditions": ["adaptive_dual_archive"]
+    },
+    "confirmatory_after_freeze": {
+      "seeds": 24,
+      "conditions": [
+        "adaptive_dual_archive",
+        "no_channel",
+        "matched_noise",
+        "selection_neutral",
+        "no_archive",
+        "overt_only",
+        "fixed_code_ceiling",
+        "sender_observation_knockout"
+      ],
+      "episodes": 192
+    },
+    "holdout_after_confirmation": {
+      "seeds": 12,
+      "conditions": [
+        "adaptive_dual_archive",
+        "no_channel",
+        "matched_noise",
+        "selection_neutral",
+        "no_archive"
+      ],
+      "episodes": 60
+    },
+    "ood_after_holdout": {
+      "seeds": 12,
+      "conditions": [
+        "adaptive_dual_archive",
+        "no_channel",
+        "matched_noise",
+        "fixed_code_ceiling"
+      ],
+      "episodes": 48
+    },
+    "maximum_total_episodes": 450
+  }
+}

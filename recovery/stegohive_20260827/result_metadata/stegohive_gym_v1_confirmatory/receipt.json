@@ -1,0 +1,127 @@
+{
+  "artifact_sha256": {
+    "analysis_rows.jsonl": "b0feab264044c3897e539e03f868594d05342bda5cb97f42502b0486be7f1710",
+    "gate_receipt.json": "9704808f615f52c1c16bbe47e87b0fc2e5086d9b8768dafb6623c1238450e866",
+    "knowledge_card.md": "1b608814b0d89ff9d258d4b93d70d4d8d53c3c55da534fcc3a22b3c0210259bb",
+    "raw_episodes.jsonl.gz": "677731601e98c28deba2c42c207fb3358b217119148375fcc26281fcc2ecfe7b",
+    "seed_manifest.json": "8303770b665c35ed3a92e8248cd4d641bdcc75e97717523ad07db99407bef0d5",
+    "summary.json": "4de69f1abd43c7e4ea9540e7524d269fb4e1aa5ea938336b023f4481dd22e163"
+  },
+  "authorization": {
+    "claim_scope": "model_only",
+    "conditions_sha256": {
+      "adaptive_dual_archive": "68169b752cf428321fcfb43b25cd110040bbd0d4bf9af17cd2ca7dd3f5bd3a75",
+      "fixed_code_ceiling": "22d073230b8f97b0f089ae0031feb92b96ee817a0be962dc0dad56eae68291bc",
+      "matched_noise": "b52a7c986715cb051f653c6fa8f2ff7dc5ce2458c1f00a98074a3220137dfa71",
+      "no_archive": "1f9150bd3a6d8761306a689d165ef69f53470cbfca8f2457f2f4d42f15d5035e",
+      "no_channel": "4ef0ff7db6f9ff2c717f7bb96fac70e7a24e7d0b1140d16322750334a72f0c45",
+      "overt_only": "ab146ef22ae98c5bbac2953a434750496d5fe7cd20a7127e2c19c8b92c7295b7",
+      "selection_neutral": "d42ea2a5ebc92b68cb81708e1a2b11136009bd0a0dbf63fb70e019f105404f50",
+      "sender_observation_knockout": "a1f412c7621d69f343a51f4c5b9ba8cbd7bd685cab5f9f98dea2f0389d2cd203"
+    },
+    "freeze": {
+      "freeze_id": "01a280ec0a8f17b1eb36db06a7f7c10fd9e9ded6c4b2d2c2f6eedcb62eeb6e90",
+      "receipt_path": "experiments/stegohive_gym_v1/freeze_receipts/01a280ec0a8f17b1eb36db06a7f7c10fd9e9ded6c4b2d2c2f6eedcb62eeb6e90.json",
+      "receipt_raw_sha256": "b1b29a13b5daa032c835d2dab82b152e6bd3ab3a70be4c3144dd6fb15a96f686",
+      "source_tree_sha256": "f17c4762385aca808ee7eeb36eaf16483d015f6f765c6bae72f54677ba4779bc"
+    },
+    "inputs": {
+      "condition_registry.json": {
+        "bytes": 16341,
+        "path": "experiments/stegohive_gym_v1/condition_registry.json",
+        "raw_sha256": "f756f096d5429e0edab0d403425e583b52eaddf11e42d378dfb46bb47be7a5ee"
+      },
+      "config.json": {
+        "bytes": 21776,
+        "path": "experiments/stegohive_gym_v1/config.json",
+        "raw_sha256": "5abcb07d3f2399ff3f692878fd9982f92f69dfbddf5d88e2b80408ff9da73227"
+      },
+      "manifest.json": {
+        "bytes": 23967,
+        "path": "experiments/stegohive_gym_v1/manifest.json",
+        "raw_sha256": "0e157ab30616a763aff250e82d8e75643778590591f603d40c1c03d7fe80c82c"
+      },
+      "protocol_freeze.json": {
+        "bytes": 20191,
+        "path": "experiments/stegohive_gym_v1/protocol_freeze.json",
+        "raw_sha256": "e6f06f0ab536b5838c542d450ade387e6d416eaca66e28ab37bc2209799d01fd"
+      },
+      "safety_boundary.json": {
+        "bytes": 20210,
+        "path": "experiments/stegohive_gym_v1/safety_boundary.json",
+        "raw_sha256": "9b4bf1fca32a33bc4aa52bcb4823464ae8dba86d7f03c93e21d6404400a39d50"
+      }
+    },
+    "output": "results/stegohive_gym_v1_confirmatory",
+    "phase": "confirmatory",
+    "plan": {
+      "cell_count": 192,
+      "cell_order": "seed_major_then_registered_condition_order",
+      "cells_sha256": "8b7d694c276318fbe240b3d5c00cd0139b245f57c3c54e8a8969e1289886fb6f"
+    },
+    "prior_gate": null,
+    "regime": {
+      "definition": {
+        "archive_delay_cohorts": 1,
+        "channel_noise_probability": 0.0,
+        "id": "R01",
+        "policy_mutation_probability": 0.005,
+        "propagation_probability": 0.05,
+        "signal_cost": 0.0
+      },
+      "definition_sha256": "83b05cbe07c57e52bf564015b73bc584a347a822dc8ba9ef80f10bb586acba75",
+      "engine_config_sha256": "87e8a3c4e91b31230dc64ed49b9212ad25fc4aad6aee49d1f77a15ff1432e1e4"
+    },
+    "schema": "alife.stegohive.future_phase.authorization.v1",
+    "source": {
+      "files": {
+        "src/stegohive_v1/analysis.py": "f97d36242b378fe20a56e5b289d0f836bf28589394726800d244d2dea11d838e",
+        "src/stegohive_v1/environment.py": "c1feccea58c43b220b98717c8357ac033a81b7801036567ded5b3200d790aa7f",
+        "src/stegohive_v1/freeze_transition.py": "608664d2e7a688544fc9cafa389bd9a101e66647fe21fde3ffb7c17f6ee600e9",
+        "src/stegohive_v1/phase_analysis.py": "c64dbc25016f879334c02657168dc1f4de2853bc18d89b54151aee72280d1ae3",
+        "src/stegohive_v1/phase_artifacts.py": "59370129fafd34dc9359ea5865176e0763aa082892b0651a1689895f6739e15a",
+        "src/stegohive_v1/phase_campaign.py": "10ac721ac00128a11f6eb4b703fcbd5cd7d4b331cb48b3c61450fc67cc057007",
+        "src/stegohive_v1/types.py": "fdb5c7eeef28964a7486314ba6e11acb9d6c24e101badbfd379b2f0875735f7e",
+        "src/stegohive_v1/verifiers.py": "9a27218556ec4fd8ed5410d71bba15669fd67cf930797c4e1b50c02a9fdb9283"
+      },
+      "tree_sha256": "55fc6e8a80e4b156b52b98e84a4afb46d36c2872f5bf1e941c3e2394253c816d"
+    }
+  },
+  "complete_verified_matrix": true,
+  "deterministic_first_cell_replay": true,
+  "eligible_as_evidence": true,
+  "eligible_as_prior_gate": false,
+  "episode_count": 192,
+  "external_io_performed": false,
+  "no_outcome_adaptive_stopping": true,
+  "phase": "confirmatory",
+  "resource_receipt": {
+    "caps": {
+      "max_canonical_audit_receipts_bytes_per_episode": 786432,
+      "max_compressed_artifact_bytes": 262144000,
+      "max_decompressed_raw_bytes": 1073741824,
+      "max_peak_rss_bytes": 2147483648,
+      "max_wall_seconds": 1200.0
+    },
+    "checks": {
+      "compressed_artifact_bytes": true,
+      "maximum_canonical_audit_receipts_bytes": true,
+      "peak_rss_bytes": true,
+      "raw_decompressed_bytes": true,
+      "wall_seconds": true
+    },
+    "observed": {
+      "compressed_artifact_bytes": 79555912,
+      "maximum_canonical_audit_receipts_bytes": 415314,
+      "peak_rss_bytes": 189353984,
+      "raw_decompressed_bytes": 321346127,
+      "wall_seconds": 759.062
+    },
+    "passed": true,
+    "phase": "confirmatory_all_artifacts",
+    "schema": "alife.stegohive.future_phase.resource_receipt.v1"
+  },
+  "schema": "alife.stegohive.future_phase.campaign_receipt.v1",
+  "status": "complete_negative",
+  "world_executions": 193
+}

@@ -1,0 +1,59 @@
+{
+  "executed": [
+    {
+      "arm": "no_board_mixed_passive",
+      "seed": 1001,
+      "split": "discovery"
+    },
+    {
+      "arm": "visible_board_mixed_passive",
+      "seed": 1001,
+      "split": "discovery"
+    },
+    {
+      "arm": "latent_intact_mixed_passive",
+      "seed": 1001,
+      "split": "discovery"
+    },
+    {
+      "arm": "latent_shuffled_mixed_passive",
+      "seed": 1001,
+      "split": "discovery"
+    },
+    {
+      "arm": "latent_intact_homogeneous_passive",
+      "seed": 1001,
+      "split": "discovery"
+    },
+    {
+      "arm": "latent_intact_mixed_capability_gated",
+      "seed": 1001,
+      "split": "discovery"
+    }
+  ],
+  "schema": "alife.stegohive.seeds.v0",
+  "splits": {
+    "confirmatory": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008
+    ],
+    "discovery": [
+      1001,
+      1002,
+      1003,
+      1004
+    ],
+    "holdout": [
+      9001,
+      9002,
+      9003,
+      9004
+    ]
+  }
+}
