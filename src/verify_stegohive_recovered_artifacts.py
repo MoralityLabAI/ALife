@@ -55,8 +55,8 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def _retained_activation_targets(
     artifact_root: Path,
-) -> dict[tuple[int, float], int]:
-    targets: dict[tuple[int, float], int] = {}
+) -> dict[tuple[int, float], dict[int, int]]:
+    targets: dict[tuple[int, float], dict[int, int]] = {}
     with gzip.open(
         artifact_root / "raw_episodes.jsonl.gz", "rt", encoding="utf-8"
     ) as handle:
@@ -68,10 +68,24 @@ def _retained_activation_targets(
             if isinstance(rate, Mapping):
                 rate = rate.get("runtime_float")
             key = (int(identity["seed"]), float(rate))
+            eligible = int(exposure["eligible_draws"])
             activated = int(exposure["activated_draws"])
-            previous = targets.setdefault(key, activated)
+            checkpoints = targets.setdefault(key, {})
+            previous = checkpoints.setdefault(eligible, activated)
             if previous != activated:
-                raise ValueError(f"inconsistent retained mutation exposure for {key}")
+                raise ValueError(
+                    f"inconsistent retained mutation exposure for {key} at {eligible}"
+                )
+    for key, checkpoints in targets.items():
+        previous_eligible = 0
+        previous_activated = 0
+        for eligible, activated in sorted(checkpoints.items()):
+            if not previous_activated <= activated <= previous_activated + (
+                eligible - previous_eligible
+            ):
+                raise ValueError(f"impossible retained mutation prefix for {key}")
+            previous_eligible = eligible
+            previous_activated = activated
     return targets
 
 
@@ -169,9 +183,19 @@ def verify_recovered_bundle(
             self.draws = 0
 
         def bernoulli(self, _key: Any, probability: float) -> bool:
-            target = activation_targets[(self.seed, float(probability))]
             self.draws += 1
-            return self.draws <= target
+            checkpoints = activation_targets[(self.seed, float(probability))]
+            previous_eligible = 0
+            previous_activated = 0
+            for eligible, activated in sorted(checkpoints.items()):
+                if self.draws <= eligible:
+                    offset = self.draws - previous_eligible
+                    return offset <= activated - previous_activated
+                previous_eligible = eligible
+                previous_activated = activated
+            raise KeyError(
+                f"draw {self.draws} exceeds retained mutation prefixes for {self.seed}"
+            )
 
     globals_map["DeterministicRNGLedger"] = _RetainedActivationLedger
     if version == 9:

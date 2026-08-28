@@ -107,11 +107,12 @@ gate. The surviving Python 3.11 detached-verifier bytecode is preserved under
 `recovery/stegohive_20260827/verifier_bytecode`.
 
 `src/verify_stegohive_recovered_artifacts.py` provides an explicit recovery
-mode for V6–V9. On V9, the original compiled detached verifier accepts all 517
-worlds and all eight campaign stages: contract/schedule projection, receipt and
-hash closure, execution reservation, raw episodes and re-derived analyses,
-replay exposure and retained calibration, resource/timing aggregates, final
-summary and claim units, and the future-sealed seed manifest.
+mode for V6–V9. The original compiled detached verifiers accept every retained
+campaign: V6 (123 worlds), V7 (517), V8 (517), and V9 (517). All eight campaign
+stages pass for each version: contract/schedule projection, receipt and hash
+closure, execution reservation, raw episodes and re-derived analyses, replay
+exposure and retained calibration, resource/timing aggregates, final summary
+and claim units, and the future-sealed seed manifest.
 
 This recovered acceptance is not a replacement for the missing content-addressed
 freeze. The wrapper labels the following substitutions in every report:
