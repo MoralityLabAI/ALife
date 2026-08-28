@@ -127,3 +127,51 @@ statistics, claim units, summaries, ledgers, resource receipts, and seed seals
 remain checked by the original compiled verifier. The recovery report therefore
 supports continued archival analysis and code reconstruction, but not a claim
 that the lost V2–V9 simulator and input contracts were restored byte-for-byte.
+
+## Fresh runnable reconstruction completed on 2026-08-27
+
+`src/stegohive_v2` now also contains a fresh, deterministic implementation of
+the integrated V2 ecology. It is evidence-driven and explicitly identified in
+its RNG receipt as a reconstruction. It accepts arbitrary integer seeds and
+restores the retained mechanics and schemas:
+
+- the exact eight V3 condition definitions (`F00`, `F01`, `F10`, `F11`, the
+  matched-noise/no-channel/neutral ablations, and the fixed-code ceiling);
+- stable population slots and cohort life-reset acknowledgements;
+- four-context sender maps and four-signal receiver maps;
+- encounter-local and all-pairs balanced cross-play credit;
+- differential and uniform selection;
+- independent-role and linked-codebook inheritance;
+- separate sender/receiver mutation draws;
+- bounded delayed archive deposits and wakes;
+- three late, reproduction-disabled checkpoints with the retained sufficient
+  statistics schema and metric firewall;
+- deterministic projection and episode hashes; and
+- fail-closed lifecycle, action, exposure, probe, containment, RNG, and hash
+  verification for fresh reconstructed episodes.
+
+The `stegohive_v6`, `stegohive_v7`, `stegohive_v8`, and `stegohive_v9`
+packages restore the registered experiment-cell facades found in retained
+identities. V6 supplies the five local-star cells; V7 supplies the four
+horizon/rate cells; V8 separates reproduction and archive credit; V9 separates
+sender-parent and receiver-parent credit. Their population sizes, horizons,
+raw mutation rates, base arms, and treatment assignments are derived directly
+from the surviving records.
+
+Exact retained-world replay remains a separate read-only path in
+`stegohive_v2.archive`. It returns the preserved historical record and never
+substitutes a fresh reconstruction. The command-line runner exposes both modes:
+
+```powershell
+$env:PYTHONPATH = 'C:\projects\ALife\src'
+python -m stegohive_v2.campaign --version V9 --condition B_E --seed 900001
+python -m stegohive_v2.campaign --version V2 --condition F00 --seed 30001 --retained-replay
+```
+
+Fresh outputs must not be treated as the original registered evidence or
+pooled with it. The lost V2 RNG tuple-key sequence, exact parent-choice stream,
+later source-tree bytes, and content-addressed freeze inputs remain
+unrecoverable. Consequently, fresh worlds reproduce the recovered semantics
+and contract, not historical episode hashes or scientific outcomes. The
+retained campaigns and original detached-verifier verdicts remain the sole
+authoritative V2–V9 evidence.
