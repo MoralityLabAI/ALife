@@ -88,3 +88,41 @@ Accordingly, the V1 snapshot and result artifacts are exact recovery. Any V2–V
 implementation or full paper recreated from them must be labeled reconstruction
 and revalidated against the recorded hashes, schedules, summaries, and detached
 receipts. Do not claim that later source was recovered byte-for-byte.
+
+## Executable recovery completed on 2026-08-27
+
+The exact V1 package, detached verifier, and frozen inputs have been restored to
+their original runnable paths under `src/stegohive_v1` and
+`experiments/stegohive_gym_v1`. The missing two-member shared `stegohive`
+package was reconstructed from the frozen machine-ID ordering and the canonical
+JSON implementation embedded in V1. A fresh in-memory V1 world executes and is
+accepted by all required episode verifiers. The surviving final compiled V1
+verifier also accepts the complete retained 72-world campaign with no failures.
+
+The pure V2 analysis and episode-verification APIs were reconstructed under
+`src/stegohive_v2`. For retained episodes they reproduce the historical JSON
+objects exactly, including the 199-permutation NMI statistics, qualification
+checks, mapping alignments, selection score, and the registered `0.60` training
+gate. The surviving Python 3.11 detached-verifier bytecode is preserved under
+`recovery/stegohive_20260827/verifier_bytecode`.
+
+`src/verify_stegohive_recovered_artifacts.py` provides an explicit recovery
+mode for V6–V9. On V9, the original compiled detached verifier accepts all 517
+worlds and all eight campaign stages: contract/schedule projection, receipt and
+hash closure, execution reservation, raw episodes and re-derived analyses,
+replay exposure and retained calibration, resource/timing aggregates, final
+summary and claim units, and the future-sealed seed manifest.
+
+This recovered acceptance is not a replacement for the missing content-addressed
+freeze. The wrapper labels the following substitutions in every report:
+
+- missing contract bytes are represented by their retained receipt bindings;
+- the signed static resource projection is reused from `timing_gate.json`;
+- aggregate mutation activations and treatment exposures are reused because the
+  exact V2 tuple-key RNG implementation and parent-choice sequence did not survive.
+
+All episode bytes, canonical record hashes, retained analyses, factorial
+statistics, claim units, summaries, ledgers, resource receipts, and seed seals
+remain checked by the original compiled verifier. The recovery report therefore
+supports continued archival analysis and code reconstruction, but not a claim
+that the lost V2–V9 simulator and input contracts were restored byte-for-byte.

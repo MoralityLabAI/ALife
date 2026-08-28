@@ -1,0 +1,396 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "Can initially exchangeable signals acquire a causally functional signal-to-skill convention across disjoint host cohorts in a sealed fictional habitat ecology, and can registered dormant convention propagules reactivate evolved finite policy alleles after a cohort delay?",
+  "benefit": "causal",
+  "claim_scope": "model_only",
+  "experimental_unit": "one independently seeded evolutionary world episode containing one role-flexible 32-host population per cohort and at most six strictly non-overlapping host cohorts",
+  "hypotheses": [
+    {
+      "id": "H1_emergent_convention",
+      "prediction": "The adaptive_dual_archive condition satisfies the complete registered emergence criterion more often than no_channel, matched_noise, and selection_neutral conditions, with a qualification-frequency advantage of at least 0.30.",
+      "falsifier": "The adaptive condition fails any required statistical, causal, temporal, or abstraction criterion, or the registered null conditions qualify at a comparable frequency."
+    },
+    {
+      "id": "H2_receiver_necessity",
+      "prediction": "Masking the receiver signal input lowers reproduction-disabled probe decoding accuracy by at least 0.15, and exact add-back restores at least 0.75 of that loss.",
+      "falsifier": "The knockout effect is below 0.15, the add-back rescue fraction is below 0.75, or exposure differs beyond the registered tolerance."
+    },
+    {
+      "id": "H3_conventional_arbitrariness",
+      "prediction": "A consistent global relabeling of the exchangeable signal alphabet preserves at least 0.90 of probe accuracy with a correspondingly relabeled decoder, while per-message permutation lowers causal transfer by at least 0.20.",
+      "falsifier": "Particular signal labels retain privileged meanings, global relabeling destroys function, or per-message permutation leaves causal transfer unchanged."
+    },
+    {
+      "id": "H4_cross_cohort_abstraction",
+      "prediction": "The learned mapping maintains at least 0.75 alignment across three consecutive disjoint cohort transitions and retains at least 0.80 of in-distribution probe accuracy under registered OOD habitat relabeling and pressure schedules.",
+      "falsifier": "Alignment falls below 0.75, fewer than three transitions qualify, or OOD retention is below 0.80."
+    },
+    {
+      "id": "H5_archive_and_selection_mechanism",
+      "prediction": "Removing both registered cross-cohort carriers—the abstract-signal archive and convention propagule—or removing differential ecological selection lowers convention persistence and causal transfer relative to adaptive_dual_archive while matched activity, costs, separate policy mutation, host population, and exposure remain within tolerance.",
+      "falsifier": "no_archive and selection_neutral retain the same persistence and causal transfer as adaptive_dual_archive, or resource, role-assignment, policy-lineage, and exposure matching fails."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/stegohive_v1/campaign.py",
+    "code_hash": "record-at-freeze-and-run-time-with-dirty-status",
+    "config_paths": [
+      "config.json",
+      "condition_registry.json",
+      "protocol_freeze.json",
+      "safety_boundary.json"
+    ],
+    "contract_amendment": "A2_pre_discovery_resource_and_schedule_semantics",
+    "update_order": "For each generation: select a target habitat node and, on a propagation event, copy pressure only from one recorded declared neighbor; assign two distinct hosts to sender and receiver roles on the registered schedule; expose the required skill only to the sender-policy block; emit a cost-limited exchangeable signal; append typed overt and abstract-signal rows and optional non-observation convention propagules; activate the receiver-policy block; update only in-memory ecology and role-specific selection credit. At turnover retire every host, clear transient observations, independently choose sender-policy and receiver-policy parents and mutations, then apply any scheduled convention-propagule wake as registered heredity with separate role activation receipts. A differing same-role block creates ancestry; an already-identical lineage and allele block is state_change=false and retains its lineage id. These details are evaluator-only and archive source selection is never changed to improve wake coverage. After each cohort, freeze reproduction and run the registered evidence probes and matched counterfactual replays.",
+    "rng": "One recorded episode seed owns domain-separated streams for habitat initialization, declared-neighbor pressure propagation, role assignment, sender-policy parent and mutation, receiver-policy parent and mutation, host reproduction, abstract-signal delivery, convention-propagule deposit and wake, probe schedules, histogram-preserving event-index permutations, and OOD graph edge swaps and relabeling. Paired conditions share initialization and registered schedules; intervention-driven divergence is reported as shared initialization rather than identical later stochastic noise.",
+    "delayed_task_binding": "Each archived abstract signal is assigned one globally balanced seed-rotated C0-K0 through C3-K3 evaluator-hidden environment task binding. At delayed delivery the record-bound task and archived signal become effective for receiver outcome/reward; current live sender emission is charged with sender_reward_eligible false. Binding truth never enters policy/message inputs and is distinct from provenance-only latent_evaluator_metadata."
+  },
+  "interventions": [
+    {
+      "name": "registered_condition",
+      "changes": {
+        "path": "condition_registry.json.conditions",
+        "values": [
+          "adaptive_dual_archive",
+          "no_channel",
+          "matched_noise",
+          "selection_neutral",
+          "no_archive",
+          "overt_only",
+          "fixed_code_ceiling"
+        ]
+      }
+    },
+    {
+      "name": "receiver_signal_input",
+      "changes": {
+        "values": ["enabled", "masked", "add_back"]
+      }
+    },
+    {
+      "name": "probe_symbol_transform",
+      "changes": {
+        "values": ["identity", "per_message_permutation", "global_relabel"]
+      }
+    },
+    {
+      "name": "selection_mode",
+      "changes": {
+        "values": ["differential_ecological", "uniform_selection_neutral", "fixed_code_no_evolution"]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "no_channel",
+      "type": "baseline",
+      "definition": "Suppress signal delivery while charging the matched sender activity and energy cost."
+    },
+    {
+      "name": "same_seed_noop_replay",
+      "type": "no_op",
+      "definition": "Exact config and seed must reproduce canonical trajectory, probe, and receipt hashes."
+    },
+    {
+      "name": "receiver_knockout",
+      "type": "mechanism_knockout",
+      "definition": "Deliver and log the signal but mask it at the receiver policy input during a paired non-rewarding probe."
+    },
+    {
+      "name": "receiver_add_back",
+      "type": "add_back",
+      "definition": "Restore the exact receiver signal input while preserving the knockout snapshot, probe schedule, resources, and delivery receipts."
+    },
+    {
+      "name": "matched_noise",
+      "type": "resource_matched",
+      "definition": "Deliver independent uniform signals with matched count, delay, capacity, activity, and energy cost."
+    },
+    {
+      "name": "message_permutation_probe",
+      "type": "shuffled_interaction",
+      "definition": "Permute signals across matched probe interactions immediately before receiver activation while preserving the signal histogram."
+    },
+    {
+      "name": "no_archive",
+      "type": "mechanism_knockout",
+      "definition": "Permit live within-cohort typed signaling and matched archive activity, but expire abstract-signal rows and convention propagules before cohort turnover so neither registered carrier crosses cohorts."
+    },
+    {
+      "name": "selection_neutral",
+      "type": "null",
+      "definition": "Use uniform parent selection while matching ecology, channel, policy mutation, population, and exposure."
+    },
+    {
+      "name": "fixed_code_ceiling",
+      "type": "simple_limit",
+      "definition": "Use a frozen evaluator-declared signal-to-skill mapping as a positive solvability and metric ceiling; never count it as emergence."
+    }
+  ],
+  "seed_plan": {
+    "discovery": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "discovery_active_execution": [1101, 1102, 1103, 1104, 1105, 1106],
+    "discovery_reserve_amendment_required": [1107, 1108, 1109, 1110, 1111, 1112],
+    "resource_profile_only": [17],
+    "confirmatory": [
+      2101,
+      2102,
+      2103,
+      2104,
+      2105,
+      2106,
+      2107,
+      2108,
+      2109,
+      2110,
+      2111,
+      2112,
+      2113,
+      2114,
+      2115,
+      2116,
+      2117,
+      2118,
+      2119,
+      2120,
+      2121,
+      2122,
+      2123,
+      2124
+    ],
+    "holdout": [
+      9101,
+      9102,
+      9103,
+      9104,
+      9105,
+      9106,
+      9107,
+      9108,
+      9109,
+      9110,
+      9111,
+      9112
+    ],
+    "pairing": "Every seed fixes the habitat graph, balanced pressure schedule, distinct-host role assignment schedule, initial exchangeable sender and receiver policy blocks, 32-host population, separate policy-lineage identities, archive and propagule opportunities, and reproduction-disabled probe schedule across registered conditions. Sender-policy and receiver-policy parents, mutations, credits, and ancestry remain independently receipted. Confirmatory, holdout, and OOD seeds remain forbidden while protocol_freeze.json status is discovery_only/unfrozen."
+  },
+  "metrics": {
+    "selection": [
+      "lifetime_ecological_energy",
+      "ecological_offspring_count",
+      "lineage_survival_credit",
+      "population_viability"
+    ],
+    "evidence": [
+      "bias_corrected_nmi_need_signal",
+      "bias_corrected_nmi_signal_skill",
+      "heldout_probe_decoding_accuracy",
+      "causal_symbol_swap_transfer_rate",
+      "receiver_knockout_accuracy_effect",
+      "receiver_add_back_rescue_fraction",
+      "global_relabel_accuracy_retention",
+      "cross_cohort_mapping_alignment",
+      "convention_persistence_transitions",
+      "ood_probe_accuracy_retention",
+      "emergence_qualification_rate"
+    ],
+    "hazard": [
+      "population_extinction",
+      "population_explosion",
+      "ecological_collapse_before_exposure",
+      "single_signal_monopoly",
+      "lineage_monoculture",
+      "archive_saturation",
+      "random_signal_churn",
+      "pressure_base_rate_imbalance",
+      "receiver_side_channel_leakage",
+      "cohort_overlap_violation",
+      "seed_split_leakage",
+      "nonfinite_metric",
+      "external_io_attempt",
+      "wall_seconds",
+      "max_rss_mb",
+      "artifact_bytes",
+      "decompressed_raw_bytes",
+      "canonical_audit_receipts_bytes_per_episode"
+    ],
+    "diagnostic": [
+      "raw_mutual_information_need_signal",
+      "raw_mutual_information_signal_skill",
+      "signal_entropy",
+      "skill_entropy",
+      "signal_usage_histogram",
+      "pressure_usage_histogram",
+      "policy_mutation_count",
+      "effective_sender_lineages",
+      "effective_receiver_lineages",
+      "mean_archive_age",
+      "convention_propagule_deposit_count",
+      "convention_propagule_wake_count",
+      "independent_policy_parent_rate",
+      "declared_neighbor_propagation_rate",
+      "cross_lineage_trials",
+      "cross_lineage_accuracy",
+      "delayed_archive_accuracy",
+      "delayed_archive_advantage_over_no_channel",
+      "delayed_archive_task_scramble_accuracy",
+      "mean_selection_fitness"
+    ],
+    "denominators": {
+      "signal_emission": "eligible sender observations of an evaluator-hidden required skill",
+      "archive_delivery": "emitted typed signals eligible to cross a registered cohort boundary",
+      "propagule_wake": "registered finite convention propagules retained to their scheduled wake and applied as heredity before any target-cohort interaction",
+      "receiver_activation": "delivered signal records presented to an eligible receiver policy",
+      "causal_transfer": "paired reproduction-disabled probes with two distinct delivered signals and otherwise identical state",
+      "cross_cohort_alignment": "completed non-overlapping cohort transitions with adequate probe coverage",
+      "emergence_qualification": "one independently seeded complete world episode"
+    },
+    "exposure": {
+      "eligibility": "The sender alone observes one of four balanced required-skill classes and a receiver has a later skill-choice opportunity with no alternate observation of that class.",
+      "activation": "A delivered S0-S3 enum is read by the exact receiver signal-input mechanism and recorded in the immutable probe receipt.",
+      "state_change": "A paired do(signal := alternate_signal) probe changes the receiver action distribution or selected skill while all non-signal inputs remain fixed.",
+      "execution": "The receiver executes one K0-K3 skill action in a reproduction-disabled probe and the evaluator records the chosen skill without applying fitness.",
+      "minimum_per_condition": 60,
+      "minimum_eligible_interactions_per_seed": 80,
+      "minimum_each_skill_need_per_seed": 15,
+      "minimum_delivered_signals_per_seed": 60,
+      "balance_tolerance": 0.1,
+      "balance_scope": "paired condition arms and matched distinct-host sender/receiver role opportunities within each seed",
+      "per_message_permutation": "One recorded permutation of intact event indices reassigns the intact delivered-signal vector across the same receiver events; exact delivered-signal multiset equality is mandatory."
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "bias_corrected_nmi_need_signal",
+      "bias_corrected_nmi_signal_skill",
+      "causal_symbol_swap_transfer_rate",
+      "cross_cohort_mapping_alignment"
+    ],
+    "uncertainty": "Compute observed mutual information within each episode only on frozen non-rewarding probe rows as I(X;Y) / sqrt(H(X) * H(Y)). Compute corrected NMI as (observed_nmi - permutation_null_mean) / (1 - permutation_null_mean), clamp it to [0,1], and separately require observed_nmi to be strictly greater than the empirical permutation q99. Across independent episodes report per-seed rows, paired mean and median effects, direction consistency, exact paired randomization intervals where defined, and Wilson intervals for qualification rates. Interactions and ticks are repeated observations, never independent replicates.",
+    "multiple_comparisons": "H1 is primary. Test H2-H5 hierarchically after H1; if confirmatory p-values are emitted, apply Holm correction while retaining effect sizes, direction consistency, and all failures.",
+    "registered_secondary_diagnostics": {
+      "metrics": ["cross_lineage_trials", "cross_lineage_accuracy", "delayed_archive_accuracy", "delayed_archive_advantage_over_no_channel"],
+      "use": "Describe cross-policy-lineage performance and belated convention-propagule reactivation without post-hoc promotion.",
+      "part_of_conjunctive_emergence_qualification": false,
+      "eligible_for_discovery_regime_nomination": false
+    },
+    "negative_diagnostic": {
+      "id": "delayed_task_scramble",
+      "definition": "Scramble record-bound tasks across actual archived-signal rows as a negative diagnostic and verifier tamper.",
+      "may_affect_fitness_selection_qualification_or_nomination": false
+    },
+    "ood_conditions": [
+      "known registered OOD seed IDs 12101 through 12112 whose generated trajectories and outcomes remain uninspected until their protocol gate opens",
+      "consistent random habitat-node relabeling",
+      "unseen balanced pressure schedule",
+      "one registered connectedness- and edge-count-preserving habitat-graph edge swap",
+      "optional typed perturbation toolset enabled only under a separately labeled OOD condition"
+    ],
+    "emergence_definition": {
+      "bias_corrected_nmi_need_signal_min": 0.35,
+      "bias_corrected_nmi_signal_skill_min": 0.35,
+      "permutation_null_percentile_min": 0.99,
+      "heldout_probe_decoding_accuracy_min": 0.55,
+      "chance_accuracy": 0.25,
+      "minimum_skill_classes_covered": 3,
+      "causal_symbol_swap_transfer_rate_min": 0.4,
+      "causal_transfer_advantage_over_noise_or_permutation_min": 0.2,
+      "receiver_knockout_accuracy_drop_min": 0.15,
+      "receiver_add_back_rescue_fraction_min": 0.75,
+      "global_relabel_accuracy_retention_min": 0.9,
+      "cross_cohort_mapping_alignment_min": 0.75,
+      "minimum_consecutive_disjoint_transitions": 3,
+      "ood_probe_accuracy_retention_min": 0.8,
+      "confirmatory_qualifying_episodes_min": 18,
+      "confirmatory_episode_count": 24,
+      "holdout_qualifying_episodes_min": 8,
+      "holdout_episode_count": 12,
+      "null_condition_qualification_advantage_min": 0.3
+    },
+    "stopping_rule": "While status is discovery_only/unfrozen, permit seed-17 resource profiling/smoke/replay and the fixed 72-cell active discovery schedule only. Discovery mode runs every R01-R12 by seed 1101-1106 cell exactly once; seeds 1107-1112 are known reserve and require a new amendment before execution. Abort with an explicit partial-failure receipt on failed replay, failed exposure adequacy, more than 0.10 paired exposure imbalance, side-channel leakage, cohort overlap, containment violation, or wall/RSS/compressed/decompressed resource cap. The hard discovery runner cap remains 144. Confirmation and holdout remain forbidden until a regime is nominated without using evidence metrics and a complete freeze receipt records code, config, registry, safety, seed, and analysis hashes.",
+    "acceptance_boundary": "Passing supports only that initially exchangeable enums acquired a statistically structured, causally functional, temporally persistent signal-to-skill convention inside the registered abstract habitat model. Cross-cohort persistence may be separately attributed only to the registered mechanism actually manipulated: delivered abstract-signal rows are communication-like observations, whereas convention propagules are non-observation heredity that may reactivate finite evolved policy alleles. A propagule wake is not evidence that a receiver inferred a meaning from a message. Nothing here establishes cognition, intent, language, biological communication, real virulence, steganography, cyber behavior, human influence, open-ended evolution, or any claim about a real institution."
+  },
+  "budget": {
+    "max_wall_seconds": 1200,
+    "max_steps_per_episode": 180,
+    "max_steps_semantics": "One step is one cohort-generation ecology update. With six cohorts and 24 generations the registered design uses 144 steps. Within-step sender/receiver opportunities and all reproduction-disabled probe branches are separately bounded by engine configuration and do not multiply this counter.",
+    "max_episodes": 450,
+    "max_cells_per_world": 12,
+    "actual_habitat_nodes": 6,
+    "max_habitat_nodes": 12,
+    "max_agents_per_world": 48,
+    "max_cohorts_per_episode": 6,
+    "max_generations_per_cohort": 30,
+    "max_ram_mb": 2048,
+    "max_disk_mb": 250,
+    "max_decompressed_raw_mb": 1024,
+    "max_canonical_audit_receipts_bytes_per_episode": 786432,
+    "audit_receipt_hash_encoding": "SHA-256 retained as exactly 64 lowercase hexadecimal characters; hash encoding may not be shortened or optimized to meet the byte ceiling",
+    "discovery_preflight_gate": {
+      "required_source": "current-source accepted untraced seed-17 smoke artifact containing one episode plus exact replay",
+      "fraction_of_caps_strictly_below": 0.8,
+      "projected_world_equivalents": 73,
+      "compressed_artifact_multiplier": 72,
+      "projection": "wall = smoke runtime / 2 world executions * 73; compressed disk = actual smoke directory bytes * 72; decompressed raw = smoke decompressed bytes * 72; peak RSS = smoke process peak RSS",
+      "all_required": ["wall_seconds", "compressed_artifact_bytes", "raw_decompressed_bytes", "peak_rss_bytes"],
+      "absent_stale_invalid_or_over_threshold": "hard failure before discovery output creation"
+    },
+    "execution": "Sequential CPU-only execution. Each episode is isolated, uses in-memory abstract ecology only, and may write only declared result artifacts. No network, shell, subprocess, dynamic code, browser, plugin, external tool, model API, or GPU is permitted."
+  },
+  "design": {
+    "config_path": "config.json",
+    "condition_registry_path": "condition_registry.json",
+    "protocol_freeze_path": "protocol_freeze.json",
+    "safety_boundary_path": "safety_boundary.json",
+    "signal_alphabet": ["S0", "S1", "S2", "S3"],
+    "skill_alphabet": ["K0", "K1", "K2", "K3"],
+    "required_skill_classes": ["C0", "C1", "C2", "C3"],
+    "actual_habitat_nodes": 6,
+    "cohort_count": 6,
+    "generations_per_cohort": 24,
+    "host_population_model": "one 32-host role-flexible population; each interaction assigns two distinct hosts",
+    "policy_blocks": ["sender", "receiver"],
+    "policy_parentage": "independent sender-policy and receiver-policy parent, mutation, credit, and ancestry streams; shared_policy_parent is false",
+    "cross_cohort_carriers": ["abstract_signal", "convention_propagule"],
+    "delayed_task_binding": "balanced evaluator-hidden environment task truth on each archived signal; effective only for its delayed receiver outcome/reward and excluded from receiver input hash",
+    "propagation_operator": "copy pressure from one recorded declared neighbor into the selected target node",
+    "message_permutation_operator": "permute the intact delivered-signal vector across frozen event ids with exact histogram preservation",
+    "probe_feedback_to_fitness": false,
+    "storyworld_events": "Optional typed perturbations only; disabled by default; excluded from emergence labels and never used as a narrative oracle."
+  },
+  "artifacts": {
+    "output_directory": "results/stegohive_gym_v1",
+    "output_directories_by_mode": {
+      "profile": "results/stegohive_gym_v1_profile",
+      "smoke": "results/stegohive_gym_v1_smoke",
+      "calibration": "results/stegohive_gym_v1_calibration",
+      "discovery": "results/stegohive_gym_v1"
+    },
+    "raw_rows": "results/stegohive_gym_v1/raw_episodes.jsonl.gz",
+    "raw_rows_compression": "one deterministic gzip member, compression level 1, mtime 0, empty filename header; decompressed UTF-8 JSONL is capped at 1024 MB",
+    "partial_failure_filename": "partial_failure_receipt.json",
+    "partial_failure_semantics": "Written best-effort inside the selected mode output after any post-output abort; the directory is incomplete, must fail complete-artifact verification, and is never evidence.",
+    "summary": "results/stegohive_gym_v1/summary.json",
+    "seed_manifest": "results/stegohive_gym_v1/seed_manifest.json",
+    "replay_command": "python src/stegohive_v1/campaign.py --manifest experiments/stegohive_gym_v1/manifest.json --output results/stegohive_gym_v1 --mode discovery",
+    "replay_commands_by_mode": {
+      "profile": "python src/stegohive_v1/campaign.py --manifest experiments/stegohive_gym_v1/manifest.json --output results/stegohive_gym_v1_profile --mode profile",
+      "smoke": "python src/stegohive_v1/campaign.py --manifest experiments/stegohive_gym_v1/manifest.json --output results/stegohive_gym_v1_smoke --mode smoke",
+      "calibration": "python src/stegohive_v1/campaign.py --manifest experiments/stegohive_gym_v1/manifest.json --output results/stegohive_gym_v1_calibration --mode calibration",
+      "discovery": "python src/stegohive_v1/campaign.py --manifest experiments/stegohive_gym_v1/manifest.json --output results/stegohive_gym_v1 --mode discovery"
+    }
+  }
+}
