@@ -8,6 +8,22 @@ Experimental artificial life sandbox inspired by Conway's Game of Life, extended
 - Additional mechanics for shard hazards, echo blooms, norn-making, and brood expansion.
 - Non-UI, step-by-step terminal simulation.
 
+## Development setup
+
+On Windows, create the ignored local environment and restore the tested
+scientific stack with:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+```
+
+Run the complete regression suite with:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
 ## Run
 
 ```bash
