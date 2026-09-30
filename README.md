@@ -8,6 +8,22 @@ Experimental artificial life sandbox inspired by Conway's Game of Life, extended
 - Additional mechanics for shard hazards, echo blooms, norn-making, and brood expansion.
 - Non-UI, step-by-step terminal simulation.
 
+## Development setup
+
+On Windows, create the ignored local environment and restore the tested
+scientific stack with:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+```
+
+Run the complete regression suite with:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
 ## Run
 
 ```bash
@@ -298,3 +314,44 @@ mode ignores original-machine absolute paths and requires one unique
 multi-component suffix match. Runtime-environment differences and non-D storage
 are reported as provenance warnings; receipt/hash, schema, scientific-gate, and
 ambiguous-path failures still make the artifact invalid.
+
+## StegoHive joint-channel and reporting follow-up
+
+The September 11 follow-up supplies a bounded planted channel kernel and an
+exact finite entry/report/dispute game. Read the
+[protocol](experiments/stegohive_followup_20260911/PROTOCOL.md) and
+[results](experiments/stegohive_followup_20260911/evidence/RESULTS.md).
+These new reconstruction diagnostics remain separate from retained historical
+worlds described in the [recovery audit](STEGOHIVE_RECOVERY_AUDIT_2026-08-27.md).
+They establish finite counterexamples, not evolved collusion or field deterrence.
+
+```powershell
+$env:PYTHONPATH = 'C:\projects\ALife\src'
+.\.venv\Scripts\python.exe -m stegohive_followup.campaign
+.\.venv\Scripts\python.exe -m stegohive_followup.campaign --verify
+.\.venv\Scripts\python.exe -m pytest tests/test_stegohive_joint_channels.py tests/test_stegohive_reporting_game.py -q -p no:cacheprovider
+```
+
+## CryptoSwarmHive simulated evaluation
+
+The [CryptoSwarmHive protocol](experiments/cryptoswarmhive_eval_v1/PROTOCOL.md)
+applies the channel and reporting diagnostics to a six-role, four-job swarm with
+delayed artifact retrieval and fake-token escrow. Its
+[results](experiments/cryptoswarmhive_eval_v1/evidence/RESULTS.md) distinguish
+forced diagnostic leakage from behavior selected by entry/report/dispute games.
+All worlds are new simulations, separate from the retained StegoHive archive.
+
+```powershell
+$env:PYTHONPATH = 'C:\projects\ALife\src'
+.\.venv\Scripts\python.exe -m cryptoswarmhive.campaign
+.\.venv\Scripts\python.exe -m cryptoswarmhive.campaign --verify
+.\.venv\Scripts\python.exe -m pytest tests/test_cryptoswarmhive.py tests/test_stegohive_reporting_game.py -q -p no:cacheprovider
+```
+
+The [v2 audit-transfer study](experiments/cryptoswarmhive_audit_shift_v2/PROTOCOL.md)
+learns field erasure from task outcomes alone and freezes the audit before testing
+schema shifts. Its [results](experiments/cryptoswarmhive_audit_shift_v2/evidence/RESULTS.md)
+show when the same audit loses utility, retains joint leakage, and excludes
+honest participants in the reporting game. Run or replay it with
+`python -m cryptoswarmhive.audit_shift_campaign` and `--verify` respectively,
+using the same `PYTHONPATH` setup above.

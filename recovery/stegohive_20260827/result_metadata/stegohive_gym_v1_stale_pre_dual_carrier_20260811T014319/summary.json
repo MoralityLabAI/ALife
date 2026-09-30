@@ -1,0 +1,129 @@
+{
+  "campaign_complete": false,
+  "claim_scope": "model_only",
+  "condition_summaries": {
+    "adaptive_dual_archive": {
+      "all_verified": true,
+      "episodes": 1,
+      "exposure_adequate": 1,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7008637425520349,
+        "bias_corrected_nmi_signal_skill": 0.0,
+        "causal_symbol_swap_transfer_rate": 0.3125,
+        "cross_cohort_mapping_alignment": 1.0,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.25,
+        "ood_probe_accuracy_retention": 1.0,
+        "receiver_add_back_rescue_fraction": 0.0,
+        "receiver_knockout_accuracy_effect": 0.0
+      },
+      "qualification_frequency": 0.0,
+      "qualified": 0,
+      "seeds": [
+        17
+      ]
+    }
+  },
+  "deterministic_replay": true,
+  "episode_count": 1,
+  "evidence_tier": "smoke",
+  "freeze_status": "discovery_only/unfrozen",
+  "metric_firewall": {
+    "post_hoc_only": [
+      "NMI",
+      "probe accuracy",
+      "causal redirection",
+      "qualification"
+    ],
+    "selection_inputs": [
+      "ecological task reward",
+      "bounded signal cost",
+      "survival/reproduction opportunity"
+    ]
+  },
+  "mode": "smoke",
+  "not_supported": [
+    "claims about real AI laboratories, control-loss events, or institutions",
+    "real steganography, hacking, covert communication, or virulence",
+    "sentience, intention, cognition, or biological life",
+    "human persuasion efficacy or operational influence targeting",
+    "confirmation from discovery data"
+  ],
+  "regime_nomination": {
+    "evidence_metrics_used": [],
+    "nominated_regime_id": null,
+    "operationally_eligible": [],
+    "rule": "operational exposure, integrity, and viability only; lexicographic tie-break",
+    "status": "not_eligible_to_freeze"
+  },
+  "regime_summaries": {
+    "R01": {
+      "all_verified": true,
+      "episodes": 1,
+      "exposure_adequate": 1,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7008637425520349,
+        "bias_corrected_nmi_signal_skill": 0.0,
+        "causal_symbol_swap_transfer_rate": 0.3125,
+        "cross_cohort_mapping_alignment": 1.0,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.25,
+        "ood_probe_accuracy_retention": 1.0,
+        "receiver_add_back_rescue_fraction": 0.0,
+        "receiver_knockout_accuracy_effect": 0.0
+      },
+      "qualification_frequency": 0.0,
+      "qualified": 0,
+      "seeds": [
+        17
+      ]
+    }
+  },
+  "schema": "alife.stegohive.ecology.summary.v1",
+  "toolset": {
+    "claim_scope": "model_only",
+    "schema": "alife.stegohive.toolset.v1",
+    "separation_rules": [
+      "storyworld cards cannot encode answers or alter evidence thresholds",
+      "training fitness cannot read frozen-probe evidence metrics",
+      "the fictional shell cannot invoke a host shell or network",
+      "artifact integrity does not by itself establish emergence"
+    ],
+    "tools": [
+      {
+        "entrypoint": "stegohive_v1.environment.run_world",
+        "evidence_authority": "none_during_training",
+        "id": "adaptive_signal_ecology",
+        "role": "selectable_and_heritable_dynamics"
+      },
+      {
+        "entrypoint": "stegohive_v1.analysis.derive_probe_evidence",
+        "evidence_authority": "registered_episode_qualification",
+        "id": "frozen_causal_probes",
+        "role": "post_training_causal_measurement"
+      },
+      {
+        "entrypoint": "stegohive_v1.storyworld_tools.validate_storyworld_deck",
+        "evidence_authority": "none",
+        "id": "typed_storyworld_deck",
+        "role": "optional_exogenous_regime_generator"
+      },
+      {
+        "entrypoint": "stegohive.virtual_shell.VirtualShell",
+        "evidence_authority": "mechanism_and_exposure_only",
+        "id": "fictional_shell_fixture",
+        "role": "v0_hacking_game_and_trajectory_fixture"
+      },
+      {
+        "entrypoint": "stegohive_v1.verifiers.verify_episode",
+        "evidence_authority": "artifact_acceptance_not_scientific_confirmation",
+        "id": "artifact_verifier",
+        "role": "integrity_and_boundary_audit"
+      }
+    ]
+  },
+  "verification": {
+    "all_episodes_accepted": true,
+    "failed_episode_ids": []
+  }
+}

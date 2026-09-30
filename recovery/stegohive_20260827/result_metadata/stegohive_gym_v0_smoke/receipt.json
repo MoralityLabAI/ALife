@@ -1,0 +1,24 @@
+{
+  "deterministic_replay": true,
+  "episode_count": 6,
+  "exit_status": "ok",
+  "git": {
+    "commit": "not_collected_no_subprocess",
+    "dirty": null,
+    "status_lines": []
+  },
+  "knowledge_card_sha256": "9d0cec3dcdefaa3969d34a2580c83d89801fc8d2c760319cfe5324846649c7a5",
+  "manifest_sha256": "8d9a67a99e02bcbcdf177a5fbea54870b52a64ab1e79151cdfcf6559d21dfc50",
+  "normalized_scenario_sha256": "4d14a8eeb03788a423a6f0471c3c44f45c9794f348d3a768688466cd01b63b2e",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+  "raw_episodes_sha256": "d4e7167fc7ae8148c007ec7387ff2d1d008304da1a73aab25bb8fac66e28112c",
+  "replay_command": "python src/stegohive/campaign.py --manifest experiments\\stegohive_gym_v0\\manifest.json --output results\\stegohive_gym_v0_smoke --splits discovery --smoke",
+  "runtime_seconds": 9.093999999997322,
+  "scenario_source_sha256": "abbe7aa1cb3e27466e2d0ee47e889dbf438d7876996d9ca063389327803bc7ba",
+  "schema": "alife.stegohive.campaign_receipt.v0",
+  "seed_manifest_sha256": "00398c44530726e2f4fbd66a00c8ff22c67b5261fc3c79c6433b820fd20216a5",
+  "started_at": "2026-08-11T02:35:03.332891+00:00",
+  "stop_reason": "smoke_complete",
+  "summary_sha256": "c7e041af34203f47b55bf766e83ed9d57c010696308e41182f48c8bdd7c80465"
+}

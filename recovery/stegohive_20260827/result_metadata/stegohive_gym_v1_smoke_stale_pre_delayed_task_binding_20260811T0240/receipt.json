@@ -1,0 +1,202 @@
+{
+  "artifact_sha256": {
+    "analysis_rows.jsonl": "06dc5afa5b8d91e9017ed49ce348dc5cd37f08d1c18c5d1526c56eed4817c05b",
+    "knowledge_card.md": "f55a4f1362df1af06db00655645d286e248e8c34751b7bb47336c2e8374c0663",
+    "raw_episodes.jsonl.gz": "3076cbd62e9d96eb8c1cff78dfc869bba05b78571d41ab9690f4f94e774213c8",
+    "seed_manifest.json": "a37e6305cb8cf46d1ae89cf424c3a605eb78c8309f4fa72f9592735d4cae2aec",
+    "summary.json": "b7dea4af9f7bb0b54ea348ce9dcfd2d21449c6051c2329f07dfb22c1ad22fb01"
+  },
+  "completed_at": "2026-08-11T06:38:54.145800+00:00",
+  "deterministic_replay": true,
+  "episode_count": 1,
+  "exit_status": "ok",
+  "external_io": false,
+  "mode": "smoke",
+  "output_binding": {
+    "mode": "smoke",
+    "registered_relative_directory": "results/stegohive_gym_v1_smoke"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "protocol_status": "discovery_only/unfrozen",
+  "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+  "replay_command": "python src/stegohive_v1/campaign.py --manifest experiments\\stegohive_gym_v1\\manifest.json --output results\\stegohive_gym_v1_smoke --mode smoke --condition adaptive_dual_archive",
+  "resource_only_profile": false,
+  "resource_receipt": {
+    "caps": {
+      "max_canonical_audit_receipts_bytes_per_episode": 471859,
+      "max_compressed_artifact_bytes": 262144000,
+      "max_decompressed_raw_bytes": 1073741824,
+      "max_peak_rss_bytes": 2147483648,
+      "max_wall_seconds": 1200.0
+    },
+    "checks_passed": {
+      "compressed_disk": true,
+      "decompressed_raw": true,
+      "peak_rss": true,
+      "per_episode_audit_receipts": true,
+      "wall": true
+    },
+    "observed": {
+      "compressed_artifact_bytes": 381480,
+      "maximum_canonical_audit_receipts_bytes": 390542,
+      "peak_rss_bytes": 174800896,
+      "raw_decompressed_bytes": 1498331,
+      "wall_seconds": 6.703
+    },
+    "phase_checks": [
+      {
+        "compressed_artifact_bytes": 0,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 0,
+        "passed": true,
+        "peak_rss_bytes": 25194496,
+        "phase": "preflight",
+        "raw_decompressed_bytes": 0,
+        "wall_seconds": 0.015
+      },
+      {
+        "compressed_artifact_bytes": 0,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 0,
+        "passed": true,
+        "peak_rss_bytes": 25309184,
+        "phase": "before_episode:R01:17",
+        "raw_decompressed_bytes": 0,
+        "wall_seconds": 0.015
+      },
+      {
+        "compressed_artifact_bytes": 0,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 0,
+        "passed": true,
+        "peak_rss_bytes": 168865792,
+        "phase": "world_execution:R01:17",
+        "raw_decompressed_bytes": 0,
+        "wall_seconds": 3.015
+      },
+      {
+        "compressed_artifact_bytes": 0,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 0,
+        "passed": true,
+        "peak_rss_bytes": 168865792,
+        "phase": "verify_episode:R01:17",
+        "raw_decompressed_bytes": 0,
+        "wall_seconds": 3.515
+      },
+      {
+        "compressed_artifact_bytes": 0,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 168865792,
+        "phase": "analysis:R01:17",
+        "raw_decompressed_bytes": 0,
+        "wall_seconds": 3.531
+      },
+      {
+        "compressed_artifact_bytes": 358516,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 168865792,
+        "phase": "compression_flush:R01:17",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 3.562
+      },
+      {
+        "compressed_artifact_bytes": 358526,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 168865792,
+        "phase": "raw_stream_closed",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 3.562
+      },
+      {
+        "compressed_artifact_bytes": 358526,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "deterministic_replay",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.593
+      },
+      {
+        "compressed_artifact_bytes": 358526,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "summary_derivation",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.593
+      },
+      {
+        "compressed_artifact_bytes": 363771,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "analysis_write",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.593
+      },
+      {
+        "compressed_artifact_bytes": 368227,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "summary_write",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.593
+      },
+      {
+        "compressed_artifact_bytes": 369642,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "seed_manifest_write",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.593
+      },
+      {
+        "compressed_artifact_bytes": 371277,
+        "failed_caps": [],
+        "maximum_canonical_audit_receipts_bytes": 390542,
+        "passed": true,
+        "peak_rss_bytes": 174800896,
+        "phase": "knowledge_card_write",
+        "raw_decompressed_bytes": 1498331,
+        "wall_seconds": 6.609
+      }
+    ],
+    "postflight_enforced_after_all_artifact_phases": true,
+    "raw_compression": {
+      "compression_level": 1,
+      "file": "raw_episodes.jsonl.gz",
+      "filename_header": "",
+      "format": "gzip",
+      "jsonl_encoding": "utf-8",
+      "mtime": 0
+    },
+    "rss_measurement": "process_lifetime_peak_working_set_or_ru_maxrss",
+    "traced_profile": {
+      "eligible_as_evidence": false,
+      "enabled": false,
+      "python_allocation_peak_bytes": null,
+      "scope": null,
+      "seed": null
+    }
+  },
+  "runtime_seconds": 6.703,
+  "schema": "alife.stegohive.ecology.campaign_receipt.v1",
+  "split": "smoke",
+  "started_at": "2026-08-11T06:38:47.441266+00:00",
+  "stop_reason": "smoke_matrix_complete",
+  "subprocess_used": false
+}

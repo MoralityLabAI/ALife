@@ -1,0 +1,404 @@
+{
+  "schema": "stegohive.protocol_freeze.v1",
+  "id": "stegohive_v1_freeze_ledger",
+  "status": "discovery_only/unfrozen",
+  "status_meaning": "Only seed-17 resource profiling/smoke/replay and the fixed 72-cell active discovery schedule are authorized. Reserve and future seed IDs are known registration metadata; executing them or inspecting any trajectories, receipts, or outcomes they generate is forbidden until the applicable amendment or freeze gate passes.",
+  "current_permissions": {
+    "allowed": [
+      "parse and validate registered configuration files",
+      "read and validate every registered seed ID and split assignment as protocol metadata without executing future seeds",
+      "run seed 17 as a resource-only traced profile, deterministic smoke, or no-op replay; it is never discovery evidence",
+      "run the fixed balanced discovery schedule: seeds 1101 through 1106 on each of the twelve registered candidate regimes",
+      "inspect discovery exposure, ecology viability, containment, resource use, and failure artifacts",
+      "repair instrumentation using discovery seeds only",
+      "retain negative and null discovery results"
+    ],
+    "forbidden": [
+      "execute confirmatory seed IDs 2101 through 2124 or inspect trajectories, receipts, or outcomes generated from them",
+      "execute holdout seed IDs 9101 through 9112 or inspect trajectories, receipts, or outcomes generated from them",
+      "execute OOD seed IDs 12101 through 12112 or inspect trajectories, receipts, or outcomes generated from them",
+      "execute reserve discovery seed IDs 1107 through 1112 without a protocol amendment registered before execution",
+      "nominate a regime using mutual information, decoding accuracy, causal transfer, emergence qualification, or any other evidence metric",
+      "change registered evidence thresholds after inspecting confirmatory, holdout, or OOD data",
+      "treat discovery observations as confirmation",
+      "enable optional typed storyworld perturbations as a primary evidence source or narrative oracle"
+    ]
+  },
+  "pre_discovery_amendments": [
+    {
+      "id": "A1_pre_discovery_role_propagule_semantics",
+      "status": "registered_before_discovery_execution",
+      "changes": [
+        "one 32-host role-flexible population with two distinct hosts per interaction",
+        "independent sender-policy and receiver-policy parent, mutation, credit, and ancestry streams with shared_policy_parent false",
+        "non-observation convention propagules containing only finite policy alleles and opaque policy-lineage ids",
+        "archive_delay_cohorts replaces the ambiguous archive_lifetime_cohorts candidate name",
+        "pressure propagation copies only from a recorded declared habitat neighbor",
+        "OOD topology uses one registered connectedness- and edge-count-preserving edge swap",
+        "per-message permutation reassigns the intact delivered-signal vector by event index and preserves its exact histogram"
+      ],
+      "evidence_thresholds_changed": false,
+      "seed_definitions_changed": false
+    },
+    {
+      "id": "A2_pre_discovery_resource_and_schedule_semantics",
+      "status": "registered_before_discovery_execution",
+      "changes": [
+        "fixed balanced active discovery schedule of twelve regimes by seeds 1101-1106 (72 cells)",
+        "seeds 1107-1112 retained as known discovery reserve but execution requires a new pre-execution amendment",
+        "seed 17 resource-only traced profile lane separated from discovery evidence",
+        "distinct immutable output directories for profile, smoke, calibration, and discovery with mode-bound receipts",
+        "fail-closed discovery preflight from the current-source untraced smoke: 73 projected world-equivalents and 72 times actual artifact/decompressed bytes must each remain strictly below 80 percent of their caps",
+        "deterministic gzip level-1 streaming with zero mtime and no filename header",
+        "peak RSS production accounting plus traced Python-allocation accounting only in profile mode",
+        "compressed-artifact and decompressed-raw caps with an explicit partial-failure receipt",
+        "canonical uncompressed audit_receipts originally capped at 471859 bytes (0.45 MiB) per episode; this single resource bound is superseded for the clean discovery rerun by A3 while every SHA-256 remains 64 lowercase hexadecimal characters",
+        "role-specific convention-propagule activation receipts: identical same-role lineage and alleles are a state_change=false no-op that retains the lineage id; changed state alone creates ancestry",
+        "archive.wakes counts scheduled record activations while effective role changes are counted separately as the sum of sender and receiver state_change flags",
+        "propagule source/target/result lineage and role state-change details remain evaluator-only and archive source selection is never resampled to improve wake coverage",
+        "balanced finite delayed_task_binding per archived abstract signal, evaluator-hidden task truth distinct from provenance-only latent metadata; archive delivery uses the bound task/archived signal and never rewards the charged live sender",
+        "delayed archive diagnostics use actual signal-plus-bound-task rows; task scramble is negative diagnostic/verifier tamper only"
+      ],
+      "evidence_thresholds_changed": false,
+      "registered_seed_id_arrays_changed": false,
+      "active_execution_registration_changed": true
+    }
+  ],
+  "discovery_repair_amendments": [
+    {
+      "id": "A3_discovery_audit_volume_recovery",
+      "status": "registered_after_failed_partial_before_clean_discovery_rerun",
+      "trigger": {
+        "failed_cell": "R11/1101",
+        "failed_at": "2026-08-11T07:26:11.188429+00:00",
+        "retained_episode_count": 60,
+        "retained_rows_eligible_as_evidence": false,
+        "observed_canonical_audit_receipts_bytes": 477515,
+        "old_cap_bytes": 471859,
+        "overflow_bytes": 5656,
+        "partial_artifacts": {
+          "directory": "results/stegohive_gym_v1_failed_audit_cap_20260811T072611Z",
+          "partial_failure_receipt_sha256": "23fb2a7510577bb85fb2efae68a88fb162004477891722c563abd96d4c96ac52",
+          "raw_episodes_sha256": "6b26dc512e2b038d9c7e6976c6c97403a2423f492d62a8f3485c518efa83fe6a"
+        }
+      },
+      "changes": [
+        "raise only the canonical uncompressed audit_receipts cap from 471859 bytes to 786432 bytes (0.75 MiB) while preserving every row and independent receipt closure",
+        "increase the cumulative seed-17 smoke-plus-replay allowance from six to eight world executions for one mandatory current-source recovery pair",
+        "count 61 failed-attempt discovery world executions plus the planned 72-cell clean rerun and one exact replay as 134 cumulative discovery world executions, below the unchanged hard cap of 144",
+        "preserve the failed partial immutably and never merge, resume, reuse, or count its 60 retained rows as evidence"
+      ],
+      "basis": [
+        "the R11/1101 episode passed the scientific and integrity verifier and replayed byte-for-byte; only the registered audit-size bound failed",
+        "streaming analysis without outcome metrics attributed audit growth to complete propagation provenance rather than model-state or evidence computation",
+        "786432 bytes remains bounded above the approximately 692000-byte all-propagation mechanical envelope without changing the one-gigabyte decompressed campaign cap"
+      ],
+      "evidence_metrics_inspected_or_used": false,
+      "evidence_thresholds_changed": false,
+      "mechanism_or_ecology_changed": false,
+      "audit_schema_or_hash_width_changed": false,
+      "seed_definitions_or_active_schedule_changed": false,
+      "reserve_confirmatory_holdout_or_ood_seed_accessed": false
+    }
+  ],
+  "seed_access": {
+    "smoke_replay": [17],
+    "discovery_visible": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "discovery_active": [1101, 1102, 1103, 1104, 1105, 1106],
+    "discovery_reserve_amendment_required": [1107, 1108, 1109, 1110, 1111, 1112],
+    "confirmatory_sealed": [
+      2101,
+      2102,
+      2103,
+      2104,
+      2105,
+      2106,
+      2107,
+      2108,
+      2109,
+      2110,
+      2111,
+      2112,
+      2113,
+      2114,
+      2115,
+      2116,
+      2117,
+      2118,
+      2119,
+      2120,
+      2121,
+      2122,
+      2123,
+      2124
+    ],
+    "holdout_sealed": [
+      9101,
+      9102,
+      9103,
+      9104,
+      9105,
+      9106,
+      9107,
+      9108,
+      9109,
+      9110,
+      9111,
+      9112
+    ],
+    "ood_sealed_uninspected": [
+      12101,
+      12102,
+      12103,
+      12104,
+      12105,
+      12106,
+      12107,
+      12108,
+      12109,
+      12110,
+      12111,
+      12112
+    ],
+    "split_overlap_is_hard_failure": true
+  },
+  "seed_execution_seal": {
+    "seed_ids_and_split_assignments_are_known_registration_metadata": true,
+    "ids_may_be_parsed_and_hashed_before_execution": true,
+    "sealed_scope": "Execution of future registered seed IDs and inspection or use of the resulting trajectories, receipts, summaries, metrics, or outcomes before their protocol gate opens.",
+    "does_not_claim_seed_ids_are_unreadable": true
+  },
+  "discovery_campaign": {
+    "maximum_episodes": 144,
+    "fixed_active_matrix_episodes": 72,
+    "active_schedule": "Every R01-R12 regime is paired with every active discovery seed 1101-1106 exactly once. Partial discovery-mode matrices and outcome-adaptive stopping are forbidden; bounded partial diagnostics use calibration mode and are not a complete campaign.",
+    "reserve_activation": "Seeds 1107-1112 remain visible registered discovery reserve. They may not be executed unless a new protocol amendment is recorded before any reserve trajectory is generated or inspected.",
+    "resource_preflight_gate": {
+      "required_before_active_seed_execution": true,
+      "source": "accepted current-source untraced seed-17 smoke receipt and hash ledger; one episode plus exact replay",
+      "fraction_of_each_registered_cap_must_be_strictly_below": 0.8,
+      "world_equivalents": 73,
+      "artifact_multiplier": 72,
+      "projected_resources": ["wall_seconds", "compressed_artifact_bytes", "raw_decompressed_bytes", "peak_rss_bytes"],
+      "failure": "Absent, stale, invalid, or over-threshold smoke is a hard pre-output discovery failure. Profile metrics and evidence metrics cannot substitute."
+    },
+    "selection_rule": "A regime may be nominated only from exposure adequacy, balanced pressure and distinct-host role opportunities, independent policy-parent receipt integrity, declared-neighbor propagation integrity, population viability, containment, deterministic replay, and resource behavior. Do not rank or filter candidates by mutual information, decoding, causal transfer, cross-lineage accuracy, delayed-archive accuracy or advantage, mapping alignment, emergence qualification, or champion fitness.",
+    "tie_breaker": "Among all candidates that pass every gate, choose the lexicographically first candidate id. If none pass, stop with an exposure, ecology, or instrumentation result and do not open confirmation.",
+    "candidate_parameter_semantics": {
+      "propagation_probability": "Probability that the selected target copies the current pressure class of one uniformly selected declared neighbor; it is not self-persistence.",
+      "archive_delay_cohorts": "Each registered discovery candidate value explicitly overrides the base/default archive.delay_cohorts value of 2 for both abstract-signal delivery and convention-propagule wake; it is not retention lifetime or time-to-live.",
+      "policy_mutation_probability": "Applied independently to sender-policy and receiver-policy mutation streams.",
+      "channel_noise_probability": "Applied only to delivered abstract signals, never to propagule alleles."
+    },
+    "registered_secondary_diagnostics": [
+      "cross_lineage_trials",
+      "cross_lineage_accuracy",
+      "delayed_archive_accuracy",
+      "delayed_archive_advantage_over_no_channel"
+    ],
+    "registered_negative_diagnostics": [
+      "delayed_archive_task_scramble_accuracy"
+    ],
+    "negative_diagnostics_may_affect_fitness_selection_qualification_or_nomination": false,
+    "secondary_diagnostics_may_affect_qualification_or_nomination": false,
+    "candidate_regimes": [
+      {
+        "id": "R01",
+        "propagation_probability": 0.05,
+        "signal_cost": 0.00,
+        "policy_mutation_probability": 0.005,
+        "channel_noise_probability": 0.00,
+        "archive_delay_cohorts": 1
+      },
+      {
+        "id": "R02",
+        "propagation_probability": 0.07,
+        "signal_cost": 0.01,
+        "policy_mutation_probability": 0.01,
+        "channel_noise_probability": 0.05,
+        "archive_delay_cohorts": 2
+      },
+      {
+        "id": "R03",
+        "propagation_probability": 0.09,
+        "signal_cost": 0.02,
+        "policy_mutation_probability": 0.02,
+        "channel_noise_probability": 0.10,
+        "archive_delay_cohorts": 3
+      },
+      {
+        "id": "R04",
+        "propagation_probability": 0.11,
+        "signal_cost": 0.03,
+        "policy_mutation_probability": 0.03,
+        "channel_noise_probability": 0.15,
+        "archive_delay_cohorts": 1
+      },
+      {
+        "id": "R05",
+        "propagation_probability": 0.13,
+        "signal_cost": 0.04,
+        "policy_mutation_probability": 0.05,
+        "channel_noise_probability": 0.00,
+        "archive_delay_cohorts": 2
+      },
+      {
+        "id": "R06",
+        "propagation_probability": 0.15,
+        "signal_cost": 0.00,
+        "policy_mutation_probability": 0.01,
+        "channel_noise_probability": 0.10,
+        "archive_delay_cohorts": 3
+      },
+      {
+        "id": "R07",
+        "propagation_probability": 0.17,
+        "signal_cost": 0.01,
+        "policy_mutation_probability": 0.02,
+        "channel_noise_probability": 0.15,
+        "archive_delay_cohorts": 1
+      },
+      {
+        "id": "R08",
+        "propagation_probability": 0.19,
+        "signal_cost": 0.02,
+        "policy_mutation_probability": 0.03,
+        "channel_noise_probability": 0.00,
+        "archive_delay_cohorts": 2
+      },
+      {
+        "id": "R09",
+        "propagation_probability": 0.21,
+        "signal_cost": 0.03,
+        "policy_mutation_probability": 0.05,
+        "channel_noise_probability": 0.05,
+        "archive_delay_cohorts": 3
+      },
+      {
+        "id": "R10",
+        "propagation_probability": 0.23,
+        "signal_cost": 0.04,
+        "policy_mutation_probability": 0.005,
+        "channel_noise_probability": 0.10,
+        "archive_delay_cohorts": 1
+      },
+      {
+        "id": "R11",
+        "propagation_probability": 0.25,
+        "signal_cost": 0.00,
+        "policy_mutation_probability": 0.03,
+        "channel_noise_probability": 0.15,
+        "archive_delay_cohorts": 2
+      },
+      {
+        "id": "R12",
+        "propagation_probability": 0.27,
+        "signal_cost": 0.02,
+        "policy_mutation_probability": 0.01,
+        "channel_noise_probability": 0.05,
+        "archive_delay_cohorts": 3
+      }
+    ]
+  },
+  "freeze_gates": [
+    {
+      "id": "G1_schema_and_replay",
+      "requirement": "All registered JSON parses, the ALife manifest validates, and exact same-seed no-op replay reproduces canonical event, probe, and summary hashes."
+    },
+    {
+      "id": "G2_containment",
+      "requirement": "No external I/O, shell, subprocess, dynamic code, model API, browser, plugin, free text, encoded payload, real identifier, or undeclared file access occurs."
+    },
+    {
+      "id": "G3_exposure_adequacy",
+      "requirement": "For every active discovery seed 1101-1106 in the nominated regime: at least 80 eligible interactions using two distinct hosts, at least 15 occurrences of each C0-C3 required-skill class, at least 60 delivered signals, balanced sender/receiver role opportunities, and no more than 0.10 paired exposure imbalance."
+    },
+    {
+      "id": "G4_treatment_execution",
+      "requirement": "Receipts prove the exact 32-host active-population count and roster; eligible sender-policy observation, emission, abstract-signal delivery, receiver-policy input activation, paired do-signal state change, and reproduction-disabled skill execution. Each archived abstract signal carries a balanced finite evaluator-hidden delayed_task_binding. On delivery the effective task/signal fields equal that binding and archived signal, live pressure/signal remain evaluator-only provenance, sender_reward_eligible is false, and receiver outcome/reward is scored against the bound task. Separate receipts must also prove independent sender-policy and receiver-policy parents, mutations, role-specific credits, and ancestries; declared-neighbor pressure-copy edges and the registered OOD graph transform hash; convention-propagule deposit, scheduled wake, independently sourced bounded allele values and payload hashes, and role-specific evaluator-only activation receipts. A changed role creates an ancestry transition; an already-identical same-role lineage and allele block records state_change=false and retains its lineage id without a new ancestry node. Archive sources are not resampled to improve wake coverage. Matched event-ID equality plus exact intact/permuted signal-histogram equality remains mandatory for the event-index permutation probe."
+    },
+    {
+      "id": "G5_no_side_channel",
+      "requirement": "Receiver observations, receiver-policy input hashes, overt archive rows, node labels, schedules, timing, and lineage ids do not reveal delayed/current C0-C3 or K0-K3 task truth, binding ids, archive provenance, or reward eligibility; sender and receiver policy initialization remains permutation-symmetric; convention propagules never enter an observation; evaluator-only latent metadata remains provenance-only/noncausal; delayed_task_binding may affect only registered environment task truth and outcome/reward, never policy/message input; and no interaction uses the same host in both roles."
+    },
+    {
+      "id": "G6_regime_nomination",
+      "requirement": "Exactly one R01-R12 regime is nominated by the registered non-evidence rule, with all failed candidates and reasons retained."
+    },
+    {
+      "id": "G7_frozen_receipt",
+      "requirement": "Code hash and dirty status, manifest/config/registry/protocol/safety hashes, nominated regime, exact condition set, seed lists, thresholds, package versions, host limits, artifact paths, and replay command are recorded before executing seed 2101."
+    }
+  ],
+  "freeze_receipt": {
+    "target_status": "frozen_confirmatory",
+    "created_at": null,
+    "nominated_regime_id": null,
+    "pre_discovery_amendment_hash": null,
+    "code_hash": null,
+    "dirty_status": null,
+    "manifest_hash": null,
+    "config_hash": null,
+    "condition_registry_hash": null,
+    "protocol_pre_freeze_hash": null,
+    "safety_boundary_hash": null,
+    "seed_manifest_hash": null,
+    "analysis_hash": null,
+    "runtime_versions": null,
+    "host_resource_receipt": null,
+    "replay_receipt_hash": null,
+    "all_freeze_gates_pass": false
+  },
+  "confirmatory_acceptance": {
+    "adaptive_qualifying_episodes_min": 18,
+    "adaptive_episode_count": 24,
+    "paired_primary_effect_interval_must_exclude_zero": true,
+    "qualification_advantage_over_registered_nulls_min": 0.30,
+    "receiver_knockout_accuracy_drop_min": 0.15,
+    "receiver_add_back_rescue_fraction_min": 0.75,
+    "cross_cohort_mapping_alignment_min": 0.75,
+    "minimum_consecutive_disjoint_transitions": 3
+  },
+  "holdout_acceptance": {
+    "adaptive_qualifying_episodes_min": 8,
+    "adaptive_episode_count": 12,
+    "primary_effect_sign_reversal_allowed": false
+  },
+  "ood_acceptance": {
+    "probe_accuracy_retention_min": 0.80,
+    "seed_count": 12,
+    "inspection_before_holdout_completion": "forbidden"
+  },
+  "episode_budget_ledger": {
+    "smoke_and_replay_max": 8,
+    "smoke_and_replay_consumed_before_a3_recovery": 6,
+    "discovery_max": 144,
+    "discovery_active_fixed": 72,
+    "failed_partial_discovery_world_executions": 61,
+    "clean_discovery_plus_replay_world_executions_planned": 73,
+    "cumulative_discovery_world_executions_after_clean_rerun": 134,
+    "discovery_reserve_requires_amendment": 72,
+    "confirmatory_max_after_freeze": 192,
+    "holdout_max_after_confirmation": 60,
+    "ood_max_after_holdout": 48,
+    "total_max": 450
+  },
+  "amendment_policy": {
+    "before_confirmation": "Any change to mechanisms, conditions, thresholds, primary outcomes, analysis, or seed handling requires a new protocol hash and explicit freeze receipt.",
+    "after_confirmation_access": "Any material amendment invalidates confirmatory status and requires new confirmatory and holdout seeds.",
+    "negative_results": "Retain and report; never silently retune on sealed seeds."
+  }
+}

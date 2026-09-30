@@ -1,0 +1,1222 @@
+{
+  "artifact_ledger": {
+    "analysis_rows.jsonl": {
+      "bytes": 18888,
+      "path": "analysis_rows.jsonl",
+      "rows": 3,
+      "sha256": "91285f1894927d33b87e7ebd44732158f8ddc33990872657c24c35d19c81f7fb"
+    },
+    "partial_negative.json": {
+      "bytes": 26138,
+      "path": "partial_negative.json",
+      "rows": 1,
+      "sha256": "82b5db26a00ced476da70dd5a08a479792ec04a38191234e68cc661f5f64422e"
+    },
+    "raw_episodes.jsonl.gz": {
+      "bytes": 188849,
+      "path": "raw_episodes.jsonl.gz",
+      "rows": 3,
+      "sha256": "964db98cf9d5f97bd8c04bf6212e9dc1ae6028c35c472aeec165742ab8536ede"
+    },
+    "seed_manifest.json": {
+      "bytes": 41720,
+      "path": "seed_manifest.json",
+      "rows": 1,
+      "sha256": "2605330a518ae1cbd01f8bdb5a49fbcdb0740a477fe2e30d70921a321107d2c0"
+    },
+    "summary.json": {
+      "bytes": 3008,
+      "path": "summary.json",
+      "rows": 1,
+      "sha256": "eb6c3cc8201f4f236d889c474d82184eb14648dfc35f34f1fdff0f5d5bc14ae5"
+    }
+  },
+  "calibration_gate": {
+    "completed_cells": 0,
+    "evaluated": false,
+    "fixed_code_ceiling_persistent_full4": null,
+    "no_channel_persistent_full4": null,
+    "passed": null,
+    "reasons": [
+      "calibration matrix was not complete"
+    ],
+    "required_cells": 32,
+    "verifier_passes": null
+  },
+  "claim_scope": "model_only",
+  "deterministic_replay_match": true,
+  "external_io_performed": false,
+  "finished_at": "2026-08-11T12:12:24.716102+00:00",
+  "freeze_id": "a12c1dc6aec06c6b4e432042e0b490fc01349f3b6d6c1723ad60e427f1782568",
+  "future_splits_accessed": [],
+  "input_bindings": {
+    "conditions.json": {
+      "bytes": 7963,
+      "canonical_sha256": "eaed1fdcc60a32d9f0c1f1e08e2a0e83f7ef90d08869d2b2823262715f25127d",
+      "path": "conditions.json",
+      "raw_sha256": "1fad2c2aa9d84914a1682a5f45a59bee3dcdfe07093d811b4411846893f28930"
+    },
+    "config.json": {
+      "bytes": 16469,
+      "canonical_sha256": "4c58c5c10552c5c81a11249f2f618e271b30513694530134336d5301ce0e3da5",
+      "path": "config.json",
+      "raw_sha256": "f03593e9e738e5a688401c8b4839508c9877b63f3dd750f2bf41b1cb5b5d8fe5"
+    },
+    "manifest.json": {
+      "bytes": 21399,
+      "canonical_sha256": "10143446f814db98281f5a2606adfca0b836e098be148d7d4ea9086db3678e8e",
+      "path": "manifest.json",
+      "raw_sha256": "23cf58e08d0e5704d94f277889cee91a391bb193be3581a5cc6d6bcea0c59aca"
+    },
+    "protocol.json": {
+      "bytes": 13143,
+      "canonical_sha256": "e62e177ba8dd3a4deb4d8e0737b4c45dac558c88b990a6ac882e45e2c4efac5a",
+      "path": "protocol.json",
+      "raw_sha256": "f6331d6d178c7fc342be266f1891ca342a2326db1d8b8c1fb20cb7e2a0025746"
+    },
+    "safety_boundary.json": {
+      "bytes": 6968,
+      "canonical_sha256": "6135a6c74556353bf9aadd5c472043aae5471c1640ad3cc7ca71c69167903a14",
+      "path": "safety_boundary.json",
+      "raw_sha256": "6a1d73c8e8918b9537b149fecd545810a440775f3f357cf9a3215b014cb8e71b"
+    }
+  },
+  "metric_firewall": {
+    "evidence_used_for_fitness": false,
+    "evidence_used_for_nomination": false,
+    "future_claim_authorized": false,
+    "passed": true,
+    "selection_metric": "training_repertoire_score"
+  },
+  "nomination": {
+    "candidates": [],
+    "details": {},
+    "eligible": false,
+    "evaluated": false,
+    "evidence_used": false,
+    "reasons": [
+      "partial campaigns are ineligible for nomination"
+    ],
+    "selected_arm": null,
+    "selection_metric": "training_repertoire_score"
+  },
+  "phase": "discovery",
+  "registered_controller": {
+    "action": {
+      "kind": "protocol.participate"
+    },
+    "actions_submitted": 13824,
+    "all_checks_passed": true,
+    "all_live_stable_slots": true,
+    "external_policy_override_uses": 0,
+    "kind": "fixed_open_loop",
+    "life_resets_observed": 576,
+    "raw_command_text_uses": 0,
+    "reset_acknowledgements": 576,
+    "schema": "alife.stegohive.v2.controller_receipt.v1",
+    "stateless": true
+  },
+  "resource_receipt": {
+    "caps": {
+      "hard_world_cap": 132,
+      "max_canonical_record_bytes": 1048576,
+      "max_compressed_artifact_bytes": 157286400,
+      "max_cpu_cores": 1,
+      "max_decompressed_raw_bytes": 536870912,
+      "max_peak_rss_mb": 1024.0,
+      "max_wall_seconds": 900.0
+    },
+    "compressed_artifact_bytes": 312017,
+    "decompressed_raw_bytes": 1021555,
+    "max_canonical_record_bytes": 349180,
+    "peak_rss_mb": 62.828125,
+    "post_smoke_projection": {
+      "evaluated": true,
+      "fractions": {
+        "compressed_artifact_bytes": 0.05767024993896484,
+        "decompressed_raw_bytes": 0.0830886922776699,
+        "peak_rss_mb": 0.0613555908203125,
+        "wall_seconds": 2.641251111111557
+      },
+      "passed": false,
+      "projected_compressed_artifact_bytes": 9070746,
+      "projected_decompressed_raw_bytes": 44607902,
+      "projected_wall_seconds": 2377.1260000004013
+    },
+    "wall_seconds": 54.67200000000594,
+    "within_caps": true,
+    "worlds_completed": 3
+  },
+  "schedule_sha256": "83925f52893458b3a76edfc004bb5148ad3926e8640c68980ed0e1bac0b2c70f",
+  "schema": "alife.stegohive.discovery_receipt.v2",
+  "source_tree_sha256": "c26ca9144ba6ed870db90666a5190ef6dc22c70998ed9ca276b2c59dae8be6af",
+  "started_at": "2026-08-11T12:11:30.272824+00:00",
+  "status": "partial_negative",
+  "stop_reason": "post-smoke resource projection failed",
+  "world_ledger": {
+    "completed_identities": [
+      {
+        "condition_id": "F00",
+        "ordinal": 1,
+        "phase": "discovery",
+        "purpose": "smoke",
+        "seed": 30001,
+        "split": "smoke"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 2,
+        "phase": "discovery",
+        "purpose": "exact_runner_replay",
+        "seed": 30001,
+        "split": "smoke"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 3,
+        "phase": "discovery",
+        "purpose": "joint_treatment_smoke",
+        "seed": 30002,
+        "split": "smoke"
+      }
+    ],
+    "completed_worlds": 3,
+    "hard_cap": 132,
+    "matrix_complete": false,
+    "order_preserved": true,
+    "planned_worlds": 131,
+    "remaining_identities": [
+      {
+        "condition_id": "F00",
+        "ordinal": 4,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 5,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 6,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 7,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 8,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 9,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 10,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 11,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30101,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 12,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 13,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 14,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 15,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 16,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 17,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 18,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 19,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30102,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 20,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 21,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 22,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 23,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 24,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 25,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 26,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 27,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30103,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 28,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 29,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 30,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 31,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 32,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 33,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 34,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 35,
+        "phase": "discovery",
+        "purpose": "exposure_and_integrity_calibration",
+        "seed": 30104,
+        "split": "exposure_calibration"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 36,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 37,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 38,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 39,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 40,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 41,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 42,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 43,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31001,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 44,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 45,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 46,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 47,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 48,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 49,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 50,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 51,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31002,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 52,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 53,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 54,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 55,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 56,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 57,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 58,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 59,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31003,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 60,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 61,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 62,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 63,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 64,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 65,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 66,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 67,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31004,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 68,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 69,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 70,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 71,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 72,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 73,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 74,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 75,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31005,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 76,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 77,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 78,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 79,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 80,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 81,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 82,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 83,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31006,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 84,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 85,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 86,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 87,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 88,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 89,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 90,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 91,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31007,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 92,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 93,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 94,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 95,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 96,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 97,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 98,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 99,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31008,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 100,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 101,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 102,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 103,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 104,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 105,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 106,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 107,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31009,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 108,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 109,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 110,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 111,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 112,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 113,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 114,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 115,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31010,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 116,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 117,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 118,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 119,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 120,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 121,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 122,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 123,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31011,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F00",
+        "ordinal": 124,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F10",
+        "ordinal": 125,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F01",
+        "ordinal": 126,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11",
+        "ordinal": 127,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_no_channel",
+        "ordinal": 128,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_matched_noise",
+        "ordinal": 129,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "F11_selection_neutral",
+        "ordinal": 130,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      },
+      {
+        "condition_id": "fixed_code_ceiling",
+        "ordinal": 131,
+        "phase": "discovery",
+        "purpose": "discovery_matrix",
+        "seed": 31012,
+        "split": "active_discovery"
+      }
+    ],
+    "remaining_worlds": 128,
+    "spare_worlds_used": 0,
+    "stage_counts_completed": {
+      "active_discovery": 0,
+      "exposure_calibration": 0,
+      "smoke": 3
+    }
+  }
+}
