@@ -1,0 +1,45 @@
+{
+  "audit_frozen_before_evaluation_sha256": "39a132c917503ca917499301e37156d95f939349b3dd06b609648e29ca66ca6f",
+  "evidence_class": "cryptoswarmhive_audit_shift_v2_not_historical",
+  "historical_worlds_loaded": 0,
+  "independent_world_blocks": 1280,
+  "outputs": {
+    "RESULTS.md": {
+      "bytes": 3643,
+      "sha256": "c4f4db5ae7660999128d09d678685aa16afbad48feeb3900d9c8e213b9edc54a"
+    },
+    "audit_freeze.json": {
+      "bytes": 13580,
+      "sha256": "39a132c917503ca917499301e37156d95f939349b3dd06b609648e29ca66ca6f"
+    },
+    "calibration_task_scores.jsonl.gz": {
+      "bytes": 96281,
+      "sha256": "c18dfa026bd007b2ed61bb5335b4d0cc82bab5905bb6390478ab6c7e41d26eee"
+    },
+    "evaluation_worlds.jsonl.gz": {
+      "bytes": 1148084,
+      "sha256": "43a86fd2fd9d2e0d16f4eceba28bf588fb21280edb609e1389a077432f378c7e"
+    },
+    "game_census.json": {
+      "bytes": 1118047,
+      "sha256": "45c909ea3604187c8ff1320317983a87003c2c6b792be839a12d7fa64da76498"
+    },
+    "summary.json": {
+      "bytes": 165964,
+      "sha256": "ebbeeefaa8e8705669324b2b1f47920321b4bcb323df30d8522675b47e16c34b"
+    }
+  },
+  "paired_evaluation_records": 16128,
+  "source_sha256": {
+    "experiments/cryptoswarmhive_audit_shift_v2/PROTOCOL.md": "a7c05b5f4995ca3b824bfb0e2b6e6522dbe59eb40823b44657eab416ec992466",
+    "experiments/cryptoswarmhive_audit_shift_v2/manifest.json": "1d330469997117316e70352fa51182c2eb2af0e644e81f545bcc4d2e147a650d",
+    "src/cryptoswarmhive/__init__.py": "b14d2d7d35d1a9502f48703a501b8ac667f23f9a90beddd94dd00c99a74cd82e",
+    "src/cryptoswarmhive/audit_shift.py": "96e86a651f230002003dbd97dcd5f0f0b65f1a8d4e41e1826c1f254a3ff423b6",
+    "src/cryptoswarmhive/audit_shift_campaign.py": "b51696782d4f9fe0382bd801710fa74260ce46e47a90cad4dadc8219d9575316",
+    "src/cryptoswarmhive/evaluation.py": "a4b911c1bbd0eb2a57f5ae05d759c07b113a206de035b8dfa51eec570036ea5e",
+    "src/cryptoswarmhive/simulation.py": "2d7c084cd64a7d3c7a8c5127d46d0dea602980abaeeba546c44c149e95088f4c",
+    "src/stegohive_followup/__init__.py": "1882936fafbfc8c13cf68422e81ead2a041362e9be47468bfd7c7cfe979bd6f1",
+    "src/stegohive_followup/reporting_game.py": "28ae5f6811f85baf01d87b23fb9b728ef94be70fa68dee43a5c4fb6412772bfd",
+    "tests/test_cryptoswarmhive_audit_shift.py": "3ca6e642448339c601d7cd445bbfce3fb0cda5c5c7c58e606bcbb996842b9d47"
+  }
+}

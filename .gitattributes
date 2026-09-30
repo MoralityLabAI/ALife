@@ -1,0 +1,10 @@
+# Preserve exact bytes in experiment bundles whose receipts hash source and data.
+/experiments/stegohive_followup_20260911/** -text
+/experiments/cryptoswarmhive_eval_v1/** -text
+/experiments/cryptoswarmhive_audit_shift_v2/** -text
+/src/stegohive_followup/** -text
+/src/cryptoswarmhive/** -text
+/tests/test_stegohive_joint_channels.py -text
+/tests/test_stegohive_reporting_game.py -text
+/tests/test_cryptoswarmhive.py -text
+/tests/test_cryptoswarmhive_audit_shift.py -text
