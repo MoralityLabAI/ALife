@@ -175,3 +175,46 @@ unrecoverable. Consequently, fresh worlds reproduce the recovered semantics
 and contract, not historical episode hashes or scientific outcomes. The
 retained campaigns and original detached-verifier verdicts remain the sole
 authoritative V2–V9 evidence.
+
+## Verification hardening — 2026-09-11
+
+A review found that the reconstructed episode verifier selected its strict
+hash checks using the episode's own `rng.recovery_status` field. Removing that
+field could cause an altered fresh record to receive an accepted receipt.
+The public `stegohive_v2.verifiers.verify_episode` now always applies fresh
+hash checks and rejects missing or unknown reconstruction provenance. Malformed
+inputs return a rejected report. This marker is a format requirement, not an
+authentication mechanism: someone able to construct an entire consistent
+episode can also compute its hashes.
+
+The separate `reproduce_retained_verifier_receipt` function reproduces the
+historical JSON receipt for comparison. Its historical `accepted` field is not
+a new integrity verdict. The recovery wrapper binds that function explicitly
+inside the loaded compiled verifier; it does not change the public fresh API.
+Direct users of the bytecode outside the wrapper must account for this API
+change. Retained records, V1 source, and recovered bytecode are unchanged.
+
+Interpret recovery reports using these boundaries:
+
+| Category | What the recovery workflow establishes |
+|---|---|
+| Checked by code, conditional on trusted verifier and inputs | Artifact bytes versus supplied ledgers; retained analyses and statistics re-derived from episode records; consistency of retained replay records, summaries, and seed manifests |
+| Reused or supplied | Missing input bindings, schedule from retained manifest, static resource projections/caps, aggregate RNG activation counts, V8/V9 treatment exposure, and freeze acceptance supplied to the recovery seam |
+| Unavailable | Original V2–V9 source/freeze bytes, historical tuple-key RNG and parent-choice streams, and a fresh execution of the lost simulator |
+| Not established by these reports | Independent OS/network containment, authenticity against coordinated replacement of records and their ledgers, or general agent safety |
+
+“All eight stages pass” means conditional archival consistency under the
+documented substitutions. It must not be described as eight wholly independent
+checks of the lost original execution. Machine-readable reports now identify
+this scope as `conditional_archival_consistency`.
+
+The reconstructed runtime's zero hazard counters describe its finite simulated
+world; they are not operating-system observations. The external `results`
+junction is a path alias, not a read-only mount. Archival readers perform no
+writes, but future untrusted workloads must use independently enforced read-only
+access or no access to this store. Recovered `.pyc.recovered` files are executable
+code and require a trusted provenance and an appropriately isolated process.
+
+A proposed follow-up is recorded in
+`experiments/stegohive_shared_memory_proposal.md`. It is a design draft, not a
+registered campaign or authorization to use future sealed seeds.

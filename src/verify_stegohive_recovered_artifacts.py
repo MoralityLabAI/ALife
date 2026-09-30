@@ -4,8 +4,10 @@ Recovery mode is explicit about its boundary: the original V2--V9 experiment
 contract files are gone, so their content hashes cannot be re-established.
 This wrapper injects the retained receipt bindings and executed seed ledger at
 the verifier's documented synthetic-test seam.  All artifact bytes, episode
-records, analyses, replays, statistics, resource gates, and summaries remain
-checked by the original compiled detached verifier.
+records, analyses, replay comparisons, statistics, and summaries are checked
+by the compiled verifier subject to the substitutions enumerated in the report.
+Acceptance means conditional archival consistency, not an authenticated
+original freeze or an independently replayed historical simulator.
 
 Run this file with Python 3.11, the version that produced the retained bytecode.
 """
@@ -128,6 +130,11 @@ def verify_recovered_bundle(
     loaded = runpy.run_path(str(bytecode), run_name=f"recovered_stegohive_v{version}")
     verifier = loaded["_verify_artifact_bundle"]
     globals_map = verifier.__globals__
+    # The compiled verifier compares historical receipt objects. This explicit,
+    # local binding must not weaken the public fresh-episode verifier.
+    from stegohive_v2.verifiers import reproduce_retained_verifier_receipt
+
+    globals_map["verify_episode"] = reproduce_retained_verifier_receipt
 
     documents = {
         "manifest.json": {
@@ -224,6 +231,10 @@ def verify_recovered_bundle(
         schedule_reconstructor=lambda _protocol, _grid: list(schedule),
     )
     result["recovery_mode"] = {
+        "acceptance_scope": "conditional_archival_consistency",
+        "historical_episode_receipts_reproduced_for_comparison": True,
+        "original_simulator_reexecuted": False,
+        "os_containment_independently_observed": False,
         "authoritative_contract_freeze": False,
         "missing_inputs_replaced_by_receipt_bindings": True,
         "static_resource_projection_reused": True,

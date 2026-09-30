@@ -1,4 +1,4 @@
-"""Reconstructed pure verification interface for archived v2 episodes."""
+"""Strict fresh-episode verification and explicit historical receipt reproduction."""
 
 from __future__ import annotations
 
@@ -36,12 +36,45 @@ def _failure(check: dict[str, Any], message: str) -> None:
 
 
 def verify_episode(episode: Mapping[str, Any]) -> dict[str, Any]:
-    """Recreate the accepted-record verifier receipt for a retained v2 episode.
+    """Verify a fresh reconstructed episode; never infer a weaker legacy mode.
 
-    This compatibility implementation restores the historical output schema and
-    independently recounts lifecycle/action exposure.  It does not claim to be
-    the byte-identical lost v2 verifier.
+    Historical episodes require the separate archival verification workflow.
+    Hashes establish internal consistency, not source authenticity or OS-level
+    containment. Malformed inputs return a rejected report.
     """
+    try:
+        return _episode_checks(episode, reconstructed=True)
+    except (KeyError, TypeError, ValueError, OverflowError, AttributeError, IndexError):
+        check = _check("episode_schema")
+        _failure(check, "malformed episode fields or non-canonical values")
+        identity = episode if isinstance(episode, Mapping) else {}
+        return {
+            "accepted": False,
+            "checks": [check],
+            "episode_id": identity.get("episode_id"),
+            "episode_sha256": identity.get("episode_sha256"),
+            "external_io_performed": False,
+            "failed_checks": ["episode_schema"],
+            "failures": ["episode_schema: malformed episode fields or non-canonical values"],
+            "schema": "alife.stegohive.integrated_episode_verification.v2",
+            "simulator_imported_or_executed": False,
+        }
+
+
+def reproduce_retained_verifier_receipt(episode: Mapping[str, Any]) -> dict[str, Any]:
+    """Reproduce a historical receipt for comparison, NOT authenticate an episode.
+
+    The legacy receipt copies historical hashes because their projection code
+    was lost. Its historical ``accepted`` field is not a new integrity verdict.
+    Use only in an explicitly selected recovery workflow that separately checks
+    archive bytes and provenance. Never select this API using episode metadata.
+    """
+    return _episode_checks(episode, reconstructed=False)
+
+
+def _episode_checks(
+    episode: Mapping[str, Any], *, reconstructed: bool
+) -> dict[str, Any]:
 
     config = episode["config"]
     exposure = episode["exposure"]
@@ -203,10 +236,11 @@ def verify_episode(episode: Mapping[str, Any]) -> dict[str, Any]:
     if any(value != 0 for value in hazards.values()):
         _failure(by_id["hazard_closure"], "one or more containment hazards are nonzero")
 
-    # The lost runtime's projection function was not recovered, so retained
-    # historical hashes are checked by detached bytecode.  Fresh reconstructed
-    # runs identify their RNG explicitly and can be fully rehashed here.
-    if rng_map.get("recovery_status") == "reconstructed_not_original_rng_key_sequence":
+    # Mode is chosen by the entry point, never by untrusted episode metadata.
+    # Fresh checks run even when the reconstruction marker has been removed.
+    if reconstructed:
+        if rng_map.get("recovery_status") != "reconstructed_not_original_rng_key_sequence":
+            _failure(by_id["rng_receipts"], "missing or unknown reconstruction provenance")
         reproduction_transitions = sum(
             bool(row.get("reproduction_enabled")) for row in generations
         )
@@ -280,4 +314,7 @@ def verify_episode(episode: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-__all__ = ["canonical_bytes", "canonical_sha256", "verify_episode"]
+__all__ = [
+    "canonical_bytes", "canonical_sha256", "verify_episode",
+    "reproduce_retained_verifier_receipt",
+]
