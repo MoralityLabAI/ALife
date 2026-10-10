@@ -1,0 +1,481 @@
+[
+  {
+    "name": "Eric Sirion",
+    "profile": "https://btcpp.dev/whois/elsirion",
+    "project": "Fedimint",
+    "source_ids": [
+      "fedimint"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "fedimint": "read"
+    }
+  },
+  {
+    "name": "Fabian Jahr",
+    "profile": "https://btcpp.dev/whois/fjahr",
+    "project": "CISA",
+    "source_ids": [
+      "cisa"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "draft source reviewed; consensus implementation not tested",
+    "source_status": {
+      "cisa": "read"
+    }
+  },
+  {
+    "name": "Kruw",
+    "profile": "https://btcpp.dev/whois/kruwed",
+    "project": "Wasabi/WabiSabi",
+    "source_ids": [
+      "wasabi"
+    ],
+    "modeled_channels": [
+      "amount_pairs",
+      "timing"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "wasabi": "read"
+    }
+  },
+  {
+    "name": "Oleksandr Kurbatov",
+    "profile": "https://btcpp.dev/whois/mjthatch",
+    "project": "Silent Payments/multiparty",
+    "source_ids": [
+      "silent_payments"
+    ],
+    "modeled_channels": [
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "silent_payments": "read"
+    }
+  },
+  {
+    "name": "Adam Gibson (@waxwing)",
+    "profile": "https://btcpp.dev/whois/adam-gibson-waxwing",
+    "project": "JoinMarket/privacy analysis",
+    "source_ids": [
+      "joinmarket"
+    ],
+    "modeled_channels": [
+      "amount_pairs",
+      "timing"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "joinmarket": "read"
+    }
+  },
+  {
+    "name": "stutxo",
+    "profile": "https://btcpp.dev/whois/stutxo",
+    "project": "Char/privacy comparison",
+    "source_ids": [
+      "char"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "char": "unavailable"
+    }
+  },
+  {
+    "name": "Anmol Sharma",
+    "profile": "https://btcpp.dev/whois/theanmolsharma",
+    "project": "Silent Payments",
+    "source_ids": [
+      "silent_payments"
+    ],
+    "modeled_channels": [
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "silent_payments": "read"
+    }
+  },
+  {
+    "name": "Asher Pembroke",
+    "profile": "https://btcpp.dev/whois/asherp",
+    "project": "Rose/Fathomx; additional Glossia repository",
+    "source_ids": [
+      "glossia"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "additional_implementation_test": "Glossia CLI v0.6.0; Rose not tested",
+    "source_status": {
+      "glossia": "read"
+    }
+  },
+  {
+    "name": "Ben Knab",
+    "profile": "https://btcpp.dev/whois/benknab",
+    "project": "Message proofs",
+    "source_ids": [
+      "message_proofs"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "message_proofs": "read"
+    }
+  },
+  {
+    "name": "Calvin Kim",
+    "profile": "https://btcpp.dev/whois/kcalvinalvin",
+    "project": "Privacy context",
+    "source_ids": [],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {}
+  },
+  {
+    "name": "Dan Gould",
+    "profile": "https://btcpp.dev/whois/dangould-c420fc7c",
+    "project": "Payjoin",
+    "source_ids": [
+      "payjoin"
+    ],
+    "modeled_channels": [
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "payjoin": "read"
+    }
+  },
+  {
+    "name": "Dan Gould",
+    "profile": "https://btcpp.dev/whois/dangould-97659680",
+    "project": "Payjoin",
+    "source_ids": [
+      "payjoin"
+    ],
+    "modeled_channels": [
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "payjoin": "read"
+    }
+  },
+  {
+    "name": "Danny",
+    "profile": "https://btcpp.dev/whois/dannym-arx-45ec0b3e",
+    "project": "Marmot",
+    "source_ids": [
+      "marmot",
+      "nostr_event"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "nostr_json_order",
+      "timing"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "marmot": "read",
+      "nostr_event": "read"
+    }
+  },
+  {
+    "name": "Jin",
+    "profile": "https://btcpp.dev/whois/4xvgal",
+    "project": "Encrypted payer notes draft",
+    "source_ids": [
+      "lnurl_comment",
+      "bolt12"
+    ],
+    "modeled_channels": [
+      "lnurl_zero_width",
+      "bolt12_continuation",
+      "private_envelope"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "lnurl_comment": "read",
+      "bolt12": "read"
+    }
+  },
+  {
+    "name": "Joe Miyamoto",
+    "profile": "https://btcpp.dev/whois/joemphilips",
+    "project": "bitCaster/Cashu",
+    "source_ids": [
+      "bitcaster",
+      "cashu_mint",
+      "cashu_melt",
+      "nostr_event"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "nostr_json_order",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "bitcaster": "read via web tool; direct capture timed out",
+      "cashu_mint": "read",
+      "cashu_melt": "read",
+      "nostr_event": "read"
+    }
+  },
+  {
+    "name": "niftynei",
+    "profile": "https://btcpp.dev/whois/niftynei",
+    "project": "Base58/education",
+    "source_ids": [
+      "base58"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "base58": "read"
+    }
+  },
+  {
+    "name": "Rademenez",
+    "profile": "https://btcpp.dev/whois/rademenez",
+    "project": "QR/Lightning bridge",
+    "source_ids": [
+      "lnurl_comment"
+    ],
+    "modeled_channels": [
+      "lnurl_zero_width",
+      "timing"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "lnurl_comment": "read"
+    }
+  },
+  {
+    "name": "Matthew Vuk",
+    "profile": "https://btcpp.dev/whois/matthewvuk2",
+    "project": "Bark/Cashu",
+    "source_ids": [
+      "bark",
+      "cashu_mint",
+      "cashu_melt"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "bark": "read",
+      "cashu_mint": "read",
+      "cashu_melt": "read"
+    }
+  },
+  {
+    "name": "m0wer",
+    "profile": "https://btcpp.dev/whois/m0wer",
+    "project": "JoinMarket NG",
+    "source_ids": [
+      "joinmarket_ng"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "joinmarket_ng": "read"
+    }
+  },
+  {
+    "name": "sam",
+    "profile": "https://btcpp.dev/whois/samthomson",
+    "project": "Nostr/relaykit",
+    "source_ids": [
+      "nostr_event",
+      "nostr_encryption"
+    ],
+    "modeled_channels": [
+      "nostr_json_order",
+      "private_envelope",
+      "timing"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "nostr_event": "read",
+      "nostr_encryption": "read"
+    }
+  },
+  {
+    "name": "Misha Komarov",
+    "profile": "https://btcpp.dev/whois/nemothenoone",
+    "project": "Allocin",
+    "source_ids": [
+      "allocin"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "allocin": "read"
+    }
+  },
+  {
+    "name": "Marek Feder",
+    "profile": "https://btcpp.dev/whois/federmarek",
+    "project": "AmityAge",
+    "source_ids": [
+      "amityage"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "amityage": "read"
+    }
+  },
+  {
+    "name": "Nick Farrow",
+    "profile": "https://btcpp.dev/whois/nickfarrow",
+    "project": "Frostsnap/FROST",
+    "source_ids": [
+      "frostsnap_repo"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "signer source context; no invoice carrier tested",
+    "source_status": {
+      "frostsnap_repo": "read"
+    }
+  },
+  {
+    "name": "Stark",
+    "profile": "https://btcpp.dev/whois/stark-3k",
+    "project": "OpenSwap",
+    "source_ids": [
+      "openswap",
+      "nostr_event"
+    ],
+    "modeled_channels": [
+      "nostr_json_order",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "openswap": "read",
+      "nostr_event": "read"
+    }
+  },
+  {
+    "name": "Pacman",
+    "profile": "https://btcpp.dev/whois/kkdao",
+    "project": "Krux/Sparrow",
+    "source_ids": [
+      "krux_repo",
+      "silent_payments"
+    ],
+    "modeled_channels": [
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "krux_repo": "read",
+      "silent_payments": "read"
+    }
+  },
+  {
+    "name": "Naiyoma",
+    "profile": "https://btcpp.dev/whois/naiyoma",
+    "project": "Addrman dashboard",
+    "source_ids": [
+      "addrman"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "addrman": "unavailable"
+    }
+  },
+  {
+    "name": "KIM CHANGHAK",
+    "profile": "https://btcpp.dev/whois/gosunuts",
+    "project": "bitcoin-rs",
+    "source_ids": [
+      "bitcoin_rs"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "bitcoin_rs": "read"
+    }
+  },
+  {
+    "name": "Minseok Song",
+    "profile": "https://btcpp.dev/whois/metaphorics",
+    "project": "bitcoin-rs",
+    "source_ids": [
+      "bitcoin_rs"
+    ],
+    "modeled_channels": [],
+    "implementation_tested": false,
+    "status": "context/source gap; no invoice-channel test",
+    "source_status": {
+      "bitcoin_rs": "read"
+    }
+  },
+  {
+    "name": "Justin Moeller",
+    "profile": "https://btcpp.dev/whois/m1sterc001guy",
+    "project": "Fedimint/ROAST",
+    "source_ids": [
+      "fedimint"
+    ],
+    "modeled_channels": [
+      "private_envelope",
+      "timing",
+      "amount_pairs"
+    ],
+    "implementation_tested": false,
+    "status": "generic surface model only",
+    "source_status": {
+      "fedimint": "read"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+experiments/stego_invoice_channels_v1/** text eol=lf
+src/stego_invoice_channels.py text eol=lf
+src/stego_glossia_probe.py text eol=lf
+src/verify_stego_invoice_channels.py text eol=lf
+tests/test_stego_invoice_channels.py text eol=lf

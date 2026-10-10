@@ -1,0 +1,10 @@
+{
+  "suite_command": "python -m pytest -q",
+  "suite_result": "127 passed in 19.26s",
+  "artifact_command": "python src/verify_stego_invoice_channels.py --manifest experiments/stego_invoice_channels_v1/manifest.json --output results/stego_invoice_channels_v1",
+  "artifact_result": {
+    "valid": true,
+    "errors": []
+  },
+  "real_codec": "60 real Glossia cases; results recorded separately; no stealth test"
+}

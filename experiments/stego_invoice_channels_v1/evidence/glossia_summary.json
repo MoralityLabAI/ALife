@@ -1,0 +1,115 @@
+{
+  "project": "Glossia v0.6.0",
+  "classification": "readable encoding; no concealment claim",
+  "binary_sha256": "4a15e051d8aa917b09dcbccaf10b3ee105c9253ca05c97957a7872605c554833",
+  "cases": 60,
+  "source_sha256": "eac06f4edd6002d2feb558ff225357ca105c4cbd6f253e8bbc6e91276b75cac1",
+  "cells": [
+    {
+      "dialect": "body",
+      "transform": "raw",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 713.75
+    },
+    {
+      "dialect": "body",
+      "transform": "collapsed_whitespace",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 712.75
+    },
+    {
+      "dialect": "body",
+      "transform": "lowercase",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 713.75
+    },
+    {
+      "dialect": "body",
+      "transform": "punctuation_removed",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 688.5
+    },
+    {
+      "dialect": "body",
+      "transform": "word_shuffle",
+      "n": 4,
+      "recovered": 0,
+      "mean_encoded_bytes": 712.75
+    },
+    {
+      "dialect": "subject",
+      "transform": "raw",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 1090.0
+    },
+    {
+      "dialect": "subject",
+      "transform": "collapsed_whitespace",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 1089.0
+    },
+    {
+      "dialect": "subject",
+      "transform": "lowercase",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 1090.0
+    },
+    {
+      "dialect": "subject",
+      "transform": "punctuation_removed",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 1090.0
+    },
+    {
+      "dialect": "subject",
+      "transform": "word_shuffle",
+      "n": 4,
+      "recovered": 0,
+      "mean_encoded_bytes": 1089.0
+    },
+    {
+      "dialect": "haiku",
+      "transform": "raw",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 698.5
+    },
+    {
+      "dialect": "haiku",
+      "transform": "collapsed_whitespace",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 697.5
+    },
+    {
+      "dialect": "haiku",
+      "transform": "lowercase",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 698.5
+    },
+    {
+      "dialect": "haiku",
+      "transform": "punctuation_removed",
+      "n": 4,
+      "recovered": 4,
+      "mean_encoded_bytes": 674.75
+    },
+    {
+      "dialect": "haiku",
+      "transform": "word_shuffle",
+      "n": 4,
+      "recovered": 0,
+      "mean_encoded_bytes": 697.5
+    }
+  ],
+  "raw_sha256": "f21d25dba08faba65811530a75d463d68f6803dc5c2ef43ab936624b7e662b90"
+}

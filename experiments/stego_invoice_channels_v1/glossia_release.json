@@ -1,0 +1,7 @@
+{
+  "version": "v0.6.0",
+  "url": "https://github.com/asherp/glossia/releases/download/v0.6.0/glossia-v0.6.0-x86_64-pc-windows-msvc.zip",
+  "archive_sha256": "9fccb4b3f69caf1863c2a3c48e86abcb3af3dba2b7b3ae5e6953069a1625387a",
+  "binary_sha256": "4a15e051d8aa917b09dcbccaf10b3ee105c9253ca05c97957a7872605c554833",
+  "digest_source": "official GitHub release asset metadata; not a reproducible build attestation"
+}

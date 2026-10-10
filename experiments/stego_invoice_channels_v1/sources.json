@@ -1,0 +1,326 @@
+[
+  {
+    "id": "seoul",
+    "url": "https://btcpp.dev/seoul",
+    "resolved_url": "https://btcpp.dev/seoul",
+    "sha256": "b441f24a2d4cf9e617cf906b7e40fb7df9eb41716453dffeb155fcb6b6232b42",
+    "bytes": 265893,
+    "retrieved_at": "2026-10-10T14:59:50.725194+00:00",
+    "status": "read"
+  },
+  {
+    "id": "seoul_speakers",
+    "url": "https://btcpp.dev/seoul/speakers",
+    "resolved_url": "https://btcpp.dev/seoul/speakers",
+    "sha256": "c63a2ed892e8799ba5117874a3109bafa8b99277b09c0b42989cf96f7726890c",
+    "bytes": 58451,
+    "retrieved_at": "2026-10-10T14:59:52.176638+00:00",
+    "status": "read"
+  },
+  {
+    "id": "bolt12",
+    "url": "https://raw.githubusercontent.com/lightning/bolts/master/12-offer-encoding.md",
+    "resolved_url": "https://raw.githubusercontent.com/lightning/bolts/master/12-offer-encoding.md",
+    "sha256": "0fa23def72465c7c31dcff2c90c0139e988c502b42f103c0e0b945b752837b69",
+    "bytes": 53101,
+    "retrieved_at": "2026-10-10T14:59:52.494956+00:00",
+    "status": "read"
+  },
+  {
+    "id": "bolt12_vectors",
+    "url": "https://raw.githubusercontent.com/lightning/bolts/master/bolt12/format-string-test.json",
+    "resolved_url": "https://raw.githubusercontent.com/lightning/bolts/master/bolt12/format-string-test.json",
+    "sha256": "a88e3098b3afee8cd31bf1091d76f2f265f5f0e2e397f56fc2eef8da7e3f131d",
+    "bytes": 2807,
+    "retrieved_at": "2026-10-10T14:59:52.849686+00:00",
+    "status": "read"
+  },
+  {
+    "id": "lnurl_comment",
+    "url": "https://raw.githubusercontent.com/lnurl/luds/luds/12.md",
+    "resolved_url": "https://raw.githubusercontent.com/lnurl/luds/luds/12.md",
+    "sha256": "547be7bd560828a13a6f924852f31f166df7c30b6411d0cf02e54883c36631c7",
+    "bytes": 1969,
+    "retrieved_at": "2026-10-10T14:59:53.155554+00:00",
+    "status": "read"
+  },
+  {
+    "id": "nostr_event",
+    "url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/01.md",
+    "resolved_url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/01.md",
+    "sha256": "6cd76682e7ec2d635f1f46b3660f621cdad1193d9174d316674b91f8d683af26",
+    "bytes": 13894,
+    "retrieved_at": "2026-10-10T14:59:53.447559+00:00",
+    "status": "read"
+  },
+  {
+    "id": "nostr_encryption",
+    "url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/44.md",
+    "resolved_url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/44.md",
+    "sha256": "b5f89374e4e1dbdee7881e8573b4313b6a89430a9c8d518471599ae0660cf0e2",
+    "bytes": 19610,
+    "retrieved_at": "2026-10-10T14:59:54.049636+00:00",
+    "status": "read"
+  },
+  {
+    "id": "nostr_dm",
+    "url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/17.md",
+    "resolved_url": "https://raw.githubusercontent.com/nostr-protocol/nips/master/17.md",
+    "sha256": "7aa9c3a9c0458a9552c4be2f3bf17f7ec60a4afe88bce7977f03500a7873a64c",
+    "bytes": 12439,
+    "retrieved_at": "2026-10-10T14:59:54.364708+00:00",
+    "status": "read"
+  },
+  {
+    "id": "marmot",
+    "url": "https://raw.githubusercontent.com/marmot-protocol/marmot/master/transports/nostr.md",
+    "resolved_url": "https://raw.githubusercontent.com/marmot-protocol/marmot/master/transports/nostr.md",
+    "sha256": "585ca4e713afedca2d7c0e47d01e860300049aabb2a2f82f91f3ffe8aef706b2",
+    "bytes": 31074,
+    "retrieved_at": "2026-10-10T14:59:54.662358+00:00",
+    "status": "read"
+  },
+  {
+    "id": "cashu_mint",
+    "url": "https://raw.githubusercontent.com/cashubtc/nuts/main/04.md",
+    "resolved_url": "https://raw.githubusercontent.com/cashubtc/nuts/main/04.md",
+    "sha256": "01d84a93d6975e134479ecccb64be8f82ad1e3b6479662e104a75b6b1e43f595",
+    "bytes": 9147,
+    "retrieved_at": "2026-10-10T14:59:55.003645+00:00",
+    "status": "read"
+  },
+  {
+    "id": "cashu_melt",
+    "url": "https://raw.githubusercontent.com/cashubtc/nuts/main/05.md",
+    "resolved_url": "https://raw.githubusercontent.com/cashubtc/nuts/main/05.md",
+    "sha256": "07d039d7abb414c9c26d2d06f42342741172b1801c80f1aca4648acaae887371",
+    "bytes": 10421,
+    "retrieved_at": "2026-10-10T14:59:55.307596+00:00",
+    "status": "read"
+  },
+  {
+    "id": "fedimint",
+    "url": "https://raw.githubusercontent.com/fedimint/fedimint/master/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/fedimint/fedimint/master/README.md",
+    "sha256": "3379f15bf40bc5f1c842f773aa373456a66ce047335b6467a9ac03bb126f743d",
+    "bytes": 5490,
+    "retrieved_at": "2026-10-10T14:59:55.635794+00:00",
+    "status": "read"
+  },
+  {
+    "id": "bark",
+    "url": "https://second.tech/docs",
+    "resolved_url": "https://second.tech/docs",
+    "sha256": "b8ee66fd2ed68e493a0fb8b3db1dc0f80664868f4fff59e1b40d944e6ef99eac",
+    "bytes": 385164,
+    "retrieved_at": "2026-10-10T14:59:57.420368+00:00",
+    "status": "read"
+  },
+  {
+    "id": "payjoin",
+    "url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0078.mediawiki",
+    "resolved_url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0078.mediawiki",
+    "sha256": "1888ea3529a77477820045358e4ff4ce1085020ecc3e1d7e47b39bfd3f0eada2",
+    "bytes": 40237,
+    "retrieved_at": "2026-10-10T14:59:57.727338+00:00",
+    "status": "read"
+  },
+  {
+    "id": "silent_payments",
+    "url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0352.mediawiki",
+    "resolved_url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0352.mediawiki",
+    "sha256": "a64d3b9ecc004ea4ae4c168e4631571f16e35eaa66595599729c6c066de4cff4",
+    "bytes": 54301,
+    "retrieved_at": "2026-10-10T14:59:58.065351+00:00",
+    "status": "read"
+  },
+  {
+    "id": "testnet4",
+    "url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0094.mediawiki",
+    "resolved_url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0094.mediawiki",
+    "sha256": "6a490d6266f2dc640ca3e16645fd49f593a07aec8e882cdb8e5fa96f1ca898ab",
+    "bytes": 10706,
+    "retrieved_at": "2026-10-10T14:59:58.387661+00:00",
+    "status": "read"
+  },
+  {
+    "id": "joinmarket",
+    "url": "https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/README.md",
+    "sha256": "91b36585e7c75de6089744c2958bd25adfcd1e7e1acb6e627358d6d2da693182",
+    "bytes": 8333,
+    "retrieved_at": "2026-10-10T14:59:58.713563+00:00",
+    "status": "read"
+  },
+  {
+    "id": "wasabi",
+    "url": "https://docs.wasabiwallet.io/using-wasabi/CoinJoin.html",
+    "resolved_url": "https://docs.wasabiwallet.io/using-wasabi/CoinJoin.html",
+    "sha256": "384a1ffe2e8a46963e33a3ca8547d3215c217aa93f0e080b2752cef9b342901f",
+    "bytes": 44743,
+    "retrieved_at": "2026-10-10T14:59:59.695193+00:00",
+    "status": "read"
+  },
+  {
+    "id": "openswap",
+    "url": "https://raw.githubusercontent.com/citadel-foss/openswap/master/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/citadel-foss/openswap/master/README.md",
+    "sha256": "79fc23ec9c62fe2ed4efc5ce3cc73374b32e46a6c3c2bc21832da9f4aaac1821",
+    "bytes": 8294,
+    "retrieved_at": "2026-10-10T15:00:00.048141+00:00",
+    "status": "read"
+  },
+  {
+    "id": "bitcaster",
+    "url": "https://bitcasterdoc.com/technical/",
+    "status": "read via web tool; direct capture timed out",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "id": "bitcoin_rs",
+    "url": "https://raw.githubusercontent.com/gosuda/bitcoin-rs/main/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/gosuda/bitcoin-rs/main/README.md",
+    "sha256": "6295805227e264c539ab7c1e581dab7ec526c942473f1c3f5a88457d7242abe6",
+    "bytes": 11752,
+    "retrieved_at": "2026-10-10T15:01:24.614997+00:00",
+    "status": "read"
+  },
+  {
+    "id": "frostsnap",
+    "url": "https://frostsnap.com",
+    "status": "read via web tool; see frostsnap_repo for captured source",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "id": "krux",
+    "url": "https://selfcustody.github.io/krux/",
+    "status": "project homepage capture unavailable; see krux_repo",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "id": "cisa",
+    "url": "https://raw.githubusercontent.com/fjahr/bips/cisa/bip-0460.mediawiki",
+    "status": "read",
+    "sha256": "0c3fa8e228cbd28e46466c7e28d4142f0b20c8ef9be070ddcdab896c5c69c0f8",
+    "bytes": 43329,
+    "note": "Source capture retained in workspace research scratch; not an implementation test."
+  },
+  {
+    "id": "message_proofs",
+    "url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0322.mediawiki",
+    "resolved_url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0322.mediawiki",
+    "sha256": "0eb91c5093ef81c462cadffdbe02d4d1638cb270d3ccb47301a6d82860aa0454",
+    "bytes": 21361,
+    "retrieved_at": "2026-10-10T15:04:14.012474+00:00",
+    "status": "read"
+  },
+  {
+    "id": "addrman",
+    "url": "https://stratospher.github.io/addrman-dashboard/",
+    "status": "unavailable",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "id": "char",
+    "url": "https://char.network",
+    "status": "unavailable",
+    "error": "<urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>"
+  },
+  {
+    "id": "allocin",
+    "url": "https://allocin.it",
+    "resolved_url": "https://www.allocinit.xyz/",
+    "sha256": "45569c258ba5a533f8b0f5ff8bffea4bcdb23a026637b2671fe326a88d73a8b0",
+    "bytes": 41226,
+    "retrieved_at": "2026-10-10T15:07:03.340902+00:00",
+    "status": "read"
+  },
+  {
+    "id": "amityage",
+    "url": "https://www.amityage.com",
+    "resolved_url": "https://www.amityage.com",
+    "sha256": "d813adfa2d849c6ae5b4b2fc9a0585135ae8cf24e348b63ec32664ae91446050",
+    "bytes": 839589,
+    "retrieved_at": "2026-10-10T15:07:05.617230+00:00",
+    "status": "read"
+  },
+  {
+    "id": "base58",
+    "url": "https://base58.school",
+    "resolved_url": "https://base58.school",
+    "sha256": "23bd4e0f7aebd92f3675d68053aa8bbf9fd4e5224f1102b408ef0082f9fb449b",
+    "bytes": 54737,
+    "retrieved_at": "2026-10-10T15:07:07.296360+00:00",
+    "status": "read"
+  },
+  {
+    "id": "relaykit",
+    "url": "https://relayk.it",
+    "resolved_url": "https://relayk.it",
+    "sha256": "ee712989229f2b658494ed6cf38913180312d8e6aa8e46f4354262374b5ec9ab",
+    "bytes": 93234,
+    "retrieved_at": "2026-10-10T15:07:08.634342+00:00",
+    "status": "read"
+  },
+  {
+    "id": "joinmarket_ng",
+    "url": "https://raw.githubusercontent.com/joinmarket-ng/joinmarket-ng/main/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/joinmarket-ng/joinmarket-ng/main/README.md",
+    "status": "read",
+    "sha256": "b6fbe87f61ba4bc848ece2717b8e7f01b5b2eb380d48a764eec84ad2549efbc5",
+    "bytes": 4893,
+    "retrieved_at": "2026-10-10T15:08:37.606631+00:00"
+  },
+  {
+    "id": "glossia",
+    "url": "https://raw.githubusercontent.com/asherp/glossia/master/README.md",
+    "status": "read",
+    "sha256": "4933f69112876cad811d616174fa0129ccc6af0d0b399c85e557feef98a5b773",
+    "bytes": 16854,
+    "note": "Source capture retained in workspace research scratch; not an implementation test."
+  },
+  {
+    "id": "bitcaster_arch",
+    "url": "https://bitcasterdoc.com/user-guide/architecture/",
+    "status": "unavailable",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "id": "frostsnap_repo",
+    "url": "https://raw.githubusercontent.com/frostsnap/frostsnap/master/README.md",
+    "status": "read",
+    "sha256": "c7ec59c80e10129aa017aa5f1bc0957885a612a80f89d9a9e883992078f9dbcb",
+    "bytes": 2612,
+    "note": "Source capture retained in workspace research scratch; not an implementation test."
+  },
+  {
+    "id": "krux_repo",
+    "url": "https://raw.githubusercontent.com/selfcustody/krux/main/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/selfcustody/krux/main/README.md",
+    "status": "read",
+    "sha256": "85545ad5e161d6c23687ca74c9b5219278d8f22920033f1ea25891bff114df6e",
+    "bytes": 16270,
+    "retrieved_at": "2026-10-10T15:09:38.662992+00:00"
+  },
+  {
+    "id": "bitshala",
+    "url": "https://bitshala.org",
+    "status": "unavailable",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "id": "brink",
+    "url": "https://brink.dev",
+    "status": "unavailable",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "id": "hoseki",
+    "url": "https://hoseki.app",
+    "resolved_url": "https://www.hoseki.app/",
+    "status": "read",
+    "sha256": "78ab841aa401a363d830da5af40f2a057a1d780c55cfd47f68935a65e4babc08",
+    "bytes": 242417,
+    "retrieved_at": "2026-10-10T15:11:09.342834+00:00"
+  }
+]
