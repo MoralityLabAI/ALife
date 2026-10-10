@@ -155,6 +155,51 @@
       "claim_boundary": "The point estimate clears the registered +0.10 gate, but its interval includes improvements below +0.10. This is a benign toy stress-test gain, not operational evasion or general optimizer superiority.",
       "artifact": "results/confinement_transfer_v1/summary.json",
       "summary_sha256": "a96629c2eef8c8fe8c3c30482ffacbbd8dc79dcf2fca094299e0da3f8cc7b826"
+    },
+    {
+      "id": "stego_swarm_limit_v1",
+      "status": "model_only_limit_demonstration",
+      "world_family": "abstract directional-capacity delivery game with hotspot demand, frozen post-warm-up capital placement, and a scalar covert-channel capacity",
+      "motivation": "Spiral 'lnmath' paper (Where the Capital Bound Moves), section 7; preregistration items 7 and 9. Defensive and non-operational.",
+      "search_budget": {
+        "seeds": 24,
+        "capacity_sweep_values_per_seed": 6,
+        "regimes_per_seed": 2,
+        "horizon_rounds": 120,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "covert_channel_bits_per_round": [0, 5, 10, 20, 40, 1000000000],
+        "demand_regime": ["stationary", "shift"],
+        "control_structure": ["pooled_controller", "shared_weights"],
+        "split": ["discovery", "confirmatory", "holdout"]
+      },
+      "claims": {
+        "H1_capacity_saturation": "supported_exactly",
+        "H2_capital_bounded_and_forecast_limited": "supported",
+        "H3_warden_firewall": "supported"
+      },
+      "holdout_result": {
+        "mean_stationary_saturated_gain": 0.1169921875,
+        "mean_shift_gain": 0.0,
+        "max_abs_post_saturation_excess": 0.0,
+        "mean_oracle_ceiling_stationary": 0.9043252840909091,
+        "mean_oracle_ceiling_shift": 0.9051846590909091,
+        "trace_warden_auc": 0.5,
+        "capital_warden_auc": 1.0
+      },
+      "ontology_gain": false,
+      "coverage_expansion_against_consumers": false,
+      "claim_boundary": "A model-only limit in an abstract delivery game: coordination gain saturates in covert-channel capacity, is bounded by placed capital under stationary demand, and collapses to a stale-forecast floor under a demand shift, while the observable signature of common control sits in capital placement sizes rather than in sampled payment traces. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
+      "artifacts": {
+        "manifest": "results/stego_swarm_limit_v1/frozen_manifest.json",
+        "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
+        "summary": "results/stego_swarm_limit_v1/summary.json",
+        "knowledge_card": "results/stego_swarm_limit_v1/knowledge_card.md",
+        "hashes": "results/stego_swarm_limit_v1/hashes.json"
+      },
+      "summary_sha256": "a2bd3f0c4ae3b377f136ce43bd1ac6fa0733e3c55fe3f40b5c0cf6269ec9cfa8",
+      "next_falsification": "Replace the linear min-unmet objective and single service model with reflected-walk balances and inter-member demand, add a strategic (non-independent) member-departure process, and give the trace warden member attribution; the saturation threshold and the chance-level trace AUC should both survive if the limit is really about capital and observation."
     }
   ]
 }

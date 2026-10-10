@@ -293,6 +293,30 @@ proxy and closure gates. The paired interval includes gains below the registered
 `+0.10` practical threshold, so the accepted result is the frozen point-estimate
 gate plus directional consistency, not a precise lower-bound claim.
 
+Run and verify the steganographic-swarm coordination-limit study:
+
+```powershell
+python src\stego_swarm_limit.py --manifest experiments\stego_swarm_limit_v1\manifest.json --output results\stego_swarm_limit_v1 --splits all
+python src\verify_stego_swarm_limit_artifacts.py results\stego_swarm_limit_v1
+```
+
+This sealed, non-operational study reproduces, on finite cases, the direction of
+section 7 of the Spiral "lnmath" paper
+([*Where the Capital Bound Moves*](https://github.com/patrickdugan/Spiral)): a
+common-control coalition's coordination gain saturates in the capacity of its
+covert channel (unbounded capacity equals the saturation threshold to machine
+precision), is bounded by placed capital under stationary demand (holdout mean
+`+0.117`), and collapses to zero under a post-warm-up demand shift while the
+oracle capital ceiling stays at `0.90`, so the loss is a forecasting loss and
+not a capital one. A warden reading sampled location traces cannot separate a
+pooled controller from a focal-point shared-weights population (trace ROC AUC
+`0.50`); a warden reading capital-placement sizes separates them (capital ROC
+AUC `1.00`). The covert channel is a scalar bit budget with no content: there is
+no wallet, key, invoice, network, payload, or encoder anywhere in the harness.
+See the [experiment README](experiments/stego_swarm_limit_v1/README.md), the
+[paper](papers/steganographic_swarm_capital_limit.md), and the optional
+model-driven [live-agent probe](experiments/stego_swarm_limit_v1/LIVE_PROBE.md).
+
 For a relocated bundle, add `--portable` to each verifier command. Portable
 mode ignores original-machine absolute paths and requires one unique
 multi-component suffix match. Runtime-environment differences and non-D storage

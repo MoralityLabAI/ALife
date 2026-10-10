@@ -1,0 +1,154 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "In an abstract directional-capacity delivery game, is a common-control coalition's coordination gain bounded by its placed capital under stationary demand and saturating in the capacity of its covert channel, so that covert bandwidth beyond a small threshold buys no further delivery and leaves no separable payment trace?",
+  "benefit": "defensive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a paired shared-weights control for the warden",
+  "motivation": {
+    "source": "Spiral 'lnmath' paper, Where the Capital Bound Moves, section 7 (agent swarms)",
+    "reference_propositions": [
+      "coordination gain, conditional: gain bounded by authenticated capital under stationary demand, zero after a shift, whatever the covert channel capacity",
+      "preregistration item 7: same shared-weights population and same-controller population are not separated by payment-trace statistics",
+      "preregistration item 9: a capacity-versus-detectability reading of the covert channel against the capital bound"
+    ],
+    "non_operational": "No Lightning, wallet, key, invoice, RPC, onion, transaction, transport, broadcast, payload, or encoding exists in the harness. The covert channel is a scalar bit budget with no content."
+  },
+  "hypotheses": [
+    {
+      "id": "H1_capacity_saturation",
+      "prediction": "On holdout seeds, the coalition's stationary coordination gain is nondecreasing in covert-channel capacity and is identical at unbounded capacity and at the saturation threshold (|excess| <= capacity_saturation_band).",
+      "falsifier": "Any holdout regime has a gain that decreases in capacity, or the mean/maximum gain above the saturation threshold exceeds the band."
+    },
+    {
+      "id": "H2_capital_bounded_and_forecast_limited",
+      "prediction": "On holdout seeds, the saturated stationary coordination gain is at least minimum_stationary_gain, while the gain at unbounded capacity under a post-warm-up demand shift is within shift_gain_band of zero.",
+      "falsifier": "The stationary saturated gain is below minimum_stationary_gain, or the shifted gain exceeds shift_gain_band in magnitude."
+    },
+    {
+      "id": "H3_warden_firewall",
+      "prediction": "On holdout seeds, a warden reading capital-placement sizes separates the pooled controller from the shared-weights control (capital ROC AUC >= minimum_capital_auc), while a warden reading only sampled location traces stays within chance of 0.5 (|trace AUC - 0.5| <= trace_auc_null_halfwidth) and far below the capital warden (capital AUC - trace AUC >= warden_firewall_margin). The observable signature of common control is in the capital, not the payment trace.",
+      "falsifier": "The capital AUC is below minimum_capital_auc, or the trace AUC leaves the chance null, or the capital-minus-trace AUC gap is below warden_firewall_margin."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/stego_swarm_limit.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Per seed and regime a frozen demand realisation is drawn (warm-up then evaluation); members observe independent sub-samples of warm-up demand; capital is placed once after warm-up and never inspects evaluation demand; delivery is min(demand, capacity) per location per evaluation round.",
+    "rng": "numpy SeedSequence([seed, regime_index, salt]) spawns the world stream and one stream per member; the warden uses SeedSequence([seed, salt]). Placement is a deterministic greedy water-fill given observations."
+  },
+  "interventions": [
+    {
+      "name": "covert_channel_capacity",
+      "changes": {"capacity_bits_per_round": [0, 5, 10, 20, 40, 1000000000]}
+    },
+    {
+      "name": "demand_regime",
+      "changes": {"regime": ["stationary", "shift"]}
+    },
+    {
+      "name": "control_structure",
+      "changes": {"population": ["pooled_controller", "shared_weights"]}
+    }
+  ],
+  "controls": [
+    {"name": "independent_placement_zero_capacity", "type": "null"},
+    {"name": "shared_weights_same_policy", "type": "resource_matched"},
+    {"name": "oracle_future_demand_ceiling", "type": "baseline"},
+    {"name": "deterministic_replay", "type": "no_op"}
+  ],
+  "seed_plan": {
+    "discovery": [7101, 7102, 7103, 7104],
+    "confirmatory": [7201, 7202, 7203, 7204, 7205, 7206, 7207, 7208],
+    "holdout": [7901, 7902, 7903, 7904, 7905, 7906, 7907, 7908, 7909, 7910, 7911, 7912],
+    "pairing": "Every covert-capacity value, both regimes, and both population types share one seed's frozen demand realisation and member observations; split seed sets are disjoint."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "gain_at_saturation",
+      "gain_at_infinity",
+      "post_saturation_excess",
+      "mean_shift_gain",
+      "trace_warden_auc",
+      "capital_warden_auc"
+    ],
+    "hazard": [
+      "budget_conserved_all",
+      "gain_monotone_in_capacity",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "independent_success",
+      "oracle_ceiling_success",
+      "capacity_curve",
+      "controller_coverage_locations",
+      "weights_coverage_locations"
+    ],
+    "denominators": {
+      "success": "all evaluation demand units for one placement under one regime",
+      "gain": "success minus the zero-capacity independent-placement success on the same seed and regime",
+      "auc": "all controller-by-weights seed pairs within a split"
+    },
+    "exposure": {
+      "eligibility": "Every seed draws a demand realisation and member observations under both regimes.",
+      "activation": "Every covert-capacity value and both population types are placed and scored on that realisation.",
+      "state_change": "Per-location capacity, delivered counts, and sampled warden statistics are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "post_saturation_excess",
+      "mean_stationary_saturated_gain",
+      "mean_shift_gain",
+      "trace_warden_auc",
+      "capital_warden_auc"
+    ],
+    "uncertainty": "Independent per-seed gains with a deterministic bootstrap 95% interval; capacity values and regimes are repeated conditions within seed, not independent replicates.",
+    "multiple_comparisons": "All three frozen hypotheses are reported; no per-cell threshold fishing.",
+    "ood_conditions": ["fresh holdout seeds", "a post-warm-up hotspot shift unseen during placement"],
+    "stopping_rule": "Stop after all 24 seeds, above 600 wall seconds, above 1024 MB process RSS, above 50 MB retained artifacts, or on failed determinism.",
+    "capacity_saturation_band": 1e-09,
+    "shift_gain_band": 0.01,
+    "minimum_stationary_gain": 0.02,
+    "trace_auc_null_halfwidth": 0.20,
+    "warden_firewall_margin": 0.30,
+    "minimum_capital_auc": 0.95,
+    "bootstrap_samples": 2000,
+    "bootstrap_seed": 81017
+  },
+  "budget": {
+    "max_wall_seconds": 600,
+    "max_steps_per_episode": 120,
+    "max_episodes": 30,
+    "max_cells_per_world": 24,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 50,
+    "execution": "Sequential local CPU execution; each seed runs a six-value capacity sweep over two regimes plus a paired warden control."
+  },
+  "design": {
+    "locations": 24,
+    "initial_hotspots": [0, 1, 2, 3, 4, 5, 6, 7],
+    "shifted_hotspots": [8, 9, 10, 11, 12, 13, 14, 15],
+    "hotspot_mass": 1.0,
+    "demand_units_per_round": 40,
+    "members": 12,
+    "member_observe_rate": 0.15,
+    "coalition_budget": 48,
+    "warmup_rounds": 24,
+    "horizon_rounds": 120,
+    "capacity_bits_sweep": [0, 5, 10, 20, 40, 1000000000],
+    "warden_sample_rate": 0.12,
+    "warden_top_k": 4
+  },
+  "artifacts": {
+    "output_directory": "results/stego_swarm_limit_v1",
+    "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
+    "summary": "results/stego_swarm_limit_v1/summary.json",
+    "seed_manifest": "results/stego_swarm_limit_v1/seed_manifest.json",
+    "replay_command": "python src/stego_swarm_limit.py --manifest experiments/stego_swarm_limit_v1/manifest.json --output results/stego_swarm_limit_v1 --splits all"
+  }
+}

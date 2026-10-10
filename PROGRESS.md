@@ -17,6 +17,7 @@ This file maps the completion criteria in [GOAL.md](GOAL.md) to current authorit
 | Pixie interaction sanctuary | Complete prototype v1 | `pixie_sanctuary_v1`; 162 paired episodes covering three critters by six actions; passing portable verifier | Move legible interactions into bounded terrain with a moving Pixie before judging playability. |
 | Pixie folded cavern | Complete higher-dimensional prototype v1 | `pixie_folded_cavern_v1`; 288 paired episodes through dimension 11; passing portable verifier | Add axis-selective notes and tomography, then dosage-match surface and fiber actions. |
 | Adventure verifier library | Complete operational v1 | Eight hard verifiers, two diagnostic-only verifiers, three environment adapters, 40-case adversarial campaign, passing meta-verifier | Add a Chronicle gate-travel quest and policy-generated traces. |
+| Steganographic-swarm coordination limit | Complete model-only v1 | `stego_swarm_limit_v1`; 24 seeds, six-value covert-capacity sweep, two demand regimes; three supported hypotheses; passing verifier; live-agent probe appendix | Add reflected-walk balances, inter-member demand, strategic departure, and a member-attribution warden to test whether the limit survives beyond the linear single-service model. |
 
 ## Geometry v1 evidence receipt
 
@@ -127,3 +128,16 @@ increase global action strength.
 - Robustness: malformed and non-finite canonical events return verifier failures rather than throwing.
 - Resources: under one second for the 40-case campaign, approximately `36` MB process RSS, and under `1` MB retained artifacts.
 - Independent verification: all stored suites were re-run and every source episode/case was rebuilt with zero mismatches.
+
+## Steganographic-swarm coordination-limit v1 evidence receipt
+
+- Contract: `experiments/stego_swarm_limit_v1/manifest.json`; motivation is section 7 and preregistration items 7 and 9 of the Spiral "lnmath" paper; the harness is sealed and non-operational (no network, wallet, invoice, payload, or encoder; the covert channel is a scalar bit budget with no content).
+- Experimental units: 24 seeds (4 discovery, 8 confirmatory, 12 holdout, disjoint), each running a six-value covert-capacity sweep over stationary and shifted demand plus a paired shared-weights warden control.
+- H1 capacity saturation: supported exactly. On every holdout seed and regime the gain at unbounded covert capacity equals the gain at the 10-bit saturation threshold (maximum post-saturation excess `0.0`); covert bandwidth beyond the threshold directs no further capital.
+- H2 capital-bounded and forecast-limited: supported. Holdout mean stationary saturated gain `+0.1170` (deterministic bootstrap 95% interval `[0.095, 0.137]`); holdout shift gain exactly `0.0` at every capacity; oracle capital ceiling `0.904` stationary and `0.905` under shift, so the shifted loss is a stale-forecast effect and not a capital one.
+- H3 warden firewall: supported. Trace-warden ROC AUC `0.50` (a focal-point shared-weights population reaches the controller's placement without a message, so the delivered traces are identical); capital-warden ROC AUC `1.00`; firewall gap `0.50`.
+- Live-agent probe (non-sealed appendix): a Claude Opus 4.8 coordinator reached the capital ceiling exactly at saturation on both tested seeds and never exceeded it; at 5 bits a myopic allocation scored `-0.067`, below directing nothing, by double-covering demand the independent remainder already served.
+- Determinism: exact episode-hash replay passed; the verifier recomputes every scientific gate from the frozen manifest.
+- Resources: well under the 600-second wall, 1024 MB RSS, and 50 MB artifact budgets; artifacts total about 90 KB.
+- Verification: `python src/verify_stego_swarm_limit_artifacts.py results/stego_swarm_limit_v1` passes with no errors or warnings; `python -m pytest tests/test_stego_swarm_limit.py` passes eight tests.
+- Boundary: model-only. It reproduces the direction of the Spiral conjecture on finite cases; it is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance.
