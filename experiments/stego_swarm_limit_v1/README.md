@@ -42,24 +42,39 @@ pooled (denoised) estimate; the remaining `B - Q` units are placed by members fr
 own noisy views, with redundant coverage. The gain is coalition success minus the
 zero-capacity independent-placement success on the same frozen demand.
 
-## What is measured (three preregistered hypotheses)
+## What is measured (one construction check, one substantive claim, one labelled illustration)
 
-1. **H1 — capacity saturation.** The stationary coordination gain is identical at the
-   saturation threshold and at unbounded capacity (`post_saturation_excess == 0`). Covert
-   bandwidth beyond the threshold buys nothing. *(Exactly true in the model: `Q` caps at `B`.)*
-2. **H2 — capital-bounded and forecast-limited gain.** The saturated stationary gain is
-   positive and meaningful, while the gain under a post-warm-up demand shift is zero for
-   every covert capacity. The oracle ceiling (placement with future demand) stays high
-   under both regimes, so the shift loss is a stale-forecast effect, not a capital one.
-3. **H3 — warden firewall.** A warden reading only sampled location traces cannot separate
-   a pooled controller from a shared-weights population (trace ROC AUC at chance), because
-   "same weights, no message" focal-point coordination reproduces the controller's
-   placement exactly; a warden reading capital-placement sizes separates them immediately
-   (capital ROC AUC = 1). The observable signature of common control is in the capital,
-   not the payment trace.
+Budget is scarce (`B = 32` against `~40` demand units per round), so capital binds and the
+water-fill never has surplus to spill onto cold cells.
 
-Thresholds in `manifest.json` are frozen and the run is fully deterministic; the verifier
-recomputes every gate from the frozen manifest.
+1. **H1 — capacity saturation (construction check).** The coordination gain is nondecreasing
+   in capacity and identical at the saturation threshold and at unbounded capacity
+   (`post_saturation_excess == 0`). This is *exact by construction* of the directive-cost
+   model (`Q` caps at `B`); the check confirms the implementation realises that algebra. It
+   is reported as such, not as an empirical discovery.
+2. **H2 — capital-bounded and forecast-limited gain (substantive).** The saturated stationary
+   gain is positive and meaningful (`~0.12`); no placement of the budget exceeds the **exact
+   optimal ceiling** (greedy on realised per-round exceedance — the integer optimum of a
+   separable concave objective, so a true upper bound, not the mean-demand water-fill it
+   replaced); and a post-warm-up demand shift collapses mean delivered success (`~0.66 → ~0.08`)
+   while that optimal ceiling stays high (`~0.67`). The capacity to serve the moved demand
+   exists; the stale forecast cannot reach it; coordination does not rescue it (shift gain
+   `~0.01`). Not vacuous: shift success and the shift ceiling are both nonzero and far apart.
+3. **H3 — warden firewall (capital result + labelled limiting-case illustration).** The
+   robust result: a warden reading capital-placement sizes separates a pooled one-pot
+   controller from an `M`-pot shared-weights population (capital ROC AUC = 1). The
+   complementary claim — that a warden reading only sampled location traces cannot separate
+   them (trace ROC AUC = 0.5) — is an **explicit limiting-case construction**, not a measured
+   near-miss: the shared-weights arm is *given* the controller's placement (the paper's "same
+   weights, no message" focal-point coordination carried to its limit), so identical behaviour
+   yields identical traces. A genuine test needs a public signal distinct from pooled private
+   views; see "Non-claims" and the paper's limitations.
+
+The thresholds in `manifest.json` are frozen demonstration gates set loosely around the
+model's observed behaviour (see `analysis.threshold_note`), not predictions about any
+network, and the run is fully deterministic. The verifier **recomputes** the holdout
+aggregates (gains, success collapse, ceiling, ROC AUCs) directly from `raw_episodes.jsonl`,
+gates them against the frozen thresholds, and cross-checks them against `summary.json`.
 
 ## Reproduce
 
@@ -86,3 +101,12 @@ This does not measure the Lightning Network, establish real covert communication
 privacy, demonstrate that an autonomous society will emerge, or estimate any real monitor's
 field performance. It is a controlled mechanism study whose assumptions are exposed in one
 JSON configuration, bounding a quantity the Spiral paper argues is bounded by other means.
+
+The trace-indistinguishability half of H3 is a construction, not a measurement: the
+shared-weights arm is handed the controller's placement, so of course the traces match.
+This is deliberate — it isolates the capital signal as the robust separator — but it means
+the experiment does **not** show that a trace warden fails on genuinely distinct
+behaviour. A faithful test would give the shared-weights population a public demand signal
+distinct from the coalition's pooled private views and measure whether partial observation
+alone suppresses the signal; that is left as the registered next step. Relatedly, H1's
+saturation is arithmetic on the directable-unit count `Q`, not an empirical surprise.

@@ -175,22 +175,26 @@
         "split": ["discovery", "confirmatory", "holdout"]
       },
       "claims": {
-        "H1_capacity_saturation": "supported_exactly",
+        "H1_capacity_saturation": "supported_by_construction_of_the_directive_cost_model",
         "H2_capital_bounded_and_forecast_limited": "supported",
-        "H3_warden_firewall": "supported"
+        "H3_warden_firewall": "capital_clause_supported_trace_clause_is_a_limiting_case_construction"
       },
       "holdout_result": {
-        "mean_stationary_saturated_gain": 0.1169921875,
-        "mean_shift_gain": 0.0,
+        "mean_stationary_saturated_gain": 0.11875,
+        "mean_stationary_success": 0.6626302083333333,
+        "mean_shift_success": 0.07858072916666667,
+        "forecast_collapse_under_shift": 0.5840494791666666,
+        "mean_shift_gain": 0.011805555555555555,
         "max_abs_post_saturation_excess": 0.0,
-        "mean_oracle_ceiling_stationary": 0.9043252840909091,
-        "mean_oracle_ceiling_shift": 0.9051846590909091,
+        "any_placement_exceeds_optimal_ceiling": false,
+        "mean_optimal_ceiling_stationary": 0.6694878472222222,
+        "mean_optimal_ceiling_shift": 0.6705729166666666,
         "trace_warden_auc": 0.5,
         "capital_warden_auc": 1.0
       },
       "ontology_gain": false,
       "coverage_expansion_against_consumers": false,
-      "claim_boundary": "A model-only limit in an abstract delivery game: coordination gain saturates in covert-channel capacity, is bounded by placed capital under stationary demand, and collapses to a stale-forecast floor under a demand shift, while the observable signature of common control sits in capital placement sizes rather than in sampled payment traces. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
+      "claim_boundary": "A model-only study in an abstract delivery game with a scarce budget (B=32 against 40 demand units per round). Coordination gain saturates in covert-channel capacity (exact by construction of the directive-cost model); delivery is bounded by an exact optimal capital placement that no allocation exceeds; a demand shift collapses delivered success toward a high ceiling coordination cannot reach. The warden result is split: the capital signal is a real separator (AUC 1.0); the trace indistinguishability (AUC 0.5) is a labelled limiting-case construction in which the shared-weights arm is handed the controller's placement, not a measured near-miss. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
       "artifacts": {
         "manifest": "results/stego_swarm_limit_v1/frozen_manifest.json",
         "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
@@ -198,8 +202,8 @@
         "knowledge_card": "results/stego_swarm_limit_v1/knowledge_card.md",
         "hashes": "results/stego_swarm_limit_v1/hashes.json"
       },
-      "summary_sha256": "a2bd3f0c4ae3b377f136ce43bd1ac6fa0733e3c55fe3f40b5c0cf6269ec9cfa8",
-      "next_falsification": "Replace the linear min-unmet objective and single service model with reflected-walk balances and inter-member demand, add a strategic (non-independent) member-departure process, and give the trace warden member attribution; the saturation threshold and the chance-level trace AUC should both survive if the limit is really about capital and observation."
+      "summary_sha256": "44abfc8717b0730c40138fc5b07efd030e8dd39aedd74ba2f62b974d2aedcc1f",
+      "next_falsification": "Give the shared-weights arm a public demand signal distinct from the coalition's pooled private views and a focal-point partition, so the trace warden becomes a genuine test rather than a construction; then replace the linear min-unmet objective and single-service model with reflected-walk balances and inter-member demand, add a strategic (non-independent) member-departure process, and give the trace warden member attribution."
     }
   ]
 }

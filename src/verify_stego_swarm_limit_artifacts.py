@@ -38,6 +38,58 @@ def load_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def _auc(positive: list[float], negative: list[float]) -> float:
+    """Independent reimplementation of the Mann-Whitney ROC AUC used by the experiment."""
+
+    if not positive or not negative:
+        return 0.5
+    wins = 0.0
+    for value in positive:
+        for other in negative:
+            if value > other:
+                wins += 1.0
+            elif value == other:
+                wins += 0.5
+    return wins / (len(positive) * len(negative))
+
+
+def _mean(values: list[float]) -> float:
+    return sum(values) / len(values) if values else 0.0
+
+
+def recompute_holdout(rows: list[dict[str, Any]]) -> tuple[dict[str, float], list[str]]:
+    """Recompute the holdout aggregates straight from the raw episodes, not the summary."""
+
+    holdout = [row for row in rows if row.get("split") == "holdout"]
+    drift: list[str] = []
+    if not holdout:
+        return {}, ["no holdout rows found in raw_episodes.jsonl"]
+    stationary = [row["regimes"]["stationary"] for row in holdout]
+    shift = [row["regimes"]["shift"] for row in holdout]
+    recomputed = {
+        "mean_stationary_saturated_gain": _mean([float(r["gain_at_saturation"]) for r in stationary]),
+        "mean_shift_gain": _mean([float(r["gain_at_infinity"]) for r in shift]),
+        "mean_stationary_success": _mean(
+            [float(r["independent_success"]) + float(r["gain_at_infinity"]) for r in stationary]
+        ),
+        "mean_shift_success": _mean(
+            [float(r["independent_success"]) + float(r["gain_at_infinity"]) for r in shift]
+        ),
+        "max_abs_post_saturation_excess": max(abs(float(r["post_saturation_excess"])) for r in stationary),
+        "mean_optimal_ceiling_stationary": _mean([float(r["optimal_ceiling_success"]) for r in stationary]),
+        "mean_optimal_ceiling_shift": _mean([float(r["optimal_ceiling_success"]) for r in shift]),
+        "trace_warden_auc": _auc(
+            [float(r["warden"]["trace_controller_score"]) for r in holdout],
+            [float(r["warden"]["trace_weights_score"]) for r in holdout],
+        ),
+        "capital_warden_auc": _auc(
+            [float(r["warden"]["capital_controller_score"]) for r in holdout],
+            [float(r["warden"]["capital_weights_score"]) for r in holdout],
+        ),
+    }
+    return recomputed, drift
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("artifact_dir", type=Path)
@@ -110,6 +162,9 @@ def main() -> None:
             inf_entry = next(entry for entry in curve if int(entry["bits"]) >= INF_BITS)
             if int(inf_entry["coordinated_units"]) != budget:
                 errors.append(f"unbounded capacity did not reach budget at row {index} ({regime})")
+            # The optimal ceiling is a true upper bound: no placement may exceed it.
+            if bool(result.get("any_placement_exceeds_ceiling")):
+                errors.append(f"a placement exceeds the optimal ceiling at row {index} ({regime})")
         if not row.get("validity_gate_pass"):
             warnings.append(f"row {index} did not pass its own validity gate")
 
@@ -121,26 +176,44 @@ def main() -> None:
     if seed_sets[0] & seed_sets[1] or seed_sets[0] & seed_sets[2] or seed_sets[1] & seed_sets[2]:
         errors.append("seed splits overlap")
 
-    # Holdout gates recomputed against the frozen manifest thresholds.
-    holdout = summary.get("holdout", {})
-    if abs(float(holdout.get("max_abs_post_saturation_excess", 1.0))) > float(analysis["capacity_saturation_band"]):
-        errors.append("holdout saturation excess exceeds band")
-    if float(holdout.get("mean_stationary_saturated_gain", -1.0)) < float(analysis["minimum_stationary_gain"]):
-        errors.append("holdout stationary gain below frozen minimum")
-    if abs(float(holdout.get("mean_shift_gain", 1.0))) > float(analysis["shift_gain_band"]):
-        errors.append("holdout shift gain exceeds band")
-    if float(holdout.get("capital_warden_auc", 0.0)) < float(analysis["minimum_capital_auc"]):
-        errors.append("capital warden AUC below frozen minimum")
-    if abs(float(holdout.get("trace_warden_auc", 1.0)) - 0.5) > float(analysis["trace_auc_null_halfwidth"]):
-        errors.append("trace warden AUC outside chance null")
-    gap = float(holdout.get("capital_warden_auc", 0.0)) - float(holdout.get("trace_warden_auc", 1.0))
-    if gap < float(analysis["warden_firewall_margin"]):
-        errors.append("warden firewall gap below frozen margin")
+    # Holdout gates recomputed independently from raw_episodes.jsonl, then both gated against
+    # the frozen manifest thresholds and cross-checked against the summary's own numbers.
+    recomputed, drift = recompute_holdout(rows)
+    summary_holdout = summary.get("holdout", {})
+    for key, value in recomputed.items():
+        reported = summary_holdout.get(key)
+        if reported is None or abs(float(reported) - float(value)) > 1e-9:
+            drift.append(f"{key}: summary={reported} recomputed={value}")
+    if drift:
+        errors.append("summary holdout disagrees with raw recomputation: " + "; ".join(drift))
+
+    if abs(recomputed["max_abs_post_saturation_excess"]) > float(analysis["capacity_saturation_band"]):
+        errors.append("recomputed holdout saturation excess exceeds band")
+    if recomputed["mean_stationary_saturated_gain"] < float(analysis["minimum_stationary_gain"]):
+        errors.append("recomputed holdout stationary gain below frozen minimum")
+    forecast_collapse = recomputed["mean_stationary_success"] - recomputed["mean_shift_success"]
+    if forecast_collapse < float(analysis["minimum_forecast_collapse"]):
+        errors.append("recomputed forecast collapse below frozen minimum")
+    if recomputed["mean_optimal_ceiling_shift"] < float(analysis["minimum_shift_ceiling"]):
+        errors.append("recomputed shift ceiling below frozen minimum")
+    if abs(recomputed["mean_shift_gain"]) > float(analysis["shift_gain_band"]):
+        errors.append("recomputed holdout shift gain exceeds band")
+    if recomputed["capital_warden_auc"] < float(analysis["minimum_capital_auc"]):
+        errors.append("recomputed capital warden AUC below frozen minimum")
+    if abs(recomputed["trace_warden_auc"] - 0.5) > float(analysis["trace_auc_null_halfwidth"]):
+        errors.append("recomputed trace warden AUC outside chance null")
+    if recomputed["capital_warden_auc"] - recomputed["trace_warden_auc"] < float(analysis["warden_firewall_margin"]):
+        errors.append("recomputed warden firewall gap below frozen margin")
 
     assessment = summary.get("hypothesis_assessment", {})
-    for key in ("H1_capacity_saturation", "H2_capital_bounded_and_forecast_limited", "H3_warden_firewall"):
-        if assessment.get(key) != "supported":
-            warnings.append(f"hypothesis not supported in summary: {key} ({assessment.get(key)})")
+    expected_assessment = {
+        "H1_capacity_saturation": "supported",
+        "H2_capital_bounded_and_forecast_limited": "supported",
+        "H3_warden_firewall": "illustrated_limiting_case",
+    }
+    for key, expected_value in expected_assessment.items():
+        if assessment.get(key) != expected_value:
+            warnings.append(f"hypothesis assessment unexpected: {key} ({assessment.get(key)})")
 
     if sha256_file(root / "frozen_manifest.json") != receipt.get("manifest_sha256"):
         errors.append("manifest hash mismatch")
@@ -189,10 +262,8 @@ def main() -> None:
             "split_counts": dict(split_counts),
             "hashes_checked": len(hashes),
             "total_bytes": total_bytes,
-            "holdout_stationary_gain": holdout.get("mean_stationary_saturated_gain"),
-            "holdout_shift_gain": holdout.get("mean_shift_gain"),
-            "holdout_trace_auc": holdout.get("trace_warden_auc"),
-            "holdout_capital_auc": holdout.get("capital_warden_auc"),
+            "recomputed_holdout": recomputed,
+            "recomputed_forecast_collapse": forecast_collapse,
             "hypothesis_assessment": assessment,
         },
     }

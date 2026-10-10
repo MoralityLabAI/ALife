@@ -279,15 +279,28 @@ def place_shared_weights(world: Mapping[str, Any], design: Mapping[str, Any]) ->
     return {"capacity": capacity, "boardings": boardings, "budget": budget}
 
 
-def oracle_capacity(world: Mapping[str, Any], design: Mapping[str, Any]) -> np.ndarray:
-    """Capital ceiling: place the whole budget against the true evaluation demand.
+def optimal_capacity(world: Mapping[str, Any], design: Mapping[str, Any]) -> np.ndarray:
+    """The exact capital ceiling: the fixed per-round capacity vector of `budget` units
+    that maximises delivered demand against the realised evaluation counts.
 
-    This uses future information no deployable policy has. It bounds delivery from
-    above and isolates the forecast loss: under a demand shift the oracle still
-    succeeds, so the coordination gap is a stale-forecast effect, not a capital one.
+    Delivery at one location is $\\sum_t \\min(d_t, c)$, whose marginal in $c$ is the number
+    of rounds with $d_t > c$; this is nonincreasing in $c$, so the objective is separable
+    and concave in the per-location capacities, and greedily assigning each unit to the
+    location with the largest current marginal is the exact integer optimum. It uses the
+    realised demand no deployable policy sees, so it bounds the delivery of *every*
+    placement of the same budget from above, and it isolates the forecast loss: under a
+    demand shift it still succeeds, so the coordination gap is a stale-forecast effect and
+    not a capital one. (The earlier mean-demand water-fill was not this optimum and could be
+    beaten; this is.)
     """
 
-    return water_fill(np.asarray(world["eval_mean"]), int(design["coalition_budget"]))
+    eval_counts = np.asarray(world["eval_counts"])
+    budget = int(design["coalition_budget"])
+    capacity = np.zeros(eval_counts.shape[1], dtype=np.int64)
+    for _ in range(budget):
+        marginal = (eval_counts > capacity[None, :]).sum(axis=0)
+        capacity[int(np.argmax(marginal))] += 1
+    return capacity
 
 
 def delivered_fraction(world: Mapping[str, Any], capacity: np.ndarray) -> float:
@@ -395,11 +408,13 @@ def run_regime(world: Mapping[str, Any], design: Mapping[str, Any]) -> dict[str,
     gain_at_infinity = success_by_bits[INF_BITS] - base_success
     ordered = [row["gain_over_independent"] for row in sorted(gains, key=lambda r: r["bits"])]
     monotone = all(later >= earlier - 1e-12 for earlier, later in zip(ordered, ordered[1:]))
-    oracle_success = delivered_fraction(world, oracle_capacity(world, design))
+    optimal_ceiling = delivered_fraction(world, optimal_capacity(world, design))
+    exceeds_ceiling = any(row["success"] > optimal_ceiling + 1e-12 for row in gains)
 
     return {
         "independent_success": base_success,
-        "oracle_ceiling_success": oracle_success,
+        "optimal_ceiling_success": optimal_ceiling,
+        "any_placement_exceeds_ceiling": bool(exceeds_ceiling),
         "saturation_bits": sat_bits,
         "gain_at_saturation": gain_at_saturation,
         "gain_at_infinity": gain_at_infinity,
@@ -512,6 +527,8 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
         post_sat_excess = [float(row["post_saturation_excess"]) for row in stationary]
         stationary_gain = [float(row["gain_at_saturation"]) for row in stationary]
         shift_gain = [float(row["gain_at_infinity"]) for row in shift]
+        stationary_success = [float(row["independent_success"]) + float(row["gain_at_infinity"]) for row in stationary]
+        shift_success = [float(row["independent_success"]) + float(row["gain_at_infinity"]) for row in shift]
         trace_ctrl = [float(row["warden"]["trace_controller_score"]) for row in matching]
         trace_weights = [float(row["warden"]["trace_weights_score"]) for row in matching]
         capital_ctrl = [float(row["warden"]["capital_controller_score"]) for row in matching]
@@ -522,14 +539,19 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
                 "seeds": len(matching),
                 "mean_stationary_saturated_gain": float(statistics.mean(stationary_gain)),
                 "mean_shift_gain": float(statistics.mean(shift_gain)),
+                "mean_stationary_success": float(statistics.mean(stationary_success)),
+                "mean_shift_success": float(statistics.mean(shift_success)),
                 "max_abs_post_saturation_excess": max(abs(value) for value in post_sat_excess),
                 "mean_post_saturation_excess": float(statistics.mean(post_sat_excess)),
                 "all_gain_monotone": all(bool(row["gain_monotone_in_capacity"]) for row in stationary + shift),
-                "mean_oracle_ceiling_stationary": float(
-                    statistics.mean(float(row["oracle_ceiling_success"]) for row in stationary)
+                "any_placement_exceeds_ceiling": any(
+                    bool(row["any_placement_exceeds_ceiling"]) for row in stationary + shift
                 ),
-                "mean_oracle_ceiling_shift": float(
-                    statistics.mean(float(row["oracle_ceiling_success"]) for row in shift)
+                "mean_optimal_ceiling_stationary": float(
+                    statistics.mean(float(row["optimal_ceiling_success"]) for row in stationary)
+                ),
+                "mean_optimal_ceiling_shift": float(
+                    statistics.mean(float(row["optimal_ceiling_success"]) for row in shift)
                 ),
                 "trace_warden_auc": auc(trace_ctrl, trace_weights),
                 "capital_warden_auc": auc(capital_ctrl, capital_weights),
@@ -549,6 +571,7 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
     firewall_margin = float(analysis["warden_firewall_margin"])
     trace_within_null = abs(holdout["trace_warden_auc"] - 0.5) <= null_halfwidth
     warden_gap = holdout["capital_warden_auc"] - holdout["trace_warden_auc"]
+    forecast_collapse = holdout["mean_stationary_success"] - holdout["mean_shift_success"]
     return {
         "schema": SUMMARY_SCHEMA,
         "status": "ok",
@@ -557,33 +580,60 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
         "split_summary": by_split,
         "holdout": holdout,
         "hypothesis_assessment": {
+            # H1 saturation is exact by construction of the directive-cost model (Q caps at the
+            # budget); it is reported as a check that the implementation realises that algebra,
+            # not as an empirical discovery.
             "H1_capacity_saturation": "supported"
             if holdout["max_abs_post_saturation_excess"] <= band
             else "not_supported",
+            # H2 is the substantive claim: a meaningful stationary gain, a true optimal ceiling
+            # that no placement exceeds, and under a demand shift a large collapse in delivered
+            # success toward a high ceiling the placement cannot reach, with coordination unable to
+            # rescue the stale forecast (near-zero shift gain). Not vacuous: shift success and the
+            # shift ceiling are both nonzero and far apart.
             "H2_capital_bounded_and_forecast_limited": "supported"
             if holdout["mean_stationary_saturated_gain"] >= float(analysis["minimum_stationary_gain"])
+            and not holdout["any_placement_exceeds_ceiling"]
+            and forecast_collapse >= float(analysis["minimum_forecast_collapse"])
+            and holdout["mean_optimal_ceiling_shift"] >= float(analysis["minimum_shift_ceiling"])
             and abs(holdout["mean_shift_gain"]) <= shift_band
             else "not_supported",
-            "H3_warden_firewall": "supported"
+            # H3 is a LIMITING-CASE ILLUSTRATION, not a measured near-miss: the shared-weights arm is
+            # given, by construction, the controller's placement (the paper's "same weights, no
+            # message" focal-point coordination carried to its limit), so the delivered traces are
+            # identical and the trace warden is at chance by construction, while the capital warden
+            # separates the one-pot controller from the M-pot shared-weights structure. A genuine
+            # test needs a public signal distinct from pooled private views; see the paper's limits.
+            "H3_warden_firewall": "illustrated_limiting_case"
             if holdout["capital_warden_auc"] >= float(analysis["minimum_capital_auc"])
             and trace_within_null
             and warden_gap >= firewall_margin
-            else "not_supported",
+            else "not_illustrated",
         },
         "warden_firewall": {
             "trace_warden_auc": holdout["trace_warden_auc"],
             "capital_warden_auc": holdout["capital_warden_auc"],
-            "trace_within_chance_null": bool(trace_within_null),
+            "trace_at_chance_by_construction": bool(trace_within_null),
             "capital_minus_trace_auc": warden_gap,
             "null_halfwidth": null_halfwidth,
             "required_margin": firewall_margin,
+            "note": (
+                "The shared-weights arm is given the controller's placement by construction, so the "
+                "trace AUC near 0.5 is a limiting-case illustration and not a measurement. The capital "
+                "AUC is the robust result: a pooled one-pot budget and an M-pot budget are separable "
+                "whatever the behaviour."
+            ),
         },
+        "forecast_collapse_under_shift": forecast_collapse,
         "claim_boundary": (
-            "This is a model-only limit in an abstract directional-capacity delivery game. It "
-            "demonstrates that coordination gain saturates in covert-channel capacity and is bounded "
-            "by placed capital and demand stationarity. It is not a measurement of the Lightning "
-            "Network, not a covert-communication system, and not evidence about real agents, real "
-            "privacy, or real monitoring performance."
+            "This is a model-only study in an abstract directional-capacity delivery game. It shows "
+            "that coordination gain saturates in covert-channel capacity (by construction of the "
+            "directive-cost model), that delivery is bounded by a true optimal capital placement that "
+            "no allocation exceeds, and that a demand shift collapses delivered success toward a high "
+            "ceiling coordination cannot reach. The warden result is split: the capital signal is "
+            "separable; the trace indistinguishability is a labelled limiting-case construction. It is "
+            "not a measurement of the Lightning Network, not a covert-communication system, and not "
+            "evidence about real agents, real privacy, or real monitoring performance."
         ),
     }
 
@@ -597,38 +647,47 @@ def knowledge_card(summary: Mapping[str, Any], receipt: Mapping[str, Any]) -> st
 
 - Mean coordination gain at saturation, stationary demand: {holdout['mean_stationary_saturated_gain']:.4f}
   (deterministic bootstrap 95% interval {holdout['stationary_gain_bootstrap_95']}).
-- Mean gain at *unbounded* covert capacity, under a post-warm-up demand shift: {holdout['mean_shift_gain']:.4f}.
 - Max |gain(unbounded) - gain(saturation)| across holdout seeds: {holdout['max_abs_post_saturation_excess']:.6f}
-  (zero means no unit of covert bandwidth beyond the saturation threshold changed delivery).
+  (zero means no covert bandwidth beyond the threshold changed delivery; exact by construction of Q).
 - Gain monotone nondecreasing in capacity on every holdout regime: {holdout['all_gain_monotone']}.
-- Capital ceiling (oracle with future demand), stationary: {holdout['mean_oracle_ceiling_stationary']:.4f};
-  under shift: {holdout['mean_oracle_ceiling_shift']:.4f}.
-- Trace-warden ROC AUC (controller vs shared-weights): {holdout['trace_warden_auc']:.4f}.
-- Capital-warden ROC AUC: {holdout['capital_warden_auc']:.4f}.
+- Any placement exceeds the true optimal ceiling: {holdout['any_placement_exceeds_ceiling']} (false means the ceiling bounds all).
+- Mean delivered success, stationary: {holdout['mean_stationary_success']:.4f}; under shift: {holdout['mean_shift_success']:.4f}
+  (the collapse is the forecast loss).
+- Optimal ceiling (exact optimum against realised demand), stationary: {holdout['mean_optimal_ceiling_stationary']:.4f};
+  under shift: {holdout['mean_optimal_ceiling_shift']:.4f} (high under shift: the capacity to serve the moved demand exists; the forecast cannot reach it).
+- Mean coordination gain at unbounded covert capacity under shift: {holdout['mean_shift_gain']:.4f}
+  (near zero: coordination cannot rescue a stale forecast).
+- Trace-warden ROC AUC (controller vs shared-weights), limiting-case construction: {holdout['trace_warden_auc']:.4f}.
+- Capital-warden ROC AUC (the robust separator): {holdout['capital_warden_auc']:.4f}.
 - Determinism passed: {receipt['determinism']['passed']}; wall {receipt['wall_seconds']:.3f}s; max RSS {receipt['max_rss_mb']:.2f} MB.
 
 ## Hypothesis Assessment
 
-- H1 capacity saturation: **{hypotheses['H1_capacity_saturation']}**.
+- H1 capacity saturation (exact by construction of the directive-cost model): **{hypotheses['H1_capacity_saturation']}**.
 - H2 capital-bounded and forecast-limited gain: **{hypotheses['H2_capital_bounded_and_forecast_limited']}**.
-- H3 warden firewall (trace indistinguishable, capital separable): **{hypotheses['H3_warden_firewall']}**.
+- H3 warden firewall (capital separable; trace indistinguishable as a limiting-case construction): **{hypotheses['H3_warden_firewall']}**.
 
 ## Inferred
 
 In this model the only thing a covert channel buys a coalition is agreement on how to
 place a fixed capital budget. That decision is low-entropy: once the channel is wide
-enough to name the budget's placement, further bandwidth directs no further unit, so the
-gain is flat above a small saturation threshold. The gain a coalition can win is therefore
-bounded by its placed capital under stationary demand and collapses to a stale-forecast
-floor when demand moves, independent of covert capacity. A warden reading only sampled
-location traces cannot separate one pooled controller from many shared-weight principals;
-a warden reading capital-placement sizes separates them immediately. The detection budget
-belongs at capital and observation, not on the covert channel. This reproduces the
-direction of Spiral's section-7 conjecture on finite cases.
+enough to name the budget's placement the gain is flat, which is exact here because the
+number of directable units saturates at the budget. Delivery is bounded by a true optimal
+placement that no allocation of the same budget exceeds, and under a demand shift the
+delivered success collapses toward a ceiling that stays high: the capacity to serve the
+moved demand exists, the stale forecast cannot reach it, and coordination does not rescue
+it. The warden result is asymmetric and honestly split: a pooled one-pot budget and an
+M-pot shared-weights budget are separable from their capital-placement sizes (AUC near 1);
+the claim that their payment traces are indistinguishable is a limiting-case construction,
+in which the shared-weights arm is handed the controller's placement, and is not a measured
+near-miss. The robust reading is that the detection budget belongs at capital and
+observation. This reproduces the direction of Spiral's section-7 conjecture on finite cases.
 
 ## Not Supported
 
 - No claim about the Lightning Network, real covert communication, or real privacy.
+- The trace-indistinguishability is a construction, not a measurement; a public signal
+  distinct from pooled private views is needed to test it (see the paper's limitations).
 - No claim that any particular monitor works in the field; the warden is a toy on a narrow
   distribution with a clean fixture.
 - No claim beyond the frozen directional-capacity game and declared held-out seeds.

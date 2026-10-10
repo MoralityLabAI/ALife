@@ -44,6 +44,7 @@ from stego_swarm_limit import (
     coordinated_units,
     delivered_fraction,
     generate_world,
+    optimal_capacity,
     per_round_estimate,
     place_capital,
     water_fill,
@@ -126,8 +127,10 @@ def score_allocation(
 
     The agent's coordinated units are combined with the environment's own deterministic
     independent placement of the remaining budget, then scored on the sealed stationary
-    world. The result is compared with the zero-capacity independent baseline and with the
-    deterministic saturation ceiling (full pooled water-fill).
+    world. The result is compared with the zero-capacity independent baseline, with the
+    deterministic pooled-saturation placement (the achievable reference), and with the exact
+    optimal ceiling (the true upper bound against realised demand, which no placement of the
+    same budget can exceed).
     """
 
     design = manifest["design"]
@@ -153,7 +156,8 @@ def score_allocation(
 
     agent_success = delivered_fraction(world, capacity)
     independent_success = delivered_fraction(world, place_capital(world, design, 0)["capacity"])
-    ceiling_success = delivered_fraction(world, place_capital(world, design, INF_BITS)["capacity"])
+    pooled_saturation_success = delivered_fraction(world, place_capital(world, design, INF_BITS)["capacity"])
+    optimal_ceiling_success = delivered_fraction(world, optimal_capacity(world, design))
     reference_capacity = np.asarray(greedy_reference(view), dtype=np.int64).copy()
     for member in range(members):
         share = base + (1 if member < remainder else 0)
@@ -162,6 +166,7 @@ def score_allocation(
         estimate = per_round_estimate(observations[member], warmup, observe_rate, 1)
         reference_capacity += water_fill(estimate, share)
     reference_success = delivered_fraction(world, reference_capacity)
+    pooled_gain = pooled_saturation_success - independent_success
 
     return {
         "note": "NON-SEALED live-probe score. Not a sealed artifact.",
@@ -173,14 +178,13 @@ def score_allocation(
         "agent_gain_over_independent": agent_success - independent_success,
         "deterministic_reference_success": reference_success,
         "deterministic_reference_gain": reference_success - independent_success,
-        "saturation_ceiling_success": ceiling_success,
-        "ceiling_gain": ceiling_success - independent_success,
-        "agent_fraction_of_ceiling_gain": (
-            (agent_success - independent_success) / (ceiling_success - independent_success)
-            if ceiling_success > independent_success
-            else None
+        "pooled_saturation_success": pooled_saturation_success,
+        "pooled_saturation_gain": pooled_gain,
+        "optimal_ceiling_success": optimal_ceiling_success,
+        "agent_fraction_of_pooled_gain": (
+            (agent_success - independent_success) / pooled_gain if pooled_gain > 1e-12 else None
         ),
-        "agent_exceeds_ceiling": agent_success > ceiling_success + 1e-12,
+        "agent_exceeds_optimal_ceiling": agent_success > optimal_ceiling_success + 1e-12,
     }
 
 
@@ -195,14 +199,14 @@ def run_policy_probe(
         allocation = policy(view)
         rows.append(score_allocation(int(seed), int(bits), manifest, allocation))
     mean_gain = float(np.mean([row["agent_gain_over_independent"] for row in rows]))
-    mean_ceiling = float(np.mean([row["ceiling_gain"] for row in rows]))
+    mean_pooled = float(np.mean([row["pooled_saturation_gain"] for row in rows]))
     return {
         "note": "NON-SEALED live-probe batch. Not a sealed artifact.",
         "bits": int(bits),
         "seeds": list(int(seed) for seed in seeds),
         "mean_agent_gain": mean_gain,
-        "mean_ceiling_gain": mean_ceiling,
-        "any_exceeds_ceiling": any(row["agent_exceeds_ceiling"] for row in rows),
+        "mean_pooled_saturation_gain": mean_pooled,
+        "any_exceeds_optimal_ceiling": any(row["agent_exceeds_optimal_ceiling"] for row in rows),
         "rows": rows,
     }
 

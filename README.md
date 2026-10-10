@@ -305,15 +305,18 @@ section 7 of the Spiral "lnmath" paper
 ([*Where the Capital Bound Moves*](https://github.com/patrickdugan/Spiral)): a
 common-control coalition's coordination gain saturates in the capacity of its
 covert channel (unbounded capacity equals the saturation threshold to machine
-precision), is bounded by placed capital under stationary demand (holdout mean
-`+0.117`), and collapses to zero under a post-warm-up demand shift while the
-oracle capital ceiling stays at `0.90`, so the loss is a forecasting loss and
-not a capital one. A warden reading sampled location traces cannot separate a
-pooled controller from a focal-point shared-weights population (trace ROC AUC
-`0.50`); a warden reading capital-placement sizes separates them (capital ROC
-AUC `1.00`). The covert channel is a scalar bit budget with no content: there is
-no wallet, key, invoice, network, payload, or encoder anywhere in the harness.
-See the [experiment README](experiments/stego_swarm_limit_v1/README.md), the
+precision — exact by construction of the directable-unit budget), is bounded by
+an exact optimal capital placement that no allocation exceeds (holdout stationary
+gain `+0.119`), and collapses under a post-warm-up demand shift (mean delivered
+success `0.66 → 0.08`) while that optimal ceiling stays at `0.67`, so the loss is
+a forecasting loss and not a capital one. A warden reading capital-placement
+sizes separates a one-pot controller from an M-pot shared-weights population
+(capital ROC AUC `1.00`); the complementary trace-warden indistinguishability
+(ROC AUC `0.50`) is a labelled *limiting-case construction* — the shared-weights
+arm is handed the controller's placement — not a measured near-miss. The covert
+channel is a scalar bit budget with no content: there is no wallet, key, invoice,
+network, payload, or encoder anywhere in the harness. See the
+[experiment README](experiments/stego_swarm_limit_v1/README.md), the
 [paper](papers/steganographic_swarm_capital_limit.md), and the optional
 model-driven [live-agent probe](experiments/stego_swarm_limit_v1/LIVE_PROBE.md).
 

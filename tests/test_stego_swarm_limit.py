@@ -12,7 +12,9 @@ sys.path.insert(0, str(ROOT / "src"))
 from stego_swarm_limit import (  # noqa: E402
     INF_BITS,
     coordinated_units,
+    delivered_fraction,
     generate_world,
+    optimal_capacity,
     place_capital,
     place_shared_weights,
     run_episode,
@@ -69,13 +71,29 @@ class StegoSwarmLimitTests(unittest.TestCase):
             self.assertEqual(result["gain_at_saturation"], result["gain_at_infinity"])
             self.assertEqual(result["post_saturation_excess"], 0.0)
 
-    def test_shift_gain_is_zero_and_stationary_gain_is_positive(self) -> None:
+    def test_shift_collapses_success_toward_a_high_ceiling(self) -> None:
         episode = run_episode("holdout", 7901, self.manifest)
-        self.assertEqual(episode["regimes"]["shift"]["gain_at_infinity"], 0.0)
-        self.assertGreater(episode["regimes"]["stationary"]["gain_at_saturation"], 0.0)
-        # The capital ceiling (oracle with future demand) is high under both regimes,
-        # so the shift loss is a stale-forecast effect, not a capital one.
-        self.assertGreater(episode["regimes"]["shift"]["oracle_ceiling_success"], 0.5)
+        stationary = episode["regimes"]["stationary"]
+        shift = episode["regimes"]["shift"]
+        stationary_success = stationary["independent_success"] + stationary["gain_at_infinity"]
+        shift_success = shift["independent_success"] + shift["gain_at_infinity"]
+        self.assertGreater(stationary["gain_at_saturation"], 0.0)
+        # Success collapses under the shift while the optimal ceiling stays high: the loss
+        # is a stale-forecast effect, not a capital one. Coordination barely helps under shift.
+        self.assertGreater(stationary_success - shift_success, 0.3)
+        self.assertGreater(shift["optimal_ceiling_success"], 0.5)
+        self.assertLess(abs(shift["gain_at_infinity"]), 0.05)
+
+    def test_optimal_capacity_is_a_true_ceiling_no_placement_exceeds(self) -> None:
+        episode = run_episode("holdout", 7901, self.manifest)
+        for regime in ("stationary", "shift"):
+            result = episode["regimes"][regime]
+            self.assertFalse(result["any_placement_exceeds_ceiling"])
+        # The greedy-on-exceedance optimum dominates the mean-demand water-fill it replaced.
+        world = generate_world(7901, "stationary", self.design)
+        opt = delivered_fraction(world, optimal_capacity(world, self.design))
+        mean_fill = delivered_fraction(world, water_fill(world["eval_mean"], int(self.design["coalition_budget"])))
+        self.assertGreaterEqual(opt + 1e-12, mean_fill)
 
     def test_episode_is_deterministic(self) -> None:
         first = run_episode("holdout", 7902, self.manifest)

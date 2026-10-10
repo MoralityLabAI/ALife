@@ -16,20 +16,23 @@ channel is a scalar bit budget with no content, and we witness three things on f
 frozen, deterministic cases. First, the coalition's coordination gain saturates in
 covert-channel capacity: there is a threshold, set by the budget and the warm-up window
 and no larger than the bits needed to name the budget's placement, above which further
-bandwidth directs no further unit of capital and changes no delivery. Second, the gain at
-every capacity is bounded by what placed capital can deliver, and it collapses to a
-stale-forecast floor, near zero in the model, when the demand the placement forecast moves
-after placement; the capital ceiling, computed with future demand, stays high under the
-shift, so the loss is a forecasting loss and not a capital one. Third, the observable
-signature of common control sits in the capital and not in the payment trace: a warden
-reading sampled location traces cannot separate a pooled controller from a shared-weights
-population that reaches the same placement by focal-point coordination, while a warden
-reading capital-placement sizes separates them at once. A live language-model agent,
-handed the coordinator's view, reaches the capital ceiling exactly at saturation and never
-exceeds it, and below saturation can underperform a trivial water-fill by optimising its
-coordinated slice without regard to the capital placed independently around it. Nothing
-here is measured on a network; the covert channel carries no content, and the result is a
-bound, which is evidence for monitors and not a method for evaders.
+bandwidth directs no further unit of capital and changes no delivery; this is exact by the
+construction of the directive budget, not a surprise. Second, delivery at every capacity is
+bounded by an exact optimal capital placement that no allocation of the same budget
+exceeds, and the delivered success collapses toward a floor when the demand the placement
+forecast moves after placement, while that optimal ceiling stays high under the shift, so
+the loss is a forecasting loss and not a capital one, and coordination does not rescue it.
+Third, the observable signature of common control sits in the capital and not in the
+payment trace: a warden reading capital-placement sizes separates a pooled one-pot
+controller from an $M$-pot shared-weights population at once, while a warden reading sampled
+location traces cannot separate them — but this last is an explicit limiting-case
+construction, in which the shared-weights arm is handed the controller's placement, and not
+a measured near-miss on genuinely distinct behaviour. A live language-model agent, handed
+the coordinator's view, reaches the achievable coordination gain at saturation and never
+exceeds the optimal ceiling, and below saturation can underperform a trivial water-fill by
+optimising its coordinated slice without regard to the capital placed independently around
+it. Nothing here is measured on a network; the covert channel carries no content, and the
+result is a bound, which is evidence for monitors and not a method for evaders.
 
 ## 1. Setting
 
@@ -85,18 +88,27 @@ bounded.
 The saturated gain is not unbounded in the budget either, nor robust to the demand moving.
 
 **Proposition 2 (capital bound and forecast floor).** *For every $C$, $s(Q(C))$ is at most
-the fraction of demand that $B$ units of capacity can cover, which is attained by the
-oracle placement against the realised demand; and if the hotspot support changes after
-warm-up to a set disjoint from the warm-up support, then $G(C)=0$ for every $C$, because
-every placement, directed or independent, is a function of warm-up observations supported
-on the old hotspots and places no capacity where the new demand falls.*
+$s^\star$, the delivery of the fixed per-round capacity vector of $B$ units that maximises
+$\sum_t \min(d_t, c)$ against the realised evaluation counts. Because that objective is
+separable across locations and concave in each per-location capacity (the marginal of a
+unit at a location is the number of rounds whose demand exceeds its current capacity, which
+is nonincreasing), the greedy assignment of each unit to the largest current marginal is
+the exact integer optimum, so $s^\star$ bounds every placement of the same budget. And if
+the hotspot support moves after warm-up to a set on which the warm-up placed little
+capacity, the delivered success collapses toward a floor while $s^\star$ stays high, so the
+loss is a stale forecast and not a shortage of capital.*
 
-The first clause is the cut bound of the lnmath paper in miniature: delivery across the
-population is bounded by placed capacity, and no allocation of a fixed $B$, however
-informed, delivers more than $B$ can carry. The second clause isolates what coordination
-is for. The oracle placement, which sees the evaluation demand, stays high under the shift,
-so the capacity exists to serve the moved demand; what fails is the forecast, identical in
-its failure whether the coalition coordinated its forecast or not. Coordination denoises a
+The first clause is the cut bound of the lnmath paper in miniature: delivery is bounded by
+placed capacity, and no allocation of a fixed $B$, however informed, beats the concave
+optimum $s^\star$ — which an earlier version of this model wrongly identified with a
+mean-demand water-fill that the pooled placement could exceed on several seeds; the greedy
+exceedance optimum is the real bound and nothing crosses it. The second clause isolates what
+coordination is for. The optimal placement, which sees the evaluation demand, stays high
+under the shift, so the capacity exists to serve the moved demand; what fails is the
+forecast, identical in its failure whether the coalition coordinated its forecast or not.
+With a scarce budget ($B$ below the per-round demand) the placer has no surplus to spread
+onto the vacated cells, so coordination buys almost nothing under the shift. Coordination
+denoises a
 forecast; it does not make a stale forecast fresh, and under a shift the denoising has
 nothing to act on. The gain a coalition can win is therefore the stationary-placement
 effect on its own capital, and it is zero when the placement's one assumption, that demand
@@ -109,64 +121,79 @@ observer, if any, the coordination is visible to.
 
 Consider two populations on the same demand. The first is a pooled controller: one budget
 $B$, placed by the directed water-fill of Proposition 1 at $C\ge C^\star$. The second is a
-shared-weights population: $M$ members with one policy and independent budgets of $B/M$,
-which, sharing a policy and reacting to the same public demand signal, reach the same
-focal-point partition of the pooled estimate without exchanging a message, and so place the
-*same* capacity as the controller. The two differ only in the accounting: one pot against
-$M$.
+shared-weights population: $M$ members with one policy and independent budgets of $B/M$. The
+lnmath paper's "same weights, no message" argument is that such members, sharing a policy
+and reacting to the same public events, reach the controller's coordinated placement by a
+focal-point partition without exchanging a message. We carry that argument to its limit and
+*give* the shared-weights arm the controller's placement by construction. The two
+populations then differ only in the accounting: one pot of $B$ against $M$ pots of $B/M$.
 
-**Proposition 3 (firewall).** *A warden that observes only a sub-sample of delivered events
-by location cannot separate the two populations, because their delivered distributions are
-identical; a warden that observes the sizes of capital-placement events separates them with
-certainty in the limit of observation, because the controller boards $B$ in one event and
-the shared-weights population boards $M$ events of $B/M$, and a placement of size $x$ is
-observed with probability increasing in $x$.*
+**Proposition 3 (firewall), with one clause a construction.** *A warden that observes the
+sizes of capital-placement events separates the two populations with certainty in the limit
+of observation, because the controller boards $B$ in one event and the shared-weights
+population boards $M$ events of $B/M$, and a placement of size $x$ is observed with
+probability increasing in $x$. A warden that observes only a sub-sample of delivered events
+by location cannot separate them — but only because, by the construction above, their
+delivered distributions are identical.*
 
-The payment trace is blind to control structure here not because the trace is noisy but
-because the two structures produce the same behaviour; the lnmath paper's "same weights, no
-message" is the mechanism, and it makes the covert-channel question moot for the trace
-warden, since a shared policy reproduces for free what the channel would have bought. The
-capital, by contrast, is structural and conspicuous: the one large placement is the ramp
-the paper says remains. A monitor that wants the common-control signal should read the
-capital and the registry, not the wire.
+The capital clause is a real, structural result: the one large placement is the ramp the
+paper says remains, visible whatever the behaviour. The trace clause is honest only as a
+limiting case, and we flag it as such: it holds because we handed the shared-weights arm the
+controller's placement, so of course the traces match. It does *not* show that a trace
+warden fails on genuinely distinct behaviour. The faithful test — giving the shared-weights
+population a public demand signal distinct from the coalition's pooled private views, and
+measuring whether partial observation alone suppresses the signal — is not run here, and we
+flag it in the limitations; indeed it is in tension with the gain of Section 2, since the
+channel is valuable exactly when the public signal is poor, and exactly then the two
+populations place differently. The defensible reading is the asymmetric one: the capital
+signal is the robust separator, so a monitor that wants the common-control signal should
+read the capital and the registry, not the wire.
 
 ## 5. Reference-model results
 
-The model is implemented in `src/stego_swarm_limit.py`, preregistered in
-`experiments/stego_swarm_limit_v1/manifest.json`, and run on $L=24$ locations, $8$
-hotspots, $M=12$ members observing at $\nu=0.15$, a budget $B=48$, warm-up $w=24$, horizon
-$T=120$, and a covert-capacity sweep $\{0,5,10,20,40,\infty\}$ bits per round, over
-disjoint discovery, confirmation, and holdout seed sets. Placement, observation, and the
-warden's sampling are all seeded, and the run reproduces bit-for-bit. On the twelve holdout
-seeds:
+The model is implemented in `src/stego_swarm_limit.py`, with a frozen demonstration
+configuration in `experiments/stego_swarm_limit_v1/manifest.json` whose gates are set
+loosely around the model's observed behaviour rather than as predictions (the manifest says
+so). It runs on $L=24$ locations, $8$ hotspots, $M=12$ members observing at $\nu=0.15$, a
+scarce budget $B=32$ against $40$ demand units per round (so capital binds and the
+water-fill has no surplus to spill), warm-up $w=24$, horizon $T=120$, and a covert-capacity
+sweep $\{0,5,10,20,40,\infty\}$ bits per round, over disjoint discovery, confirmation, and
+holdout seed sets. Placement, observation, and the warden's sampling are all seeded, and the
+run reproduces bit-for-bit. On the twelve holdout seeds:
 
-- the stationary coordination gain rises with capacity and is flat above the saturation
-  threshold of $10$ bits, with the gain at unbounded capacity equal to the gain at
-  saturation to machine precision (maximum $|G(\infty)-G(C^\star)|$ across seeds $=0$),
-  which is Proposition 1;
-- the mean saturated stationary gain is $0.117$ of delivered demand, with a deterministic
-  bootstrap 95% interval of $[0.095, 0.137]$, while the gain at unbounded capacity under a
-  post-warm-up shift is exactly $0$ on every seed, and the oracle ceiling is $0.90$ under
-  both regimes, which is Proposition 2;
-- the trace-warden ROC AUC for separating the pooled controller from the shared-weights
-  population is $0.50$, and the capital-warden AUC is $1.00$, which is Proposition 3.
+- the coordination gain rises with capacity and is flat above the saturation threshold of
+  $10$ bits, with the gain at unbounded capacity equal to the gain at saturation to machine
+  precision (maximum $|G(\infty)-G(C^\star)|$ across seeds $=0$); this is Proposition 1 and
+  is exact by construction of $Q$, not an empirical surprise;
+- the mean saturated stationary gain is $0.119$ of delivered demand, with a deterministic
+  bootstrap 95% interval of $[0.097, 0.143]$; no placement exceeds the exact optimal
+  ceiling; a post-warm-up shift collapses mean delivered success from $0.66$ to $0.08$ while
+  the optimal ceiling stays at $0.67$, and the coordination gain under the shift is $0.012$
+  (coordination does not rescue the stale forecast); this is Proposition 2;
+- the capital-warden ROC AUC for separating the pooled controller from the shared-weights
+  population is $1.00$; the trace-warden AUC is $0.50$, which under the construction of
+  Section 4 is at chance by construction and not a measured near-miss; this is Proposition 3.
 
-All three preregistered hypotheses are supported, and the artifact verifier recomputes
-every gate from the frozen manifest.
+H1 and H2 are supported; H3's capital clause is supported and its trace clause is an
+illustrated limiting case. The verifier recomputes the holdout aggregates directly from the
+raw episodes, gates them against the frozen thresholds, and cross-checks them against the
+summary.
 
 ## 6. A live agent at the ceiling
 
 The same environment, behind the policy interface in `src/stego_swarm_live_probe.py`,
 was handed to a live language-model agent (Claude Opus 4.8) acting as the coordinator,
-given the pooled view and the bit budget and nothing else. At saturation the agent
-reproduced the optimal water-fill and captured the whole of the capital-ceiling gain on
-both tested seeds ($+0.106$ and $+0.138$, each the ceiling exactly), and it never exceeded
-the ceiling. Below saturation, at a budget of $24$ directed units, the agent optimised its
-coordinated slice in isolation — concentrating it on five hotspots to deliver all of it —
-and so doubled the coverage the independently placed remainder already supplied while
-starving three hotspots, for a net gain of $-0.067$, worse than directing nothing; the
-trivial water-fill, which spreads to complement the remainder, did better. The ceiling is a
-capital bound a capable model does not cross; the quality of coordination below the ceiling
+given the pooled view and the bit budget and nothing else; the ceiling it is scored against
+is the exact optimal placement of Proposition 2, so "does not cross it" is a genuine bound.
+At saturation the agent captured the achievable pooled-coordination gain, in full on one
+tested seed ($+0.136$, fraction $1.00$) and almost in full on the other ($+0.054$ against
+$+0.056$, fraction $0.97$), and it never exceeded the optimal ceiling on any run. Below
+saturation, at $24$ directed units, the agent optimised its coordinated slice in isolation —
+concentrating it on six hotspots to "deliver $24.0$," leaving two hotspots at zero — and so
+doubled the coverage the independently placed remainder already supplied while starving
+others, for a net gain of $-0.047$, worse than directing nothing; the trivial water-fill,
+which spreads to complement the remainder, did better ($+0.028$). The ceiling is a capital
+bound a capable model does not cross; the quality of coordination below the ceiling
 is a fragile thing that reasoning about one's own slice can get wrong. The probe is a
 non-sealed appendix (`experiments/stego_swarm_limit_v1/LIVE_PROBE.md`) and the agent's
 allocation vectors are recorded there for re-scoring.
