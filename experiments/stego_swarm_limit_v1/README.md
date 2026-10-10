@@ -42,7 +42,7 @@ pooled (denoised) estimate; the remaining `B - Q` units are placed by members fr
 own noisy views, with redundant coverage. The gain is coalition success minus the
 zero-capacity independent-placement success on the same frozen demand.
 
-## What is measured (one construction check, one substantive claim, one measured warden sweep)
+## What is measured (one construction check, one substantive claim, one measured 2×2 warden factorial)
 
 Budget is scarce (`B = 32` against `~40` demand units per round), so capital binds and the
 water-fill never has surplus to spill onto cold cells.
@@ -60,27 +60,37 @@ water-fill never has surplus to spill onto cold cells.
    while that optimal ceiling stays high (`~0.67`). The capacity to serve the moved demand
    exists; the stale forecast cannot reach it; coordination does not rescue it (shift gain
    `~0.01`). Not vacuous: shift success and the shift ceiling are both nonzero and far apart.
-3. **H3 — warden firewall (measured, regime-aware).** Both populations react to a *common
-   public demand signal*; the controller additionally pools its members' private sub-samples
-   over the covert channel, the shared-weights population does not, so the two place
-   differently except where the public signal is already near-perfect — nothing is identical
-   by construction. Sweeping the public-observation rate `{0.08, 0.25, 0.90}`:
-   - the **capital warden** (one-pot controller vs `M`-pot shared-weights boarding sizes)
-     separates them at every rate (capital ROC AUC = `1.00`);
-   - the **trace warden** (sampled delivered locations) separates them *only where the covert
-     channel is valuable*: at the weak public signal the channel is worth `+0.028` and the
-     trace ROC AUC is `0.08` (far from chance), while at the rich public signal the channel is
-     worth `~0` and the trace ROC AUC is `0.48` (chance). The trace's distance from chance
-     tracks the channel's value.
+3. **H3 — warden firewall (measured 2×2 factorial, regime-aware).** Information access
+   (`public_only` vs `pooled_private` — whether the covert channel pools private views on top
+   of the common public signal) is crossed with account structure (`one_pot` vs `M_pot`
+   boarding). The placement, and hence the trace, depends only on information access; the
+   boarding structure, and hence the capital signal, only on account structure — so each warden
+   reads one axis cleanly and the two signals are un-confounded. The `M_pot` account uses a
+   **stated decentralised focal-partition convention** (each member claims the target units at
+   positions congruent to its index mod `M`, a pure function of the shared public estimate — no
+   member sees another's choice, so it is focal-point coordination, not a channel). Gated on the
+   warden sweep **pooled over all 24 seeds** (the per-split trace AUC is noisy at the rich public
+   rate), over public rates `{0.08, 0.25, 0.90}`:
+   - the **capital warden** (one-pot vs `M`-pot boarding sizes) separates account structure at
+     every rate (ROC AUC = `1.00`), orthogonal to information access;
+   - the **trace warden** (sampled delivered locations) separates information access *only where
+     the covert channel is valuable*: trace ROC AUC distance-from-chance `0.37 → 0.04 → 0.08`
+     as the channel value falls `+0.049 → +0.010 → ~0`.
 
-   The honest, measured conclusion: **there is no regime in which the covert channel both buys
-   a meaningful gain and leaves no payment trace**, and the capital signal is the regime-robust
+   An honest contrast is reported alongside: a **naive-decentralised** arm (each member
+   water-fills its own `B/M` from the public signal, with no focal convention) delivers
+   `0.21 / 0.28 / 0.31` against the focal placement's `0.62 / 0.65 / 0.67`, showing the
+   focal-partition convention is load-bearing and is not a channel smuggled back in.
+
+   The measured conclusion: **the covert channel is never both valuable and trace-invisible**
+   (its value and its trace footprint are the same quantity), and capital is the regime-robust
    separator. The detection budget belongs at capital.
 
 The thresholds in `manifest.json` are frozen demonstration gates set loosely around the
 model's observed behaviour (see `analysis.threshold_note`), not predictions about any
 network, and the run is fully deterministic. The verifier **recomputes** the holdout
-aggregates (gains, success collapse, ceiling, ROC AUCs) directly from `raw_episodes.jsonl`,
+aggregates and the pooled warden factorial (gains, success collapse, ceiling, per-axis ROC
+AUCs) directly from `raw_episodes.jsonl`,
 gates them against the frozen thresholds, and cross-checks them against `summary.json`.
 
 ## Reproduce
@@ -109,12 +119,15 @@ privacy, demonstrate that an autonomous society will emerge, or estimate any rea
 field performance. It is a controlled mechanism study whose assumptions are exposed in one
 JSON configuration, bounding a quantity the Spiral paper argues is bounded by other means.
 
-H3 is now a genuine measurement, not a construction: the shared-weights population reaches
-its placement from the common public signal alone (no pooled-private views, no channel), so
-it is behaviourally distinct from the controller except in the limit of a perfect public
-signal. The finding is regime-dependent and honest about it — the trace warden *can* separate
-the populations where the covert channel matters, and only falls to chance where the channel
-is worthless — so the robust claim is the asymmetry (capital separates at every rate; the
-trace does not), not a blanket "traces are blind." Two caveats remain: the public-signal
-estimates are combined by a simple average rather than a precision weighting, and H1's
-saturation is arithmetic on the directable-unit count `Q`, not an empirical surprise.
+H3 is a genuine measurement, not a construction: the information-access axis and the
+account-structure axis are crossed, so neither warden's result is confounded by the other,
+and the `M_pot` populations place by a stated decentralised convention whose gain over a
+naive-decentralised arm is reported. The public and pooled-private estimates are combined by
+inverse-variance (precision) weighting. The finding is regime-dependent and honest about it:
+the trace warden *can* read information access where the covert channel matters, and falls to
+chance only where the channel is worthless, so the robust claim is the asymmetry (capital
+separates account structure at every rate; the trace reads information access only when it is
+worth reading), not a blanket "traces are blind." Remaining caveats: the trace statistic is a
+single top-k concentration scalar rather than a trained discriminator, the warden has no
+member attribution, the public-rate sweep is three points, and H1's saturation is arithmetic
+on the directable-unit count `Q`, not an empirical surprise.

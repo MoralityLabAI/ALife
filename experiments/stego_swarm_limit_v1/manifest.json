@@ -3,7 +3,7 @@
   "question": "In an abstract directional-capacity delivery game, is a common-control coalition's coordination gain bounded by its placed capital under stationary demand and saturating in the capacity of its covert channel, so that covert bandwidth beyond a small threshold buys no further delivery and leaves no separable payment trace?",
   "benefit": "defensive",
   "claim_scope": "model_only",
-  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a public-observability warden sweep pairing the pooled controller against a shared-weights control at each public rate",
+  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a 2x2 warden factorial (information access by account structure) over a public-observability sweep, with a naive-decentralised contrast at each public rate",
   "motivation": {
     "source": "Spiral 'lnmath' paper, Where the Capital Bound Moves, section 7 (agent swarms)",
     "reference_propositions": [

@@ -309,14 +309,14 @@ precision — exact by construction of the directable-unit budget), is bounded b
 an exact optimal capital placement that no allocation exceeds (holdout stationary
 gain `+0.119`), and collapses under a post-warm-up demand shift (mean delivered
 success `0.66 → 0.08`) while that optimal ceiling stays at `0.67`, so the loss is
-a forecasting loss and not a capital one. Over a sweep of the public-observation
-rate, a warden reading capital-placement sizes separates a one-pot controller
-from an M-pot shared-weights population at every rate (capital ROC AUC `1.00`),
-while a trace warden separates them only where the covert channel is valuable
-(trace ROC AUC `0.08` at a weak public signal where the channel is worth
-`+0.028`, rising to `0.48` — chance — at a rich public signal where it is worth
-`~0`): the channel is never both valuable and trace-invisible, and capital is the
-regime-robust separator. The covert channel is a scalar bit budget with no
+a forecasting loss and not a capital one. A 2×2 warden factorial (information
+access × account structure, gated on seeds pooled across splits) shows the
+capital warden separates account structure (one-pot vs M-pot boarding) at every
+public-observation rate (ROC AUC `1.00`), while the trace warden separates
+information access only where the covert channel is valuable (trace ROC AUC
+distance-from-chance `0.37 → 0.04 → 0.08` as channel value falls `+0.049 → +0.010
+→ ~0`): the channel is never both valuable and trace-invisible, and capital is
+the regime-robust separator. The covert channel is a scalar bit budget with no
 content: there is no wallet, key, invoice, network, payload, or encoder anywhere
 in the harness. See the
 [experiment README](experiments/stego_swarm_limit_v1/README.md), the

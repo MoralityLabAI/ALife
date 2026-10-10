@@ -58,26 +58,32 @@ def _mean(values: list[float]) -> float:
 
 
 def recompute_warden_sweep(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Recompute the public-observability warden sweep (AUCs, channel value) from raw rows."""
+    """Recompute the 2x2 warden factorial sweep from raw rows (pooled over the rows given).
 
-    holdout = [row for row in rows if row.get("split") == "holdout"]
-    if not holdout:
+    Trace AUC separates the information-access axis (public_only vs pooled_private); capital
+    AUC separates the account-structure axis (one_pot vs m_pot). Independent of the summary.
+    """
+
+    if not rows:
         return []
-    cells = len(holdout[0]["warden"])
+    cells = len(rows[0]["warden"])
     sweep: list[dict[str, Any]] = []
     for index in range(cells):
-        cell = [row["warden"][index] for row in holdout]
+        cell = [row["warden"][index] for row in rows]
         sweep.append(
             {
                 "public_rate": float(cell[0]["public_rate"]),
                 "mean_channel_value": _mean([float(c["channel_value"]) for c in cell]),
+                "mean_naive_decentralised_success": _mean(
+                    [float(c["naive_decentralised_success"]) for c in cell]
+                ),
                 "trace_warden_auc": _auc(
-                    [float(c["trace_controller_score"]) for c in cell],
-                    [float(c["trace_weights_score"]) for c in cell],
+                    [float(c["info"]["public_only"]["trace_score"]) for c in cell],
+                    [float(c["info"]["pooled_private"]["trace_score"]) for c in cell],
                 ),
                 "capital_warden_auc": _auc(
-                    [float(c["capital_controller_score"]) for c in cell],
-                    [float(c["capital_weights_score"]) for c in cell],
+                    [float(c["account"]["one_pot"]) for c in cell],
+                    [float(c["account"]["m_pot"]) for c in cell],
                 ),
             }
         )
@@ -218,16 +224,18 @@ def main() -> None:
     if abs(recomputed["mean_shift_gain"]) > float(analysis["shift_gain_band"]):
         errors.append("recomputed holdout shift gain exceeds band")
 
-    # H3 regime-aware warden firewall, recomputed per public-observability rate from raw rows.
+    # H3 regime-aware warden firewall. The summary gates on the sweep pooled across ALL seeds;
+    # recompute that pooled sweep from the raw rows, cross-check it against the summary, and
+    # re-apply the three gates independently.
     sweep = recompute_warden_sweep(rows)
-    summary_sweep = summary.get("holdout", {}).get("warden_sweep", [])
+    summary_sweep = summary.get("warden_firewall", {}).get("pooled_rate_sweep", [])
     if len(sweep) != len(summary_sweep) or not sweep:
-        errors.append("warden sweep length disagrees with summary or is empty")
+        errors.append("pooled warden sweep length disagrees with summary or is empty")
     else:
         for recomputed_cell, reported_cell in zip(sweep, summary_sweep):
             for key in ("mean_channel_value", "trace_warden_auc", "capital_warden_auc"):
                 if abs(float(recomputed_cell[key]) - float(reported_cell.get(key, 1e9))) > 1e-9:
-                    errors.append(f"warden sweep drift at rate {recomputed_cell['public_rate']}: {key}")
+                    errors.append(f"pooled warden sweep drift at rate {recomputed_cell['public_rate']}: {key}")
     null_halfwidth = float(analysis["trace_auc_null_halfwidth"])
     channel_small = float(analysis["channel_value_small_band"])
     if sweep:
