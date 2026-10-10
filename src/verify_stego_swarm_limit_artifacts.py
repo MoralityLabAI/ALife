@@ -57,6 +57,33 @@ def _mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
+def recompute_warden_sweep(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Recompute the public-observability warden sweep (AUCs, channel value) from raw rows."""
+
+    holdout = [row for row in rows if row.get("split") == "holdout"]
+    if not holdout:
+        return []
+    cells = len(holdout[0]["warden"])
+    sweep: list[dict[str, Any]] = []
+    for index in range(cells):
+        cell = [row["warden"][index] for row in holdout]
+        sweep.append(
+            {
+                "public_rate": float(cell[0]["public_rate"]),
+                "mean_channel_value": _mean([float(c["channel_value"]) for c in cell]),
+                "trace_warden_auc": _auc(
+                    [float(c["trace_controller_score"]) for c in cell],
+                    [float(c["trace_weights_score"]) for c in cell],
+                ),
+                "capital_warden_auc": _auc(
+                    [float(c["capital_controller_score"]) for c in cell],
+                    [float(c["capital_weights_score"]) for c in cell],
+                ),
+            }
+        )
+    return sweep
+
+
 def recompute_holdout(rows: list[dict[str, Any]]) -> tuple[dict[str, float], list[str]]:
     """Recompute the holdout aggregates straight from the raw episodes, not the summary."""
 
@@ -78,14 +105,6 @@ def recompute_holdout(rows: list[dict[str, Any]]) -> tuple[dict[str, float], lis
         "max_abs_post_saturation_excess": max(abs(float(r["post_saturation_excess"])) for r in stationary),
         "mean_optimal_ceiling_stationary": _mean([float(r["optimal_ceiling_success"]) for r in stationary]),
         "mean_optimal_ceiling_shift": _mean([float(r["optimal_ceiling_success"]) for r in shift]),
-        "trace_warden_auc": _auc(
-            [float(r["warden"]["trace_controller_score"]) for r in holdout],
-            [float(r["warden"]["trace_weights_score"]) for r in holdout],
-        ),
-        "capital_warden_auc": _auc(
-            [float(r["warden"]["capital_controller_score"]) for r in holdout],
-            [float(r["warden"]["capital_weights_score"]) for r in holdout],
-        ),
     }
     return recomputed, drift
 
@@ -198,18 +217,36 @@ def main() -> None:
         errors.append("recomputed shift ceiling below frozen minimum")
     if abs(recomputed["mean_shift_gain"]) > float(analysis["shift_gain_band"]):
         errors.append("recomputed holdout shift gain exceeds band")
-    if recomputed["capital_warden_auc"] < float(analysis["minimum_capital_auc"]):
-        errors.append("recomputed capital warden AUC below frozen minimum")
-    if abs(recomputed["trace_warden_auc"] - 0.5) > float(analysis["trace_auc_null_halfwidth"]):
-        errors.append("recomputed trace warden AUC outside chance null")
-    if recomputed["capital_warden_auc"] - recomputed["trace_warden_auc"] < float(analysis["warden_firewall_margin"]):
-        errors.append("recomputed warden firewall gap below frozen margin")
+
+    # H3 regime-aware warden firewall, recomputed per public-observability rate from raw rows.
+    sweep = recompute_warden_sweep(rows)
+    summary_sweep = summary.get("holdout", {}).get("warden_sweep", [])
+    if len(sweep) != len(summary_sweep) or not sweep:
+        errors.append("warden sweep length disagrees with summary or is empty")
+    else:
+        for recomputed_cell, reported_cell in zip(sweep, summary_sweep):
+            for key in ("mean_channel_value", "trace_warden_auc", "capital_warden_auc"):
+                if abs(float(recomputed_cell[key]) - float(reported_cell.get(key, 1e9))) > 1e-9:
+                    errors.append(f"warden sweep drift at rate {recomputed_cell['public_rate']}: {key}")
+    null_halfwidth = float(analysis["trace_auc_null_halfwidth"])
+    channel_small = float(analysis["channel_value_small_band"])
+    if sweep:
+        if not all(cell["capital_warden_auc"] >= float(analysis["minimum_capital_auc"]) for cell in sweep):
+            errors.append("capital warden not robust across all public rates")
+        low, high = sweep[0], sweep[-1]
+        if not (high["mean_channel_value"] <= channel_small and abs(high["trace_warden_auc"] - 0.5) <= null_halfwidth):
+            errors.append("trace warden not at chance where the channel is cheap (high public rate)")
+        if not (
+            abs(low["trace_warden_auc"] - 0.5) >= abs(high["trace_warden_auc"] - 0.5)
+            and low["mean_channel_value"] >= high["mean_channel_value"]
+        ):
+            errors.append("trace separability does not track channel value across the sweep")
 
     assessment = summary.get("hypothesis_assessment", {})
     expected_assessment = {
         "H1_capacity_saturation": "supported",
         "H2_capital_bounded_and_forecast_limited": "supported",
-        "H3_warden_firewall": "illustrated_limiting_case",
+        "H3_warden_firewall_regime_aware": "supported",
     }
     for key, expected_value in expected_assessment.items():
         if assessment.get(key) != expected_value:
@@ -264,6 +301,7 @@ def main() -> None:
             "total_bytes": total_bytes,
             "recomputed_holdout": recomputed,
             "recomputed_forecast_collapse": forecast_collapse,
+            "recomputed_warden_sweep": sweep,
             "hypothesis_assessment": assessment,
         },
     }

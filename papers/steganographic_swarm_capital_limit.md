@@ -22,12 +22,14 @@ bounded by an exact optimal capital placement that no allocation of the same bud
 exceeds, and the delivered success collapses toward a floor when the demand the placement
 forecast moves after placement, while that optimal ceiling stays high under the shift, so
 the loss is a forecasting loss and not a capital one, and coordination does not rescue it.
-Third, the observable signature of common control sits in the capital and not in the
-payment trace: a warden reading capital-placement sizes separates a pooled one-pot
-controller from an $M$-pot shared-weights population at once, while a warden reading sampled
-location traces cannot separate them — but this last is an explicit limiting-case
-construction, in which the shared-weights arm is handed the controller's placement, and not
-a measured near-miss on genuinely distinct behaviour. A live language-model agent, handed
+Third, the observable signature of common control sits in the capital and not reliably in
+the payment trace: over a sweep of the public-observation rate, a warden reading
+capital-placement sizes separates a pooled one-pot controller from an $M$-pot shared-weights
+population at every rate, while a warden reading sampled location traces separates them only
+to the extent the covert channel is valuable — sharply where the public signal is weak and
+the channel is worth a gain, not at all where the public signal is rich and the channel is
+worthless — so the channel is never both valuable and trace-invisible. This is a measured
+sweep, not a construction. A live language-model agent, handed
 the coordinator's view, reaches the achievable coordination gain at saturation and never
 exceeds the optimal ceiling, and below saturation can underperform a trivial water-fill by
 optimising its coordinated slice without regard to the capital placed independently around
@@ -119,35 +121,40 @@ stays where it was, fails.
 The coalition's object is to coordinate while appearing independent. The question is which
 observer, if any, the coordination is visible to.
 
-Consider two populations on the same demand. The first is a pooled controller: one budget
-$B$, placed by the directed water-fill of Proposition 1 at $C\ge C^\star$. The second is a
-shared-weights population: $M$ members with one policy and independent budgets of $B/M$. The
-lnmath paper's "same weights, no message" argument is that such members, sharing a policy
-and reacting to the same public events, reach the controller's coordinated placement by a
-focal-point partition without exchanging a message. We carry that argument to its limit and
-*give* the shared-weights arm the controller's placement by construction. The two
-populations then differ only in the accounting: one pot of $B$ against $M$ pots of $B/M$.
+Consider two populations on the same demand, each reacting to a common *public* demand
+signal observed at a rate $r$, distinct from any member's private sub-sample. The first is a
+pooled controller: one budget $B$, placed by water-filling an estimate that combines the
+public signal with the members' private sub-samples pooled over the covert channel. The
+second is a shared-weights population: $M$ members with one policy and independent budgets of
+$B/M$, which reach a focal-point placement from the public signal alone, without exchanging a
+message and without pooling private views. This is the lnmath paper's "same weights, no
+message" made literal, and it is the mechanism that keeps the comparison honest: the two
+populations place the *same* capacity only in the limit of a perfect public signal, and
+differ by exactly the private-pooling contribution the channel supplies everywhere else. They
+also differ structurally in the accounting: one pot of $B$ against $M$ pots of $B/M$.
 
-**Proposition 3 (firewall), with one clause a construction.** *A warden that observes the
-sizes of capital-placement events separates the two populations with certainty in the limit
-of observation, because the controller boards $B$ in one event and the shared-weights
-population boards $M$ events of $B/M$, and a placement of size $x$ is observed with
-probability increasing in $x$. A warden that observes only a sub-sample of delivered events
-by location cannot separate them — but only because, by the construction above, their
-delivered distributions are identical.*
+**Proposition 3 (firewall, regime-aware).** *A warden that observes the sizes of
+capital-placement events separates the two populations with certainty in the limit of
+observation, because the controller boards $B$ in one event and the shared-weights population
+boards $M$ events of $B/M$, and a placement of size $x$ is observed with probability
+increasing in $x$; this holds at every public-signal rate. A warden that observes only a
+sub-sample of delivered events by location separates them to the extent their placements
+differ, which is exactly the value of the covert channel: at a weak public signal the channel
+is valuable and the trace is informative, at a strong public signal the channel is worthless
+and the trace is at chance.*
 
-The capital clause is a real, structural result: the one large placement is the ramp the
-paper says remains, visible whatever the behaviour. The trace clause is honest only as a
-limiting case, and we flag it as such: it holds because we handed the shared-weights arm the
-controller's placement, so of course the traces match. It does *not* show that a trace
-warden fails on genuinely distinct behaviour. The faithful test — giving the shared-weights
-population a public demand signal distinct from the coalition's pooled private views, and
-measuring whether partial observation alone suppresses the signal — is not run here, and we
-flag it in the limitations; indeed it is in tension with the gain of Section 2, since the
-channel is valuable exactly when the public signal is poor, and exactly then the two
-populations place differently. The defensible reading is the asymmetric one: the capital
-signal is the robust separator, so a monitor that wants the common-control signal should
-read the capital and the registry, not the wire.
+The capital clause is a structural result, regime-robust: the one large placement is the ramp
+the paper says remains, visible whatever the behaviour. The trace clause is the measured,
+and more interesting, half. Its content is an *impossibility of the convenient case*: the
+covert channel is never both valuable and trace-invisible, because its value and its trace
+footprint are the same quantity — the gap between the pooled-private placement and the
+public-only one. A coalition that wants the channel to buy it something must place
+differently from what the public signal alone dictates, and that difference is what the trace
+warden reads. The two wardens together give the asymmetry that is the section's claim: the
+capital signal separates control structure whatever the regime; the trace signal separates it
+only where coordinating was worth doing. A monitor that wants the common-control signal
+should read the capital and the registry, not the wire — not because the wire is always
+blind, but because the capital is never.
 
 ## 5. Reference-model results
 
@@ -170,14 +177,17 @@ run reproduces bit-for-bit. On the twelve holdout seeds:
   ceiling; a post-warm-up shift collapses mean delivered success from $0.66$ to $0.08$ while
   the optimal ceiling stays at $0.67$, and the coordination gain under the shift is $0.012$
   (coordination does not rescue the stale forecast); this is Proposition 2;
-- the capital-warden ROC AUC for separating the pooled controller from the shared-weights
-  population is $1.00$; the trace-warden AUC is $0.50$, which under the construction of
-  Section 4 is at chance by construction and not a measured near-miss; this is Proposition 3.
+- sweeping the public-observation rate over $\{0.08, 0.25, 0.90\}$, the capital-warden ROC
+  AUC is $1.00$ at every rate, while the trace-warden AUC moves from $0.08$ at the weak public
+  signal (where the channel is worth $+0.028$) through $0.32$ to $0.48$ at the rich public
+  signal (where the channel is worth $\approx 0$): the trace separates the populations only
+  where the channel is valuable, and is at chance where it is not. This is Proposition 3,
+  measured rather than constructed.
 
-H1 and H2 are supported; H3's capital clause is supported and its trace clause is an
-illustrated limiting case. The verifier recomputes the holdout aggregates directly from the
-raw episodes, gates them against the frozen thresholds, and cross-checks them against the
-summary.
+All three hypotheses are supported: H1 and H2 as above, and H3 as the measured, regime-aware
+firewall. The verifier recomputes the holdout aggregates and the whole warden sweep directly
+from the raw episodes, gates them against the frozen thresholds, and cross-checks them against
+the summary.
 
 ## 6. A live agent at the ceiling
 
@@ -206,12 +216,15 @@ lnmath paper's general case are absent, and with them the $\sqrt N$ regime and t
 distinction between agents that can and cannot spend down. The departure process that sets
 the hyperedge's group size in the paper is not here at all, so nothing in this model speaks
 to the turnover cost that the paper argues, not covert capacity, sets the scale of a
-swarm's pooling. The shared-weights population is given, by construction, the same placement
-as the controller, which makes the trace warden's indistinguishability a statement about a
-limiting case and not a measured near-miss; a model in which the two populations differ
-slightly in behaviour, and a warden with member attribution, would test whether partial
-observation alone suppresses a real signal, which is the sharper form of the paper's
-preregistration item 7. The covert channel is a scalar with no content and no codebook, so
+swarm's pooling. The warden model is now a genuine measurement rather than a construction —
+the shared-weights population places from a public signal alone and the controller adds
+pooled private views — but it is still a model: the two sources are combined by a simple
+average rather than a precision weighting, the trace statistic is a single concentration
+scalar rather than a trained discriminator, the warden has no member attribution, and the
+public-rate sweep is three points on one demand family. The sharper form of the paper's
+preregistration item 7 — a warden with member attribution facing populations that differ
+only subtly — is approached here but not exhausted. The covert channel is a scalar with no
+content and no codebook, so
 the capacity-versus-detectability curve the paper reserves for a bounded appendix is not
 computed; what is shown is only that the gain the curve would bound is already bounded by
 other means. The thresholds in the manifest are chosen to be met by the frozen run and are

@@ -16,9 +16,12 @@ from stego_swarm_limit import (  # noqa: E402
     generate_world,
     optimal_capacity,
     place_capital,
-    place_shared_weights,
+    place_controller_public,
+    place_shared_weights_public,
+    public_observations,
     run_episode,
     saturation_bits,
+    summarize,
     water_fill,
 )
 
@@ -53,16 +56,41 @@ class StegoSwarmLimitTests(unittest.TestCase):
             coordinated_units(sat * 100, warmup, locations, budget),
         )
 
-    def test_shared_weights_matches_controller_capacity_but_splits_budget(self) -> None:
+    def test_public_signal_controls_differ_except_with_a_rich_public_signal(self) -> None:
         world = generate_world(7901, "stationary", self.design)
-        controller = place_capital(world, self.design, INF_BITS)
-        weights = place_shared_weights(world, self.design)
-        # Same-weights focal-point coordination reproduces the pooled controller's
-        # placement exactly; only the capital accounting differs.
-        self.assertTrue(np.array_equal(controller["capacity"], weights["capacity"]))
-        self.assertEqual(sum(weights["boardings"]), int(self.design["coalition_budget"]))
-        self.assertEqual(len(weights["boardings"]), int(self.design["members"]))
-        self.assertLess(max(weights["boardings"]), int(self.design["coalition_budget"]))
+        budget = int(self.design["coalition_budget"])
+        members = int(self.design["members"])
+        # The shared-weights arm splits its budget M ways; the controller is one pot.
+        weak = public_observations(world, 0.08, 0)
+        ctrl_weak = place_controller_public(world, self.design, weak, 0.08)
+        wts_weak = place_shared_weights_public(world, self.design, weak, 0.08)
+        self.assertEqual(ctrl_weak["boardings"], [budget])
+        self.assertEqual(len(wts_weak["boardings"]), members)
+        self.assertEqual(sum(wts_weak["boardings"]), budget)
+        # With a weak public signal the controller's pooled-private placement genuinely
+        # differs from the shared-weights public-only placement (not identical by construction).
+        self.assertFalse(np.array_equal(ctrl_weak["capacity"], wts_weak["capacity"]))
+        # With a near-perfect public signal they converge (pooling private views buys little).
+        rich = public_observations(world, 0.99, 9)
+        ctrl_rich = place_controller_public(world, self.design, rich, 0.99)
+        wts_rich = place_shared_weights_public(world, self.design, rich, 0.99)
+        weak_gap = int(np.abs(ctrl_weak["capacity"] - wts_weak["capacity"]).sum())
+        rich_gap = int(np.abs(ctrl_rich["capacity"] - wts_rich["capacity"]).sum())
+        self.assertLessEqual(rich_gap, weak_gap)
+
+    def test_warden_firewall_is_regime_aware_and_measured(self) -> None:
+        rows = [run_episode(sp, s, self.manifest) for sp in ("discovery", "confirmatory", "holdout")
+                for s in self.manifest["seed_plan"][sp]]
+        summary = summarize(rows, self.manifest)
+        sweep = summary["holdout"]["warden_sweep"]
+        # Capital warden separates at every public rate; trace warden falls to chance where
+        # the channel is cheap (highest public rate), and its separability tracks channel value.
+        self.assertTrue(all(cell["capital_warden_auc"] >= 0.95 for cell in sweep))
+        low, high = sweep[0], sweep[-1]
+        self.assertLessEqual(abs(high["trace_warden_auc"] - 0.5), 0.2)
+        self.assertGreaterEqual(abs(low["trace_warden_auc"] - 0.5), abs(high["trace_warden_auc"] - 0.5))
+        self.assertGreaterEqual(low["mean_channel_value"], high["mean_channel_value"])
+        self.assertEqual(summary["hypothesis_assessment"]["H3_warden_firewall_regime_aware"], "supported")
 
     def test_capacity_saturation_is_exact(self) -> None:
         episode = run_episode("holdout", 7901, self.manifest)

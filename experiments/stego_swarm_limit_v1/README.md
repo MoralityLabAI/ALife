@@ -42,7 +42,7 @@ pooled (denoised) estimate; the remaining `B - Q` units are placed by members fr
 own noisy views, with redundant coverage. The gain is coalition success minus the
 zero-capacity independent-placement success on the same frozen demand.
 
-## What is measured (one construction check, one substantive claim, one labelled illustration)
+## What is measured (one construction check, one substantive claim, one measured warden sweep)
 
 Budget is scarce (`B = 32` against `~40` demand units per round), so capital binds and the
 water-fill never has surplus to spill onto cold cells.
@@ -60,15 +60,22 @@ water-fill never has surplus to spill onto cold cells.
    while that optimal ceiling stays high (`~0.67`). The capacity to serve the moved demand
    exists; the stale forecast cannot reach it; coordination does not rescue it (shift gain
    `~0.01`). Not vacuous: shift success and the shift ceiling are both nonzero and far apart.
-3. **H3 — warden firewall (capital result + labelled limiting-case illustration).** The
-   robust result: a warden reading capital-placement sizes separates a pooled one-pot
-   controller from an `M`-pot shared-weights population (capital ROC AUC = 1). The
-   complementary claim — that a warden reading only sampled location traces cannot separate
-   them (trace ROC AUC = 0.5) — is an **explicit limiting-case construction**, not a measured
-   near-miss: the shared-weights arm is *given* the controller's placement (the paper's "same
-   weights, no message" focal-point coordination carried to its limit), so identical behaviour
-   yields identical traces. A genuine test needs a public signal distinct from pooled private
-   views; see "Non-claims" and the paper's limitations.
+3. **H3 — warden firewall (measured, regime-aware).** Both populations react to a *common
+   public demand signal*; the controller additionally pools its members' private sub-samples
+   over the covert channel, the shared-weights population does not, so the two place
+   differently except where the public signal is already near-perfect — nothing is identical
+   by construction. Sweeping the public-observation rate `{0.08, 0.25, 0.90}`:
+   - the **capital warden** (one-pot controller vs `M`-pot shared-weights boarding sizes)
+     separates them at every rate (capital ROC AUC = `1.00`);
+   - the **trace warden** (sampled delivered locations) separates them *only where the covert
+     channel is valuable*: at the weak public signal the channel is worth `+0.028` and the
+     trace ROC AUC is `0.08` (far from chance), while at the rich public signal the channel is
+     worth `~0` and the trace ROC AUC is `0.48` (chance). The trace's distance from chance
+     tracks the channel's value.
+
+   The honest, measured conclusion: **there is no regime in which the covert channel both buys
+   a meaningful gain and leaves no payment trace**, and the capital signal is the regime-robust
+   separator. The detection budget belongs at capital.
 
 The thresholds in `manifest.json` are frozen demonstration gates set loosely around the
 model's observed behaviour (see `analysis.threshold_note`), not predictions about any
@@ -102,11 +109,12 @@ privacy, demonstrate that an autonomous society will emerge, or estimate any rea
 field performance. It is a controlled mechanism study whose assumptions are exposed in one
 JSON configuration, bounding a quantity the Spiral paper argues is bounded by other means.
 
-The trace-indistinguishability half of H3 is a construction, not a measurement: the
-shared-weights arm is handed the controller's placement, so of course the traces match.
-This is deliberate — it isolates the capital signal as the robust separator — but it means
-the experiment does **not** show that a trace warden fails on genuinely distinct
-behaviour. A faithful test would give the shared-weights population a public demand signal
-distinct from the coalition's pooled private views and measure whether partial observation
-alone suppresses the signal; that is left as the registered next step. Relatedly, H1's
+H3 is now a genuine measurement, not a construction: the shared-weights population reaches
+its placement from the common public signal alone (no pooled-private views, no channel), so
+it is behaviourally distinct from the controller except in the limit of a perfect public
+signal. The finding is regime-dependent and honest about it — the trace warden *can* separate
+the populations where the covert channel matters, and only falls to chance where the channel
+is worthless — so the robust claim is the asymmetry (capital separates at every rate; the
+trace does not), not a blanket "traces are blind." Two caveats remain: the public-signal
+estimates are combined by a simple average rather than a precision weighting, and H1's
 saturation is arithmetic on the directable-unit count `Q`, not an empirical surprise.

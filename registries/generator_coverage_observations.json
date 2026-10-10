@@ -177,7 +177,7 @@
       "claims": {
         "H1_capacity_saturation": "supported_by_construction_of_the_directive_cost_model",
         "H2_capital_bounded_and_forecast_limited": "supported",
-        "H3_warden_firewall": "capital_clause_supported_trace_clause_is_a_limiting_case_construction"
+        "H3_warden_firewall_regime_aware": "supported_measured"
       },
       "holdout_result": {
         "mean_stationary_saturated_gain": 0.11875,
@@ -189,12 +189,15 @@
         "any_placement_exceeds_optimal_ceiling": false,
         "mean_optimal_ceiling_stationary": 0.6694878472222222,
         "mean_optimal_ceiling_shift": 0.6705729166666666,
-        "trace_warden_auc": 0.5,
-        "capital_warden_auc": 1.0
+        "warden_sweep": [
+          {"public_rate": 0.08, "mean_channel_value": 0.028211805555555535, "trace_warden_auc": 0.08333333333333333, "capital_warden_auc": 1.0},
+          {"public_rate": 0.25, "mean_channel_value": 0.009071180555555567, "trace_warden_auc": 0.3229166666666667, "capital_warden_auc": 1.0},
+          {"public_rate": 0.9, "mean_channel_value": -0.0018446180555555525, "trace_warden_auc": 0.4791666666666667, "capital_warden_auc": 1.0}
+        ]
       },
       "ontology_gain": false,
       "coverage_expansion_against_consumers": false,
-      "claim_boundary": "A model-only study in an abstract delivery game with a scarce budget (B=32 against 40 demand units per round). Coordination gain saturates in covert-channel capacity (exact by construction of the directive-cost model); delivery is bounded by an exact optimal capital placement that no allocation exceeds; a demand shift collapses delivered success toward a high ceiling coordination cannot reach. The warden result is split: the capital signal is a real separator (AUC 1.0); the trace indistinguishability (AUC 0.5) is a labelled limiting-case construction in which the shared-weights arm is handed the controller's placement, not a measured near-miss. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
+      "claim_boundary": "A model-only study in an abstract delivery game with a scarce budget (B=32 against 40 demand units per round). Coordination gain saturates in covert-channel capacity (exact by construction of the directive-cost model); delivery is bounded by an exact optimal capital placement that no allocation exceeds; a demand shift collapses delivered success toward a high ceiling coordination cannot reach. The warden result is a measured, regime-aware firewall over a public-observability sweep: both populations react to a common public signal and the controller additionally pools private views over the covert channel, so they place differently except at a perfect public signal; the capital warden separates the one-pot controller from the M-pot shared-weights population at every rate (AUC 1.0), while the trace warden separates them only where the channel is valuable (trace AUC 0.08 at channel value +0.028, up to 0.48 at channel value ~0) — the channel is never both valuable and trace-invisible. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
       "artifacts": {
         "manifest": "results/stego_swarm_limit_v1/frozen_manifest.json",
         "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
@@ -202,8 +205,8 @@
         "knowledge_card": "results/stego_swarm_limit_v1/knowledge_card.md",
         "hashes": "results/stego_swarm_limit_v1/hashes.json"
       },
-      "summary_sha256": "44abfc8717b0730c40138fc5b07efd030e8dd39aedd74ba2f62b974d2aedcc1f",
-      "next_falsification": "Give the shared-weights arm a public demand signal distinct from the coalition's pooled private views and a focal-point partition, so the trace warden becomes a genuine test rather than a construction; then replace the linear min-unmet objective and single-service model with reflected-walk balances and inter-member demand, add a strategic (non-independent) member-departure process, and give the trace warden member attribution."
+      "summary_sha256": "d218fe70dce72bbe841a9a30b410ba1c7ee051b9d43cdd3a1aa566f2e29e206b",
+      "next_falsification": "Strengthen the now-genuine warden: a trained discriminator rather than a scalar trace statistic, member attribution, precision-weighted signal combination, and a finer public-rate sweep; then replace the linear min-unmet objective and single-service model with reflected-walk balances and inter-member demand, and add a strategic (non-independent) member-departure process."
     }
   ]
 }

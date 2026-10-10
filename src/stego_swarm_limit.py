@@ -147,11 +147,29 @@ def generate_world(seed: int, regime: str, design: Mapping[str, Any]) -> dict[st
         "members": members,
         "eval_counts": eval_counts,
         "eval_mean": eval_counts.mean(axis=0),
+        "warmup_total": warmup_total,
         "member_observations": member_observations,
         "pooled_observations": member_observations.sum(axis=0),
         "true_eval_distribution": p_eval,
         "eval_demand_total": int(eval_counts.sum()),
+        "seed": int(seed),
+        "regime": regime,
     }
+
+
+def public_observations(world: Mapping[str, Any], rate: float, index: int) -> np.ndarray:
+    """One shared public observation of warm-up demand at `rate`, common to all agents.
+
+    This models the "same public events" that the paper's "same weights, no message"
+    coordination reacts to: every agent sees the same draw, distinct from any member's
+    private sub-sample. A location observed at rate `rate` has a Binomial(total, rate) count.
+    """
+
+    sequence = np.random.SeedSequence(
+        [int(world["seed"]), REGIMES.index(str(world["regime"])), 0x9B11C, int(index)]
+    )
+    rng = np.random.default_rng(sequence)
+    return rng.binomial(np.asarray(world["warmup_total"]), float(rate))
 
 
 # --------------------------------------------------------------------------- #
@@ -252,28 +270,55 @@ def place_capital(world: Mapping[str, Any], design: Mapping[str, Any], bits: int
     }
 
 
-def place_shared_weights(world: Mapping[str, Any], design: Mapping[str, Any]) -> dict[str, Any]:
-    """Shared-weights population: M members, one shared policy, independent per-member budgets.
+def _average_estimate(*estimates: np.ndarray) -> np.ndarray:
+    """Unbiased combination of several per-round demand estimates (simple mean)."""
 
-    This is the paper's "same weights, no message" case (section 7). The members share
-    a policy and all react to the same public demand signal, so without exchanging any
-    message they reach the same focal-point allocation a single coordinated controller
-    would, by a deterministic partition of the pooled estimate. The resulting capital is
-    therefore identical to the covert-coordinated controller's; the only difference is
-    the accounting, M separate budgets of B/M instead of one pot of B. It is the control
-    the trace warden must fail to separate from a pooled controller (preregistration
-    item 7), while the capital warden separates it trivially (section 7, "Ramps remain").
+    return np.mean(np.stack(estimates), axis=0)
+
+
+def place_controller_public(
+    world: Mapping[str, Any], design: Mapping[str, Any], public_obs: np.ndarray, public_rate: float
+) -> dict[str, Any]:
+    """Pooled controller under a public signal: places B from public + pooled-private views.
+
+    The controller reacts to the common public signal AND pools its members' private
+    sub-samples over the covert channel, so its demand estimate averages the public estimate
+    with the pooled-private estimate. The whole budget is one pot (one boarding of size B).
+    This is the genuine (non-constructed) counterpart of the shared-weights control below:
+    the two differ by exactly the pooled-private contribution the channel supplies.
     """
 
     budget = int(design["coalition_budget"])
     members = int(world["members"])
     warmup = int(world["warmup_rounds"])
     observe_rate = float(design["member_observe_rate"])
-
-    pooled_estimate = per_round_estimate(
+    pub_estimate = per_round_estimate(public_obs, warmup, public_rate, 1)
+    pooled_private = per_round_estimate(
         np.asarray(world["pooled_observations"]), warmup, observe_rate, members
     )
-    capacity = water_fill(pooled_estimate, budget)
+    capacity = water_fill(_average_estimate(pub_estimate, pooled_private), budget)
+    return {"capacity": capacity, "boardings": [budget], "budget": budget}
+
+
+def place_shared_weights_public(
+    world: Mapping[str, Any], design: Mapping[str, Any], public_obs: np.ndarray, public_rate: float
+) -> dict[str, Any]:
+    """Shared-weights population under a public signal: focal-point coordination, no channel.
+
+    The paper's "same weights, no message" case made genuine. The M members share a policy
+    and react only to the common public signal (no pooled-private views, no covert channel),
+    so without exchanging a message they reach a focal-point allocation: the public-estimate
+    water-fill of B, split into M equal budgets. It is behaviourally DISTINCT from the
+    controller (which also pools private views) except in the limit of a perfect public
+    signal, so the trace warden now faces a real, not constructed, discrimination task. The
+    capital accounting still differs structurally: M pots of B/M against the controller's one.
+    """
+
+    budget = int(design["coalition_budget"])
+    members = int(world["members"])
+    warmup = int(world["warmup_rounds"])
+    pub_estimate = per_round_estimate(public_obs, warmup, public_rate, 1)
+    capacity = water_fill(pub_estimate, budget)
     base, remainder = divmod(budget, members)
     boardings = [base + (1 if member < remainder else 0) for member in range(members)]
     return {"capacity": capacity, "boardings": boardings, "budget": budget}
@@ -425,49 +470,65 @@ def run_regime(world: Mapping[str, Any], design: Mapping[str, Any]) -> dict[str,
     }
 
 
-def run_warden(world: Mapping[str, Any], design: Mapping[str, Any], seed: int) -> dict[str, Any]:
+def _observe_boarding(size: int, sample_rate: float, rng: np.random.Generator) -> int:
+    """Observe a capital-placement of `size` units with probability rising in its size."""
+
+    if size <= 0:
+        return 0
+    return int(size) if rng.random() < 1.0 - (1.0 - sample_rate) ** size else 0
+
+
+def run_warden_cell(
+    world: Mapping[str, Any], design: Mapping[str, Any], seed: int, public_rate: float, index: int
+) -> dict[str, Any]:
+    """One public-observability cell of the warden: a genuine controller-vs-shared-weights test.
+
+    Both populations see the same public signal; the controller also pools private views over
+    the covert channel, the shared-weights population does not. The trace warden reads a
+    sub-sample of delivered events by location (an independent draw per population); the
+    capital warden reads boarding sizes. Nothing is identical by construction: at a weak
+    public signal the two place differently, at a strong one they converge.
+    """
+
     sample_rate = float(design["warden_sample_rate"])
     top_k = int(design["warden_top_k"])
-    members = int(world["members"])
-    budget = int(design["coalition_budget"])
+    public_obs = public_observations(world, public_rate, index)
+    controller = place_controller_public(world, design, public_obs, public_rate)
+    weights = place_shared_weights_public(world, design, public_obs, public_rate)
 
-    controller = place_capital(world, design, INF_BITS)["capacity"]
-    weights = place_shared_weights(world, design)
+    trace_rng = np.random.default_rng(np.random.SeedSequence([int(seed), 0x5EC, index]))
+    controller_hist = sampled_location_histogram(world, controller["capacity"], sample_rate, trace_rng)
+    weights_hist = sampled_location_histogram(world, weights["capacity"], sample_rate, trace_rng)
 
-    # One warden, one observation budget: both counterfactual populations are read
-    # through the same sampling process (the same seed), so when their behaviour is
-    # identical the observed traces are identical and the warden is exactly at chance.
-    controller_hist = sampled_location_histogram(
-        world, controller, sample_rate, np.random.default_rng(np.random.SeedSequence([int(seed), 0x5EC]))
+    boarding_rng = np.random.default_rng(np.random.SeedSequence([int(seed), 0xB0A, index]))
+    controller_seen = max(
+        (_observe_boarding(int(size), sample_rate, boarding_rng) for size in controller["boardings"]),
+        default=0,
     )
-    weights_hist = sampled_location_histogram(
-        world, weights["capacity"], sample_rate, np.random.default_rng(np.random.SeedSequence([int(seed), 0x5EC]))
+    weights_seen = max(
+        (_observe_boarding(int(size), sample_rate, boarding_rng) for size in weights["boardings"]),
+        default=0,
     )
 
-    # Capital warden: observes the size of capital-placement ("boarding") events. A
-    # pooled controller boards its whole budget in one event; shared weights board M
-    # small ones. A boarding of `size` units is observed with probability
-    # 1 - (1 - sample_rate)**size: a larger on-chain footprint is more conspicuous, not
-    # less. The warden scores the largest size it observes.
-    boarding_rng = np.random.default_rng(np.random.SeedSequence([int(seed), 0xB0A]))
-
-    def observed_size(size: int) -> int:
-        if size <= 0:
-            return 0
-        seen = boarding_rng.random() < 1.0 - (1.0 - sample_rate) ** size
-        return int(size) if seen else 0
-
-    controller_seen = observed_size(budget)
-    weights_seen = max((observed_size(int(size)) for size in weights["boardings"]), default=0)
-
+    controller_success = delivered_fraction(world, controller["capacity"])
+    weights_success = delivered_fraction(world, weights["capacity"])
     return {
+        "public_rate": float(public_rate),
+        "controller_success": controller_success,
+        "weights_success": weights_success,
+        "channel_value": controller_success - weights_success,
         "trace_controller_score": trace_concentration(controller_hist, top_k),
         "trace_weights_score": trace_concentration(weights_hist, top_k),
         "capital_controller_score": float(controller_seen),
         "capital_weights_score": float(weights_seen),
-        "controller_coverage_locations": int((controller > 0).sum()),
-        "weights_coverage_locations": int((weights["capacity"] > 0).sum()),
     }
+
+
+def run_warden(world: Mapping[str, Any], design: Mapping[str, Any], seed: int) -> list[dict[str, Any]]:
+    """Sweep the public-observability rate; each cell is a genuine warden discrimination."""
+
+    sweep = list(design["public_rate_sweep"])
+    return [run_warden_cell(world, design, seed, float(rate), index) for index, rate in enumerate(sweep)]
 
 
 def run_episode(split: str, seed: int, manifest: Mapping[str, Any]) -> dict[str, Any]:
@@ -515,6 +576,39 @@ def bootstrap_interval(values: Sequence[float], samples: int, seed: int) -> list
     return [float(np.quantile(means, 0.025)), float(np.quantile(means, 0.975))]
 
 
+def summarize_warden(rows: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """Aggregate the public-observability warden sweep across a split's episodes.
+
+    For each public rate it returns the trace and capital ROC AUCs (controller vs
+    shared-weights, measured, not constructed) and the mean channel value, so the
+    regime dependence of the trace warden against the capital warden is visible.
+    """
+
+    if not rows:
+        return []
+    cells = len(rows[0]["warden"])
+    sweep: list[dict[str, Any]] = []
+    for index in range(cells):
+        cell = [row["warden"][index] for row in rows]
+        sweep.append(
+            {
+                "public_rate": float(cell[0]["public_rate"]),
+                "mean_channel_value": float(statistics.mean(c["channel_value"] for c in cell)),
+                "mean_controller_success": float(statistics.mean(c["controller_success"] for c in cell)),
+                "mean_weights_success": float(statistics.mean(c["weights_success"] for c in cell)),
+                "trace_warden_auc": auc(
+                    [c["trace_controller_score"] for c in cell],
+                    [c["trace_weights_score"] for c in cell],
+                ),
+                "capital_warden_auc": auc(
+                    [c["capital_controller_score"] for c in cell],
+                    [c["capital_weights_score"] for c in cell],
+                ),
+            }
+        )
+    return sweep
+
+
 def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) -> dict[str, Any]:
     analysis = manifest["analysis"]
     by_split: list[dict[str, Any]] = []
@@ -529,10 +623,7 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
         shift_gain = [float(row["gain_at_infinity"]) for row in shift]
         stationary_success = [float(row["independent_success"]) + float(row["gain_at_infinity"]) for row in stationary]
         shift_success = [float(row["independent_success"]) + float(row["gain_at_infinity"]) for row in shift]
-        trace_ctrl = [float(row["warden"]["trace_controller_score"]) for row in matching]
-        trace_weights = [float(row["warden"]["trace_weights_score"]) for row in matching]
-        capital_ctrl = [float(row["warden"]["capital_controller_score"]) for row in matching]
-        capital_weights = [float(row["warden"]["capital_weights_score"]) for row in matching]
+        warden_sweep = summarize_warden(matching)
         by_split.append(
             {
                 "split": split,
@@ -553,8 +644,7 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
                 "mean_optimal_ceiling_shift": float(
                     statistics.mean(float(row["optimal_ceiling_success"]) for row in shift)
                 ),
-                "trace_warden_auc": auc(trace_ctrl, trace_weights),
-                "capital_warden_auc": auc(capital_ctrl, capital_weights),
+                "warden_sweep": warden_sweep,
                 "stationary_gain_bootstrap_95": bootstrap_interval(
                     stationary_gain,
                     int(analysis["bootstrap_samples"]),
@@ -568,9 +658,19 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
     band = float(analysis["capacity_saturation_band"])
     shift_band = float(analysis["shift_gain_band"])
     null_halfwidth = float(analysis["trace_auc_null_halfwidth"])
-    firewall_margin = float(analysis["warden_firewall_margin"])
-    trace_within_null = abs(holdout["trace_warden_auc"] - 0.5) <= null_halfwidth
-    warden_gap = holdout["capital_warden_auc"] - holdout["trace_warden_auc"]
+    channel_small_band = float(analysis["channel_value_small_band"])
+    sweep = holdout["warden_sweep"]
+    low_cell = sweep[0]
+    high_cell = sweep[-1]
+    capital_robust = all(cell["capital_warden_auc"] >= float(analysis["minimum_capital_auc"]) for cell in sweep)
+    trace_blind_when_channel_cheap = (
+        high_cell["mean_channel_value"] <= channel_small_band
+        and abs(high_cell["trace_warden_auc"] - 0.5) <= null_halfwidth
+    )
+    trace_tracks_channel_value = (
+        abs(low_cell["trace_warden_auc"] - 0.5) >= abs(high_cell["trace_warden_auc"] - 0.5)
+        and low_cell["mean_channel_value"] >= high_cell["mean_channel_value"]
+    )
     forecast_collapse = holdout["mean_stationary_success"] - holdout["mean_shift_success"]
     return {
         "schema": SUMMARY_SCHEMA,
@@ -598,30 +698,43 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
             and holdout["mean_optimal_ceiling_shift"] >= float(analysis["minimum_shift_ceiling"])
             and abs(holdout["mean_shift_gain"]) <= shift_band
             else "not_supported",
-            # H3 is a LIMITING-CASE ILLUSTRATION, not a measured near-miss: the shared-weights arm is
-            # given, by construction, the controller's placement (the paper's "same weights, no
-            # message" focal-point coordination carried to its limit), so the delivered traces are
-            # identical and the trace warden is at chance by construction, while the capital warden
-            # separates the one-pot controller from the M-pot shared-weights structure. A genuine
-            # test needs a public signal distinct from pooled private views; see the paper's limits.
-            "H3_warden_firewall": "illustrated_limiting_case"
-            if holdout["capital_warden_auc"] >= float(analysis["minimum_capital_auc"])
-            and trace_within_null
-            and warden_gap >= firewall_margin
-            else "not_illustrated",
+            # H3 is now a GENUINE, measured warden test over a public-observability sweep. The
+            # shared-weights arm reacts to a common public signal only; the controller also pools
+            # private views over the covert channel, so the two place differently except in the
+            # limit of a perfect public signal. The measured, regime-aware firewall: the capital
+            # warden separates the one-pot controller from the M-pot shared-weights structure at
+            # every public rate; the trace warden separates them only where the channel is
+            # valuable, and is at chance where the channel buys little (high public rate). There is
+            # no regime where the covert channel both buys a large gain and leaves no trace.
+            "H3_warden_firewall_regime_aware": "supported"
+            if capital_robust and trace_blind_when_channel_cheap and trace_tracks_channel_value
+            else "not_supported",
         },
         "warden_firewall": {
-            "trace_warden_auc": holdout["trace_warden_auc"],
-            "capital_warden_auc": holdout["capital_warden_auc"],
-            "trace_at_chance_by_construction": bool(trace_within_null),
-            "capital_minus_trace_auc": warden_gap,
+            "public_rate_sweep": sweep,
+            "capital_warden_robust_all_rates": bool(capital_robust),
+            "trace_blind_when_channel_cheap": bool(trace_blind_when_channel_cheap),
+            "trace_separability_tracks_channel_value": bool(trace_tracks_channel_value),
+            "low_rate": {
+                "public_rate": low_cell["public_rate"],
+                "channel_value": low_cell["mean_channel_value"],
+                "trace_warden_auc": low_cell["trace_warden_auc"],
+                "capital_warden_auc": low_cell["capital_warden_auc"],
+            },
+            "high_rate": {
+                "public_rate": high_cell["public_rate"],
+                "channel_value": high_cell["mean_channel_value"],
+                "trace_warden_auc": high_cell["trace_warden_auc"],
+                "capital_warden_auc": high_cell["capital_warden_auc"],
+            },
             "null_halfwidth": null_halfwidth,
-            "required_margin": firewall_margin,
+            "channel_value_small_band": channel_small_band,
             "note": (
-                "The shared-weights arm is given the controller's placement by construction, so the "
-                "trace AUC near 0.5 is a limiting-case illustration and not a measurement. The capital "
-                "AUC is the robust result: a pooled one-pot budget and an M-pot budget are separable "
-                "whatever the behaviour."
+                "Measured, not constructed. The capital signal (pooled one-pot vs M-pot budget) is a "
+                "robust separator at every public-observability level. The trace signal separates the "
+                "populations only to the extent the covert channel is valuable: at a strong public "
+                "signal, where pooling private views buys little, the trace warden is at chance. The "
+                "channel is never both valuable and trace-invisible."
             ),
         },
         "forecast_collapse_under_shift": forecast_collapse,
@@ -630,12 +743,23 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
             "that coordination gain saturates in covert-channel capacity (by construction of the "
             "directive-cost model), that delivery is bounded by a true optimal capital placement that "
             "no allocation exceeds, and that a demand shift collapses delivered success toward a high "
-            "ceiling coordination cannot reach. The warden result is split: the capital signal is "
-            "separable; the trace indistinguishability is a labelled limiting-case construction. It is "
-            "not a measurement of the Lightning Network, not a covert-communication system, and not "
-            "evidence about real agents, real privacy, or real monitoring performance."
+            "ceiling coordination cannot reach. The warden result is a measured, regime-aware firewall: "
+            "the capital signal separates control structure at every public-observability level, while "
+            "the trace signal separates it only where the covert channel is valuable. It is not a "
+            "measurement of the Lightning Network, not a covert-communication system, and not evidence "
+            "about real agents, real privacy, or real monitoring performance."
         ),
     }
+
+
+def warden_sweep_lines(summary: Mapping[str, Any]) -> str:
+    lines = []
+    for cell in summary["holdout"]["warden_sweep"]:
+        lines.append(
+            f"    - public rate {cell['public_rate']:.2f}: channel value {cell['mean_channel_value']:+.4f}, "
+            f"trace AUC {cell['trace_warden_auc']:.3f}, capital AUC {cell['capital_warden_auc']:.3f}"
+        )
+    return "\n".join(lines)
 
 
 def knowledge_card(summary: Mapping[str, Any], receipt: Mapping[str, Any]) -> str:
@@ -657,15 +781,15 @@ def knowledge_card(summary: Mapping[str, Any], receipt: Mapping[str, Any]) -> st
   under shift: {holdout['mean_optimal_ceiling_shift']:.4f} (high under shift: the capacity to serve the moved demand exists; the forecast cannot reach it).
 - Mean coordination gain at unbounded covert capacity under shift: {holdout['mean_shift_gain']:.4f}
   (near zero: coordination cannot rescue a stale forecast).
-- Trace-warden ROC AUC (controller vs shared-weights), limiting-case construction: {holdout['trace_warden_auc']:.4f}.
-- Capital-warden ROC AUC (the robust separator): {holdout['capital_warden_auc']:.4f}.
+- Warden sweep over public-observability rate (controller vs shared-weights, measured):
+{warden_sweep_lines(summary)}
 - Determinism passed: {receipt['determinism']['passed']}; wall {receipt['wall_seconds']:.3f}s; max RSS {receipt['max_rss_mb']:.2f} MB.
 
 ## Hypothesis Assessment
 
 - H1 capacity saturation (exact by construction of the directive-cost model): **{hypotheses['H1_capacity_saturation']}**.
 - H2 capital-bounded and forecast-limited gain: **{hypotheses['H2_capital_bounded_and_forecast_limited']}**.
-- H3 warden firewall (capital separable; trace indistinguishable as a limiting-case construction): **{hypotheses['H3_warden_firewall']}**.
+- H3 warden firewall (regime-aware, measured): **{hypotheses['H3_warden_firewall_regime_aware']}**.
 
 ## Inferred
 
@@ -676,18 +800,21 @@ number of directable units saturates at the budget. Delivery is bounded by a tru
 placement that no allocation of the same budget exceeds, and under a demand shift the
 delivered success collapses toward a ceiling that stays high: the capacity to serve the
 moved demand exists, the stale forecast cannot reach it, and coordination does not rescue
-it. The warden result is asymmetric and honestly split: a pooled one-pot budget and an
-M-pot shared-weights budget are separable from their capital-placement sizes (AUC near 1);
-the claim that their payment traces are indistinguishable is a limiting-case construction,
-in which the shared-weights arm is handed the controller's placement, and is not a measured
-near-miss. The robust reading is that the detection budget belongs at capital and
+it. The warden result is a measured, regime-aware firewall: a pooled one-pot budget and an
+M-pot shared-weights budget are separable from their capital-placement sizes at every
+public-observability level (capital AUC near 1), while the payment-trace warden separates
+them only where the covert channel is valuable — at a strong public signal, where pooling
+private views buys little, the trace warden falls to chance, and the channel is never both
+valuable and trace-invisible. The robust reading is that the detection budget belongs at
+capital and
 observation. This reproduces the direction of Spiral's section-7 conjecture on finite cases.
 
 ## Not Supported
 
 - No claim about the Lightning Network, real covert communication, or real privacy.
-- The trace-indistinguishability is a construction, not a measurement; a public signal
-  distinct from pooled private views is needed to test it (see the paper's limitations).
+- The trace warden here is a single concentration statistic with no member attribution, the
+  public and private signals are combined by a simple average, and the public-rate sweep has
+  three points; a trained discriminator on a finer sweep is the registered next step.
 - No claim that any particular monitor works in the field; the warden is a toy on a narrow
   distribution with a clean fixture.
 - No claim beyond the frozen directional-capacity game and declared held-out seeds.

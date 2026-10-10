@@ -3,7 +3,7 @@
   "question": "In an abstract directional-capacity delivery game, is a common-control coalition's coordination gain bounded by its placed capital under stationary demand and saturating in the capacity of its covert channel, so that covert bandwidth beyond a small threshold buys no further delivery and leaves no separable payment trace?",
   "benefit": "defensive",
   "claim_scope": "model_only",
-  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a paired shared-weights control for the warden",
+  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a public-observability warden sweep pairing the pooled controller against a shared-weights control at each public rate",
   "motivation": {
     "source": "Spiral 'lnmath' paper, Where the Capital Bound Moves, section 7 (agent swarms)",
     "reference_propositions": [
@@ -27,10 +27,10 @@
       "falsifier": "The stationary saturated gain is below minimum_stationary_gain; or any placement exceeds the optimal ceiling; or the shift success collapse is below minimum_forecast_collapse; or the shift ceiling is below minimum_shift_ceiling; or the shift coordination gain exceeds shift_gain_band."
     },
     {
-      "id": "H3_warden_firewall",
-      "kind": "limiting_case_illustration",
-      "prediction": "On holdout seeds a warden reading capital-placement sizes separates the pooled controller from the shared-weights control (capital ROC AUC >= minimum_capital_auc). The complementary claim, that a warden reading only sampled location traces cannot separate them (|trace AUC - 0.5| <= trace_auc_null_halfwidth, and capital AUC - trace AUC >= warden_firewall_margin), is an explicit LIMITING-CASE ILLUSTRATION and not a measured near-miss: the shared-weights arm is given, by construction, the controller's placement (the paper's 'same weights, no message' focal-point coordination carried to its limit), so identical behaviour yields identical traces. A genuine test requires a public signal distinct from pooled private views; see the limitations.",
-      "falsifier": "The capital AUC is below minimum_capital_auc. (The trace clause is a construction, not an empirical prediction, so it cannot be falsified by this configuration; it is reported as an illustration.)"
+      "id": "H3_warden_firewall_regime_aware",
+      "kind": "measured",
+      "prediction": "Both populations react to a common public demand signal; the controller additionally pools its members' private sub-samples over the covert channel, the shared-weights population does not, so they place differently except at a near-perfect public signal (nothing is identical by construction). Sweeping the public-observation rate, on holdout seeds: (a) the capital warden separates the one-pot controller from the M-pot shared-weights population at every rate (capital ROC AUC >= minimum_capital_auc); (b) at the richest public rate, where pooling private views buys little, the mean channel value is within channel_value_small_band of zero and the trace ROC AUC is within trace_auc_null_halfwidth of 0.5; and (c) the trace ROC AUC's distance from 0.5 and the channel value are both larger at the weakest public rate than at the richest. The covert channel is never both valuable and trace-invisible.",
+      "falsifier": "The capital AUC falls below minimum_capital_auc at any public rate; or at the richest rate the channel value exceeds the small band or the trace AUC leaves the chance null; or the trace-AUC distance from 0.5 does not track the channel value across the sweep."
     }
   ],
   "model": {
@@ -52,6 +52,10 @@
     {
       "name": "control_structure",
       "changes": {"population": ["pooled_controller", "shared_weights"]}
+    },
+    {
+      "name": "public_observability_rate",
+      "changes": {"public_rate": [0.08, 0.25, 0.9]}
     }
   ],
   "controls": [
@@ -86,8 +90,9 @@
       "independent_success",
       "optimal_ceiling_success",
       "capacity_curve",
-      "controller_coverage_locations",
-      "weights_coverage_locations"
+      "warden_sweep.mean_channel_value",
+      "warden_sweep.mean_controller_success",
+      "warden_sweep.mean_weights_success"
     ],
     "denominators": {
       "success": "all evaluation demand units for one placement under one regime",
@@ -120,7 +125,7 @@
     "minimum_forecast_collapse": 0.30,
     "minimum_shift_ceiling": 0.50,
     "trace_auc_null_halfwidth": 0.20,
-    "warden_firewall_margin": 0.30,
+    "channel_value_small_band": 0.02,
     "minimum_capital_auc": 0.95,
     "bootstrap_samples": 2000,
     "bootstrap_seed": 81017,
@@ -147,6 +152,7 @@
     "warmup_rounds": 24,
     "horizon_rounds": 120,
     "capacity_bits_sweep": [0, 5, 10, 20, 40, 1000000000],
+    "public_rate_sweep": [0.08, 0.25, 0.9],
     "warden_sample_rate": 0.12,
     "warden_top_k": 4
   },
