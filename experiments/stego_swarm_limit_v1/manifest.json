@@ -31,6 +31,12 @@
       "kind": "measured",
       "prediction": "Both populations react to a common public demand signal; the controller additionally pools its members' private sub-samples over the covert channel, the shared-weights population does not, so they place differently except at a near-perfect public signal (nothing is identical by construction). Sweeping the public-observation rate, on holdout seeds: (a) the capital warden separates the one-pot controller from the M-pot shared-weights population at every rate (capital ROC AUC >= minimum_capital_auc); (b) at the richest public rate, where pooling private views buys little, the mean channel value is within channel_value_small_band of zero and the trace ROC AUC is within trace_auc_null_halfwidth of 0.5; and (c) the trace ROC AUC's distance from 0.5 and the channel value are both larger at the weakest public rate than at the richest. The covert channel is never both valuable and trace-invisible.",
       "falsifier": "The capital AUC falls below minimum_capital_auc at any public rate; or at the richest rate the channel value exceeds the small band or the trace AUC leaves the chance null; or the trace-AUC distance from 0.5 does not track the channel value across the sweep."
+    },
+    {
+      "id": "H4_capital_signal_is_warden_independent",
+      "kind": "measured_stress_test",
+      "prediction": "A trained, member-attributed linear discriminant is fit on the discovery+confirmatory seeds and scored out of sample on the holdout seeds, over the public-rate sweep. (a) It reads the account-structure axis (one-pot vs M-pot) at every rate with AUC >= trained_minimum_account_auc, so the capital/account signal is warden-independent. (b) It reads the information-access axis strongly where the covert channel is valuable (AUC >= trained_strong_info_auc_min at the weakest public rate). (c) Its information-axis distance from chance at the weakest rate exceeds the mean distance over the cells where the channel value is within channel_value_small_band of zero, so a stronger warden's information-axis signal erodes toward chance as the channel loses value.",
+      "falsifier": "The trained account AUC falls below trained_minimum_account_auc at any rate; or the trained information AUC at the weakest public rate is below trained_strong_info_auc_min; or the information-axis signal does not erode as channel value falls. Note on honesty: this hypothesis does NOT assert the trace goes blind under a strong warden -- the trained attributed warden retains a weak, noisy information-axis signal even where the channel value is ~0 and reads account structure from the trace throughout, so only the capital signal is claimed to be the warden-independent separator."
     }
   ],
   "model": {
@@ -127,6 +133,8 @@
     "trace_auc_null_halfwidth": 0.20,
     "channel_value_small_band": 0.02,
     "minimum_capital_auc": 0.95,
+    "trained_strong_info_auc_min": 0.80,
+    "trained_minimum_account_auc": 0.90,
     "bootstrap_samples": 2000,
     "bootstrap_seed": 81017,
     "threshold_note": "These are frozen demonstration gates set loosely around the model's observed behaviour (stationary gain approx 0.12, forecast collapse approx 0.58, shift ceiling approx 0.67, shift gain approx 0.01, capital AUC 1.0). They demonstrate direction on this frozen configuration; they are not empirical predictions about any network."
@@ -152,7 +160,7 @@
     "warmup_rounds": 24,
     "horizon_rounds": 120,
     "capacity_bits_sweep": [0, 5, 10, 20, 40, 1000000000],
-    "public_rate_sweep": [0.08, 0.25, 0.9],
+    "public_rate_sweep": [0.04, 0.08, 0.15, 0.25, 0.45, 0.7, 0.9],
     "warden_sample_rate": 0.12,
     "warden_top_k": 4
   },

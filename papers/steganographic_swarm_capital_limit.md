@@ -31,7 +31,11 @@ information-access axis (whether the covert channel pools private views) only to
 the channel is valuable — sharply where the public signal is weak and the channel buys a
 gain, not at all where it is rich and the channel is worthless — so the channel is never both
 valuable and trace-invisible. This is a measured factorial with a stated decentralised
-placement rule, not a construction. A live language-model agent, handed
+placement rule, not a construction; and when we strengthen the warden — a trained,
+member-attributed discriminant scored out of sample — it reads account structure from the
+trace too and reads the information axis further down, so the trace-side invisibility is a
+property of the warden while the capital signal is warden-independent, which is the durable
+half of the result. A live language-model agent, handed
 the coordinator's view, reaches the achievable coordination gain at saturation and never
 exceeds the optimal ceiling, and below saturation can underperform a trivial water-fill by
 optimising its coordinated slice without regard to the capital placed independently around
@@ -189,19 +193,26 @@ run reproduces bit-for-bit. On the twelve holdout seeds:
   the optimal ceiling stays at $0.67$, and the coordination gain under the shift is $0.012$
   (coordination does not rescue the stale forecast); this is Proposition 2;
 - the $2\times2$ warden factorial, gated on seeds pooled over all splits (the per-split trace
-  AUC is noisy at the rich public rate), over public rates $\{0.08, 0.25, 0.90\}$: the
-  capital-warden ROC AUC on the account axis is $1.00$ at every rate, while the trace-warden
-  AUC on the information axis has distance-from-chance $0.37 \to 0.04 \to 0.08$ as the channel
-  value falls $+0.049 \to +0.010 \to \approx 0$. The trace reads information access only where
-  the channel is valuable and is at chance where it is not; the capital reads account structure
-  throughout. The naive-decentralised contrast delivers $0.21/0.28/0.31$ against the focal
-  placement's $0.62/0.65/0.67$, so the decentralised convention is doing real work. This is
-  Proposition 3, measured rather than constructed.
+  AUC is noisy at the rich public rate), over the finer public-rate sweep
+  $\{0.04, 0.08, 0.15, 0.25, 0.45, 0.70, 0.90\}$: the capital-warden ROC AUC on the account
+  axis is $1.00$ at every rate, while the trace-warden AUC on the information axis falls from
+  $0.96$ at the weakest public rate (channel value $+0.094$) toward chance as the channel value
+  falls to $\approx 0$. The trace reads information access only where the channel is valuable;
+  the capital reads account structure throughout. The naive-decentralised contrast delivers
+  about $0.21$ against the focal placement's $0.62$ at the weak rate, so the decentralised
+  convention is doing real work. This is Proposition 3, measured rather than constructed;
+- the trained-warden stress test (Section 6.5): a member-attributed linear discriminant fit on
+  the discovery and confirmation seeds and scored on the holdout reads the account axis at
+  $1.00$ at every rate and the information axis at $0.95$ where the channel is valuable, eroding
+  to a weak, noisy signal (mean distance from chance $0.14$) where the channel value is
+  $\approx 0$ — a stronger observer than the scalar statistic, which it reads information access
+  at smaller channel values than.
 
-All three hypotheses are supported: H1 and H2 as above, and H3 as the measured, regime-aware
-factorial. The verifier recomputes the holdout aggregates and the pooled warden factorial
-directly from the raw episodes, gates them against the frozen thresholds, and cross-checks them
-against the summary.
+All four hypotheses are supported: H1 and H2 as above, H3 as the measured regime-aware
+factorial, and H4 as the trained-warden stress test. The verifier recomputes the holdout
+aggregates, the pooled warden factorial, and the out-of-sample trained discriminant directly
+from the raw episodes, gates them against the frozen thresholds, and cross-checks them against
+the summary.
 
 ## 6. A live agent at the ceiling
 
@@ -222,6 +233,29 @@ is a fragile thing that reasoning about one's own slice can get wrong. The probe
 non-sealed appendix (`experiments/stego_swarm_limit_v1/LIVE_PROBE.md`) and the agent's
 allocation vectors are recorded there for re-scoring.
 
+## 6.5. A stronger warden, and where the firewall actually holds
+
+The firewall of Section 4 was measured against a trace warden that reads a single
+concentration statistic. A natural objection is that a stronger observer would see more, so we
+give the warden member attribution — it observes which account served each sampled delivery —
+and a trained decision rule: a diagonal linear discriminant fit on the discovery and
+confirmation seeds and scored out of sample on the holdout, over the public-rate sweep. Two
+things change and one does not. The account axis becomes readable from the trace: with
+attribution the discriminant separates one pot from $M$ pots at AUC $1.00$ at every public
+rate, because a single holder's deliveries and $M$ holders' deliveries have visibly different
+concentration. So the capital signal is not the only route to account structure; it is the
+route that does not depend on the warden's strength. The information axis is read further down:
+where the scalar statistic was already near chance at a channel value of $0.01$, the trained
+attributed warden still reads it at AUC $0.73$, and it reaches only a weak, noisy floor —
+mean distance from chance $0.14$, not a clean $0.5$ — where the channel value is $\approx 0$,
+a floor consistent with a flexible rule overfitting residual structure on twelve seeds. The
+honest conclusion is the asymmetry, not a blanket invisibility: the covert channel's
+information contribution is read more sharply, and at smaller values, by a stronger warden,
+so the trace-side invisibility is a property of the warden and not of the payment layer;
+what is warden-independent is the capital signal, which reads account structure whatever the
+observer. A monitor should read the capital because the capital is legible to any warden, not
+because the wire is illegible to all of them.
+
 ## 7. Limitations
 
 The result is model-only and the model is narrow. Delivery is linear min-unmet against a
@@ -230,14 +264,15 @@ lnmath paper's general case are absent, and with them the $\sqrt N$ regime and t
 distinction between agents that can and cannot spend down. The departure process that sets
 the hyperedge's group size in the paper is not here at all, so nothing in this model speaks
 to the turnover cost that the paper argues, not covert capacity, sets the scale of a
-swarm's pooling. The warden model is a genuine $2\times2$ measurement rather than a
-construction — information access crossed with account structure, with a stated decentralised
-placement rule and a naive-decentralised contrast — but it is still a model: the two
-information sources are combined by inverse-variance weighting but the trace statistic is a
-single concentration scalar rather than a trained discriminator, the warden has no member
-attribution, and the public-rate sweep is three points on one demand family. The sharper form
-of the paper's preregistration item 7 — a trained warden with member attribution facing
-populations that differ only subtly — is approached here but not exhausted. The covert channel is a scalar with no
+swarm's pooling. The warden model is a genuine $2\times2$ measurement with a stated
+decentralised placement rule, a naive-decentralised contrast, and a trained attributed
+discriminator (Section 6.5) — but it is still a model: the trained warden is a diagonal
+linear discriminant on a small attributed feature set, fit on twelve seeds, so its noisy
+near-chance floor at zero channel value is partly overfitting rather than a clean null, and
+the public-rate sweep is seven points on one demand family. A higher-capacity warden, more
+seeds, and richer attribution would map how far the trace-side signal can be pushed; what we
+establish is the direction (the trace signal strengthens with the warden, the capital signal
+does not) and not its limit. The covert channel is a scalar with no
 content and no codebook, so
 the capacity-versus-detectability curve the paper reserves for a bounded appendix is not
 computed; what is shown is only that the gain the curve would bound is already bounded by

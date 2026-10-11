@@ -108,6 +108,24 @@ class StegoSwarmLimitTests(unittest.TestCase):
         self.assertGreaterEqual(low["mean_channel_value"], high["mean_channel_value"])
         self.assertEqual(summary["hypothesis_assessment"]["H3_warden_firewall_regime_aware"], "supported")
 
+    def test_trained_attributed_warden_reads_account_everywhere_info_only_where_valuable(self) -> None:
+        rows = [run_episode(sp, s, self.manifest) for sp in ("discovery", "confirmatory", "holdout")
+                for s in self.manifest["seed_plan"][sp]]
+        summary = summarize(rows, self.manifest)
+        trained = summary["trained_warden"]["rate_sweep"]
+        # The trained attributed warden reads account structure out of sample at every rate
+        # (attribution exposes it), and reads information access strongly only where the channel
+        # is valuable (the weakest public rate), eroding as the channel loses value.
+        self.assertTrue(all(cell["trained_account_axis_auc"] >= 0.9 for cell in trained))
+        self.assertGreaterEqual(trained[0]["trained_info_axis_auc"], 0.8)
+        self.assertGreater(
+            abs(trained[0]["trained_info_axis_auc"] - 0.5),
+            abs(trained[-1]["trained_info_axis_auc"] - 0.5),
+        )
+        self.assertEqual(
+            summary["hypothesis_assessment"]["H4_capital_signal_is_warden_independent"], "supported"
+        )
+
     def test_capacity_saturation_is_exact(self) -> None:
         episode = run_episode("holdout", 7901, self.manifest)
         for regime in ("stationary", "shift"):

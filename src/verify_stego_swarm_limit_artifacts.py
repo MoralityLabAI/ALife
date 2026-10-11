@@ -57,6 +57,61 @@ def _mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
+def _diagonal_discriminant(pos: list[list[float]], neg: list[list[float]]) -> list[float]:
+    """Pure-Python diagonal-LDA weight vector matching the experiment's trained warden."""
+
+    combined = pos + neg
+    dims = len(combined[0])
+    means = [sum(row[j] for row in combined) / len(combined) for j in range(dims)]
+    variances = [
+        sum((row[j] - means[j]) ** 2 for row in combined) / len(combined) for j in range(dims)
+    ]
+    variances = [v if v > 1e-24 else 1.0 for v in variances]
+    mean_pos = [sum(row[j] for row in pos) / len(pos) for j in range(dims)]
+    mean_neg = [sum(row[j] for row in neg) / len(neg) for j in range(dims)]
+    return [(mean_pos[j] - mean_neg[j]) / variances[j] for j in range(dims)]
+
+
+def _project(weight: list[float], rows: list[list[float]]) -> list[float]:
+    return [sum(w * x for w, x in zip(weight, row)) for row in rows]
+
+
+def recompute_trained_warden(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Recompute the H4 trained attributed warden from raw features: train disc+conf, test holdout."""
+
+    train = [r for r in rows if r.get("split") in ("discovery", "confirmatory")]
+    test = [r for r in rows if r.get("split") == "holdout"]
+    if not train or not test:
+        return []
+    cells = len(train[0]["warden"])
+    sweep: list[dict[str, Any]] = []
+    for index in range(cells):
+
+        def feats(subset: list[dict[str, Any]], key: str) -> list[list[float]]:
+            return [r["warden"][index]["attributed_features"][key] for r in subset]
+
+        info_w = _diagonal_discriminant(
+            feats(train, "pooled_private__m_pot"), feats(train, "public_only__m_pot")
+        )
+        account_w = _diagonal_discriminant(
+            feats(train, "pooled_private__one_pot"), feats(train, "pooled_private__m_pot")
+        )
+        sweep.append(
+            {
+                "public_rate": float(train[0]["warden"][index]["public_rate"]),
+                "trained_info_axis_auc": _auc(
+                    _project(info_w, feats(test, "pooled_private__m_pot")),
+                    _project(info_w, feats(test, "public_only__m_pot")),
+                ),
+                "trained_account_axis_auc": _auc(
+                    _project(account_w, feats(test, "pooled_private__one_pot")),
+                    _project(account_w, feats(test, "pooled_private__m_pot")),
+                ),
+            }
+        )
+    return sweep
+
+
 def recompute_warden_sweep(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Recompute the 2x2 warden factorial sweep from raw rows (pooled over the rows given).
 
@@ -250,11 +305,37 @@ def main() -> None:
         ):
             errors.append("trace separability does not track channel value across the sweep")
 
+    # H4 trained attributed warden, recomputed from raw features (train disc+conf, test holdout),
+    # cross-checked against the summary and re-gated.
+    trained = recompute_trained_warden(rows)
+    summary_trained = summary.get("trained_warden", {}).get("rate_sweep", [])
+    if len(trained) != len(summary_trained) or not trained:
+        errors.append("trained warden sweep length disagrees with summary or is empty")
+    else:
+        for recomputed_cell, reported_cell in zip(trained, summary_trained):
+            for key in ("trained_info_axis_auc", "trained_account_axis_auc"):
+                if abs(float(recomputed_cell[key]) - float(reported_cell.get(key, 1e9))) > 1e-9:
+                    errors.append(f"trained warden drift at rate {recomputed_cell['public_rate']}: {key}")
+    if trained and sweep:
+        min_account = float(analysis["trained_minimum_account_auc"])
+        strong_info = float(analysis["trained_strong_info_auc_min"])
+        if not all(cell["trained_account_axis_auc"] >= min_account for cell in trained):
+            errors.append("trained account-axis AUC not robust across all public rates")
+        if trained[0]["trained_info_axis_auc"] < strong_info:
+            errors.append("trained info-axis AUC not strong where the channel is valuable")
+        cheap = [
+            t for t, p in zip(trained, sweep) if abs(p["mean_channel_value"]) <= channel_small
+        ] or [trained[-1]]
+        mean_cheap_distance = _mean([abs(c["trained_info_axis_auc"] - 0.5) for c in cheap])
+        if abs(trained[0]["trained_info_axis_auc"] - 0.5) <= mean_cheap_distance:
+            errors.append("trained info-axis signal does not erode as channel value falls")
+
     assessment = summary.get("hypothesis_assessment", {})
     expected_assessment = {
         "H1_capacity_saturation": "supported",
         "H2_capital_bounded_and_forecast_limited": "supported",
         "H3_warden_firewall_regime_aware": "supported",
+        "H4_capital_signal_is_warden_independent": "supported",
     }
     for key, expected_value in expected_assessment.items():
         if assessment.get(key) != expected_value:
@@ -310,6 +391,7 @@ def main() -> None:
             "recomputed_holdout": recomputed,
             "recomputed_forecast_collapse": forecast_collapse,
             "recomputed_warden_sweep": sweep,
+            "recomputed_trained_warden_sweep": trained,
             "hypothesis_assessment": assessment,
         },
     }

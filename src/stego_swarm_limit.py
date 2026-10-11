@@ -375,6 +375,70 @@ def place_naive_decentralised(
     return capacity
 
 
+def member_capacities(target: np.ndarray, account: str, members: int) -> list[np.ndarray]:
+    """Per-member capacity vectors for an account structure, summing to the shared target.
+
+    ``one_pot``: a single holder owns the whole placement. ``m_pot``: the decentralised
+    focal-partition convention, where member m claims the target's units at positions
+    congruent to m modulo M in the location-ordered unit list, so the union is the target.
+    """
+
+    target = np.asarray(target, dtype=np.int64)
+    if account == "one_pot":
+        return [target.copy()]
+    locations = int(target.shape[0])
+    caps = [np.zeros(locations, dtype=np.int64) for _ in range(int(members))]
+    unit = 0
+    for location in range(locations):
+        for _ in range(int(target[location])):
+            caps[unit % int(members)][location] += 1
+            unit += 1
+    return caps
+
+
+def _gini(values: Sequence[float]) -> float:
+    """Gini coefficient of nonnegative values; 0 for a single holder or all-equal shares."""
+
+    array = np.sort(np.asarray(values, dtype=float))
+    total = float(array.sum())
+    if array.size <= 1 or total <= 0:
+        return 0.0
+    index = np.arange(1, array.size + 1)
+    return float((2.0 * (index * array).sum()) / (array.size * total) - (array.size + 1.0) / array.size)
+
+
+def attributed_features(
+    world: Mapping[str, Any], member_caps: Sequence[np.ndarray], sample_rate: float, rng: np.random.Generator
+) -> list[float]:
+    """Warden feature vector from a member-attributed sub-sample of delivered events.
+
+    The warden observes delivered events by location AND which account served each (member
+    attribution), so the features expose both the placement shape (a normalised location
+    histogram) and the account structure (concentration of delivery across members, the number
+    of locations each member covers, and the overlap between members' covered sets). For a
+    single-holder account the member features are degenerate, which is itself the signal.
+    """
+
+    total = np.sum(np.stack(member_caps), axis=0)
+    eval_counts = np.asarray(world["eval_counts"])
+    delivered = np.minimum(eval_counts, total[None, :]).sum(axis=0)
+    observed = rng.binomial(delivered.astype(np.int64), float(sample_rate)).astype(float)
+    observed_total = float(observed.sum())
+    histogram = (observed / observed_total) if observed_total > 0 else observed
+    with np.errstate(divide="ignore", invalid="ignore"):
+        attributed = [float((observed * np.where(total > 0, cap / total, 0.0)).sum()) for cap in member_caps]
+    covered = [set(int(l) for l in np.nonzero(cap)[0]) for cap in member_caps]
+    locations = int(world["locations"])
+    mean_distinct = float(np.mean([len(c) for c in covered])) / locations
+    overlaps: list[float] = []
+    for i in range(len(covered)):
+        for j in range(i + 1, len(covered)):
+            union = covered[i] | covered[j]
+            overlaps.append(len(covered[i] & covered[j]) / len(union) if union else 0.0)
+    mean_overlap = float(np.mean(overlaps)) if overlaps else 0.0
+    return [*histogram.tolist(), _gini(attributed), mean_distinct, mean_overlap]
+
+
 def optimal_capacity(world: Mapping[str, Any], design: Mapping[str, Any]) -> np.ndarray:
     """The exact capital ceiling: the fixed per-round capacity vector of `budget` units
     that maximises delivered demand against the realised evaluation counts.
@@ -454,6 +518,39 @@ def auc(positive: Sequence[float], negative: Sequence[float]) -> float:
             elif value == other:
                 wins += 0.5
     return wins / (len(positive) * len(negative))
+
+
+def diagonal_discriminant(positive: Sequence[Sequence[float]], negative: Sequence[Sequence[float]]) -> np.ndarray:
+    """Fit a deterministic linear direction separating two feature classes (diagonal LDA).
+
+    Standardises each feature by the pooled training standard deviation and weights it by the
+    standardised difference of class means. This is a closed-form, dependency-free linear
+    discriminant (no matrix inverse, no iterative training), so the trained warden is exactly
+    reproducible. Returns the weight vector; the score of a point is the dot product with it.
+    """
+
+    pos = np.asarray(positive, dtype=float)
+    neg = np.asarray(negative, dtype=float)
+    combined = np.vstack([pos, neg])
+    std = combined.std(axis=0)
+    std = np.where(std > 1e-12, std, 1.0)
+    return (pos.mean(axis=0) - neg.mean(axis=0)) / (std * std)
+
+
+def discriminant_scores(weight: np.ndarray, points: Sequence[Sequence[float]]) -> list[float]:
+    return [float(np.dot(weight, np.asarray(point, dtype=float))) for point in points]
+
+
+def trained_warden_auc(
+    train_positive: Sequence[Sequence[float]],
+    train_negative: Sequence[Sequence[float]],
+    test_positive: Sequence[Sequence[float]],
+    test_negative: Sequence[Sequence[float]],
+) -> float:
+    """Train a linear discriminant on the training classes; report held-out ROC AUC."""
+
+    weight = diagonal_discriminant(train_positive, train_negative)
+    return auc(discriminant_scores(weight, test_positive), discriminant_scores(weight, test_negative))
 
 
 # --------------------------------------------------------------------------- #
@@ -572,6 +669,23 @@ def run_warden_cell(
         account_cells[account] = float(seen)
 
     naive_success = delivered_fraction(world, place_naive_decentralised(world, design, public_obs, public_rate))
+
+    # Trained-warden (H4) features: a member-attributed sub-sample for the three factorial
+    # cells the two trained classifiers need. The info classifier separates public_only from
+    # pooled_private at account=m_pot; the account classifier separates one_pot from m_pot at
+    # info=pooled_private. A strong, attributed warden stress-tests the H3 firewall.
+    feature_rng = np.random.default_rng(np.random.SeedSequence([int(seed), 0xF0A, index]))
+    feature_cells = {
+        "public_only__m_pot": ("public_only", "m_pot"),
+        "pooled_private__m_pot": ("pooled_private", "m_pot"),
+        "pooled_private__one_pot": ("pooled_private", "one_pot"),
+    }
+    features: dict[str, list[float]] = {}
+    for key, (info, account) in feature_cells.items():
+        target = water_fill(warden_estimate(info, world, design, public_obs, public_rate), budget)
+        caps = member_capacities(target, account, members)
+        features[key] = attributed_features(world, caps, sample_rate, feature_rng)
+
     return {
         "public_rate": float(public_rate),
         "info": {name: info_cells[name] for name in WARDEN_INFO},
@@ -579,6 +693,7 @@ def run_warden_cell(
         "channel_value": info_cells["pooled_private"]["success"] - info_cells["public_only"]["success"],
         "naive_decentralised_success": naive_success,
         "focal_partition_gain_over_naive": info_cells["public_only"]["success"] - naive_success,
+        "attributed_features": features,
     }
 
 
@@ -676,6 +791,44 @@ def summarize_warden(rows: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
     return sweep
 
 
+def summarize_trained_warden(
+    train_rows: Sequence[Mapping[str, Any]], test_rows: Sequence[Mapping[str, Any]]
+) -> list[dict[str, Any]]:
+    """Train the attributed linear discriminant on `train_rows`, score ROC AUC on `test_rows`.
+
+    Per public rate, two classifiers: an information-axis classifier (public_only vs
+    pooled_private at account=m_pot) and an account-axis classifier (one_pot vs m_pot at
+    info=pooled_private). Training and test seeds are disjoint, so this is a trained,
+    member-attributed warden evaluated out of sample, stress-testing the H3 firewall.
+    """
+
+    if not train_rows or not test_rows:
+        return []
+    cells = len(train_rows[0]["warden"])
+    sweep: list[dict[str, Any]] = []
+    for index in range(cells):
+
+        def feats(rows: Sequence[Mapping[str, Any]], key: str) -> list[list[float]]:
+            return [row["warden"][index]["attributed_features"][key] for row in rows]
+
+        info_auc = trained_warden_auc(
+            feats(train_rows, "pooled_private__m_pot"), feats(train_rows, "public_only__m_pot"),
+            feats(test_rows, "pooled_private__m_pot"), feats(test_rows, "public_only__m_pot"),
+        )
+        account_auc = trained_warden_auc(
+            feats(train_rows, "pooled_private__one_pot"), feats(train_rows, "pooled_private__m_pot"),
+            feats(test_rows, "pooled_private__one_pot"), feats(test_rows, "pooled_private__m_pot"),
+        )
+        sweep.append(
+            {
+                "public_rate": float(train_rows[0]["warden"][index]["public_rate"]),
+                "trained_info_axis_auc": info_auc,
+                "trained_account_axis_auc": account_auc,
+            }
+        )
+    return sweep
+
+
 def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) -> dict[str, Any]:
     analysis = manifest["analysis"]
     by_split: list[dict[str, Any]] = []
@@ -742,6 +895,34 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
         and low_cell["mean_channel_value"] >= high_cell["mean_channel_value"]
     )
     forecast_collapse = holdout["mean_stationary_success"] - holdout["mean_shift_success"]
+
+    # H4: a trained, member-attributed warden, fit on the discovery+confirmatory seeds and
+    # scored out of sample on the holdout seeds, stress-tests the firewall with a STRONGER
+    # observer. It turns out the account/capital signal is warden-independent (a trained
+    # attributed warden reads it at AUC ~1 at every rate, as the capital warden does), while
+    # the trace-side invisibility is warden-DEPENDENT: a strong warden reads the information
+    # axis at smaller channel values than the scalar warden and retains a weak, noisy signal
+    # even where the channel value is ~0. So the robust firewall is the capital one; the
+    # wire-side blindness is not something to lean on. H4 records that honest asymmetry.
+    train_rows = [row for row in rows if row["split"] in ("discovery", "confirmatory")]
+    test_rows = [row for row in rows if row["split"] == "holdout"]
+    trained_sweep = summarize_trained_warden(train_rows, test_rows)
+    trained_min_account = float(analysis["trained_minimum_account_auc"])
+    trained_strong_info_min = float(analysis["trained_strong_info_auc_min"])
+    # Cells where the covert channel is essentially worthless (|channel value| within the band).
+    cheap_cells = [
+        cell for cell, pooled in zip(trained_sweep, pooled_sweep)
+        if abs(pooled["mean_channel_value"]) <= channel_small_band
+    ] or [trained_sweep[-1]]
+    trained_low = trained_sweep[0]
+    trained_account_robust = all(
+        cell["trained_account_axis_auc"] >= trained_min_account for cell in trained_sweep
+    )
+    trained_info_strong_where_valuable = trained_low["trained_info_axis_auc"] >= trained_strong_info_min
+    mean_cheap_info_distance = float(
+        np.mean([abs(cell["trained_info_axis_auc"] - 0.5) for cell in cheap_cells])
+    )
+    trained_info_tracks_value = abs(trained_low["trained_info_axis_auc"] - 0.5) > mean_cheap_info_distance
     return {
         "schema": SUMMARY_SCHEMA,
         "status": "ok",
@@ -779,6 +960,39 @@ def summarize(rows: Sequence[Mapping[str, Any]], manifest: Mapping[str, Any]) ->
             "H3_warden_firewall_regime_aware": "supported"
             if capital_robust and trace_blind_when_channel_cheap and trace_tracks_channel_value
             else "not_supported",
+            # H4 stress-tests H3 with a STRONGER observer and records the honest asymmetry: the
+            # account/capital signal is warden-independent (a trained attributed warden reads it
+            # at every rate, AUC ~1), while the trace-side invisibility is warden-DEPENDENT -- a
+            # trained warden reads information access at smaller channel values than the scalar
+            # warden and keeps a weak signal even where the channel value is ~0. Supported means
+            # the account signal is warden-robust and trained info-readability is strong where the
+            # channel is valuable and erodes toward (noisy) chance as its value falls. It does NOT
+            # claim the trace goes blind under a strong warden; the capital signal is the robust one.
+            "H4_capital_signal_is_warden_independent": "supported"
+            if trained_account_robust and trained_info_strong_where_valuable and trained_info_tracks_value
+            else "not_supported",
+        },
+        "trained_warden": {
+            "trained_on": "discovery + confirmatory seeds",
+            "tested_on": "holdout seeds",
+            "rate_sweep": trained_sweep,
+            "account_axis_robust_all_rates": bool(trained_account_robust),
+            "info_axis_strong_where_channel_valuable": bool(trained_info_strong_where_valuable),
+            "info_axis_erodes_toward_cheap_channel": bool(trained_info_tracks_value),
+            "mean_cheap_channel_info_auc_distance_from_chance": mean_cheap_info_distance,
+            "strong_info_auc_min": trained_strong_info_min,
+            "minimum_account_auc": trained_min_account,
+            "note": (
+                "Out-of-sample trained discriminant with member attribution. It reads account "
+                "structure from the attributed trace at every public rate (attribution exposes it, "
+                "AUC ~1) -- so the capital/account signal is warden-independent. It reads the "
+                "information axis strongly where the covert channel is valuable and only erodes "
+                "toward (noisy, overfit) chance as the channel value falls to ~0; it does NOT reach "
+                "clean chance there and reads information access at smaller channel values than the "
+                "scalar trace warden. The honest conclusion is that the trace-side invisibility is "
+                "warden-dependent and not something to rely on, while the capital signal is the "
+                "robust, warden-independent separator of control structure."
+            ),
         },
         "warden_firewall": {
             "gated_on": "seeds pooled across all splits",
@@ -839,6 +1053,17 @@ def warden_sweep_lines(summary: Mapping[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def trained_warden_lines(summary: Mapping[str, Any]) -> str:
+    lines = []
+    for cell in summary["trained_warden"]["rate_sweep"]:
+        lines.append(
+            f"    - public rate {cell['public_rate']:.2f}: trained info-axis AUC "
+            f"{cell['trained_info_axis_auc']:.3f}, trained account-axis AUC "
+            f"{cell['trained_account_axis_auc']:.3f}"
+        )
+    return "\n".join(lines)
+
+
 def knowledge_card(summary: Mapping[str, Any], receipt: Mapping[str, Any]) -> str:
     holdout = summary["holdout"]
     hypotheses = summary["hypothesis_assessment"]
@@ -858,15 +1083,18 @@ def knowledge_card(summary: Mapping[str, Any], receipt: Mapping[str, Any]) -> st
   under shift: {holdout['mean_optimal_ceiling_shift']:.4f} (high under shift: the capacity to serve the moved demand exists; the forecast cannot reach it).
 - Mean coordination gain at unbounded covert capacity under shift: {holdout['mean_shift_gain']:.4f}
   (near zero: coordination cannot rescue a stale forecast).
-- Warden sweep over public-observability rate (controller vs shared-weights, measured):
+- Warden 2x2 factorial over public-observability rate (info axis x account axis, pooled seeds):
 {warden_sweep_lines(summary)}
+- Trained attributed warden (H4; trained on discovery+confirmatory, tested on holdout):
+{trained_warden_lines(summary)}
 - Determinism passed: {receipt['determinism']['passed']}; wall {receipt['wall_seconds']:.3f}s; max RSS {receipt['max_rss_mb']:.2f} MB.
 
 ## Hypothesis Assessment
 
 - H1 capacity saturation (exact by construction of the directive-cost model): **{hypotheses['H1_capacity_saturation']}**.
 - H2 capital-bounded and forecast-limited gain: **{hypotheses['H2_capital_bounded_and_forecast_limited']}**.
-- H3 warden firewall (regime-aware, measured): **{hypotheses['H3_warden_firewall_regime_aware']}**.
+- H3 warden firewall (regime-aware, measured 2x2 factorial): **{hypotheses['H3_warden_firewall_regime_aware']}**.
+- H4 capital signal is warden-independent (trained attributed warden): **{hypotheses['H4_capital_signal_is_warden_independent']}**.
 
 ## Inferred
 
@@ -889,10 +1117,11 @@ observation. This reproduces the direction of Spiral's section-7 conjecture on f
 ## Not Supported
 
 - No claim about the Lightning Network, real covert communication, or real privacy.
-- The trace warden here is a single concentration statistic with no member attribution, and
-  the public-rate sweep has three points; a trained discriminator with member attribution on a
-  finer sweep is the registered next step. (The public and private signals are combined by
-  inverse-variance weighting.)
+- The H4 trained warden is a diagonal-LDA discriminant on a small attributed feature set fit on
+  twelve seeds, so its near-chance floor where the channel is worthless is partly overfitting,
+  not a clean null; a higher-capacity warden on a finer sweep would map how far the trace-side
+  signal can be pushed. The durable claim is the asymmetry (capital warden-independent, trace
+  warden-dependent), not a blanket invisibility.
 - No claim that any particular monitor works in the field; the warden is a toy on a narrow
   distribution with a clean fixture.
 - No claim beyond the frozen directional-capacity game and declared held-out seeds.

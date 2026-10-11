@@ -42,7 +42,7 @@ pooled (denoised) estimate; the remaining `B - Q` units are placed by members fr
 own noisy views, with redundant coverage. The gain is coalition success minus the
 zero-capacity independent-placement success on the same frozen demand.
 
-## What is measured (one construction check, one substantive claim, one measured 2×2 warden factorial)
+## What is measured (one construction check, one substantive claim, a 2×2 warden factorial, and a trained-warden stress test)
 
 Budget is scarce (`B = 32` against `~40` demand units per round), so capital binds and the
 water-fill never has surplus to spill onto cold cells.
@@ -70,28 +70,41 @@ water-fill never has surplus to spill onto cold cells.
    positions congruent to its index mod `M`, a pure function of the shared public estimate — no
    member sees another's choice, so it is focal-point coordination, not a channel). Gated on the
    warden sweep **pooled over all 24 seeds** (the per-split trace AUC is noisy at the rich public
-   rate), over public rates `{0.08, 0.25, 0.90}`:
+   rate), over the finer public-rate sweep `{0.04, 0.08, 0.15, 0.25, 0.45, 0.70, 0.90}`:
    - the **capital warden** (one-pot vs `M`-pot boarding sizes) separates account structure at
      every rate (ROC AUC = `1.00`), orthogonal to information access;
    - the **trace warden** (sampled delivered locations) separates information access *only where
-     the covert channel is valuable*: trace ROC AUC distance-from-chance `0.37 → 0.04 → 0.08`
-     as the channel value falls `+0.049 → +0.010 → ~0`.
+     the covert channel is valuable*: trace ROC AUC runs `0.96 → 0.86 → 0.64 → 0.56 → 0.41 → 0.57
+     → 0.49` as the channel value falls `+0.094 → +0.041 → … → ~0`.
 
    An honest contrast is reported alongside: a **naive-decentralised** arm (each member
-   water-fills its own `B/M` from the public signal, with no focal convention) delivers
-   `0.21 / 0.28 / 0.31` against the focal placement's `0.62 / 0.65 / 0.67`, showing the
+   water-fills its own `B/M` from the public signal, with no focal convention) delivers far
+   less than the focal placement (`~0.21` vs `~0.62` at the weak rate), showing the
    focal-partition convention is load-bearing and is not a channel smuggled back in.
 
    The measured conclusion: **the covert channel is never both valuable and trace-invisible**
    (its value and its trace footprint are the same quantity), and capital is the regime-robust
    separator. The detection budget belongs at capital.
+4. **H4 — the capital signal is warden-independent (trained-warden stress test).** A trained,
+   **member-attributed** linear discriminant (diagonal LDA) is fit on the discovery+confirmatory
+   seeds and scored **out of sample** on the holdout seeds, over the same public-rate sweep. It
+   reads the **account axis** (one-pot vs `M`-pot) at **AUC `1.00` at every rate** — a strong
+   attributed warden recovers account structure from the trace too, so the capital/account
+   signal is warden-*independent*. It reads the **information axis** strongly where the channel
+   is valuable (AUC `0.95` at the weak public rate) and only **erodes toward a weak, noisy
+   signal** (mean distance-from-chance `0.14`, not clean chance) where the channel value is `~0`,
+   and it reads information access at *smaller* channel values than the scalar warden. The honest
+   conclusion: the **trace-side invisibility is warden-dependent** — a stronger observer erodes
+   it — so it is not something to rely on; only the **capital signal is the robust,
+   warden-independent separator** of control structure.
 
 The thresholds in `manifest.json` are frozen demonstration gates set loosely around the
 model's observed behaviour (see `analysis.threshold_note`), not predictions about any
 network, and the run is fully deterministic. The verifier **recomputes** the holdout
-aggregates and the pooled warden factorial (gains, success collapse, ceiling, per-axis ROC
-AUCs) directly from `raw_episodes.jsonl`,
-gates them against the frozen thresholds, and cross-checks them against `summary.json`.
+aggregates, the pooled warden factorial, and the out-of-sample trained attributed warden
+(gains, success collapse, ceiling, per-axis ROC AUCs, and the trained discriminant's AUCs)
+directly from `raw_episodes.jsonl`, gates them against the frozen thresholds, and cross-checks
+them against `summary.json`.
 
 ## Reproduce
 
@@ -124,10 +137,16 @@ account-structure axis are crossed, so neither warden's result is confounded by 
 and the `M_pot` populations place by a stated decentralised convention whose gain over a
 naive-decentralised arm is reported. The public and pooled-private estimates are combined by
 inverse-variance (precision) weighting. The finding is regime-dependent and honest about it:
-the trace warden *can* read information access where the covert channel matters, and falls to
-chance only where the channel is worthless, so the robust claim is the asymmetry (capital
-separates account structure at every rate; the trace reads information access only when it is
-worth reading), not a blanket "traces are blind." Remaining caveats: the trace statistic is a
-single top-k concentration scalar rather than a trained discriminator, the warden has no
-member attribution, the public-rate sweep is three points, and H1's saturation is arithmetic
-on the directable-unit count `Q`, not an empirical surprise.
+the trace warden *can* read information access where the covert channel matters, and falls
+toward chance where it is worthless, so the robust claim is the asymmetry (capital separates
+account structure at every rate; the trace reads information access only when it is worth
+reading), not a blanket "traces are blind." H4 sharpens this with a stronger observer: a
+trained, member-attributed discriminant reads account structure from the trace at every rate
+(so a strong attributed warden recovers the capital signal too) and reads information access
+at smaller channel values than the scalar warden, eroding only to a weak, noisy signal — not
+clean chance — where the channel is worthless. The durable conclusion is therefore that the
+**capital signal is the warden-independent separator** and the trace-side invisibility is
+warden-dependent. Remaining caveats: the trained warden is a diagonal-LDA on a small feature
+set (overfits residual structure on 12 seeds, hence the noisy floor), the public-rate sweep is
+seven points on one demand family, and H1's saturation is arithmetic on the directable-unit
+count `Q`, not an empirical surprise.
