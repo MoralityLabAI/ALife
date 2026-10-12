@@ -155,6 +155,72 @@
       "claim_boundary": "The point estimate clears the registered +0.10 gate, but its interval includes improvements below +0.10. This is a benign toy stress-test gain, not operational evasion or general optimizer superiority.",
       "artifact": "results/confinement_transfer_v1/summary.json",
       "summary_sha256": "a96629c2eef8c8fe8c3c30482ffacbbd8dc79dcf2fca094299e0da3f8cc7b826"
+    },
+    {
+      "id": "stego_swarm_limit_v1",
+      "status": "model_only_limit_demonstration",
+      "world_family": "abstract directional-capacity delivery game with hotspot demand, frozen post-warm-up capital placement, and a scalar covert-channel capacity",
+      "motivation": "Spiral 'lnmath' paper (Where the Capital Bound Moves), section 7; preregistration items 7 and 9. Defensive and non-operational.",
+      "search_budget": {
+        "seeds": 24,
+        "capacity_sweep_values_per_seed": 6,
+        "regimes_per_seed": 2,
+        "horizon_rounds": 120,
+        "execution": "sequential CPU"
+      },
+      "axes": {
+        "covert_channel_bits_per_round": [0, 5, 10, 20, 40, 1000000000],
+        "demand_regime": ["stationary", "shift"],
+        "control_structure": ["pooled_controller", "shared_weights"],
+        "split": ["discovery", "confirmatory", "holdout"]
+      },
+      "claims": {
+        "H1_capacity_saturation": "supported_by_construction_of_the_directive_cost_model",
+        "H2_capital_bounded_and_forecast_limited": "supported",
+        "H3_warden_firewall_regime_aware": "supported_measured_2x2_factorial_pooled_seeds",
+        "H4_capital_signal_is_warden_independent": "supported_trained_attributed_warden_out_of_sample"
+      },
+      "holdout_result": {
+        "mean_stationary_saturated_gain": 0.11875,
+        "mean_stationary_success": 0.6626302083333333,
+        "mean_shift_success": 0.07858072916666667,
+        "forecast_collapse_under_shift": 0.5840494791666666,
+        "mean_shift_gain": 0.011805555555555555,
+        "max_abs_post_saturation_excess": 0.0,
+        "any_placement_exceeds_optimal_ceiling": false,
+        "mean_optimal_ceiling_stationary": 0.6694878472222222,
+        "mean_optimal_ceiling_shift": 0.6705729166666666,
+        "warden_factorial_pooled_sweep": [
+          {"public_rate": 0.04, "mean_channel_value": 0.0943, "trace_warden_auc_info_axis": 0.958, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.08, "mean_channel_value": 0.0413, "trace_warden_auc_info_axis": 0.855, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.15, "mean_channel_value": 0.0190, "trace_warden_auc_info_axis": 0.643, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.25, "mean_channel_value": 0.0100, "trace_warden_auc_info_axis": 0.563, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.45, "mean_channel_value": 0.0047, "trace_warden_auc_info_axis": 0.413, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.70, "mean_channel_value": 0.0002, "trace_warden_auc_info_axis": 0.573, "capital_warden_auc_account_axis": 1.0},
+          {"public_rate": 0.90, "mean_channel_value": -0.0011, "trace_warden_auc_info_axis": 0.485, "capital_warden_auc_account_axis": 1.0}
+        ],
+        "trained_attributed_warden_sweep": [
+          {"public_rate": 0.04, "trained_info_axis_auc": 0.951, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.08, "trained_info_axis_auc": 0.701, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.15, "trained_info_axis_auc": 0.736, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.25, "trained_info_axis_auc": 0.729, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.45, "trained_info_axis_auc": 0.472, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.70, "trained_info_axis_auc": 0.535, "trained_account_axis_auc": 1.0},
+          {"public_rate": 0.90, "trained_info_axis_auc": 0.674, "trained_account_axis_auc": 1.0}
+        ]
+      },
+      "ontology_gain": false,
+      "coverage_expansion_against_consumers": false,
+      "claim_boundary": "A model-only study in an abstract delivery game with a scarce budget (B=32 against 40 demand units per round). Coordination gain saturates in covert-channel capacity (exact by construction of the directive-cost model); delivery is bounded by an exact optimal capital placement that no allocation exceeds; a demand shift collapses delivered success toward a high ceiling coordination cannot reach. The warden result is a measured 2x2 factorial (information access crossed with account structure) over a public-observability sweep, gated on seeds pooled across splits: the M-pot populations place by a stated decentralised focal-partition convention (naive-decentralised arm reported as the honest contrast); the capital warden separates account structure (one-pot vs M-pot boarding) at every rate (AUC 1.0, orthogonal to information access), while the trace warden separates information access (public-only vs pooled-private placement) only where the channel is valuable (trace-AUC distance-from-chance 0.46 at channel value +0.094, falling toward chance as channel value -> 0) — the channel is never both valuable and trace-invisible. H4 stress-tests this with a trained, member-attributed linear discriminant fit on discovery+confirmatory seeds and scored on holdout: it reads account structure at every rate (AUC ~1, so the capital/account signal is warden-INDEPENDENT) and reads information access strongly where the channel is valuable (AUC 0.95) but only erodes toward a weak, noisy signal (mean distance-from-chance 0.14) where the channel value is ~0, reading it at smaller channel values than the scalar warden. The honest conclusion is that the trace-side invisibility is warden-DEPENDENT and not to be relied on, while the capital signal is the robust separator. It is not a measurement of the Lightning Network, a covert-communication system, or an estimate of any real monitor's field performance; it reproduces, on finite cases, the direction of the Spiral section-7 conjecture.",
+      "artifacts": {
+        "manifest": "results/stego_swarm_limit_v1/frozen_manifest.json",
+        "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
+        "summary": "results/stego_swarm_limit_v1/summary.json",
+        "knowledge_card": "results/stego_swarm_limit_v1/knowledge_card.md",
+        "hashes": "results/stego_swarm_limit_v1/hashes.json"
+      },
+      "summary_sha256": "3116dfd554592bf88605c77467d6c54db7ced82d73e5ae127492d756ae98431b",
+      "next_falsification": "Replace the linear min-unmet objective and single-service model with reflected-walk balances and inter-member demand, and add a strategic (non-independent) member-departure process; and, since H4 shows a trained attributed warden erodes the trace-side firewall, test a nonlinear/higher-capacity warden to map how far the trace-side signal can be pushed before the capital signal remains the only warden-independent separator."
     }
   ]
 }

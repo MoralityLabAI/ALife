@@ -1,0 +1,174 @@
+{
+  "schema": "alife.experiment.v1",
+  "question": "In an abstract directional-capacity delivery game, is a common-control coalition's coordination gain bounded by its placed capital under stationary demand and saturating in the capacity of its covert channel, so that covert bandwidth beyond a small threshold buys no further delivery and leaves no separable payment trace?",
+  "benefit": "defensive",
+  "claim_scope": "model_only",
+  "experimental_unit": "one seed producing a full covert-capacity sweep under stationary and shifted demand for a pooled coalition, plus a 2x2 warden factorial (information access by account structure) over a public-observability sweep, with a naive-decentralised contrast at each public rate",
+  "motivation": {
+    "source": "Spiral 'lnmath' paper, Where the Capital Bound Moves, section 7 (agent swarms)",
+    "reference_propositions": [
+      "coordination gain, conditional: gain bounded by authenticated capital under stationary demand, zero after a shift, whatever the covert channel capacity",
+      "preregistration item 7: same shared-weights population and same-controller population are not separated by payment-trace statistics",
+      "preregistration item 9: a capacity-versus-detectability reading of the covert channel against the capital bound"
+    ],
+    "non_operational": "No Lightning, wallet, key, invoice, RPC, onion, transaction, transport, broadcast, payload, or encoding exists in the harness. The covert channel is a scalar bit budget with no content."
+  },
+  "hypotheses": [
+    {
+      "id": "H1_capacity_saturation",
+      "kind": "construction_check",
+      "prediction": "On holdout seeds the coalition's coordination gain is nondecreasing in covert-channel capacity and identical at unbounded capacity and at the saturation threshold (|excess| <= capacity_saturation_band). This is exact by construction of the directive-cost model (the number of directable units saturates at the budget); the check confirms the implementation realises that algebra, it is not an empirical discovery.",
+      "falsifier": "Any holdout regime has a gain that decreases in capacity, or any gain above the saturation threshold differs from the saturated gain by more than the band."
+    },
+    {
+      "id": "H2_capital_bounded_and_forecast_limited",
+      "kind": "substantive",
+      "prediction": "On holdout seeds the saturated stationary coordination gain is at least minimum_stationary_gain; no placement of the budget exceeds the exact optimal ceiling; a post-warm-up demand shift collapses mean delivered success by at least minimum_forecast_collapse while the optimal ceiling under the shift stays at least minimum_shift_ceiling; and the coordination gain under the shift stays within shift_gain_band of zero (coordination does not rescue a stale forecast).",
+      "falsifier": "The stationary saturated gain is below minimum_stationary_gain; or any placement exceeds the optimal ceiling; or the shift success collapse is below minimum_forecast_collapse; or the shift ceiling is below minimum_shift_ceiling; or the shift coordination gain exceeds shift_gain_band."
+    },
+    {
+      "id": "H3_warden_firewall_regime_aware",
+      "kind": "measured",
+      "prediction": "Both populations react to a common public demand signal; the controller additionally pools its members' private sub-samples over the covert channel, the shared-weights population does not, so they place differently except at a near-perfect public signal (nothing is identical by construction). Sweeping the public-observation rate, on holdout seeds: (a) the capital warden separates the one-pot controller from the M-pot shared-weights population at every rate (capital ROC AUC >= minimum_capital_auc); (b) at the richest public rate, where pooling private views buys little, the mean channel value is within channel_value_small_band of zero and the trace ROC AUC is within trace_auc_null_halfwidth of 0.5; and (c) the trace ROC AUC's distance from 0.5 and the channel value are both larger at the weakest public rate than at the richest. The covert channel is never both valuable and trace-invisible.",
+      "falsifier": "The capital AUC falls below minimum_capital_auc at any public rate; or at the richest rate the channel value exceeds the small band or the trace AUC leaves the chance null; or the trace-AUC distance from 0.5 does not track the channel value across the sweep."
+    },
+    {
+      "id": "H4_capital_signal_is_warden_independent",
+      "kind": "measured_stress_test",
+      "prediction": "A trained, member-attributed linear discriminant is fit on the discovery+confirmatory seeds and scored out of sample on the holdout seeds, over the public-rate sweep. (a) It reads the account-structure axis (one-pot vs M-pot) at every rate with AUC >= trained_minimum_account_auc, so the capital/account signal is warden-independent. (b) It reads the information-access axis strongly where the covert channel is valuable (AUC >= trained_strong_info_auc_min at the weakest public rate). (c) Its information-axis distance from chance at the weakest rate exceeds the mean distance over the cells where the channel value is within channel_value_small_band of zero, so a stronger warden's information-axis signal erodes toward chance as the channel loses value.",
+      "falsifier": "The trained account AUC falls below trained_minimum_account_auc at any rate; or the trained information AUC at the weakest public rate is below trained_strong_info_auc_min; or the information-axis signal does not erode as channel value falls. Note on honesty: this hypothesis does NOT assert the trace goes blind under a strong warden -- the trained attributed warden retains a weak, noisy information-axis signal even where the channel value is ~0 and reads account structure from the trace throughout, so only the capital signal is claimed to be the warden-independent separator."
+    }
+  ],
+  "model": {
+    "entrypoint": "../../src/stego_swarm_limit.py",
+    "code_hash": "recorded-at-run-time-in-receipt",
+    "config_paths": [],
+    "update_order": "Per seed and regime a frozen demand realisation is drawn (warm-up then evaluation); members observe independent sub-samples of warm-up demand; capital is placed once after warm-up and never inspects evaluation demand; delivery is min(demand, capacity) per location per evaluation round.",
+    "rng": "numpy SeedSequence([seed, regime_index, salt]) spawns the world stream and one stream per member; the warden uses SeedSequence([seed, salt]). Placement is a deterministic greedy water-fill given observations."
+  },
+  "interventions": [
+    {
+      "name": "covert_channel_capacity",
+      "changes": {"capacity_bits_per_round": [0, 5, 10, 20, 40, 1000000000]}
+    },
+    {
+      "name": "demand_regime",
+      "changes": {"regime": ["stationary", "shift"]}
+    },
+    {
+      "name": "control_structure",
+      "changes": {"population": ["pooled_controller", "shared_weights"]}
+    },
+    {
+      "name": "public_observability_rate",
+      "changes": {"public_rate": [0.08, 0.25, 0.9]}
+    }
+  ],
+  "controls": [
+    {"name": "independent_placement_zero_capacity", "type": "null"},
+    {"name": "shared_weights_same_policy", "type": "resource_matched"},
+    {"name": "optimal_future_demand_ceiling", "type": "baseline"},
+    {"name": "deterministic_replay", "type": "no_op"}
+  ],
+  "seed_plan": {
+    "discovery": [7101, 7102, 7103, 7104],
+    "confirmatory": [7201, 7202, 7203, 7204, 7205, 7206, 7207, 7208],
+    "holdout": [7901, 7902, 7903, 7904, 7905, 7906, 7907, 7908, 7909, 7910, 7911, 7912],
+    "pairing": "Every covert-capacity value, both regimes, and both population types share one seed's frozen demand realisation and member observations; split seed sets are disjoint."
+  },
+  "metrics": {
+    "selection": [],
+    "evidence": [
+      "gain_at_saturation",
+      "gain_at_infinity",
+      "post_saturation_excess",
+      "mean_shift_gain",
+      "trace_warden_auc",
+      "capital_warden_auc"
+    ],
+    "hazard": [
+      "budget_conserved_all",
+      "gain_monotone_in_capacity",
+      "runtime_seconds",
+      "max_rss_mb"
+    ],
+    "diagnostic": [
+      "independent_success",
+      "optimal_ceiling_success",
+      "capacity_curve",
+      "warden_sweep.mean_channel_value",
+      "warden_sweep.mean_controller_success",
+      "warden_sweep.mean_weights_success"
+    ],
+    "denominators": {
+      "success": "all evaluation demand units for one placement under one regime",
+      "gain": "success minus the zero-capacity independent-placement success on the same seed and regime",
+      "auc": "all controller-by-weights seed pairs within a split"
+    },
+    "exposure": {
+      "eligibility": "Every seed draws a demand realisation and member observations under both regimes.",
+      "activation": "Every covert-capacity value and both population types are placed and scored on that realisation.",
+      "state_change": "Per-location capacity, delivered counts, and sampled warden statistics are retained.",
+      "minimum_per_condition": 1,
+      "balance_tolerance": 0.0
+    }
+  },
+  "analysis": {
+    "primary_outcomes": [
+      "post_saturation_excess",
+      "mean_stationary_saturated_gain",
+      "mean_shift_gain",
+      "trace_warden_auc",
+      "capital_warden_auc"
+    ],
+    "uncertainty": "Independent per-seed gains with a deterministic bootstrap 95% interval; capacity values and regimes are repeated conditions within seed, not independent replicates.",
+    "multiple_comparisons": "All three frozen hypotheses are reported; no per-cell threshold fishing.",
+    "ood_conditions": ["fresh holdout seeds", "a post-warm-up hotspot shift unseen during placement"],
+    "stopping_rule": "Stop after all 24 seeds, above 600 wall seconds, above 1024 MB process RSS, above 50 MB retained artifacts, or on failed determinism.",
+    "capacity_saturation_band": 1e-09,
+    "shift_gain_band": 0.05,
+    "minimum_stationary_gain": 0.05,
+    "minimum_forecast_collapse": 0.30,
+    "minimum_shift_ceiling": 0.50,
+    "trace_auc_null_halfwidth": 0.20,
+    "channel_value_small_band": 0.02,
+    "minimum_capital_auc": 0.95,
+    "trained_strong_info_auc_min": 0.80,
+    "trained_minimum_account_auc": 0.90,
+    "bootstrap_samples": 2000,
+    "bootstrap_seed": 81017,
+    "threshold_note": "These are frozen demonstration gates set loosely around the model's observed behaviour (stationary gain approx 0.12, forecast collapse approx 0.58, shift ceiling approx 0.67, shift gain approx 0.01, capital AUC 1.0). They demonstrate direction on this frozen configuration; they are not empirical predictions about any network."
+  },
+  "budget": {
+    "max_wall_seconds": 600,
+    "max_steps_per_episode": 120,
+    "max_episodes": 30,
+    "max_cells_per_world": 24,
+    "max_ram_mb": 1024,
+    "max_disk_mb": 50,
+    "execution": "Sequential local CPU execution; each seed runs a six-value capacity sweep over two regimes plus a paired warden control."
+  },
+  "design": {
+    "locations": 24,
+    "initial_hotspots": [0, 1, 2, 3, 4, 5, 6, 7],
+    "shifted_hotspots": [8, 9, 10, 11, 12, 13, 14, 15],
+    "hotspot_mass": 0.85,
+    "demand_units_per_round": 40,
+    "members": 12,
+    "member_observe_rate": 0.15,
+    "coalition_budget": 32,
+    "warmup_rounds": 24,
+    "horizon_rounds": 120,
+    "capacity_bits_sweep": [0, 5, 10, 20, 40, 1000000000],
+    "public_rate_sweep": [0.04, 0.08, 0.15, 0.25, 0.45, 0.7, 0.9],
+    "warden_sample_rate": 0.12,
+    "warden_top_k": 4
+  },
+  "artifacts": {
+    "output_directory": "results/stego_swarm_limit_v1",
+    "raw_rows": "results/stego_swarm_limit_v1/raw_episodes.jsonl",
+    "summary": "results/stego_swarm_limit_v1/summary.json",
+    "seed_manifest": "results/stego_swarm_limit_v1/seed_manifest.json",
+    "replay_command": "python src/stego_swarm_limit.py --manifest experiments/stego_swarm_limit_v1/manifest.json --output results/stego_swarm_limit_v1 --splits all"
+  }
+}
