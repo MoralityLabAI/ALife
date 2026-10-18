@@ -43,6 +43,23 @@ The inventory in `asymmetric_defense_platform_support/inventory.md` lists every 
 
 Two housekeeping notes the inventory surfaced. The ALife stego manifest cites the superseded Markdown draft of the lnmath paper and numbers its preregistration items 7 and 9; in the current TeX paper (revised 2026-10-16) those are items 8 and 10, and the proposition the paper calls S5 is Proposition 8. And nothing in either repository mentions Taiwan, warfare, UAVs, or cyber; the word "drone" in ALife is a cell type.
 
+## 3.5 Three formulations of the same question
+
+Two handoff documents of 18 October 2026 pose the question in forms the repository results do not. They are complementary rather than competing, and the platform should carry all three.
+
+| | Capital bound (ALife, Spiral) | Sovereignty (6GW handoff, §4) | Lineage coverage (baseline note) |
+|---|---|---|---|
+| Unit of compromise | A coalition under one controller | A trust domain in a dependency graph | An exploit class: a lineage, compromising every node that runs it |
+| Adversary indexed by | Covert-channel capacity C; metered capital B | A disturbance class D; patron withdrawal | m, the number of exploit classes held; adversary structure 𝒵_m, the monotone closure of unions of ≤ m lineage preimages (Hirt–Maurer) |
+| What is bounded | The coalition's gain over independent placement | Authorized safety (every effect passes a monitor) and service continuity q(x_t) ≥ γ, priced jointly as B* | The retained-control function A(m), the fraction of authorized control kept when the adversary holds m classes |
+| Coverage condition | None stated | None stated | Q³ on 𝒵_m with respect to the quorum; with a certificate layer realising authenticated broadcast, Q² |
+| Certificate layer | Claim-once registry (Props. 5, 6): weight bounded by attested lineages | Reference monitor with unforgeable credentials (P1) | Proof-carrying commands checkable in time independent of issuer compute |
+| Degraded mode | Not modelled | FLP named; safe default | A pre-certified local policy inside the winning region, which must do something |
+| Correlated compromise | The "same weights, no message" conjecture: shared lineage gives correlated behaviour without a channel | Named in prose (shared update key, common flaw) | The primary object: effective d, not nominal d, is what Q³ is evaluated against |
+| Headline curve | G(C), saturating at C* | γ against B* | A(m) |
+
+The baseline note asks whether condition 1, coverage over a general adversary structure, is missing from the repository-salted formulation or present under another name. It is missing: nothing in either repository states a Q-condition. What the repositories contribute is the unit of 𝒵_m, since the registry's lineage objects are exactly the preimages ℓ⁻¹(λ); the degenerate quorum's fragility, since the n-of-n hyperedge survives member failure with probability (1−p)^{k+1}; and the audit instrument for effective d, since the firewall result reads whether a trace can separate shared lineage from shared control. The sovereignty handoff's P1–P5 are triaged in `asymmetric_defense_platform_support/sovereignty_theorem_triage.md`, with a Lean outline beside it: P1, P3, P4 and P5 are a lemma, two definitions and a scoping statement with named prior art; P2, in the lineage-indexed form, is the one candidate for a new composition, and its deciding hypothesis is whether effective diversity can be measured from behaviour or must be attested at enrolment.
+
 ## 4. The mapping, and where it strains
 
 | Source term | Defender reading | Strain |
@@ -175,6 +192,20 @@ Each avenue is stated as a question, what the literature holds, what we hold, th
 
 *Why it favours the defender.* The audit is of the artefact, once; the attacker must substitute per device and must do so without leaving a split view.
 
+### 5.10 Lineage coverage and the effective-diversity audit
+
+*Question.* Given a diversity budget d, a latency bound τ and a safety specification φ, what lineage assignment, quorum rule and shield keep A(m) ≥ γ against an adversary holding m exploit classes, and how is effective d audited when lineages share hidden dependencies?
+
+*Literature.* Hirt and Maurer (1997; J. Cryptology 2000): secure computation under a general adversary structure exists iff Q² (passive) or Q³ (active, perfect), and iff Q² for active adversaries given a broadcast channel; threshold BFT is the singleton-lineage case. Shield synthesis on finite arenas (Bloem, Könighofer et al. 2015; Dimitrova et al. for multi-agent minimum-cost shields). Proof-carrying code (Necula 1997). FLP. The baseline note's three open rows: no treatment imposing τ jointly on coverage, safety, certification and degraded mode; no result on the effective-diversity audit; no empirical A(m) against an attacker given structural advantages rather than nominal intelligence.
+
+*Ours.* Props. 5 and 6 (lineage as a registry object), the hyperedge fragility result, the "same weights, no message" conjecture, and the firewall instrument.
+
+*Target.* The lineage-indexed retained-control theorem with the Q³ → Q² corollary under certified broadcast, stated for effective lineages; and a decision between two hypotheses, "effective d measured from behaviour" and "effective d attested at enrolment," by experiment.
+
+*First experiment.* The capital-bound paper's preregistration item 8 (one population sharing a policy seed with independent budgets, one sharing a controller) read as an effective-diversity audit; then the handoff's O2 toy (5–20 civilian services, independent versus correlated failures, binary local or external supply) to check that the cover condition predicts A(m) on an instance where safety and continuity are computed separately.
+
+*Why it favours the defender.* Each additional lineage costs the attacker a fresh exploit chain and costs the defender a constant-time verification per message either way; intelligence enters only as the rate of acquiring classes, and the architecture decides what m classes buy.
+
 ### 5.9 Evaluation discipline as the platform's governance
 
 This is not a theorem target but it is the reason anyone should trust the others. Every study runs preregistered with a stated target, smallest effect of interest, precision, design, budget, stopping rule and a forecast of success; abstention is scored and rewarded only when an oracle certificate shows the target was unreachable; seeds are frozen in disjoint discovery, confirmation and holdout sets; every gated number is recomputed from raw episodes by a verifier script; disputes in review end in a witness, a proof with a stated domain, a narrowed claim, or an open obligation, never in a vote; selection, evidence and hazard metrics are disjoint; and behaviour is never reported as intent. The sandbagging protocol (frozen analysis rules for a controller that behaves differently when it believes it is audited) applies directly to autonomous platforms under evaluation. The dual-use edge is explicit: the confinement-transfer generator is an evader-side search and is reported as a red-team generator for monitor blind spots, within the "evidence for monitors" commitment, and the same wording discipline governs everything the platform publishes.
@@ -199,6 +230,7 @@ This is not a theorem target but it is the reason anyone should trust the others
 | 6–9 | Thm. C proved; sheaf-residual spoofing detector against cumulative-sign, with the registered null. | 5.6 |
 | 8–11 | Transparency-log audit model with TIDRONE as the case. | 5.8 |
 | 10–12 | Spectral certificate attempt; adversarial-perturbation recovery test. | 5.7 |
+| 3–6 | Lineage-indexed retained-control theorem stated with the Q³ → Q² corollary; the effective-diversity audit run as item 8; the O2 viability toy. | 5.10 |
 | throughout | Verifier scripts, sealed holdouts, adversarial review in the Swarm Arena format, a public knowledge card per result. | 5.9 |
 
 *What is asked.* A speaker slot or a poster, waived registration, and introductions to the attestation lab and the cyber authorities named above. *What is offered.* The first deliverable, the general bound with its preregistration, published before the talk, so that the audience is judging a stated theorem and not a promise.
@@ -221,7 +253,7 @@ The practical sequence: send the abstract and the first deliverable to the MODA 
 
 ## Appendix A. Abstract for submission (248 words)
 
-Cheap autonomous platforms move the contested layer of a conflict from the vehicle to its control plane, where the operative question is who controls a swarm and whether anyone can tell. We propose a mathematics for the defender's side of that question and report two results from sealed, non-operational model studies that locate the defender's structural advantage. First, a population of agents under one controller, holding a metered resource and coordinating over a covert channel, gains no more over independent placement than its authenticated resource placed under a stationary environment, whatever the channel's capacity: the coordination value saturates at the bits needed to name a placement, the gain is bounded by an exact optimum of the resource, and it collapses when the environment moves after the placement, which the defender controls. Second, the signature of common control sits in the resource commitment, which any observer reads, rather than in the traffic, which a strong observer reads only where coordinating was worth doing, because the channel's value and its footprint are the same quantity. We map these to swarm defence, state where the mapping strains, and set out eight research avenues joining them to resilient consensus, secure estimation, covert-channel capacity, Stackelberg commitment, collective attestation, and transparency logs, each with a preregistered first experiment. We argue that an audited supply chain and a national drone-cybersecurity test regime are exactly the settled set and the verifier these bounds are stated over, and that the monitoring budget belongs at enrolment and commitment, not on the wire.
+Cheap autonomous platforms move the contested layer of a conflict from the vehicle to its control plane, where the operative question is who controls a swarm and whether anyone can tell. We propose a mathematics for the defender's side of that question and report two results from sealed, non-operational model studies that locate the defender's structural advantage. First, a population of agents under one controller, holding a metered resource and coordinating over a covert channel, gains no more over independent placement than its authenticated resource placed under a stationary environment, whatever the channel's capacity: the coordination value saturates at the bits needed to name a placement, the gain is bounded by an exact optimum of the resource, and it collapses when the environment moves after the placement, which the defender controls. Second, the signature of common control sits in the resource commitment, which any observer reads, rather than in the traffic, which a strong observer reads only where coordinating was worth doing, because the channel's value and its footprint are the same quantity. We map these to swarm defence, state where the mapping strains, and set out nine research avenues joining them to resilient consensus, secure estimation, covert-channel capacity, Stackelberg commitment, collective attestation, and transparency logs, each with a preregistered first experiment. We argue that an audited supply chain and a national drone-cybersecurity test regime are exactly the settled set and the verifier these bounds are stated over, and that the monitoring budget belongs at enrolment and commitment, not on the wire.
 
 ## Appendix B. Talk outline, 25 minutes
 
@@ -248,4 +280,6 @@ I am an independent researcher (TradeLayer; the Spiral and ALife programs, githu
 - `asymmetric_defense_platform_support/lit_asymmetric_economics.md`: security economics, verifiable computation and attestation, Sybil and stake bounds, payment-channel theory, supply-chain integrity, focal-point coordination.
 - `asymmetric_defense_platform_support/doctrine_conferences.md`: the three meanings of 6GW, Taiwan's drone and cyber institutions, the published swarm-threat literature, and the conference landscape with dates.
 
-Two handoff documents on the author's machine, the 6GW mathematical research handoff of 2026-10-18 and the drone-swarm cybersecurity baseline problem, were not available in the session that produced this document and are not reflected in it; they should be reconciled with §3 and §5 before the pitch goes out.
+- `asymmetric_defense_platform_support/sovereignty_theorem_triage.md` and `Sovereignty.lean`: the P1–P5 adjudication requested by the 6GW sovereignty handoff of 2026-10-18, with an uncompiled Lean 4 proof skeleton whose `#print axioms` gates are recorded as comments.
+
+The two handoff documents of 2026-10-18, the sovereignty collation and the drone-swarm baseline note, are reconciled in §3.5 and §5.10. The handoff's private-repository pointers were not read; its Opus work queue O1–O5 is cut to O2 plus the effective-diversity audit in the triage.
