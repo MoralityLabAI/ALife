@@ -1,0 +1,125 @@
+{
+  "calibration_gate": {
+    "completed_cells": 0,
+    "evaluated": false,
+    "fixed_code_ceiling_persistent_full4": null,
+    "no_channel_persistent_full4": null,
+    "passed": null,
+    "reasons": [
+      "calibration matrix was not complete"
+    ],
+    "required_cells": 32,
+    "verifier_passes": null
+  },
+  "claim_authorized": false,
+  "claim_scope": "model_only",
+  "exploratory_evidence_summary": {
+    "F00": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F01": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F10": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_matched_noise": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_no_channel": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_selection_neutral": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "fixed_code_ceiling": {
+      "episodes": 0,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    }
+  },
+  "future_phase_authorized": false,
+  "metric_firewall": {
+    "evidence_used_for_fitness": false,
+    "evidence_used_for_nomination": false,
+    "future_claim_authorized": false,
+    "passed": true,
+    "selection_metric": "training_repertoire_score"
+  },
+  "nomination": {
+    "candidates": [],
+    "details": {},
+    "eligible": false,
+    "evaluated": false,
+    "evidence_used": false,
+    "reasons": [
+      "partial campaigns are ineligible for nomination"
+    ],
+    "selected_arm": null,
+    "selection_metric": "training_repertoire_score"
+  },
+  "phase": "discovery",
+  "schema": "alife.stegohive.discovery_summary.v2",
+  "selection_summary": {
+    "F00": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F01": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F10": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11_matched_noise": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11_no_channel": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11_selection_neutral": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "fixed_code_ceiling": {
+      "episodes": 0,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    }
+  },
+  "status": "partial_negative",
+  "stop_reason": "post-smoke resource projection failed",
+  "worlds_completed": 3
+}

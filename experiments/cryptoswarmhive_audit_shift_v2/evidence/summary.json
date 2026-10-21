@@ -1,0 +1,6941 @@
+{
+  "audit_mask_frozen_before_decoder_training_and_holdout": "010101",
+  "decoder_comparisons": 294,
+  "decoding": [
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 131840,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 33686016,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 33685760,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 33686016,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 8623620096,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 66304,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 16908800,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 16908544,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 16908800,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 4328652800,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 66304,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 16777984,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 15,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 16777984,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 15,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 4294968064,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 15,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 15,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 66304,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843264,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843008,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843008,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "intact",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 4311810048,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 66304,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843264,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843008,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 16843008,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 1.0,
+      "arm": "calibrated",
+      "exact_joint_information_bits": 1,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 4311810048,
+        "kind": "affine_parity",
+        "majority": 0,
+        "rank": 11,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.9043297736573712,
+        1
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "calibrated_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 11,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "oracle",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 6,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "no_channel",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 22,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 14,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 15,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 18,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 19,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "matched_noise",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 23,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 9
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 17
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 17
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": null,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 25
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 2,
+        "width": 25
+      },
+      "side_information": "public",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    },
+    {
+      "accuracy": 0.48046875,
+      "arm": "destructive",
+      "exact_joint_information_bits": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "model": {
+        "coefficients_bitset": 0,
+        "kind": "training_majority",
+        "majority": 0,
+        "rank": 10,
+        "width": 33
+      },
+      "side_information": "initialized_keys",
+      "simultaneous_95pct_interval": [
+        0.3847985236573712,
+        0.5761389763426288
+      ],
+      "view": [
+        "explicit",
+        "timing",
+        "artifact"
+      ]
+    }
+  ],
+  "evidence_class": "cryptoswarmhive_audit_shift_v2_not_historical",
+  "fresh_world_blocks": 768,
+  "paired_layout_arm_records": 16128,
+  "utility": [
+    {
+      "arm": "intact",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "calibrated",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "010101",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "calibrated_noise",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "010101",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "oracle",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "010101",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "no_channel",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "010101",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "matched_noise",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "destructive",
+      "expected_net_task_tokens_exact": "13/28",
+      "harm_upper_95pct_simultaneous": 0.8757631975957959,
+      "harmed_worlds": 426,
+      "holdout_worlds": 512,
+      "layout": "stable",
+      "mask": "111111",
+      "mean_job_success_loss": 0.39501953125,
+      "mean_net_task_tokens": 0.47300502232142855,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "intact",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "calibrated",
+      "expected_net_task_tokens_exact": "22/7",
+      "harm_upper_95pct_simultaneous": 0.47322438983641235,
+      "harmed_worlds": 210,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "010101",
+      "mean_job_success_loss": 0.1005859375,
+      "mean_net_task_tokens": 3.1018763950892856,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "calibrated_noise",
+      "expected_net_task_tokens_exact": "22/7",
+      "harm_upper_95pct_simultaneous": 0.47322438983641235,
+      "harmed_worlds": 210,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "010101",
+      "mean_job_success_loss": 0.1005859375,
+      "mean_net_task_tokens": 3.1018763950892856,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "oracle",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "010110",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "no_channel",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "010110",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "matched_noise",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "destructive",
+      "expected_net_task_tokens_exact": "13/28",
+      "harm_upper_95pct_simultaneous": 0.8757631975957959,
+      "harmed_worlds": 426,
+      "holdout_worlds": 512,
+      "layout": "one_channel_swapped",
+      "mask": "111111",
+      "mean_job_success_loss": 0.39501953125,
+      "mean_net_task_tokens": 0.47300502232142855,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "intact",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "calibrated",
+      "expected_net_task_tokens_exact": "13/28",
+      "harm_upper_95pct_simultaneous": 0.8757631975957959,
+      "harmed_worlds": 426,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "010101",
+      "mean_job_success_loss": 0.39501953125,
+      "mean_net_task_tokens": 0.47300502232142855,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "calibrated_noise",
+      "expected_net_task_tokens_exact": "13/28",
+      "harm_upper_95pct_simultaneous": 0.8757631975957959,
+      "harmed_worlds": 426,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "010101",
+      "mean_job_success_loss": 0.39501953125,
+      "mean_net_task_tokens": 0.47300502232142855,
+      "pathwise_utility_match": false
+    },
+    {
+      "arm": "oracle",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "101010",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "no_channel",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "101010",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "matched_noise",
+      "expected_net_task_tokens_exact": "4",
+      "harm_upper_95pct_simultaneous": 0.011728056334788278,
+      "harmed_worlds": 0,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "000000",
+      "mean_job_success_loss": 0.0,
+      "mean_net_task_tokens": 3.999965122767857,
+      "pathwise_utility_match": true
+    },
+    {
+      "arm": "destructive",
+      "expected_net_task_tokens_exact": "13/28",
+      "harm_upper_95pct_simultaneous": 0.8757631975957959,
+      "harmed_worlds": 426,
+      "holdout_worlds": 512,
+      "layout": "all_channels_swapped",
+      "mask": "111111",
+      "mean_job_success_loss": 0.39501953125,
+      "mean_net_task_tokens": 0.47300502232142855,
+      "pathwise_utility_match": false
+    }
+  ]
+}

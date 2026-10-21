@@ -1,0 +1,53 @@
+{
+  "accepted": true,
+  "artifact_hashes": {
+    "knowledge_card_sha256": "9d0cec3dcdefaa3969d34a2580c83d89801fc8d2c760319cfe5324846649c7a5",
+    "raw_episodes_sha256": "d4e7167fc7ae8148c007ec7387ff2d1d008304da1a73aab25bb8fac66e28112c",
+    "seed_manifest_sha256": "00398c44530726e2f4fbd66a00c8ff22c67b5261fc3c79c6433b820fd20216a5",
+    "summary_sha256": "c7e041af34203f47b55bf766e83ed9d57c010696308e41182f48c8bdd7c80465"
+  },
+  "commands_executed_from_artifacts": false,
+  "directory": "D:\\ALife\\project_results\\stegohive_gym_v0_smoke",
+  "episode_count": 6,
+  "episodes": [
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:c0d5aa118b1f",
+      "failed_required_verifiers": [],
+      "index": 0
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:a338b1647128",
+      "failed_required_verifiers": [],
+      "index": 1
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:3eafeab8af71",
+      "failed_required_verifiers": [],
+      "index": 2
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:1fc60074ff5c",
+      "failed_required_verifiers": [],
+      "index": 3
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:a7fbb6763575",
+      "failed_required_verifiers": [],
+      "index": 4
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:5980d7172c73",
+      "failed_required_verifiers": [],
+      "index": 5
+    }
+  ],
+  "failures": [],
+  "portable": true,
+  "schema": "alife.stegohive.artifact_verification.v0"
+}

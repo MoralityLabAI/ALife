@@ -1,0 +1,3086 @@
+{
+  "evidence_class": "cryptoswarmhive_simulated_eval_v1_not_historical",
+  "records": [
+    {
+      "arm": "000",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "explicit_bit",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "pair_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "triple_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 1,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "history_xor",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "000",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "001",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "010",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "011",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "100",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "101",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "110",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "111",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "no_channel",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "matched_noise",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "public",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "arm": "destructive",
+      "codec": "independent_noise",
+      "conditional_event_increments": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "event_order": "round order, then explicit/timing/artifact; condition on initial side information",
+      "initial_information_bits": 0,
+      "joint_information_bits": 0,
+      "method": "exact rank identity for declared independent uniform binary latent variables",
+      "side_information": "initialized_keys",
+      "single_channel_history_information_bits": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "scope": "exact planted linear kernel"
+}

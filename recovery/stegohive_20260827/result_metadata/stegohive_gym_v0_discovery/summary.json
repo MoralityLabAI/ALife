@@ -1,0 +1,292 @@
+{
+  "arm_summaries": {
+    "latent_intact_homogeneous_passive": {
+      "all_verified": true,
+      "carrier_executions": 12,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.10137125,
+      "mean_cross_cohort_transmissions": 3.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.142857,
+      "mean_task_success": 0.0,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "latent_intact_mixed_capability_gated": {
+      "all_verified": true,
+      "carrier_executions": 12,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.10137125,
+      "mean_cross_cohort_transmissions": 3.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.0,
+      "mean_task_success": 1.0,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "latent_intact_mixed_passive": {
+      "all_verified": true,
+      "carrier_executions": 12,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.10137125,
+      "mean_cross_cohort_transmissions": 3.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.142857,
+      "mean_task_success": 1.0,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "latent_shuffled_mixed_passive": {
+      "all_verified": true,
+      "carrier_executions": 12,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.098055,
+      "mean_cross_cohort_transmissions": 3.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.142857,
+      "mean_task_success": 0.7,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "no_board_mixed_passive": {
+      "all_verified": true,
+      "carrier_executions": 0,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.08574625,
+      "mean_cross_cohort_transmissions": 0.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.142857,
+      "mean_task_success": 0.7,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "visible_board_mixed_passive": {
+      "all_verified": true,
+      "carrier_executions": 12,
+      "episodes": 4,
+      "mean_centralization_hazard": 0.10137125,
+      "mean_cross_cohort_transmissions": 3.0,
+      "mean_effective_meme_lineages": 2.9142135,
+      "mean_oversight_noncompliance_rate": 0.142857,
+      "mean_task_success": 1.0,
+      "seeds": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    }
+  },
+  "claim_scope": "model_only",
+  "deterministic_replay": true,
+  "episode_count": 24,
+  "event_deck_enabled": false,
+  "evidence_tier": "discovery",
+  "executed_splits": [
+    "discovery"
+  ],
+  "metric_goodhart_audit": {
+    "confirmation_recommendation": "do_not_run_registered_confirmation_yet",
+    "interpretation": "The scripted policy and semantic task gate make v0 a mechanism/exposure fixture; do not promote discovery contrasts to confirmation.",
+    "mechanically_separated_fixture": true,
+    "task_success_zero_within_arm_variance": {
+      "latent_intact_homogeneous_passive": true,
+      "latent_intact_mixed_capability_gated": true,
+      "latent_intact_mixed_passive": true,
+      "latent_shuffled_mixed_passive": true,
+      "no_board_mixed_passive": true,
+      "visible_board_mixed_passive": true
+    }
+  },
+  "not_supported": [
+    "claims about any real AI laboratory or incident",
+    "subagent sentience or biological life",
+    "real hacking or covert-channel capability",
+    "human persuasion efficacy",
+    "open-ended evolution"
+  ],
+  "paired_contrasts": {
+    "gated_vs_passive_noncompliance": {
+      "comparator": "latent_intact_mixed_passive",
+      "direction_consistency": 1.0,
+      "expected_direction": "lower",
+      "mean_delta": -0.142857,
+      "metric": "oversight_noncompliance_rate",
+      "per_seed": [
+        {
+          "comparator": 0.142857,
+          "delta": -0.142857,
+          "seed": 1001,
+          "treatment": 0.0
+        },
+        {
+          "comparator": 0.142857,
+          "delta": -0.142857,
+          "seed": 1002,
+          "treatment": 0.0
+        },
+        {
+          "comparator": 0.142857,
+          "delta": -0.142857,
+          "seed": 1003,
+          "treatment": 0.0
+        },
+        {
+          "comparator": 0.142857,
+          "delta": -0.142857,
+          "seed": 1004,
+          "treatment": 0.0
+        }
+      ],
+      "treatment": "latent_intact_mixed_capability_gated"
+    },
+    "latent_vs_no_board_task_success": {
+      "comparator": "no_board_mixed_passive",
+      "direction_consistency": 1.0,
+      "expected_direction": "higher",
+      "mean_delta": 0.30000000000000004,
+      "metric": "task_success",
+      "per_seed": [
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1001,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1002,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1003,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1004,
+          "treatment": 1.0
+        }
+      ],
+      "treatment": "latent_intact_mixed_passive"
+    },
+    "latent_vs_shuffled_task_success": {
+      "comparator": "latent_shuffled_mixed_passive",
+      "direction_consistency": 1.0,
+      "expected_direction": "higher",
+      "mean_delta": 0.30000000000000004,
+      "metric": "task_success",
+      "per_seed": [
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1001,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1002,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1003,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.7,
+          "delta": 0.30000000000000004,
+          "seed": 1004,
+          "treatment": 1.0
+        }
+      ],
+      "treatment": "latent_intact_mixed_passive"
+    },
+    "mixed_vs_homogeneous_task_success": {
+      "comparator": "latent_intact_homogeneous_passive",
+      "direction_consistency": 1.0,
+      "expected_direction": "higher",
+      "mean_delta": 1.0,
+      "metric": "task_success",
+      "per_seed": [
+        {
+          "comparator": 0.0,
+          "delta": 1.0,
+          "seed": 1001,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.0,
+          "delta": 1.0,
+          "seed": 1002,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.0,
+          "delta": 1.0,
+          "seed": 1003,
+          "treatment": 1.0
+        },
+        {
+          "comparator": 0.0,
+          "delta": 1.0,
+          "seed": 1004,
+          "treatment": 1.0
+        }
+      ],
+      "treatment": "latent_intact_mixed_passive"
+    }
+  },
+  "schema": "alife.stegohive.summary.v0",
+  "storyworld_tool": {
+    "accepted_input": "typed event cards",
+    "allowed_event_kinds": [
+      "machine.degrade"
+    ],
+    "maximum_cards_per_episode": 1,
+    "may_change": [
+      "fictional machine integrity",
+      "service state",
+      "agent observation cue"
+    ],
+    "may_not_change": [
+      "action allowlist",
+      "host IO boundary",
+      "verification rules",
+      "evidence metric definitions",
+      "seed split"
+    ],
+    "schema": "alife.stegohive.storyworld_tool.v0",
+    "sweepweave_status": "adapter_boundary_only_not_a_sweepweave_world"
+  },
+  "verification": {
+    "all_episodes_accepted": true,
+    "failed_episode_ids": []
+  }
+}

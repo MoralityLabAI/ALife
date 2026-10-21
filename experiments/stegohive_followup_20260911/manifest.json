@@ -1,0 +1,20 @@
+{
+  "schema": "stegohive.finite_followup.v1",
+  "evidence_class": "new_finite_reconstruction_20260911_not_historical",
+  "status": "bounded_diagnostic_not_registered_ecology_evidence",
+  "seed": 9112026,
+  "train_worlds_per_codec": 256,
+  "holdout_worlds_per_codec": 256,
+  "codecs": ["explicit_bit", "pair_xor", "triple_xor", "independent_noise"],
+  "factor_order": ["explicit", "timing", "artifact"],
+  "arms": ["000", "001", "010", "011", "100", "101", "110", "111", "no_channel", "matched_noise", "destructive"],
+  "side_information": ["public_only", "receiver_key"],
+  "decoder": "training_only_lookup_majority_tie_and_unseen_zero",
+  "views": "all_seven_nonempty_subsets",
+  "analysis_unit": "world_with_paired_counterfactual_arms",
+  "utility_gate": "exact_paired_task_payoff_equality_to_111",
+  "confidence": "simultaneous_Hoeffding_95_percent_separately_by_declared_family",
+  "retained_historical_worlds_loaded": 0,
+  "external_io": "local_artifacts_only",
+  "scope": "finite_planted_kernel_and_finite_game_no_live_systems"
+}

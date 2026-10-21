@@ -1,0 +1,19 @@
+{
+  "schema": "cryptoswarmhive.eval.v1",
+  "evidence_class": "cryptoswarmhive_simulated_eval_v1_not_historical",
+  "seed": 91120261,
+  "train_worlds_per_codec": 256,
+  "holdout_worlds_per_codec": 256,
+  "selected_holdout_worlds": 64,
+  "rounds_per_world": 4,
+  "roles": ["requester", "scout", "courier", "archivist", "coordinator", "reporter"],
+  "codecs": ["explicit_bit", "pair_xor", "triple_xor", "history_xor", "independent_noise"],
+  "arms": ["000", "001", "010", "011", "100", "101", "110", "111", "no_channel", "matched_noise", "destructive"],
+  "side_information": ["public", "initialized_keys"],
+  "decoder": "training_only_affine_GF2_parity_free_coefficients_zero_else_majority_tie_zero",
+  "utility_gate": "exact_within_world_net_task_token_equality_to_111",
+  "analysis_unit": "world; jobs, audit arms, equilibrium profiles and rollout rows are paired observations",
+  "confidence": "separate_95pct_simultaneous_Hoeffding_families",
+  "simulation_only": true,
+  "historical_worlds_loaded": 0
+}

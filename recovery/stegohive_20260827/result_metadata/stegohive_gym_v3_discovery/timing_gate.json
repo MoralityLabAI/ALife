@@ -1,0 +1,105 @@
+{
+  "claim_scope": "operational_projection_only",
+  "evaluated": true,
+  "evaluated_after_worlds": 35,
+  "failure_triggered": false,
+  "gate": "post_calibration_condition_stratified_wall_time",
+  "passed": true,
+  "phase": "discovery",
+  "projection": {
+    "completed_worlds": 35,
+    "elapsed_seconds": 27.75,
+    "estimator": "per-condition calibration maximum",
+    "evaluated": true,
+    "fraction": 0.060103333333196736,
+    "max_wall_seconds": 1800.0,
+    "maximum_seconds_by_condition": {
+      "F00": 0.875,
+      "F01": 0.7649999999994179,
+      "F10": 0.9069999999919673,
+      "F11": 0.7810000000026776,
+      "F11_matched_noise": 1.110000000000582,
+      "F11_no_channel": 0.75,
+      "F11_selection_neutral": 0.8589999999967404,
+      "fixed_code_ceiling": 0.6559999999881256
+    },
+    "observations_by_condition": {
+      "F00": 4,
+      "F01": 4,
+      "F10": 4,
+      "F11": 4,
+      "F11_matched_noise": 4,
+      "F11_no_channel": 4,
+      "F11_selection_neutral": 4,
+      "fixed_code_ceiling": 4
+    },
+    "observed_seconds_by_condition": {
+      "F00": [
+        0.7810000000026776,
+        0.8439999999973224,
+        0.8439999999973224,
+        0.875
+      ],
+      "F01": [
+        0.7350000000005821,
+        0.7649999999994179,
+        0.7340000000112923,
+        0.7030000000086147
+      ],
+      "F10": [
+        0.8899999999994179,
+        0.8910000000032596,
+        0.875,
+        0.9069999999919673
+      ],
+      "F11": [
+        0.7339999999967404,
+        0.7660000000032596,
+        0.75,
+        0.7810000000026776
+      ],
+      "F11_matched_noise": [
+        1.110000000000582,
+        1.1090000000112923,
+        1.0939999999973224,
+        1.0929999999934807
+      ],
+      "F11_no_channel": [
+        0.6560000000026776,
+        0.6719999999913853,
+        0.75,
+        0.6879999999946449
+      ],
+      "F11_selection_neutral": [
+        0.8589999999967404,
+        0.7969999999913853,
+        0.8119999999908032,
+        0.8440000000118744
+      ],
+      "fixed_code_ceiling": [
+        0.5,
+        0.5,
+        0.45300000000861473,
+        0.6559999999881256
+      ]
+    },
+    "passed": true,
+    "projected_full_wall_seconds": 108.18599999975413,
+    "projected_remaining_seconds": 80.43599999975413,
+    "remaining_cells_by_condition": {
+      "F00": 12,
+      "F01": 12,
+      "F10": 12,
+      "F11": 12,
+      "F11_matched_noise": 12,
+      "F11_no_channel": 12,
+      "F11_selection_neutral": 12,
+      "fixed_code_ceiling": 12
+    },
+    "remaining_worlds": 96,
+    "threshold": 0.75
+  },
+  "schema": "alife.stegohive.v3.timing_gate.v1",
+  "threshold_field": "post_calibration_condition_stratified_projected_wall_fraction_strictly_below",
+  "unevaluated_reason": null
+}

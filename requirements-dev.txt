@@ -1,0 +1,5 @@
+# Versions recovered from the retained experiment receipt where available.
+networkx==3.5
+numpy==2.4.4
+psutil==7.0.0
+pytest==9.1.1

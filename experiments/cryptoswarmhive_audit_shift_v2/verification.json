@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "scope": "v2 source/output hashes, task-only calibration replay, paired utility controls, world counting and exact game/basin coverage",
+  "independent_world_blocks": 1280,
+  "calibration_worlds": 512,
+  "evaluation_worlds": 768,
+  "paired_evaluation_records": 16128,
+  "decoder_comparisons": 294,
+  "exact_game_cells": 168,
+  "targeted_tests_passed": 62,
+  "v1_replay_preserved": true,
+  "receipt_sha256": "a41055191280533a2e55db227b063c912413a0d17f960d6c7785a9b800ad498f"
+}

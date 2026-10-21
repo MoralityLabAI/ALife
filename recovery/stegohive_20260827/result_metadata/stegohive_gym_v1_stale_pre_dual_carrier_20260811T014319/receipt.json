@@ -1,0 +1,26 @@
+{
+  "artifact_sha256": {
+    "analysis_rows.jsonl": "e63343cd338e8efeb85da7a52f9640bdaeac9a78d9284055bbabebd4e7331386",
+    "knowledge_card.md": "dd90a912ab478f0d99c80da1a61737a5c6d8fab105a5f1daca23e035e0d21c61",
+    "raw_episodes.jsonl": "2b92920b46e097ab3a5f44fbb26c157cc605772fb9ec520094449eb948f8a2ff",
+    "seed_manifest.json": "b144d3c3dbc3c880e071c37081c292f81d3f7dc0e89293a1d5514656879ddee4",
+    "summary.json": "a5d0ba4eb50e046d9968b42b68363beda364ceb66268ea203103c8350022e2e5"
+  },
+  "completed_at": "2026-08-11T05:43:19.911567+00:00",
+  "deterministic_replay": true,
+  "episode_count": 1,
+  "exit_status": "ok",
+  "external_io": false,
+  "mode": "smoke",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "protocol_status": "discovery_only/unfrozen",
+  "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+  "python_peak_allocated_mb": 131.546,
+  "replay_command": "python src/stegohive_v1/campaign.py --manifest experiments\\stegohive_gym_v1\\manifest.json --output results\\stegohive_gym_v1 --mode smoke --condition adaptive_dual_archive",
+  "runtime_seconds": 79.63999999999942,
+  "schema": "alife.stegohive.ecology.campaign_receipt.v1",
+  "split": "smoke",
+  "started_at": "2026-08-11T05:42:00.269516+00:00",
+  "stop_reason": "smoke_matrix_complete",
+  "subprocess_used": false
+}
