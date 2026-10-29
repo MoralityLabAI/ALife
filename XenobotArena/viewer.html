@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XenobotArena | Episode replay</title>
+<style>
+body{margin:0;background:#111820;color:#e9eef4;font:16px system-ui,sans-serif}main{max-width:1100px;margin:36px auto;padding:0 24px}h1{margin-bottom:6px;letter-spacing:-1px}p{color:#abb9c8;line-height:1.5}canvas{display:block;width:100%;background:#1a2734;border:1px solid #44515f;border-radius:8px}section{display:flex;gap:18px;align-items:center;margin:18px 0}input{flex:1}button{font:inherit;padding:8px 22px;background:#e9eef4;border:0;border-radius:5px;cursor:pointer}pre{white-space:pre-wrap;font-size:13px;color:#bac7d6}code{color:#e0bf7a}a{color:#b5d2ef}
+</style>
+<main><h1>XenobotArena</h1><p id="description"></p><canvas id="arena" width="1000" height="660"></canvas>
+<section><button id="play">Pause</button><input id="seek" type="range" min="0" value="0"><span id="time"></span></section>
+<p>Disks: synthetic bots. Heading marks show orientation. Pale dots: inert beads. Orange rings: recorded exposure. The shaded strip is the recorder stimulus region.</p>
+<p>Dimensionless, uncalibrated active matter. Memory and recovery follow explicit programmed rules. This replay supplies model diagnostics; biological and cognitive validity remain untested.</p>
+<details><summary>Parameters and final diagnostics</summary><pre id="metrics"></pre></details></main>
+<script id="data" type="application/json">__EPISODE_JSON__</script>
+<script>
+"use strict";
+const raw=document.getElementById("data").textContent;
+let data;
+try{data=JSON.parse(raw)}catch(e){document.getElementById("description").textContent="Run arena.py to generate a replay with embedded episode data.";throw e}
+const frames=data.frames,c=data.config,cv=document.getElementById("arena"),ctx=cv.getContext("2d"),seek=document.getElementById("seek");
+cv.height=Math.round(cv.width*c.height/c.width);seek.max=frames.length-1;
+let playing=true,index=0,previous=0;
+const sx=cv.width/c.width,sy=cv.height/c.height;
+function circle(x,y,r,color){ctx.beginPath();ctx.arc(x*sx,y*sy,r*sx,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()}
+function draw(){
+ const f=frames[index];ctx.clearRect(0,0,cv.width,cv.height);
+ if(c.scenario==="recorder"){ctx.fillStyle="#283e51";ctx.fillRect(.43*cv.width,0,.14*cv.width,cv.height)}
+ for(const [x,y,r] of data.obstacles)circle(x,y,r,"#53606a");
+ for(const [x,y] of f.beads)circle(x,y,.3,"#d9dfdf");
+ for(const b of f.bots){
+  if(b.recorder)circle(b.x,b.y,1.05,"#e5af5d");
+  circle(b.x,b.y,.8,b.memory>.1?"#bb94d8":"#75b9b0");
+  ctx.strokeStyle="#13242e";ctx.beginPath();ctx.moveTo(b.x*sx,b.y*sy);ctx.lineTo((b.x+.8*Math.cos(b.angle))*sx,(b.y+.8*Math.sin(b.angle))*sy);ctx.stroke();
+ }
+ seek.value=index;document.getElementById("time").textContent=`tick ${f.tick} / ${c.steps}`;
+}
+document.getElementById("description").textContent=`${c.scenario} | ${c.mode} | seed ${c.seed} | ${c.bots} bots | model v${data.version}`;
+document.getElementById("metrics").textContent=JSON.stringify({config:c,metrics:data.metrics,state_sha256:data.state_sha256},null,2);
+document.getElementById("play").onclick=()=>{playing=!playing;document.getElementById("play").textContent=playing?"Pause":"Play"};
+seek.oninput=()=>{index=Number(seek.value);playing=false;document.getElementById("play").textContent="Play";draw()};
+function loop(t){if(playing&&t-previous>70){index=(index+1)%frames.length;previous=t;draw()}requestAnimationFrame(loop)}draw();requestAnimationFrame(loop);
+</script></html>

@@ -1,0 +1,33 @@
+{
+  "schema": "xenobotarena.smoke.v1",
+  "run_date": "2026-10-29",
+  "python": "3.13.5",
+  "tests_passed": 22,
+  "campaign_steps": 240,
+  "campaign_seeds": [11,23,47],
+  "comparison_rows": 72,
+  "ablation_arms": 12,
+  "episodes": 84,
+  "code_sha256": "828f260bf05c370dcaef5b12429ac238cd21524e76938046e59feb3aaf6b9356",
+  "diagnostic_only": true,
+  "biological_validation": false,
+  "max_residual_overlap": 6.808557761583955e-05,
+  "mean_coverage": {
+    "open": {"passive":0.03,"persistent":0.44,"orbit":0.29083333333333333,"mixed":0.3666666666666667},
+    "obstacles": {"passive":0.029166666666666664,"persistent":0.44250000000000006,"orbit":0.3116666666666667,"mixed":0.38000000000000006},
+    "debris": {"passive":0.03,"persistent":0.44,"orbit":0.29083333333333333,"mixed":0.36916666666666664}
+  },
+  "paired_ablations": [
+    {"scenario":"memory","seed":11,"ablated_rule":"memory","metric":"mean_path","treated":33.59371129604528,"control":34.47871870724169,"delta":-0.8850074111964119},
+    {"scenario":"memory","seed":23,"ablated_rule":"memory","metric":"mean_path","treated":33.70289402629384,"control":34.5420379842715,"delta":-0.8391439579776616},
+    {"scenario":"memory","seed":47,"ablated_rule":"memory","metric":"mean_path","treated":33.49620819534897,"control":34.36852907044425,"delta":-0.8723208750952764},
+    {"scenario":"recovery","seed":11,"ablated_rule":"repair","metric":"mean_integrity","treated":0.995136154317715,"control":0.25,"delta":0.745136154317715},
+    {"scenario":"recovery","seed":23,"ablated_rule":"repair","metric":"mean_integrity","treated":0.995136154317715,"control":0.25,"delta":0.745136154317715},
+    {"scenario":"recovery","seed":47,"ablated_rule":"repair","metric":"mean_integrity","treated":0.995136154317715,"control":0.25,"delta":0.745136154317715}
+  ],
+  "demo": {
+    "config": {"scenario":"debris","mode":"mixed","seed":7,"steps":400,"bots":12,"beads":40,"width":60.0,"height":40.0,"noise":0.35,"memory":true,"stimulus":true,"repair":true},
+    "metrics": {"coverage_fraction_20x20":0.49,"mean_path":59.48508937456006,"mean_displacement":20.713906104625284,"bead_displacement":0.3767389500196626,"largest_bead_cluster_fraction":0.025,"recorded_fraction":0.0,"mean_memory":0.0,"mean_integrity":1.0,"contact_solver_corrections":949,"max_residual_overlap":1.5543122344752192e-15,"bot_count":12,"bead_count":40},
+    "state_sha256":"d544cce6a54049c2d8111efeb74eb433c161fd098ac3910b56d3774ecb152068"
+  }
+}
