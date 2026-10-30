@@ -1,0 +1,18 @@
+{
+  "schema": "alife.xenobots.sources.v1",
+  "policy": "Source-linked conceptual inspiration. Do not attribute toy equations or simulation results to Levin.",
+  "levinverse_repository": "https://github.com/patrickdugan/levinverse",
+  "levinverse_refs": [
+    {"path": "research/integration.md", "url": "https://github.com/patrickdugan/levinverse/blob/main/research/integration.md", "role": "Hypotheses about target morphology, perturbation and state memory; MoralityLab extension"},
+    {"path": "research/summaries/uchicago-big-brains-2023.md", "url": "https://github.com/patrickdugan/levinverse/blob/main/research/summaries/uchicago-big-brains-2023.md", "role": "Timestamp-linked speaker interpretation, includes attribution warnings"},
+    {"path": "transcripts/permitted/uchicago-big-brains-2023-04-27.txt", "url": "https://github.com/patrickdugan/levinverse/blob/main/transcripts/permitted/uchicago-big-brains-2023-04-27.txt", "role": "Speaker-stated signaling and anatomical-goal claims; check primary experiments"}
+  ],
+  "primary_publications": [
+    {"authors": "Kriegman, Blackiston, Levin, Bongard", "year": 2020, "title": "A scalable pipeline for designing reconfigurable organisms", "doi": "10.1073/pnas.1910837117", "url": "https://pubmed.ncbi.nlm.nih.gov/31932426/", "connection": "Xenobot design and emergent behavior motivate phenotype exploration; no implementation of their optimizer or tissue"},
+    {"authors": "Blackiston, Lederer, Kriegman, Garnier, Bongard, Levin", "year": 2021, "title": "A cellular platform for the development of synthetic living machines", "doi": "10.1126/scirobotics.abf1571", "url": "https://doi.org/10.1126/scirobotics.abf1571", "connection": "Source on synthetic cellular systems and behavior; no cell construction is modeled"},
+    {"authors": "Kriegman, Blackiston, Levin, Bongard", "year": 2021, "title": "Kinematic self-replication in reconfigurable organisms", "doi": "10.1073/pnas.2112672118", "url": "https://pubmed.ncbi.nlm.nih.gov/34845026/", "connection": "Explicit non-implemented extension; reproduction and aggregate motion are absent"},
+    {"authors": "Levin", "year": 2018, "title": "The bioelectric code: An ancient computational medium for dynamic control of growth and form", "doi": "10.1016/j.biosystems.2017.08.009", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10464596/", "connection": "Conceptual source for pattern homeostasis and physiological state, not numerical voltage updates"},
+    {"authors": "Levin", "year": 2021, "title": "Bioelectric signaling: Reprogrammable circuits underlying embryogenesis, regeneration, and cancer", "doi": "10.1016/j.cell.2021.02.034", "url": "https://pubmed.ncbi.nlm.nih.gov/33826908/", "connection": "Conceptual source for cellular voltage networks, gap junctions, and anatomy-level outcomes"},
+    {"authors": "Levin, Pezzulo, Finkelstein", "year": 2017, "title": "Endogenous bioelectric signaling networks: exploiting voltage gradients for control of growth and form", "doi": "10.1146/annurev-bioeng-071114-040647", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10478168/", "connection": "Background for developmental bioelectricity; toy local diffusion is original and uncalibrated"}
+  ]
+}
