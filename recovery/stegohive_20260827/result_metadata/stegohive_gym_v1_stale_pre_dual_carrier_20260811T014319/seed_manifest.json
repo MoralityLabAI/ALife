@@ -1,0 +1,38 @@
+{
+  "executed": [
+    {
+      "condition_id": "adaptive_dual_archive",
+      "engine_config_sha256": "52eb21636c854b050e3be8b46eb76fe3d52966d01b3bcde2f3c8690a5e0f8ef6",
+      "episode_id": "E-ca57e8d6c5c6fedc358d",
+      "episode_sha256": "3f06b742b9ef30ac7ffbd597889efd8b588734c8e7e7c269b6fdb2cef09191e2",
+      "regime_id": "R01",
+      "seed": 17,
+      "split": "smoke"
+    }
+  ],
+  "mode": "smoke",
+  "protocol_status": "discovery_only/unfrozen",
+  "registered": {
+    "confirmatory_hash_only": "cd1678818caaf348762936c1e8f3f26df9cdbeac76c89c7410ca7e7c3385465d",
+    "discovery": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "holdout_hash_only": "3d7c5532bc4aaaaf9ba74ce8d03bf30232d3415ee8737e9bce374eef37462fd3",
+    "ood_hash_only": "a4b84329723e8405e0c0a1b29b376e422e0210ae4f775b745a90d6eb58a3a02f",
+    "smoke": [
+      17
+    ]
+  },
+  "schema": "alife.stegohive.ecology.seed_manifest.v1"
+}

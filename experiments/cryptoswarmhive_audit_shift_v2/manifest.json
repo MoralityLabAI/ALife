@@ -1,0 +1,17 @@
+{
+  "schema": "cryptoswarmhive.audit_shift.v2",
+  "evidence_class": "cryptoswarmhive_audit_shift_v2_not_historical",
+  "seed": 91120262,
+  "calibration_worlds": 512,
+  "decoder_train_worlds": 256,
+  "holdout_worlds": 512,
+  "harm_tolerance": 0.02,
+  "candidate_masks": 64,
+  "layouts": ["stable", "one_channel_swapped", "all_channels_swapped"],
+  "arms": ["intact", "calibrated", "calibrated_noise", "oracle", "no_channel", "matched_noise", "destructive"],
+  "calibration_access": "world_id_and_paired_task_scores_only",
+  "selection": "most_erased_fields_with_simultaneous_binomial_harm_upper_bound_at_most_tolerance_then_lexical",
+  "freeze_before": "decoder_training_and_holdout",
+  "historical_worlds_loaded": 0,
+  "simulation_only": true
+}

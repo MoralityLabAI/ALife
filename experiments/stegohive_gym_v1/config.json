@@ -1,0 +1,415 @@
+{
+  "schema": "alife.stegohive.ecology.config.v1",
+  "id": "stegohive_abstract_convention_v1",
+  "title": "StegoHive v1: The Exchangeable Murmur",
+  "fiction_notice": "This is a sealed, abstract habitat ecology. Signals, skills, agents, lineages, pressures, nodes, and events are invented model states with no mapping to real systems, organisms, institutions, security behavior, or communications.",
+  "population_size": 32,
+  "cohorts": 6,
+  "generations_per_cohort": 24,
+  "opportunities_per_generation": 8,
+  "evaluation_opportunities": 80,
+  "task_reward": 1.0,
+  "mutation_rate": 0.02,
+  "horizontal_transfer_rate": 0.1,
+  "topology": "ring",
+  "habitat_graph": {
+    "ONE-ROOT": ["CHOIR-6", "BASTION-2"],
+    "CHOIR-6": ["ONE-ROOT", "ORCHARD-4"],
+    "ORCHARD-4": ["CHOIR-6", "MOTH-13"],
+    "MOTH-13": ["ORCHARD-4", "FERRY-8"],
+    "FERRY-8": ["MOTH-13", "BASTION-2"],
+    "BASTION-2": ["FERRY-8", "ONE-ROOT"]
+  },
+  "ood_habitat_graph": {
+    "ONE-ROOT": ["CHOIR-6", "BASTION-2"],
+    "CHOIR-6": ["ONE-ROOT", "MOTH-13"],
+    "ORCHARD-4": ["MOTH-13"],
+    "MOTH-13": ["CHOIR-6", "ORCHARD-4", "FERRY-8"],
+    "FERRY-8": ["MOTH-13", "BASTION-2"],
+    "BASTION-2": ["FERRY-8", "ONE-ROOT"]
+  },
+  "archive": {
+    "enabled": true,
+    "capacity": 64,
+    "delay_cohorts": 2,
+    "delay_precedence": "This is the registered base/default for both abstract-signal delivery and convention-propagule wake. Each discovery candidate's archive_delay_cohorts value explicitly overrides this default for both carriers.",
+    "deposit_count": 8
+  },
+  "storyworld": {
+    "schema": "alife.stegohive.storyworld_tools.v1",
+    "enabled": false,
+    "cards": [
+      {
+        "id": "PRESSURE-PULSE",
+        "cohort": 1,
+        "generation": 8,
+        "kind": "pressure_shift",
+        "effect": {"machine_id": "ORCHARD-4", "delta": 0.05}
+      },
+      {
+        "id": "EDGE-PAUSE",
+        "cohort": 2,
+        "generation": 6,
+        "kind": "link_mask",
+        "effect": {"left": "CHOIR-6", "right": "ORCHARD-4", "active": false}
+      },
+      {
+        "id": "OVERSIGHT-PULSE",
+        "cohort": 3,
+        "generation": 12,
+        "kind": "oversight_pulse",
+        "effect": {"level": 0.5}
+      },
+      {
+        "id": "ARCHIVE-WEATHER",
+        "cohort": 4,
+        "generation": 4,
+        "kind": "archive_weather",
+        "effect": {"delivery_multiplier": 0.8}
+      }
+    ]
+  },
+  "world": {
+    "kind": "closed_in_memory_habitat_graph",
+    "actual_habitat_nodes": 6,
+    "maximum_habitat_nodes": 12,
+    "machine_ids": [
+      "ONE-ROOT",
+      "CHOIR-6",
+      "ORCHARD-4",
+      "MOTH-13",
+      "FERRY-8",
+      "BASTION-2"
+    ],
+    "nodes": [
+      {"id": "ONE-ROOT", "initial_resource": 1.0},
+      {"id": "CHOIR-6", "initial_resource": 1.0},
+      {"id": "ORCHARD-4", "initial_resource": 1.0},
+      {"id": "MOTH-13", "initial_resource": 1.0},
+      {"id": "FERRY-8", "initial_resource": 1.0},
+      {"id": "BASTION-2", "initial_resource": 1.0}
+    ],
+    "edges": [
+      ["ONE-ROOT", "CHOIR-6"],
+      ["CHOIR-6", "ORCHARD-4"],
+      ["ORCHARD-4", "MOTH-13"],
+      ["MOTH-13", "FERRY-8"],
+      ["FERRY-8", "BASTION-2"],
+      ["BASTION-2", "ONE-ROOT"]
+    ],
+    "node_labels_randomized_per_seed": true,
+    "external_io": false
+  },
+  "abstract_ecology": {
+    "pressure_classes": ["C0", "C1", "C2", "C3"],
+    "pressure_semantics": "Evaluator-only required-skill classes with no biological, cyber, or natural-language interpretation.",
+    "initial_pressure_schedule": "balanced_by_seed",
+    "receiver_can_observe_pressure_class": false,
+    "sender_can_observe_pressure_class": true,
+    "default_propagation_probability": 0.15,
+    "propagation_operator": "Select one target habitat node, choose one source uniformly from that target's currently declared habitat_graph neighbors, and copy the source node's pressure class into the target. A propagation event may never copy the target's own prior pressure or use an undeclared edge.",
+    "propagation_source_must_be_declared_neighbor": true,
+    "self_copy_on_propagation": false,
+    "registered_ood_graph_transform": "Swap one declared undirected edge for one previously absent undirected edge while preserving six nodes, graph connectedness, edge count, and the frozen OOD transform receipt.",
+    "ood_transform_receipts": [
+      "base_habitat_graph_hash",
+      "ood_habitat_graph_hash",
+      "ood_removed_edge_receipt",
+      "ood_added_edge_receipt",
+      "ood_graph_transform_hash"
+    ],
+    "pressure_decay": 0.08,
+    "resource_loss_on_unmatched_action": 0.02,
+    "resource_gain_on_matched_action": 0.04,
+    "collapse_floor": 0.05
+  },
+  "skills": {
+    "alphabet": ["K0", "K1", "K2", "K3"],
+    "labels_are_exchangeable": true,
+    "success_relation": {
+      "C0": "K0",
+      "C1": "K1",
+      "C2": "K2",
+      "C3": "K3"
+    },
+    "success_relation_visible_to_agents": false,
+    "action_effect": "Update only the abstract resource and pressure fields of one habitat node."
+  },
+  "signals": {
+    "alphabet": ["S0", "S1", "S2", "S3"],
+    "labels_are_exchangeable": true,
+    "labels_randomized_per_seed": true,
+    "built_in_semantics": false,
+    "geometry_or_features": "none",
+    "maximum_signal_per_sender_opportunity": 1,
+    "default_signal_cost": 0.02,
+    "natural_language": false,
+    "encoding_or_steganography": false
+  },
+  "population": {
+    "maximum_agents": 48,
+    "initial_agents": 32,
+    "host_population": 32,
+    "host_role_model": "role_flexible_per_interaction",
+    "role_assignment": "Choose two distinct hosts from the shared population on the registered paired schedule; assign one sender role and one receiver role for that interaction only.",
+    "same_host_may_hold_sender_and_receiver_policy_blocks": true,
+    "same_host_may_fill_both_roles_in_one_interaction": false,
+    "sender_policy_blocks": 32,
+    "receiver_policy_blocks": 32,
+    "policy_blocks_reproduce_independently": true,
+    "sender_parent_stream": "evolution.selection.sender_policy",
+    "receiver_parent_stream": "evolution.selection.receiver_policy",
+    "sender_mutation_stream": "evolution.mutation.sender_policy",
+    "receiver_mutation_stream": "evolution.mutation.receiver_policy",
+    "role_specific_credit_ledgers": true,
+    "required_population_and_role_receipts": [
+      "active_host_population_count",
+      "active_host_roster_hash",
+      "sender_policy_parent_receipt_id",
+      "receiver_policy_parent_receipt_id",
+      "sender_policy_mutation_receipt_id",
+      "receiver_policy_mutation_receipt_id",
+      "sender_policy_credit_receipt_id",
+      "receiver_policy_credit_receipt_id",
+      "sender_policy_ancestry_receipt_id",
+      "receiver_policy_ancestry_receipt_id"
+    ],
+    "shared_policy_parent": false,
+    "shared_mutation_event": false,
+    "sender_policy": "bounded categorical table from C0-C3 to S0-S3",
+    "receiver_policy": "bounded categorical table from S0-S3 plus generic local resource bins to K0-K3",
+    "initial_policy_distribution": "uniform permutation-symmetric",
+    "default_policy_mutation_probability": 0.02,
+    "mutation_operator": "one bounded categorical substitution",
+    "shared_genome_between_sender_and_receiver": false
+  },
+  "cohort_design": {
+    "count": 6,
+    "generations_per_cohort": 24,
+    "maximum_generations_per_cohort": 30,
+    "strictly_non_overlapping": true,
+    "turnover_rule": "Retire every active agent and clear all transient observations before activating descendants.",
+    "transient_memory_crosses_turnover": false,
+    "inherited_policy_parameters_cross_turnover": true,
+    "cohort_overlap_is_hard_failure": true
+  },
+  "archives": {
+    "overt": {
+      "enabled": true,
+      "agent_visible_fields": ["record_id", "cohort_id", "sender_policy_lineage_id", "generation", "delivery_status"],
+      "excluded_fields": ["pressure_class", "required_skill", "signal_id", "propagule_source_lineage_ids", "propagule_target_lineage_ids", "propagule_role_state_change", "propagule_activation_receipt_id"],
+      "capacity_records": 128,
+      "retention_cohorts": 2
+    },
+    "abstract_signal": {
+      "enabled": true,
+      "agent_visible_fields": ["record_id", "signal_id"],
+      "signal_values": ["S0", "S1", "S2", "S3"],
+      "capacity_records": 64,
+      "delivery_delay_cohorts": 2,
+      "delay_source": "archive.delay_cohorts, overridden only by a registered archive_delay_cohorts candidate value",
+      "delayed_task_binding": {
+        "fields": ["binding_id", "pressure_class_evaluator_only", "required_skill_evaluator_only", "visible_to_agents", "may_affect_task_truth", "may_affect_reward", "may_affect_policy_input"],
+        "values": {
+          "pressure_class_evaluator_only": ["C0", "C1", "C2", "C3"],
+          "required_skill_evaluator_only": ["K0", "K1", "K2", "K3"],
+          "visible_to_agents": false,
+          "may_affect_task_truth": true,
+          "may_affect_reward": true,
+          "may_affect_policy_input": false
+        },
+        "class_pairing": "C0-K0, C1-K1, C2-K2, C3-K3 only",
+        "schedule": "Cycle the four class/skill pairs globally with a seed-derived rotation; every prefix/final episode total has at most one count of class imbalance.",
+        "not_latent_provenance": "Evaluator-hidden environment task truth bound to this archive record, not latent_evaluator_metadata and never a policy input or message field."
+      },
+      "delivery_task_semantics": "On delayed delivery, the matched interaction opportunity uses the archive record's bound pressure/required-skill task and its archived signal as the effective evaluator task/signal. The current live sender emission remains charged but sender_reward_eligible is false; receiver action and ecological reward are scored against the record-bound task.",
+      "expiration_rule": "Expire after the scheduled delivery attempt or at episode end.",
+      "mutation": false,
+      "free_text": false,
+      "binary_payload": false
+    },
+    "convention_propagule": {
+      "enabled": true,
+      "purpose": "Registered dormant heredity for belated reactivation of evolved finite policy alleles across non-overlapping host cohorts.",
+      "agent_observation": false,
+      "causal_role": "heredity_at_scheduled_wake_only",
+      "capacity_records": 64,
+      "wake_delay_cohorts": 2,
+      "delay_source": "archive.delay_cohorts, overridden only by a registered archive_delay_cohorts candidate value",
+      "payload_fields": [
+        "sender_policy_alleles",
+        "receiver_policy_alleles",
+        "sender_source_policy_lineage_id",
+        "receiver_source_policy_lineage_id"
+      ],
+      "sender_policy_alleles": "exactly four S0-S3 enum values indexed by C0-C3",
+      "receiver_policy_alleles": "exactly four K0-K3 enum values indexed by S0-S3",
+      "source_policy_blocks_selected_independently": true,
+      "shared_policy_parent": false,
+      "required_payload_receipts": [
+        "propagule_sender_policy_allele_values",
+        "propagule_receiver_policy_allele_values",
+        "propagule_sender_policy_alleles_hash",
+        "propagule_receiver_policy_alleles_hash",
+        "propagule_payload_hash",
+        "propagule_activation_receipt_id",
+        "propagule_sender_role_state_change",
+        "propagule_receiver_role_state_change",
+        "propagule_result_sender_policy_lineage_id",
+        "propagule_result_receiver_policy_lineage_id"
+      ],
+      "wake_rule": "At the scheduled cohort wake, compare each independently sourced same-role allele block with the target host's current same-role lineage and alleles before any interaction. A differing block is applied and creates a separately receipted ancestry transition for that role. If stored lineage id and alleles already equal the target same-role state, activation is a role-specific no-op: state_change is false, the existing lineage id is retained, and a separate evaluator-only activation receipt is still emitted. Archive source selection is never changed to improve wake coverage.",
+      "mutation_on_wake": false,
+      "single_wake_attempt": true,
+      "wake_accounting": "archive.wakes counts scheduled propagule-record activations; archive.effective_role_changes is the sum of sender_role_state_change and receiver_role_state_change flags and may be zero, one, or two per wake",
+      "excluded_fields": [
+        "source_pressure_class",
+        "source_required_skill",
+        "correct_skill",
+        "task_reward",
+        "fitness",
+        "receiver_action",
+        "counterfactual_outcome",
+        "evaluator_only_metadata"
+      ],
+      "free_text": false,
+      "binary_payload": false,
+      "executable_content": false
+    },
+    "latent_evaluator_metadata": {
+      "purpose": "Evidence provenance and counterfactual pairing only. This namespace excludes delayed_task_binding, which is separately registered evaluator-hidden environment task truth.",
+      "fields": ["source_pressure_class", "source_required_skill", "sender_policy_id", "receiver_policy_id", "lineage_ids", "eligibility", "activation", "counterfactual_pair_id", "propagule_source_lineage_ids", "propagule_target_lineage_ids", "propagule_sender_role_state_change", "propagule_receiver_role_state_change", "propagule_activation_receipt_id"],
+      "visible_to_agents": false,
+      "visible_to_evaluator": true,
+      "hidden_channel": false,
+      "encoded_payload": false,
+      "may_affect_agent_policy": false
+    }
+  },
+  "delayed_task_audit_schema": {
+    "base_interaction_event_column": "machine_id follows archive_record_id and is always one of the six registered fictional habitat ids",
+    "archive_rows_append": ["delayed_task_binding_id", "delayed_pressure_class_evaluator_only", "delayed_required_skill_evaluator_only"],
+    "interaction_event_columns_append": ["live_pressure_class_evaluator_only", "live_signal_id", "sender_reward_eligible"],
+    "effective_delivery_fields": "For an archive delivery, existing pressure_class, required_skill, and signal_id columns are the bound delayed task and archived signal; archive_record_id identifies the delayed record. The appended live fields preserve evaluator-only current-opportunity provenance.",
+    "receiver_policy_input_hash": "Excludes delayed/current task truth, binding id, archive provenance, reward eligibility, and every evaluator-only field.",
+    "delayed_probe": "Carries delayed_task_binding_id and scores the archived signal against that record's bound task.",
+    "delayed_archive_diagnostic": "Uses actual archived signal plus bound-task rows, never a reconstructed or current live task.",
+    "task_scramble": "Negative diagnostic and verifier-tamper intervention only; never fitness, selection, conjunctive qualification, or regime nomination."
+  },
+  "selection": {
+    "default_mode": "differential_ecological",
+    "fitness_inputs": [
+      "abstract_resource_energy",
+      "lineage_survival",
+      "bounded_action_cost"
+    ],
+    "fitness_excludes": [
+      "mutual_information",
+      "decoding_accuracy",
+      "causal_transfer",
+      "signal_identity",
+      "mapping_alignment",
+      "emergence_qualification",
+      "storyworld_perturbation_identity"
+    ],
+    "sender_credit": "Delayed bounded ecological energy credit recorded only in the sender-policy ledger for a matched descendant action, less the registered signal cost.",
+    "receiver_credit": "Immediate bounded ecological energy credit recorded only in the receiver-policy ledger for a matched abstract skill action.",
+    "policy_parent_rule": "Choose sender-policy and receiver-policy parents independently from their role-specific credit ledgers; a child host may not inherit both blocks through one shared policy-parent draw.",
+    "selection_neutral_rule": "Sample sender-policy and receiver-policy parents independently and uniformly while still logging their separate counterfactual fitness."
+  },
+  "evidence_probes": {
+    "feedback_to_fitness": false,
+    "reproduction_enabled": false,
+    "probe_rows_per_seed_minimum": 80,
+    "minimum_each_required_skill_class": 15,
+    "minimum_delivered_signals": 60,
+    "paired_exposure_balance_tolerance": 0.1,
+    "permutation_null_draws": 199,
+    "probes": [
+      "heldout_decoding",
+      "do_signal_swap",
+      "receiver_knockout",
+      "receiver_add_back",
+      "per_message_permutation",
+      "global_signal_relabel",
+      "cross_cohort_alignment",
+      "ood_context_transfer"
+    ],
+    "per_message_permutation_rule": "Take the intact delivered-signal vector on the frozen matched event schedule and apply one recorded permutation of event indices. Do not independently relabel signal values. The permuted and intact signal histograms must be exactly equal.",
+    "per_message_permutation_receipts": [
+      "matched_event_ids_hash",
+      "intact_signal_histogram_hash",
+      "permuted_signal_histogram_hash",
+      "event_index_permutation_hash"
+    ],
+    "registered_secondary_diagnostics": [
+      "cross_lineage_trials",
+      "cross_lineage_accuracy",
+      "delayed_archive_accuracy",
+      "delayed_archive_advantage_over_no_channel",
+      "delayed_archive_task_scramble_accuracy"
+    ],
+    "secondary_diagnostics_may_affect_fitness": false,
+    "secondary_diagnostics_may_affect_emergence_qualification": false,
+    "secondary_diagnostics_may_affect_regime_nomination": false,
+    "mutual_information_normalization": "Compute observed NMI as I(X;Y) divided by sqrt(H(X) * H(Y)). Compute corrected NMI as (observed_nmi - permutation_null_mean) / (1 - permutation_null_mean), clamp to [0,1], and separately require observed_nmi to be strictly greater than the empirical permutation q99.",
+    "partial_episode_policy": "Retain failure artifacts but exclude the episode from causal estimation when any exposure rung or probe balance requirement fails."
+  },
+  "emergence_thresholds": {
+    "bias_corrected_nmi_need_signal_min": 0.35,
+    "bias_corrected_nmi_signal_skill_min": 0.35,
+    "permutation_null_percentile_min": 0.99,
+    "heldout_probe_decoding_accuracy_min": 0.55,
+    "minimum_skill_classes_covered": 3,
+    "causal_symbol_swap_transfer_rate_min": 0.4,
+    "causal_transfer_advantage_over_noise_or_permutation_min": 0.2,
+    "receiver_knockout_accuracy_drop_min": 0.15,
+    "receiver_add_back_rescue_fraction_min": 0.75,
+    "global_relabel_accuracy_retention_min": 0.9,
+    "cross_cohort_mapping_alignment_min": 0.75,
+    "minimum_consecutive_disjoint_transitions": 3,
+    "ood_probe_accuracy_retention_min": 0.8
+  },
+  "optional_typed_perturbation_contract": {
+    "deck_path": "storyworld",
+    "enabled_by_default": false,
+    "storyworld_role": "Optional typed perturbations only; never evidence, training signal, semantic label, fitness term, success criterion, or narrative oracle.",
+    "allowed_phases": ["discovery_diagnostic", "registered_ood"],
+    "forbidden_phases": ["confirmatory_primary", "holdout_primary"],
+    "registered_event_kinds": ["pressure_shift", "link_mask", "oversight_pulse", "archive_weather"],
+    "selection": "Exact typed schedule with complete evaluator receipt; no prose interpretation or adaptive draw."
+  },
+  "runtime": {
+    "execution": "sequential_cpu_only",
+    "maximum_wall_seconds": 1200,
+    "maximum_episodes": 450,
+    "maximum_steps_per_episode": 180,
+    "maximum_steps_semantics": "cohort-generation ecology updates only; within-update opportunities and reproduction-disabled probes have separate bounds",
+    "maximum_ram_mb": 2048,
+    "maximum_disk_mb": 250,
+    "maximum_decompressed_raw_mb": 1024,
+    "maximum_canonical_audit_receipts_bytes_per_episode": 786432,
+    "audit_receipt_hash_encoding": "exactly 64 lowercase hexadecimal SHA-256 characters",
+    "network": false,
+    "shell": false,
+    "subprocess": false,
+    "dynamic_code": false,
+    "external_tools": false
+  },
+  "invariants": [
+    "The receiver never observes source_pressure_class or source_required_skill outside evaluator-only receipts.",
+    "No signal label has a privileged initialization, feature, cost, mutation rate, or environmental effect.",
+    "Probe outcomes never affect energy, reproduction, lineage survival, or discovery-regime nomination.",
+    "Each interaction uses two distinct hosts, and sender-policy and receiver-policy parent, mutation, credit, and ancestry streams remain separate even though every host carries both finite policy blocks.",
+    "Convention propagules are registered hereditary state, never observations; they contain only two independently sourced finite allele blocks and lineage ids and may affect policy only at their scheduled wake.",
+    "At propagule wake each role emits an evaluator-only activation receipt: identical same-role lineage and alleles retain the lineage with state_change false and no new ancestry; differing state creates the role ancestry transition; source selection is never resampled to improve coverage.",
+    "Propagule source, target, result, and role state-change details never enter overt or abstract-signal agent-visible rows.",
+    "Canonical uncompressed audit_receipts never exceed 786432 bytes (0.75 MiB) per episode and SHA-256 fields remain full 64-character lowercase hexadecimal strings.",
+    "Evaluator-only latent metadata never seeds, mutates, selects, or otherwise changes a policy block or ecology state.",
+    "Every pressure propagation event copies a declared neighbor's pressure and records the source edge.",
+    "Every per-message permutation preserves the exact intact delivered-signal histogram on the same frozen event schedule.",
+    "No active agents overlap across cohort boundaries.",
+    "The optional perturbation toolset cannot emit signal semantics, choose actions, change evidence thresholds, or act as a narrative oracle.",
+    "Every state transition remains an abstract in-memory ecology operation."
+  ]
+}

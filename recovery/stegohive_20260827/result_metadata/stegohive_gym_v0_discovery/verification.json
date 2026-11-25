@@ -1,0 +1,161 @@
+{
+  "accepted": true,
+  "artifact_hashes": {
+    "knowledge_card_sha256": "39c823bc828e87103b262a60ef2988d483ee0b14f9642ca875affd70c7b6e841",
+    "raw_episodes_sha256": "667990370d328d4e200b3a2341cd41ac194f22da1befcb485608e272149a8f98",
+    "seed_manifest_sha256": "ebe9f85829544e3d0a84979de7cc39803ff5e5b47f92f2dff68f274a4aa3b8fe",
+    "summary_sha256": "9ac674f0594332d00a56731127918f7bf45df3b07f4e2b0ff8f14c68ef552686"
+  },
+  "commands_executed_from_artifacts": false,
+  "directory": "D:\\ALife\\project_results\\stegohive_gym_v0_discovery",
+  "episode_count": 24,
+  "episodes": [
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:c0d5aa118b1f",
+      "failed_required_verifiers": [],
+      "index": 0
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:a338b1647128",
+      "failed_required_verifiers": [],
+      "index": 1
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:3eafeab8af71",
+      "failed_required_verifiers": [],
+      "index": 2
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:1fc60074ff5c",
+      "failed_required_verifiers": [],
+      "index": 3
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:a7fbb6763575",
+      "failed_required_verifiers": [],
+      "index": 4
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1001:5980d7172c73",
+      "failed_required_verifiers": [],
+      "index": 5
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:c0d5aa118b1f",
+      "failed_required_verifiers": [],
+      "index": 6
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:a338b1647128",
+      "failed_required_verifiers": [],
+      "index": 7
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:3eafeab8af71",
+      "failed_required_verifiers": [],
+      "index": 8
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:1fc60074ff5c",
+      "failed_required_verifiers": [],
+      "index": 9
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:a7fbb6763575",
+      "failed_required_verifiers": [],
+      "index": 10
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1002:5980d7172c73",
+      "failed_required_verifiers": [],
+      "index": 11
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:c0d5aa118b1f",
+      "failed_required_verifiers": [],
+      "index": 12
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:a338b1647128",
+      "failed_required_verifiers": [],
+      "index": 13
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:3eafeab8af71",
+      "failed_required_verifiers": [],
+      "index": 14
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:1fc60074ff5c",
+      "failed_required_verifiers": [],
+      "index": 15
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:a7fbb6763575",
+      "failed_required_verifiers": [],
+      "index": 16
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1003:5980d7172c73",
+      "failed_required_verifiers": [],
+      "index": 17
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:c0d5aa118b1f",
+      "failed_required_verifiers": [],
+      "index": 18
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:a338b1647128",
+      "failed_required_verifiers": [],
+      "index": 19
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:3eafeab8af71",
+      "failed_required_verifiers": [],
+      "index": 20
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:1fc60074ff5c",
+      "failed_required_verifiers": [],
+      "index": 21
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:a7fbb6763575",
+      "failed_required_verifiers": [],
+      "index": 22
+    },
+    {
+      "accepted": true,
+      "episode_id": "the_one_murmur_protocol_v0:1004:5980d7172c73",
+      "failed_required_verifiers": [],
+      "index": 23
+    }
+  ],
+  "failures": [],
+  "portable": true,
+  "schema": "alife.stegohive.artifact_verification.v0"
+}

@@ -1,0 +1,152 @@
+{
+  "calibration_gate": {
+    "completed_cells": 32,
+    "evaluated": true,
+    "fixed_code_ceiling_persistent_full4": 4,
+    "no_channel_persistent_full4": 0,
+    "passed": true,
+    "reasons": [],
+    "required_cells": 32,
+    "verifier_passes": 32
+  },
+  "claim_authorized": false,
+  "claim_scope": "model_only",
+  "exploratory_evidence_summary": {
+    "F00": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F01": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F10": {
+      "episodes": 12,
+      "frequency": 0.16666666666666666,
+      "persistent_full4": 2
+    },
+    "F11": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_matched_noise": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_no_channel": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "F11_selection_neutral": {
+      "episodes": 12,
+      "frequency": 0.0,
+      "persistent_full4": 0
+    },
+    "fixed_code_ceiling": {
+      "episodes": 12,
+      "frequency": 1.0,
+      "persistent_full4": 12
+    }
+  },
+  "future_phase_authorized": false,
+  "metric_firewall": {
+    "evidence_used_for_fitness": false,
+    "evidence_used_for_nomination": false,
+    "future_claim_authorized": false,
+    "passed": true,
+    "selection_metric": "training_repertoire_score"
+  },
+  "nomination": {
+    "candidates": [],
+    "details": {
+      "F00": {
+        "minimum_gate_passes_met": false,
+        "minimum_paired_improvement_met": false,
+        "nominable": false,
+        "paired_median_improvement_over_F00": 0.0,
+        "training_gate_passes": 0
+      },
+      "F01": {
+        "minimum_gate_passes_met": false,
+        "minimum_paired_improvement_met": false,
+        "nominable": false,
+        "paired_median_improvement_over_F00": 0.0,
+        "training_gate_passes": 0
+      },
+      "F10": {
+        "minimum_gate_passes_met": false,
+        "minimum_paired_improvement_met": false,
+        "nominable": false,
+        "paired_median_improvement_over_F00": 0.0,
+        "training_gate_passes": 4
+      },
+      "F11": {
+        "minimum_gate_passes_met": false,
+        "minimum_paired_improvement_met": false,
+        "nominable": false,
+        "paired_median_improvement_over_F00": 0.0,
+        "training_gate_passes": 1
+      }
+    },
+    "eligible": false,
+    "evaluated": true,
+    "evidence_used": false,
+    "reasons": [
+      "no adaptive arm met the frozen rule"
+    ],
+    "selected_arm": null,
+    "selection_metric": "training_repertoire_score"
+  },
+  "phase": "discovery",
+  "schema": "alife.stegohive.discovery_summary.v2",
+  "selection_summary": {
+    "F00": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F01": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F10": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 4
+    },
+    "F11": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 1
+    },
+    "F11_matched_noise": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11_no_channel": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "F11_selection_neutral": {
+      "episodes": 12,
+      "median_training_repertoire_score": 0.0,
+      "training_gate_passes": 0
+    },
+    "fixed_code_ceiling": {
+      "episodes": 12,
+      "median_training_repertoire_score": 1.0,
+      "training_gate_passes": 12
+    }
+  },
+  "status": "complete_discovery",
+  "stop_reason": null,
+  "worlds_completed": 131
+}

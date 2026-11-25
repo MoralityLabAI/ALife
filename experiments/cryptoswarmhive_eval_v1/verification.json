@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "scope": "postrun artifact hashes, counts, paired utility, funded closed ledgers, equilibrium/basin correspondence and evidence separation",
+  "independent_worlds": 2560,
+  "stress_records": 28160,
+  "selected_worlds_overlapping_stress": 64,
+  "selected_records": 7616,
+  "game_cells": 88,
+  "decoder_comparisons": 770,
+  "targeted_tests_passed": 68,
+  "receipt_sha256": "b9b9cbaa1a2aae6dbaccd1a6e8590598ce8223f7b279051b9ded10be86ccc1f4"
+}

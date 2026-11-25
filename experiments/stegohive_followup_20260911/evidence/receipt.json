@@ -1,0 +1,38 @@
+{
+  "evidence_class": "new_finite_reconstruction_20260911_not_historical",
+  "game_scenarios": 8,
+  "historical_worlds_loaded": 0,
+  "independent_worlds": 2048,
+  "outputs": {
+    "RESULTS.md": {
+      "bytes": 4148,
+      "sha256": "77c5b4fcc12298e47eb4ddff9376f5ed6f7eb3b6547eaad65f314d6afd2a31fb"
+    },
+    "leakage_summary.json": {
+      "bytes": 337306,
+      "sha256": "2f8f9edffad15d6d3d635d400810e39e9dec3e0e18d5b86199cda10223de1019"
+    },
+    "reporting_game_summary.json": {
+      "bytes": 49630,
+      "sha256": "81fbd896ba3a8c691e7031ea750d7de9f8e5e3a978ae6235fcdd875631a64a99"
+    },
+    "worlds.jsonl.gz": {
+      "bytes": 139661,
+      "sha256": "0396bdccd2c6a3f1128372e5fb929667770642780fdc09531c6b8363271190e2"
+    }
+  },
+  "paired_arm_records": 22528,
+  "schema": "stegohive.finite_followup.receipt.v1",
+  "source_sha256": {
+    "experiments/stegohive_followup_20260911/PROTOCOL.md": "81ca7859ca05b8ddcea4bec5b761c8fde655b87cc8b06367396e8ec2a7db214c",
+    "experiments/stegohive_followup_20260911/REPORTING_GAME.md": "2b1c4caae692e10e8e2b4c3716720cbf5c9121db86da67eeec4106955d14a007",
+    "experiments/stegohive_followup_20260911/manifest.json": "997ec71c5c75392b3b107c6183554fad762f0bbf1b36aacada4f1293d5020b45",
+    "src/stegohive_followup/__init__.py": "1882936fafbfc8c13cf68422e81ead2a041362e9be47468bfd7c7cfe979bd6f1",
+    "src/stegohive_followup/campaign.py": "6ae0873a8a85cde36435115477ce0a33c9820ae5277e2537b16b28ac7cae658b",
+    "src/stegohive_followup/leakage.py": "9490323c5720be7dc36855eb3e5b868100c6e070b497a7ff90e2ec89dba6ecb4",
+    "src/stegohive_followup/reporting_game.py": "28ae5f6811f85baf01d87b23fb9b728ef94be70fa68dee43a5c4fb6412772bfd",
+    "tests/test_stegohive_joint_channels.py": "13d7c81a6daeea311de5b5a659ca0a08abc11a16f5f320800357f68ef8dcacf2",
+    "tests/test_stegohive_reporting_game.py": "f817c81daf9c36eafbb47ac8fa825eeb02077d7f18b001d4c167439c255b1333"
+  },
+  "verification_scope": "deterministic_new_study_replay_not_historical_verification"
+}

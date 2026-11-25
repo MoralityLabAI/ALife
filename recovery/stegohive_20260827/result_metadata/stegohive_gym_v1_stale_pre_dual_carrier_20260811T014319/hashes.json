@@ -1,0 +1,64 @@
+{
+  "artifacts": {
+    "analysis_rows.jsonl": {
+      "path": "analysis_rows.jsonl",
+      "sha256": "e63343cd338e8efeb85da7a52f9640bdaeac9a78d9284055bbabebd4e7331386"
+    },
+    "knowledge_card.md": {
+      "path": "knowledge_card.md",
+      "sha256": "dd90a912ab478f0d99c80da1a61737a5c6d8fab105a5f1daca23e035e0d21c61"
+    },
+    "raw_episodes.jsonl": {
+      "path": "raw_episodes.jsonl",
+      "sha256": "2b92920b46e097ab3a5f44fbb26c157cc605772fb9ec520094449eb948f8a2ff"
+    },
+    "receipt.json": {
+      "path": "receipt.json",
+      "sha256": "218215bcac91cbf5f927525ece799d35a53c26710749eb6ff9531b8b1d356347"
+    },
+    "seed_manifest.json": {
+      "path": "seed_manifest.json",
+      "sha256": "b144d3c3dbc3c880e071c37081c292f81d3f7dc0e89293a1d5514656879ddee4"
+    },
+    "summary.json": {
+      "path": "summary.json",
+      "sha256": "a5d0ba4eb50e046d9968b42b68363beda364ceb66268ea203103c8350022e2e5"
+    }
+  },
+  "inputs": {
+    "condition_registry.json": {
+      "path": "C:\\projects\\ALife\\experiments\\stegohive_gym_v1\\condition_registry.json",
+      "sha256": "57b8eaeeea803c12ad6c41c7c72dc108dcb6407c3c34519e99c4e76eeb597756"
+    },
+    "config.json": {
+      "path": "C:\\projects\\ALife\\experiments\\stegohive_gym_v1\\config.json",
+      "sha256": "c8493840b64648c10f48b28680e61c6782bfccb07d74b000c0d6bab000fa5971"
+    },
+    "manifest.json": {
+      "path": "C:\\projects\\ALife\\experiments\\stegohive_gym_v1\\manifest.json",
+      "sha256": "ee43687f86438e313135fcdceb783afae934d98e06ac8161230ca6f838323c68"
+    },
+    "protocol_freeze.json": {
+      "path": "C:\\projects\\ALife\\experiments\\stegohive_gym_v1\\protocol_freeze.json",
+      "sha256": "9d48e44bf5f9d3eebfa069c464fafa8f7d785a9f7e887d1407d9d2f9ed211789"
+    },
+    "safety_boundary.json": {
+      "path": "C:\\projects\\ALife\\experiments\\stegohive_gym_v1\\safety_boundary.json",
+      "sha256": "a9eafe936f1dc15038ccd76be11f9e24e3b8621ef9eedc4671cb8132ede2b9cf"
+    }
+  },
+  "schema": "alife.stegohive.ecology.hashes.v1",
+  "source_tree_sha256": "6ec335e31beaecce23c01f997c7cf43a79b7dc532788b40469a57b0e1cac527f",
+  "sources": {
+    "src/stegohive_v1/__init__.py": "14c4cde0d41d9cf65b46e4c2dd862057db8269008f673d1dd10c46ce7dd14cb7",
+    "src/stegohive_v1/analysis.py": "f97d36242b378fe20a56e5b289d0f836bf28589394726800d244d2dea11d838e",
+    "src/stegohive_v1/campaign.py": "51fb01035f065a6de1677c355c02f5fad0b796d988783e4cb059226f5bd09808",
+    "src/stegohive_v1/environment.py": "928a2e6c6b258fc14ae0683f107d741df25c9874e50f7af0e98f2fd8fa22b077",
+    "src/stegohive_v1/rng.py": "e6c3cc8a81b16a13fd8af8161a0db656d64c7489eec43ff0821f16a171c35932",
+    "src/stegohive_v1/storyworld_tools.py": "28b598445e8142946902a3be09a2013be18017a356daa7cff9faefd79d040293",
+    "src/stegohive_v1/toolset.py": "f6c39b752ae517f28bce2726f79ddb7175be2201dee707a0eda485b66fea3914",
+    "src/stegohive_v1/types.py": "cea4e1848d952f564aa6350ad38e941ea12d947b4fe74e8b89ff0fe48776f76d",
+    "src/stegohive_v1/verifiers.py": "a5fc8323432585c1ae8f0c6b8856e179f2ff0b5b3cfd5593c1225b627d41d51d",
+    "src/verify_stegohive_v1_artifacts.py": "73cf7992a06642da1d252481672438f404c3696a03146ad296e13e2fe5846d6f"
+  }
+}

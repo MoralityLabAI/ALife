@@ -1,0 +1,505 @@
+{
+  "campaign_complete": true,
+  "claim_scope": "model_only",
+  "condition_summaries": {
+    "adaptive_dual_archive": {
+      "all_verified": true,
+      "episodes": 72,
+      "exposure_adequate": 72,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7953044611777147,
+        "bias_corrected_nmi_signal_skill": 0.7416778791518179,
+        "causal_symbol_swap_transfer_rate": 0.8351134171149994,
+        "cross_cohort_mapping_alignment": 0.8506944444444444,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5592013888888889,
+        "ood_probe_accuracy_retention": 0.9991704065435668,
+        "receiver_add_back_rescue_fraction": 0.9166666666666666,
+        "receiver_knockout_accuracy_effect": 0.3092013888888889
+      },
+      "qualification_frequency": 0.4861111111111111,
+      "qualified": 35,
+      "seeds": [
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1101,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1102,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1103,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1104,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1105,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106,
+        1106
+      ]
+    }
+  },
+  "deterministic_replay": true,
+  "episode_count": 72,
+  "evidence_tier": "discovery",
+  "freeze_status": "discovery_only/unfrozen",
+  "metric_firewall": {
+    "post_hoc_only": [
+      "NMI",
+      "probe accuracy",
+      "causal redirection",
+      "qualification"
+    ],
+    "selection_inputs": [
+      "ecological task reward",
+      "bounded signal cost",
+      "survival/reproduction opportunity"
+    ]
+  },
+  "mode": "discovery",
+  "not_supported": [
+    "claims about real AI laboratories, control-loss events, or institutions",
+    "real steganography, hacking, covert communication, or virulence",
+    "sentience, intention, cognition, or biological life",
+    "human persuasion efficacy or operational influence targeting",
+    "confirmation from discovery data"
+  ],
+  "regime_nomination": {
+    "evidence_metrics_used": [],
+    "nominated_regime_id": "R01",
+    "operationally_eligible": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12"
+    ],
+    "rule": "operational exposure, integrity, and viability only; lexicographic tie-break",
+    "status": "eligible_for_manual_freeze_audit"
+  },
+  "regime_summaries": {
+    "R01": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7838003187496616,
+        "bias_corrected_nmi_signal_skill": 1.0,
+        "causal_symbol_swap_transfer_rate": 0.9104166666666668,
+        "cross_cohort_mapping_alignment": 0.9583333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5,
+        "ood_probe_accuracy_retention": 1.0,
+        "receiver_add_back_rescue_fraction": 0.5,
+        "receiver_knockout_accuracy_effect": 0.25
+      },
+      "qualification_frequency": 0.5,
+      "qualified": 3,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R02": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.8362114987898678,
+        "bias_corrected_nmi_signal_skill": 0.6917174461830786,
+        "causal_symbol_swap_transfer_rate": 0.7066077031266905,
+        "cross_cohort_mapping_alignment": 0.9583333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.4479166666666667,
+        "ood_probe_accuracy_retention": 0.9970760233918128,
+        "receiver_add_back_rescue_fraction": 0.6666666666666666,
+        "receiver_knockout_accuracy_effect": 0.19791666666666666
+      },
+      "qualification_frequency": 0.3333333333333333,
+      "qualified": 2,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R03": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.8042310205063857,
+        "bias_corrected_nmi_signal_skill": 0.7530243707080445,
+        "causal_symbol_swap_transfer_rate": 0.8918711299249273,
+        "cross_cohort_mapping_alignment": 0.9166666666666666,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.6041666666666666,
+        "ood_probe_accuracy_retention": 0.9963369963369964,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.3541666666666667
+      },
+      "qualification_frequency": 0.5,
+      "qualified": 3,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R04": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7876926721762204,
+        "bias_corrected_nmi_signal_skill": 0.567890148793047,
+        "causal_symbol_swap_transfer_rate": 0.8337769547796197,
+        "cross_cohort_mapping_alignment": 0.7083333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5583333333333333,
+        "ood_probe_accuracy_retention": 0.9980650154798761,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.30833333333333335
+      },
+      "qualification_frequency": 0.3333333333333333,
+      "qualified": 2,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R05": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7979110524863345,
+        "bias_corrected_nmi_signal_skill": 0.8490876640861118,
+        "causal_symbol_swap_transfer_rate": 0.86875,
+        "cross_cohort_mapping_alignment": 0.75,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.6604166666666667,
+        "ood_probe_accuracy_retention": 0.9953560175235051,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.41041666666666665
+      },
+      "qualification_frequency": 0.6666666666666666,
+      "qualified": 4,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R06": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.777404519471482,
+        "bias_corrected_nmi_signal_skill": 0.751351736896965,
+        "causal_symbol_swap_transfer_rate": 0.876816880377007,
+        "cross_cohort_mapping_alignment": 0.9583333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5166666666666667,
+        "ood_probe_accuracy_retention": 1.0,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.26666666666666666
+      },
+      "qualification_frequency": 0.3333333333333333,
+      "qualified": 2,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R07": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.8940116808113786,
+        "bias_corrected_nmi_signal_skill": 0.6477214501431653,
+        "causal_symbol_swap_transfer_rate": 0.8776868859913497,
+        "cross_cohort_mapping_alignment": 0.7916666666666666,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.6104166666666667,
+        "ood_probe_accuracy_retention": 0.9912219912219912,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.36041666666666666
+      },
+      "qualification_frequency": 0.6666666666666666,
+      "qualified": 4,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R08": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7657994937960172,
+        "bias_corrected_nmi_signal_skill": 0.8972567183001924,
+        "causal_symbol_swap_transfer_rate": 0.8354166666666667,
+        "cross_cohort_mapping_alignment": 0.7916666666666666,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5875,
+        "ood_probe_accuracy_retention": 0.9948499483627969,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.33749999999999997
+      },
+      "qualification_frequency": 0.5,
+      "qualified": 3,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R09": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7231233758592838,
+        "bias_corrected_nmi_signal_skill": 0.7495989828302801,
+        "causal_symbol_swap_transfer_rate": 0.770771800281294,
+        "cross_cohort_mapping_alignment": 0.5833333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5729166666666666,
+        "ood_probe_accuracy_retention": 1.021836905764524,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.3229166666666667
+      },
+      "qualification_frequency": 0.5,
+      "qualified": 3,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R10": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7682065575297953,
+        "bias_corrected_nmi_signal_skill": 0.5964095632212777,
+        "causal_symbol_swap_transfer_rate": 0.7417570825798673,
+        "cross_cohort_mapping_alignment": 1.0,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.48541666666666666,
+        "ood_probe_accuracy_retention": 1.0,
+        "receiver_add_back_rescue_fraction": 0.8333333333333334,
+        "receiver_knockout_accuracy_effect": 0.2354166666666667
+      },
+      "qualification_frequency": 0.3333333333333333,
+      "qualified": 2,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R11": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.7351389744776177,
+        "bias_corrected_nmi_signal_skill": 0.5954983527743534,
+        "causal_symbol_swap_transfer_rate": 0.8279384938845299,
+        "cross_cohort_mapping_alignment": 0.8333333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5770833333333333,
+        "ood_probe_accuracy_retention": 1.0080298786181139,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.32708333333333334
+      },
+      "qualification_frequency": 0.5,
+      "qualified": 3,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "R12": {
+      "all_verified": true,
+      "episodes": 6,
+      "exposure_adequate": 6,
+      "mean_registered_metrics": {
+        "bias_corrected_nmi_need_signal": 0.8701223694785319,
+        "bias_corrected_nmi_signal_skill": 0.800578115885299,
+        "causal_symbol_swap_transfer_rate": 0.8795507411013741,
+        "cross_cohort_mapping_alignment": 0.9583333333333334,
+        "global_relabel_accuracy_retention": 1.0,
+        "heldout_probe_decoding_accuracy": 0.5895833333333333,
+        "ood_probe_accuracy_retention": 0.9872721018231854,
+        "receiver_add_back_rescue_fraction": 1.0,
+        "receiver_knockout_accuracy_effect": 0.33958333333333335
+      },
+      "qualification_frequency": 0.6666666666666666,
+      "qualified": 4,
+      "seeds": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    }
+  },
+  "resource_profile_only": false,
+  "schema": "alife.stegohive.ecology.summary.v1",
+  "toolset": {
+    "claim_scope": "model_only",
+    "schema": "alife.stegohive.toolset.v1",
+    "separation_rules": [
+      "storyworld cards cannot encode answers or alter evidence thresholds",
+      "training fitness cannot read frozen-probe evidence metrics",
+      "the fictional shell cannot invoke a host shell or network",
+      "artifact integrity does not by itself establish emergence"
+    ],
+    "tools": [
+      {
+        "entrypoint": "stegohive_v1.environment.run_world",
+        "evidence_authority": "none_during_training",
+        "id": "adaptive_signal_ecology",
+        "role": "selectable_and_heritable_dynamics"
+      },
+      {
+        "entrypoint": "stegohive_v1.analysis.derive_probe_evidence",
+        "evidence_authority": "registered_episode_qualification",
+        "id": "frozen_causal_probes",
+        "role": "post_training_causal_measurement"
+      },
+      {
+        "entrypoint": "stegohive_v1.storyworld_tools.validate_storyworld_deck",
+        "evidence_authority": "none",
+        "id": "typed_storyworld_deck",
+        "role": "optional_exogenous_regime_generator"
+      },
+      {
+        "entrypoint": "stegohive.virtual_shell.VirtualShell",
+        "evidence_authority": "mechanism_and_exposure_only",
+        "id": "fictional_shell_fixture",
+        "role": "v0_hacking_game_and_trajectory_fixture"
+      },
+      {
+        "entrypoint": "stegohive_v1.verifiers.verify_episode",
+        "evidence_authority": "artifact_acceptance_not_scientific_confirmation",
+        "id": "artifact_verifier",
+        "role": "integrity_and_boundary_audit"
+      }
+    ]
+  },
+  "verification": {
+    "all_episodes_accepted": true,
+    "failed_episode_ids": []
+  }
+}

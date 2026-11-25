@@ -1,0 +1,59 @@
+{
+  "discovery_preflight_gate": null,
+  "executed": [
+    {
+      "condition_id": "adaptive_dual_archive",
+      "engine_config_sha256": "87e8a3c4e91b31230dc64ed49b9212ad25fc4aad6aee49d1f77a15ff1432e1e4",
+      "episode_id": "E-b178211c2a91190603f2",
+      "episode_sha256": "10514049dd7ae492cf1bcd91743973850824aaa1cb64e0d84607947d3f7f3bf4",
+      "regime_id": "R01",
+      "seed": 17,
+      "split": "smoke"
+    }
+  ],
+  "mode": "smoke",
+  "output_binding": {
+    "mode": "smoke",
+    "registered_relative_directory": "results/stegohive_gym_v1_smoke"
+  },
+  "protocol_status": "discovery_only/unfrozen",
+  "registered": {
+    "confirmatory_hash_only": "cd1678818caaf348762936c1e8f3f26df9cdbeac76c89c7410ca7e7c3385465d",
+    "discovery": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "discovery_active": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106
+    ],
+    "discovery_reserve_amendment_required": [
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "holdout_hash_only": "3d7c5532bc4aaaaf9ba74ce8d03bf30232d3415ee8737e9bce374eef37462fd3",
+    "ood_hash_only": "a4b84329723e8405e0c0a1b29b376e422e0210ae4f775b745a90d6eb58a3a02f",
+    "smoke": [
+      17
+    ]
+  },
+  "schema": "alife.stegohive.ecology.seed_manifest.v1"
+}
